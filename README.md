@@ -1,4 +1,4 @@
-FAZ-0 — PROJE TANIMI (OKU / ÜRETME)
+
 
 spor-anomani-kutuphanesi
 
@@ -7654,5 +7654,23 @@ KİLİT BEYANI |
 
  Bu metin “GANYAN — Nihai Kilitli Birleşik Metin v1.2” olarak kilitlenmiştir, bundan sonra bu metin sen talep etmeden yeniden yazılmaz parçalanmaz sadeleştirilmez anlamı bozulmaz.
 
+FFAZ-41 — MERKEZİ KARAR DUVARI (DISPLAY ONLY / TEK KAYNAK)
 
+Bu fazda merkezi karar duvarı oluşturulur. Merkezi karar duvarı, futbol, basketbol ve ganyan branşlarına ait karar motorlarından üretilmiş karar çıktılarının tek noktada toplandığı vitrindir. Bu duvar bir analiz katmanı değildir; herhangi bir hesaplama, yeniden sınıflandırma, filtreleme veya yorum üretimi yapmaz.
+
+Merkezi karar duvarı, branş kütüphanelerinden veri çekmez. Branşlar kendi karar duvarlarına yazım yapar; merkezi karar duvarı yalnızca bu branş karar duvarlarının birebir kopyasını alır. Okuma modeli push esaslıdır; pull yasaktır. Merkezi karar duvarı, branş kütüphanelerine veya branş içi dosyalara doğrudan erişemez.
+
+Merkezi karar duvarında tutulan veriler, branş karar duvarlarıyla byte-byte aynı olmak zorundadır. Herhangi bir ek alan, türetilmiş değer veya hesaplama izi bulunamaz. Merkezi karar duvarı yalnızca yayın ve orkestrasyon katmanları için tek ve mutlak okuma kaynağıdır.
+
+Bu faz tamamlanmadan yayın, Telegram, uygulama veya harici servis entegrasyonlarına geçilemez. Merkezi karar duvarı oluşmadan yapılan herhangi bir yayın veya bildirim işlemi geçersiz teslim sayılır.
+
+FAZ-42 — YAYIN VE ORKESTRASYON KATMANI (BROADCAST COORDINATOR)
+
+Bu fazda yayın ve bildirim orkestrasyonu kurulur. Yayın orkestrasyonu, merkezi karar duvarında yer alan nihai kararları okuyan ve bu kararların hangi kanala, hangi yetki seviyesinde ve hangi sıklıkla iletileceğini yöneten tek sorumlu katmandır.
+
+Yayın orkestrasyonu, branş kütüphanelerine, branş karar duvarlarına veya analiz katmanlarına erişemez. Yalnızca merkezi karar duvarını okur. Telegram, uygulama çıktıları, bayi bildirimleri ve yönetici bildirimleri bu katmandan çıkar. Hiçbir modül bu katmanı baypas edemez.
+
+Yayın orkestrasyonu karar üretmez, değer notu hesaplamaz ve anomali sınıflandırmaz. Sadece mevcut kararların dağıtımını yapar. Yetki ayrımı, kanal ayrımı ve bant bazlı yayın kuralları bu fazda uygulanır. Kırmızı bant dışındaki çıktılar, ilgili yayın politikalarına göre bastırılabilir veya sessiz kalabilir.
+
+Bu faz, sistemin son katmanıdır. Bu faz tamamlandıktan sonra sistem “çalışır” kabul edilir. Bu fazdan sonra yeni analiz, karar veya kütüphane fazı eklenemez.AZ-0 — PROJE TANIMI (OKU / ÜRETME)
 

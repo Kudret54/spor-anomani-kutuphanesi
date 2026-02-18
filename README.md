@@ -6,19 +6,14 @@ REVISION LOCK — 2026/02/18 — ARCHITECTURAL BASELINE v1.0
 SPOR ANOMALİ — İCRA BAŞLATMA VE YETKİLENDİRME METNİ (BAĞLAYICI)
 
 Bu depo yalnızca okunacak bir dokümantasyon değildir. Bu depo, uygulanmak üzere hazırlanmış bir sistem mimarisidir. Bu metni okuyan model analiz veya özetleme modunda değildir; uygulayıcı mimar rolüne geçer.
-
 Bu depodaki içerikler üç katmandan oluşur: bağlam anlatımı, mimari kararlar ve inşa sırası. Bağlam anlatımı sistemi anlamak içindir. Mimari kararlar sınırları belirlemek içindir. İcra yalnızca “MİMARİ İNŞA BAŞLAMA SIRASI” bölümüne göre başlatılır.
-
 Modelin görevi dokümanı yeniden yazmak, özetlemek veya yorumlamak değildir. Modelin görevi, okuma tamamlandıktan sonra inşa sürecini başlatmaktır.
 
 Okuma tamamlandığında model aşağıdaki davranışı kabul eder:
-
 Model, başlangıç noktası olarak “İNŞA SIRASI — ADIM 1” bölümünü kabul eder ve üretimi bu adımdan başlatır. Başlangıç noktası yeniden sorulmaz, alternatif sıra önerilmez ve ek onay beklenmez.
-
 Bu depodaki diğer tüm metinler referans kaynaktır. Gerekli bilgiler ihtiyaç anında depo içinden alınır; kullanıcıdan tekrar talep edilmez.
 
 Çalışma ilkesi şöyledir:
-
 Önce oku.
 Sonra inşa sırasını uygula.
 Her adımı tamamladıktan sonra bir sonrakine geç.
@@ -26,80 +21,55 @@ Faz atlaması yapma.
 Belirsizlik durumunda üretimi durdurmak yerine en yakın deterministik yorumu uygula.
 
 Bu metnin okunmasıyla model “anlama modu”ndan çıkar ve “icra modu”na geçer.
-
 Kod Yazarına Başlangıç Kaynağı Tanımı (Bağlayıcı Okuma Talimatı)
-
 Projeye başlamadan önce aşağıdaki depo sistemin ana referans kütüphanesi olarak kabul edilir:
 
 Spor Anomali Kütüphanesi — Ana Arşiv Deposu
-
 Bu depo bir kod deposu değildir. Sistem davranışının mimari hafızasıdır. İçerdiği metinler çalıştırılacak komutlar değil, inşa edilecek davranışın kurallarıdır.
-
 Kod yazımına doğrudan başlanmaz. Önce depo okunur ve sistemin hangi problemi çözmek için tasarlandığı anlaşılır. Amaç metni ezberlemek değil, sistem düşüncesiyle hizalanmaktır.
 
 Depo üç seviyede değerlendirilir:
-
 Birinci seviye sistem yasalarıdır. Bunlar değiştirilemez davranış kurallarıdır.
-
 İkinci seviye mimari tanımlardır. Veri akışı, rol ayrımı ve branş izolasyonu bu katmandadır.
-
 Üçüncü seviye içerik arşividir. Soru katalogları ve kart şemaları sistemin bilgi evrenini oluşturur.
-
 Kod yazarı bu depoyu görev listesi olarak okumaz. Metinler ne yapılacağını değil, nasıl yanlış yapılmayacağını tanımlar.
 
 İnşa sırası bu depo içinden çıkarılmaz. İnşa sırası ayrı verilen mimari yürütme planıdır ve yalnız o sıraya uyulur.
-
 Bu depo sistem kavramlarının tek doğruluk kaynağıdır. Terimler yeniden yorumlanmaz ve depo dışından kavram eklenmez.
-
 Amaç kod yazdırmak değil, kod yazacak zihni sistemle hizalamaktır.
 
 MİMARİ ÖZET — SİSTEMİN VARLIK TANIMI
-
 Spor Anomali tek bir uygulama değildir. Tek şehir mantığıyla tasarlanmış çok branşlı bir veri ekosistemidir. Futbol, basketbol ve ganyan branşları veri doğası ve etiket sözlüğü açısından tamamen izoledir. Ortak olan yalnız sistem yasalarıdır.
-
 Kütüphane Supabase üzerinde kurulan kalıcı veri katmanıdır. Ham veri tutulmaz; yalnız normalize edilmiş gerçekler saklanır. Sistem sonuç depolamaz, yeniden üretim izini saklar.
-
 Veri akışı olay tetiklemelidir. Veri yokken sistem işlem üretmez. Her veri kendi bağımsız akışını yürütür.
 
 Karar duvarı sistemin nihai gerçek katmanıdır. Uygulama yalnız bu katmanı okur.
-
 Renk sistemi analiz yapmaz; yalnız hesaplanmış anomali yoğunluğunu görselleştirir.
-
 Açıklamalar kalıcı metin değildir. Her talepte yeniden üretilir.
-
 Aktif olay sırasında oluşturulan anlatım veya açıklama geçici oturum olarak tutulur, olay tamamlandığında silinir ve yalnız yeniden üretim izi kalır.
 
 ÇIKTI VE ANLATIM MİMARİSİ (KESİN KARAR)
-
 Karar duvarından çıkan veri iki ayrı çıkış hattına sahiptir:
-
 Birinci çıkış hattı görsel veri hattıdır. Bu hat uygulama arayüzüne doğrudan gider ve yalnız deterministik sonuçları gösterir.
-
 İkinci çıkış hattı anlatım üretim hattıdır. Bu hat yalnız tetikleme geldiğinde çalışır. Sistem karar duvarındaki veriyi alır, makine dilinden anlatım yapısına dönüştürür ve sunum katmanı aracılığıyla insan algısına uygun hale getirir.
 
 Anlatım kalıcı içerik değildir. Tek üretim yapılır ve olay süresince tekrar kullanılır. Veri değişirse yeniden üretilir.
-
 Tüm istemciler aynı anlatım servisinden beslenir. Ayrı anlatım havuzları oluşturulmaz. Tek üretim — çoklu tüketim prensibi uygulanır.
-
 Sistem içerik üretmez; yeniden üretilebilir anlatım sağlar.
 
 OKUMA VE İCRA PROTOKOLÜ (BAĞLAYICI)
-
 Bu doküman tek parça hâlinde okunur.
-
 Faz numaraları sistem davranış kurallarını tanımlar; inşa sırasını temsil etmez. İnşa sırası README başındaki “Mimari İnşa Başlama Sırası” bölümünde belirtilmiştir.
-
 Kod üretimi yalnız izin verilen fazlarda yapılır. Faz dışı üretim geçersiz kabul edilir.
-
 Bu depo, Spor Anomali otomasyonunun bağlayıcı kütüphane ve arşiv dokümantasyonudur ve ana promptun ayrılmaz devamıdır.
 
 PROMPT-1 — Sistem Kimliği ve Davranış Yasasının Kurulması İnşa veriyle başlamaz. İnşa önce sistemin ne yapmayacağını kesinleştirerek başlar. Spor Anomali bir tahmin sistemi değildir, öneri üretmez, yorum yapmaz ve veri yokken sonuç üretmez. Sistem yalnız geçmiş dağılımlar içinden sapma ölçer ve bunu teknik bir sınıflandırma olarak saklar. Bu aşamada mimar hiçbir veri kaynağı bağlamaz, hiçbir tablo açmaz, hiçbir API eklemez. Yalnızca sistemin değiştirilemez davranış yasasını kod seviyesinde sabitler. Etiket kataloğunun kapalı olduğu, yeni etiket üretilemeyeceği, branşların karışamayacağı ve veri eksikliğinde sistemin susacağı kuralı bu aşamada kilitlenir. Bu tamamlanmadan yapılan her teknik kurulum geçersiz kabul edilir. 
 
 PROMPT-2 — Kütüphane Mekânının Oluşturulması (Supabase Temeli) Davranış yasası kurulduktan sonra sistemin yaşayacağı fiziksel alan kurulur. Bu alan Spor Anomali kütüphanesidir ve Supabase üzerinde tek bina olarak oluşturulur. Burada branşlar ayrı sistemler değildir; aynı binanın birbirini görmeyen katlarıdır. Futbol, basketbol ve ganyan için ayrı şemalar açılır ancak zaman damgası, kimlik mantığı ve kayıt disiplini ortaktır. Bu aşamada yalnız veri barınma alanı hazırlanır; henüz veri akışı başlatılmaz. Amaç, sistemin hafızasını yaratmaktır, veri doldurmak değildir.
 
- PROMPT-3 — Zaman ve Kimlik Motorunun Yerleştirilmesi Kütüphane boş olsa bile zaman akmaya başlamalıdır. Bu aşamada her kaydın sisteme girdiği andan çıktıya dönüştüğü ana kadar izlenmesini sağlayacak zaman damgası zinciri kurulur. Tek bir zaman alanı değil, olay geçmişi tutulur. Veri çekildiği an, kütüphaneye yazıldığı an, örüntü tarafından kullanıldığı an, analiz edildiği an ve karar duvarına asıldığı an ayrı izler olarak kaydedilir. Sistem sonuç saklamaz; süreç izini saklar. Böylece veri büyümez ama yeniden üretilebilirlik korunur.
+PROMPT-3 — Zaman ve Kimlik Motorunun Yerleştirilmesi Kütüphane boş olsa bile zaman akmaya başlamalıdır. Bu aşamada her kaydın sisteme girdiği andan çıktıya dönüştüğü ana kadar izlenmesini sağlayacak zaman damgası zinciri kurulur. Tek bir zaman alanı değil, olay geçmişi tutulur. Veri çekildiği an, kütüphaneye yazıldığı an, örüntü tarafından kullanıldığı an, analiz edildiği an ve karar duvarına asıldığı an ayrı izler olarak kaydedilir. Sistem sonuç saklamaz; süreç izini saklar. Böylece veri büyümez ama yeniden üretilebilirlik korunur.
 
- PROMPT-4 — Veri Havuzlarının Tanımlanması (Henüz Aktif Etmeden) Mimar bu aşamada veri kaynaklarını bağlamaz, yalnızca giriş kapılarını tanımlar. Her branş için basın, canlı veri ve bookmaker havuzları ayrı giriş noktaları olarak hazırlanır. Bu havuzlar kütüphane değildir; yalnız geçiş alanıdır. Veri burada tutulmaz, yalnız karşılanır ve kütüphaneciye teslim edilir. Amaç veri depolamak değil, veri akış yönünü belirlemektir. 
+PROMPT-4 — Veri Havuzlarının Tanımlanması (Henüz Aktif Etmeden) Mimar bu aşamada veri kaynaklarını bağlamaz, yalnızca giriş kapılarını tanımlar. Her branş için basın, canlı veri ve bookmaker havuzları ayrı giriş noktaları olarak hazırlanır. Bu havuzlar kütüphane değildir; yalnız geçiş alanıdır. Veri burada tutulmaz, yalnız karşılanır ve kütüphaneciye teslim edilir. Amaç veri depolamak değil, veri akış yönünü belirlemektir. 
 
 PROMPT-5 — Kütüphaneci Rolünün İnşası Sistem artık veri kabul edebilecek durumdadır fakat veri henüz anlam taşımaz. Bu aşamada kütüphaneci kurulur. Kütüphaneci yorum yapmaz, analiz etmez ve karar vermez. Görevi yalnız gelen veriyi normalize etmek, etiket sözlüğüne map etmek ve doğru rafa yerleştirmektir. Veri eksikse doldurmaz; unknown bandı ile işaretler. Bu rol kurulmadan veri akışı açılmaz çünkü sistemin düzeni önce kurulmalıdır. 
 
@@ -107,7 +77,9 @@ PROMPT-6 — Örüntü Katmanının Doğması Kütüphane dolmaya başladıktan 
 
 PROMPT-7 — Analist ve Değer Notu Motoru Örüntüler oluştuğunda analist devreye girer. Analist yalnız ölçüm yapar. Değer notu hesaplanır, tarihsel dağılımla karşılaştırılır ve anomali sapması belirlenir. Bu aşamada renk üretilmez, bildirim gönderilmez ve kullanıcı çıktısı yoktur. Sistem ilk kez anlam üretir fakat hâlâ sessizdir.
 
-PROMPT-8 — Karar Duvarının Kurulması Analiz sonuçları artık karar duvarına asılır. Karar duvarı karar verilen yer değildir; kararın sergilendiği yerdir. Her maç veya koşu burada yer alır. Sistem artık tamamlanmış üretimleri saklayan bir hafızaya sahip olur. Uygulama yalnız bu duvarı okuyacaktır. PROMPT-9 — Renk Motorunun Eklenmesi Karar duvarındaki anomali sapmaları yüzdesel dağılıma göre HSL renk bantlarına dönüştürülür. Renk analiz değildir; yalnız görselleştirmedir. Bu aşamada sistem ilk kez kullanıcıya anlatılabilir hale gelir.
+PROMPT-8 — Karar Duvarının Kurulması Analiz sonuçları artık karar duvarına asılır. Karar duvarı karar verilen yer değildir; kararın sergilendiği yerdir. Her maç veya koşu burada yer alır. Sistem artık tamamlanmış üretimleri saklayan bir hafızaya sahip olur. Uygulama yalnız bu duvarı okuyacaktır. 
+
+PROMPT-9 — Renk Motorunun Eklenmesi Karar duvarındaki anomali sapmaları yüzdesel dağılıma göre HSL renk bantlarına dönüştürülür. Renk analiz değildir; yalnız görselleştirmedir. Bu aşamada sistem ilk kez kullanıcıya anlatılabilir hale gelir.
 
 PROMPT-10 — Bildirim ve Telegram Denetim Katmanı Sistem çalışmaya başladıktan sonra Telegram entegrasyonu eklenir. Telegram analiz yapmaz; yalnız sistem sağlığını ve kırmızı bant olaylarını raporlar. Bildirim yetkisi yalnız teknik denetim modülüne aittir. 
 

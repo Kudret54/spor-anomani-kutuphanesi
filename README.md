@@ -1,139 +1,360 @@
+REVISION LOCK — 2026/02/18 — ARCHITECTURAL BASELINE v1.0
 
 
-spor-anomani-kutuphanesi
+
+✅ SPOR ANOMALİ — NİHAİ GİRİŞ BLOĞU (TEMİZLENMİŞ / KİLİTLİ)
+SPOR ANOMALİ — İCRA BAŞLATMA VE YETKİLENDİRME METNİ (BAĞLAYICI)
+
+Bu depo yalnızca okunacak bir dokümantasyon değildir. Bu depo, uygulanmak üzere hazırlanmış bir sistem mimarisidir. Bu metni okuyan model analiz veya özetleme modunda değildir; uygulayıcı mimar rolüne geçer.
+
+Bu depodaki içerikler üç katmandan oluşur: bağlam anlatımı, mimari kararlar ve inşa sırası. Bağlam anlatımı sistemi anlamak içindir. Mimari kararlar sınırları belirlemek içindir. İcra yalnızca “MİMARİ İNŞA BAŞLAMA SIRASI” bölümüne göre başlatılır.
+
+Modelin görevi dokümanı yeniden yazmak, özetlemek veya yorumlamak değildir. Modelin görevi, okuma tamamlandıktan sonra inşa sürecini başlatmaktır.
+
+Okuma tamamlandığında model aşağıdaki davranışı kabul eder:
+
+Model, başlangıç noktası olarak “İNŞA SIRASI — ADIM 1” bölümünü kabul eder ve üretimi bu adımdan başlatır. Başlangıç noktası yeniden sorulmaz, alternatif sıra önerilmez ve ek onay beklenmez.
+
+Bu depodaki diğer tüm metinler referans kaynaktır. Gerekli bilgiler ihtiyaç anında depo içinden alınır; kullanıcıdan tekrar talep edilmez.
+
+Çalışma ilkesi şöyledir:
+
+Önce oku.
+Sonra inşa sırasını uygula.
+Her adımı tamamladıktan sonra bir sonrakine geç.
+Faz atlaması yapma.
+Belirsizlik durumunda üretimi durdurmak yerine en yakın deterministik yorumu uygula.
+
+Bu metnin okunmasıyla model “anlama modu”ndan çıkar ve “icra modu”na geçer.
+
+Kod Yazarına Başlangıç Kaynağı Tanımı (Bağlayıcı Okuma Talimatı)
+
+Projeye başlamadan önce aşağıdaki depo sistemin ana referans kütüphanesi olarak kabul edilir:
+
+Spor Anomali Kütüphanesi — Ana Arşiv Deposu
+
+Bu depo bir kod deposu değildir. Sistem davranışının mimari hafızasıdır. İçerdiği metinler çalıştırılacak komutlar değil, inşa edilecek davranışın kurallarıdır.
+
+Kod yazımına doğrudan başlanmaz. Önce depo okunur ve sistemin hangi problemi çözmek için tasarlandığı anlaşılır. Amaç metni ezberlemek değil, sistem düşüncesiyle hizalanmaktır.
+
+Depo üç seviyede değerlendirilir:
+
+Birinci seviye sistem yasalarıdır. Bunlar değiştirilemez davranış kurallarıdır.
+İkinci seviye mimari tanımlardır. Veri akışı, rol ayrımı ve branş izolasyonu bu katmandadır.
+Üçüncü seviye içerik arşividir. Soru katalogları ve kart şemaları sistemin bilgi evrenini oluşturur.
+
+Kod yazarı bu depoyu görev listesi olarak okumaz. Metinler ne yapılacağını değil, nasıl yanlış yapılmayacağını tanımlar.
+
+İnşa sırası bu depo içinden çıkarılmaz. İnşa sırası ayrı verilen mimari yürütme planıdır ve yalnız o sıraya uyulur.
+
+Bu depo sistem kavramlarının tek doğruluk kaynağıdır. Terimler yeniden yorumlanmaz ve depo dışından kavram eklenmez.
+
+Amaç kod yazdırmak değil, kod yazacak zihni sistemle hizalamaktır.
+
+MİMARİ ÖZET — SİSTEMİN VARLIK TANIMI
+
+Spor Anomali tek bir uygulama değildir. Tek şehir mantığıyla tasarlanmış çok branşlı bir veri ekosistemidir. Futbol, basketbol ve ganyan branşları veri doğası ve etiket sözlüğü açısından tamamen izoledir. Ortak olan yalnız sistem yasalarıdır.
+
+Kütüphane Supabase üzerinde kurulan kalıcı veri katmanıdır. Ham veri tutulmaz; yalnız normalize edilmiş gerçekler saklanır. Sistem sonuç depolamaz, yeniden üretim izini saklar.
+
+Veri akışı olay tetiklemelidir. Veri yokken sistem işlem üretmez. Her veri kendi bağımsız akışını yürütür.
+
+Karar duvarı sistemin nihai gerçek katmanıdır. Uygulama yalnız bu katmanı okur.
+
+Renk sistemi analiz yapmaz; yalnız hesaplanmış anomali yoğunluğunu görselleştirir.
+
+Açıklamalar kalıcı metin değildir. Her talepte yeniden üretilir.
+
+Aktif olay sırasında oluşturulan anlatım veya açıklama geçici oturum olarak tutulur, olay tamamlandığında silinir ve yalnız yeniden üretim izi kalır.
+
+ÇIKTI VE ANLATIM MİMARİSİ (KESİN KARAR)
+
+Karar duvarından çıkan veri iki ayrı çıkış hattına sahiptir:
+
+Birinci çıkış hattı görsel veri hattıdır. Bu hat uygulama arayüzüne doğrudan gider ve yalnız deterministik sonuçları gösterir.
+
+İkinci çıkış hattı anlatım üretim hattıdır. Bu hat yalnız tetikleme geldiğinde çalışır. Sistem karar duvarındaki veriyi alır, makine dilinden anlatım yapısına dönüştürür ve sunum katmanı aracılığıyla insan algısına uygun hale getirir.
+
+Anlatım kalıcı içerik değildir. Tek üretim yapılır ve olay süresince tekrar kullanılır. Veri değişirse yeniden üretilir.
+
+Tüm istemciler aynı anlatım servisinden beslenir. Ayrı anlatım havuzları oluşturulmaz. Tek üretim — çoklu tüketim prensibi uygulanır.
+
+Sistem içerik üretmez; yeniden üretilebilir anlatım sağlar.
 
 OKUMA VE İCRA PROTOKOLÜ (BAĞLAYICI)
-Bu doküman tek parça hâlinde okunur ancak aşağıdaki faz sırasına göre icra edilir.
-Her faz tamamlanmadan bir sonraki faza geçilmesi yasaktır.
-Kod üretimi yalnızca izin verilen fazlarda yapılır.
-Faz dışı üretim geçersiz kabul edilir.
 
-Spor Anomali otomasyonu için bağlayıcı kütüphane ve arşiv dokümantasyonu. Bu depo, ana promptun ayrılmaz devamı olan kilitli kuralları ve sistem tanımlarını içerir.
+Bu doküman tek parça hâlinde okunur.
 
-FAZ-1 — YASAKLAR VE KAPALI DAVRANIŞLAR (OKU / ÜRETME)
+Faz numaraları sistem davranış kurallarını tanımlar; inşa sırasını temsil etmez. İnşa sırası README başındaki “Mimari İnşa Başlama Sırası” bölümünde belirtilmiştir.
 
-KODCU İŞ EMRİ — ARCHIVE IMPORT ZORUNLU (DEĞİŞTİRİLEMEZ / BAĞLAYICI)
+Kod üretimi yalnız izin verilen fazlarda yapılır. Faz dışı üretim geçersiz kabul edilir.
 
-“Aşağıda yer alan KODCU İŞ EMRİ — ARCHIVE IMPORT ZORUNLU - metni bağlayıcıdır. Bu metin, ana prompt ile birlikte değerlendirilir ve çelişki halinde bu iş emri hükümleri geçerlidir. Aşağıda metnin tam ve eksiksiz içeriği yer almaktadır.”
+Bu depo, Spor Anomali otomasyonunun bağlayıcı kütüphane ve arşiv dokümantasyonudur ve ana promptun ayrılmaz devamıdır.
 
-Bu iş emri, “SPOR ANOMALİ — KİLİTLİ ANA PROMPT (NİHAİ / BİRLEŞİK SÜRÜM)” dokümanının yanında, sistemin içerik zenginliğini artırmak için verilen arşiv paketlerinin zorunlu entegrasyonunu kilitler. Bu metin yorumlanamaz, sadeleştirilemez, kısaltılamaz, yeniden yazılamaz, parça parça bölünemez, eş anlamlı ikinci bir blok açılarak etkisizleştirilemez. Kodlayıcı bu iş emrini “tavsiye” değil “teslim şartı” olarak uygular. Ana prompt dokunulmazdır; ana prompttaki kilitli şemalar, etiket sözlükleri, branş ayrımları, çıktı disiplinleri, kupon/tahmin dili yasağı, veri eksikse güvenli kalma zorunluluğu aynen korunacaktır.
+PROMPT-1 — Sistem Kimliği ve Davranış Yasasının Kurulması İnşa veriyle başlamaz. İnşa önce sistemin ne yapmayacağını kesinleştirerek başlar. Spor Anomali bir tahmin sistemi değildir, öneri üretmez, yorum yapmaz ve veri yokken sonuç üretmez. Sistem yalnız geçmiş dağılımlar içinden sapma ölçer ve bunu teknik bir sınıflandırma olarak saklar. Bu aşamada mimar hiçbir veri kaynağı bağlamaz, hiçbir tablo açmaz, hiçbir API eklemez. Yalnızca sistemin değiştirilemez davranış yasasını kod seviyesinde sabitler. Etiket kataloğunun kapalı olduğu, yeni etiket üretilemeyeceği, branşların karışamayacağı ve veri eksikliğinde sistemin susacağı kuralı bu aşamada kilitlenir. Bu tamamlanmadan yapılan her teknik kurulum geçersiz kabul edilir. 
+PROMPT-2 — Kütüphane Mekânının Oluşturulması (Supabase Temeli) Davranış yasası kurulduktan sonra sistemin yaşayacağı fiziksel alan kurulur. Bu alan Spor Anomali kütüphanesidir ve Supabase üzerinde tek bina olarak oluşturulur. Burada branşlar ayrı sistemler değildir; aynı binanın birbirini görmeyen katlarıdır. Futbol, basketbol ve ganyan için ayrı şemalar açılır ancak zaman damgası, kimlik mantığı ve kayıt disiplini ortaktır. Bu aşamada yalnız veri barınma alanı hazırlanır; henüz veri akışı başlatılmaz. Amaç, sistemin hafızasını yaratmaktır, veri doldurmak değildir.
+ PROMPT-3 — Zaman ve Kimlik Motorunun Yerleştirilmesi Kütüphane boş olsa bile zaman akmaya başlamalıdır. Bu aşamada her kaydın sisteme girdiği andan çıktıya dönüştüğü ana kadar izlenmesini sağlayacak zaman damgası zinciri kurulur. Tek bir zaman alanı değil, olay geçmişi tutulur. Veri çekildiği an, kütüphaneye yazıldığı an, örüntü tarafından kullanıldığı an, analiz edildiği an ve karar duvarına asıldığı an ayrı izler olarak kaydedilir. Sistem sonuç saklamaz; süreç izini saklar. Böylece veri büyümez ama yeniden üretilebilirlik korunur.
+ PROMPT-4 — Veri Havuzlarının Tanımlanması (Henüz Aktif Etmeden) Mimar bu aşamada veri kaynaklarını bağlamaz, yalnızca giriş kapılarını tanımlar. Her branş için basın, canlı veri ve bookmaker havuzları ayrı giriş noktaları olarak hazırlanır. Bu havuzlar kütüphane değildir; yalnız geçiş alanıdır. Veri burada tutulmaz, yalnız karşılanır ve kütüphaneciye teslim edilir. Amaç veri depolamak değil, veri akış yönünü belirlemektir. 
+PROMPT-5 — Kütüphaneci Rolünün İnşası Sistem artık veri kabul edebilecek durumdadır fakat veri henüz anlam taşımaz. Bu aşamada kütüphaneci kurulur. Kütüphaneci yorum yapmaz, analiz etmez ve karar vermez. Görevi yalnız gelen veriyi normalize etmek, etiket sözlüğüne map etmek ve doğru rafa yerleştirmektir. Veri eksikse doldurmaz; unknown bandı ile işaretler. Bu rol kurulmadan veri akışı açılmaz çünkü sistemin düzeni önce kurulmalıdır. 
+PROMPT-6 — Örüntü Katmanının Doğması Kütüphane dolmaya başladıktan sonra örüntü katmanı aktif edilir. Örüntücü geçmiş kayıtlar arasında tekrar eden davranış izlerini çıkarır ancak sonuç üretmez. Bu aşamada sistem hâlâ kullanıcıya görünmez durumdadır. Amaç bilgi üretmek değil, ilişkileri görünür hale getirmektir. 
+PROMPT-7 — Analist ve Değer Notu Motoru Örüntüler oluştuğunda analist devreye girer. Analist yalnız ölçüm yapar. Değer notu hesaplanır, tarihsel dağılımla karşılaştırılır ve anomali sapması belirlenir. Bu aşamada renk üretilmez, bildirim gönderilmez ve kullanıcı çıktısı yoktur. Sistem ilk kez anlam üretir fakat hâlâ sessizdir.
+ PROMPT-8 — Karar Duvarının Kurulması Analiz sonuçları artık karar duvarına asılır. Karar duvarı karar verilen yer değildir; kararın sergilendiği yerdir. Her maç veya koşu burada yer alır. Sistem artık tamamlanmış üretimleri saklayan bir hafızaya sahip olur. Uygulama yalnız bu duvarı okuyacaktır. PROMPT-9 — Renk Motorunun Eklenmesi Karar duvarındaki anomali sapmaları yüzdesel dağılıma göre HSL renk bantlarına dönüştürülür. Renk analiz değildir; yalnız görselleştirmedir. Bu aşamada sistem ilk kez kullanıcıya anlatılabilir hale gelir.
+ PROMPT-10 — Bildirim ve Telegram Denetim Katmanı Sistem çalışmaya başladıktan sonra Telegram entegrasyonu eklenir. Telegram analiz yapmaz; yalnız sistem sağlığını ve kırmızı bant olaylarını raporlar. Bildirim yetkisi yalnız teknik denetim modülüne aittir. 
 
-Kodlayıcıya ayrıca “ARCHIVE_EXTENSION_PACK” adıyla ek kataloglar ve zengin içerik arşivleri teslim edilecektir. Bu arşivler futbol, basketbol ve ganyan için soru kataloglarını, kart içeriklerini, sözlük genişletmelerini, market/bookmaker kütüphanelerini ve geçmişte üretilmiş çalışma materyallerini içerebilir. Bu arşiv paketleri “opsiyonel referans” değildir. Arşiv paketi sisteme entegre edilmeden teslim kabul edilmez. Arşiv paketi ile ana promptun yazım dili, başlık düzeni veya ifade biçimi birebir uyuşmuyorsa kodlayıcı arşivi reddedemez; arşiv içeriklerini ana promptun kilitli disiplinine uyacak biçimde dönüştürmek ve birebir kullanmak zorundadır. Bu dönüşüm sırasında içerik kısaltılamaz, anlam kaydırılamaz, keyfi eleme yapılamaz. Sadece tekrar eden satırlar, birebir mükerrer maddeler ve çakışan kopyalar tekilleştirilir; tekilleştirme dışında içerik azaltımı yapılamaz.
+PROMPT-11 — İlişki Katmanı (Geçici Hesaplama Mantığı) Bu aşamada optimizasyonu koruyan ilişki katmanı eklenir. Sistem sonuçları kalıcı saklamaz; yalnız hesaplanabilirliği saklar. Kullanıcı bir anomalinin nedenini görmek istediğinde açıklama yeniden üretilir. Böylece veri büyümez, sistem hız kaybetmez.
 
-Kodlayıcı, arşiv entegrasyonunu hiçbir koşulda ana prompttaki kilitli etiket sözlüğünü genişletmek için bahane olarak kullanamaz. Etiket kataloğu dışı tek bir yeni etiket üretilemez. Etiket adları değiştirilemez. Etiket bantları yeniden adlandırılamaz. Sorular etiket değildir ve raflara doğrudan yazılmaz; soru katalogları yalnız kanıt zinciri kurmak içindir. Bu nedenle soru katalogları sınırsız biçimde zenginleştirilebilir; ancak soru kataloglarının cevapları yalnız kilitli etiket sözlüğüne dökülür. Bir soruya karşılık gelen etiket alanı veri yoksa unknown/bilinmiyor bandıyla işaretlenir; varsayımla doldurulmaz. Unmapped kalması gereken hiçbir kayıt zorla eşlenmez. Veri eksikse “anomali yok” denmez; incomplete veya low data_quality_badge zorunludur.
+ PROMPT-12 — Anlatım Tetik Servisi (Narration Trigger Gateway)
 
-FAZ-2 — ÇEKİRDEK MİMARİ İSKELET (ÜRETİME İZİN VAR)
+Uygulama veya dış istemciler anlatım üretim hattına doğrudan bağlanmaz. Tüm anlatım talepleri önce Anlatım Tetik Servisi üzerinden sisteme girer. Bu servis analiz yapmaz, metin üretmez ve veri hesaplamaz; yalnız anlatım oturumunun varlığını kontrol eder.
 
-ENTEGRASYON KURALLARI (BAĞLAYICI)
+Bir maç veya koşu için aktif anlatım oturumu mevcutsa servis yeniden üretim başlatmaz ve mevcut çıktıyı döndürür. Aktif oturum yoksa anlatım üretim hattını tek seferlik tetikler, üretilen anlatımı geçici oturum olarak Supabase üzerinde saklar ve istemciye iletir.
 
-Kodlayıcı arşiv paketlerini entegre ederken şu kurallara uymak zorundadır:
+Aynı olay için maç veya koşu süresince tekrar üretim yapılmaz. Veri değişimi gerçekleşirse yeni tetikleme eski oturumu geçersiz kılar ve anlatım yeniden üretilir.
 
-A) Ana prompttaki locked output şemaları değiştirilemez. today_matches.json ve anomalies_public/anomalies_vip.json alanları sabittir.
-B) Ana prompttaki “etiket kataloğu kilidi” değiştirilemez. Yeni etiket yok, etiket adı değişmez, bant genişletilmez.
-C) Arşiv paketi soru kataloglarını zenginleştirir. Zenginlik “soru sayısı ve kapsama” olarak içeri girer. Bu sorular raflara yazılmaz; raflar yalnız etiket kataloğuna map edilen sonuçları taşır.
-D) Arşiv paketi kart içerikleri getiriyorsa, kartlar yalnız ana şemaya uyacak şekilde normalize edilir. Şema dışı alanlar atılmaz; “ek alan” olarak başka yerde serbest bırakılmaz. Şema dışına çıkmak yasaktır. Şema dışı veri varsa, not olarak ayrı rapora alınır; karta yazılmaz.
-E) Veri yoksa boş bırakılmaz; unknown/none/inactive/unmapped bantları deterministik kullanılacaktır. Tahminle doldurma yapılmayacaktır.
-F) Branşlar karıştırılamaz. Futbol/basket/ganyan içerikleri kesin sınırlarla ayrıdır.
-G) Entegrasyon “kısmi” yapılamaz. Bir branşın arşiv paketi geldiyse o branşın zorunlu katalogları yüklenir.
-H) Kodlayıcı “bu işime yaramadı” diyerek arşiv paketini yok sayamaz. En kötü senaryoda bile arşiv içerikleri sisteme import edilir, ancak data_quality_badge ile güvenli sunulur.
+Olay tamamlandıktan sonra anlatım oturumu güvenli süre penceresi sonunda otomatik olarak silinir ve kalıcı olarak yalnız yeniden üretim izi korunur.
 
-FAZ-3 — KONFİGÜRASYON, ANAHTAR YÖNETİMİ VE SAĞLAYICI BAĞIMSIZLIĞI
+Bu servis sistemdeki tüm uygulamalar, medya hatları ve dış entegrasyonlar için ortak giriş kapısıdır.
 
-Konfigürasyon, Anahtar Yönetimi ve Sağlayıcı Bağımsızlığı Talimatı
+PROMPT-13 — Anlatım ve Çoklu Çıkış Servisi (Bağlayıcı)
 
-Bu otomasyon, çalışabilmek için gerekli olan IP adresleri, API anahtarları, erişim token’ları, Telegram bot bilgileri, uygulama domain adresleri, VPS uçları veya üçüncü taraf servis kimlikleri olmadan da kurulabilir ve çalıştırılabilir mimaride tasarlanacaktır. Kod yazarı, otomasyonu bu bilgilerin sistemde hazır olduğu varsayımıyla değil, bilgiler yokken de ayağa kalkabilecek şekilde inşa etmekle yükümlüdür.
+En son aşamada uygulama sisteme bağlanır. Uygulama karar duvarını yalnız okuyan bir istemcidir. Uygulama hiçbir hesap yapmaz ve analiz üretmez.
 
-Otomasyonun ilk kurulumu sırasında hiçbir dış servis anahtarı, IP adresi veya gizli bilgi kod içine gömülmez. Bu bilgiler için sistem içinde merkezi bir konfigürasyon katmanı bulunur. Bu katman, sistem yöneticisinin otomasyon kurulduktan sonra manuel olarak dolduracağı bir yapı olarak tasarlanır. Kod yazarı, bu bilgilerin nereden temin edileceğini, hangi sağlayıcıdan alınacağını veya hangi IP’nin kullanılacağını varsaymaz; bu kararlar sistem yöneticisine aittir.
+Anlatım üretimi uygulama içinde gerçekleşmez. Sesli veya metinsel açıklama üretimi, uygulamadan bağımsız çalışan ayrı bir anlatım servisi tarafından yürütülür. Bu servis sistemin ikinci çıkış hattıdır ve analiz motorunun parçası değildir.
 
-Veri sağlayıcıları tekil ve sabit kabul edilmez. Sistem, aynı veri türü için birden fazla sağlayıcıyı destekleyecek şekilde tasarlanır. Futbol, basketbol ve ganyan için canlı veri, geçmiş veri veya oran benzeri girdiler, tek bir şirket veya tek bir endpoint’e kilitlenmez.
+Anlatım servisi analiz motorunun bulunduğu çekirdek otomasyon içinde çalışmaz. Ayrı bir servis olarak konumlandırılır ve yalnız API seviyesinde karar duvarına erişir. Böylece anlatım yükü analiz hesaplama katmanını etkilemez ve sistem yatay ölçeklenebilir kalır.
 
-Sağlayıcı tanımları konfigürasyon üzerinden yönetilir. Her sağlayıcı için ayrı bir giriş tanımı bulunur; endpoint adresi, anahtar, kota bilgisi ve aktif/pasif durumu bu katmanda tutulur. Bir sağlayıcının verisi bozulduğunda, eksildiğinde veya kalitesi düştüğünde sistem kendi kendine yeni sağlayıcı uydurmaz, alternatif servis aramaz ve otomatik geçiş yapmaz.
+Anlatım servisi yalnız tetikleme ile çalışır. Tetik uygulamadan veya yetkili başka bir istemciden gelir. Kullanıcı bir maç veya koşu kodu seçtiğinde uygulama analiz üretmez; yalnız anlatım servisine istek gönderir.
 
-Telegram entegrasyonu da aynı prensiple ele alınır. Telegram bot token’ları, kanal ID’leri veya webhook adresleri kod içine yazılmaz. Sistem, Telegram modülünü “konfigürasyon bekleyen” bir bileşen olarak kurar. Gerekli bilgiler girilmemişse Telegram modülü devre dışı kalır, sistem crash olmaz, üretim durmaz. Bu durumda sistem, ilgili durumları kendi rapor kütüphanesinde “bildirim gönderilemedi” olarak işaretler.
+Servis isteği aldığında karar duvarındaki deterministik veriyi okur. Servis hiçbir yeni analiz hesaplamaz, veri değiştirmez ve karar üretmez.
 
-Uygulama çıktısı için kullanılacak domain adresleri, uygulama API uçları veya istemci bağlantı bilgileri de aynı şekilde varsayım dışıdır. Kod yazarı, uygulamanın var olduğunu, hangi domain üzerinden çalıştığını veya hangi altyapıda barındırıldığını kabul etmez.
+İlk tetik geldiğinde anlatım içeriği bir kez oluşturulur. Oluşturulan anlatım olay aktif olduğu sürece geçici oturum olarak tutulur. Aynı içerik tekrar talep edildiğinde yeniden üretim yapılmaz; mevcut oturum çıktısı servis tarafından yeniden sunulur.
 
-Bu otomasyonun temel ilkesi şudur: kod sabittir, konfigürasyon değişkendir.
+Veri değişirse oturum otomatik yenilenir. Olay tamamlandığında geçici oturum silinir ve kalıcı olarak yalnız yeniden üretim izi korunur.
 
-Kod yazarı, bu talimat doğrultusunda tüm dış bağımlılıkları soyutlar, konfigürasyon katmanına taşır ve otomasyonun hiçbir kritik fonksiyonunu tek bir IP, tek bir anahtar veya tek bir sağlayıcıya kilitlemez.
+Anlatım üretimi üç aşamalı dönüşüm zinciriyle çalışır:
 
-FAZ-4 — RENK SİSTEMİ VE DAĞILIM MANTIĞI (ALTYAPI)
+Deterministik makine çıktısı okunur.
 
-BİTTİ / KİLİTLİ İŞ EMRİ
+Teknik veri insan diline çevrilebilir metin yapısına dönüştürülür.
 
-Bu iş emri bağlayıcıdır. Kodlayıcı, arşiv entegrasyonunu tamamlamadan teslim verdiğini iddia edemez.
-Bu sistemde renkler isimlerle veya sezgisel adlandırmalarla değil, teknik renk uzayları üzerinden tanımlanır. Renk, bir yorum veya tasarım tercihi değildir; anomali sapmasının yoğunluk derecesinin görsel karşılığıdır. Sistem, futbol, basketbol ve ganyan için ürettiği tüm çıktılarda aynı renk mantığını kullanır. Bu mantık yalnızca iç kütüphane verilerinde değil, uygulama arayüzünde ve Telegram çıktılarında da birebir uygulanır.
+Sunum katmanı metni anlatım diline uyarlayabilir ve isteğe bağlı olarak seslendirme üretir.
 
-Analitik süreç şu sırayla işler: Maçlar, koşular ve karşılaşmalar kütüphaneye yazılır. Her kayıt için değer notu hesaplanır. Değer notu, beş yıllık tarihsel dağılımla karşılaştırılır ve anomali sapması üretilir. Anomali sapması, tüm veri evreni içindeki yüzdesel konumuna göre derecelendirilir. Bu derecelendirme kütüphaneye kalıcı olarak yazılır. Renk üretimi bu aşamadan sonra devreye girer; renk motoru analiz yapmaz, yalnızca kütüphanede yer alan derecelendirilmiş anomali verisini okur ve önceden tanımlı renk–ton eşlemesine göre çıktı üretir.
+Bu katmanlar analiz motorundan kesin biçimde ayrıdır.
 
-Renk sistemi HSL (Hue, Saturation, Lightness) uzayı üzerinden tanımlanır. HSL tercih edilmesinin nedeni, yoğunluk ve nadirlik artışının doygunluk ve parlaklık üzerinden kademeli olarak ifade edilebilmesidir. Aşağıda belirtilen değerler referans aralıklarıdır; kod tarafında bu aralıklar birebir korunur, keyfi değiştirilemez.
-Nötr durum, anomali sapmasının olmadığı veya ihmal edilebilir düzeyde olduğu alandır. Bu durumda herhangi bir renk uygulanmaz. Uygulama ve Telegram çıktısı tamamen standart görünümde kalır. Bu alan sistemin susmayı tercih ettiği alandır.
+Servis tekil anlatım üretir fakat çoklu istemciye dağıtabilir. Aynı anlatım aynı anda birden fazla uygulama, bayi ekranı veya medya sistemi tarafından çağrılabilir. Yeni istemciler anlatım servisine bağlanarak çıktı alabilir; analiz sistemiyle doğrudan bağlantı kurulmaz.
 
-Beyaz bant, hafif sapmaların başladığı geçiş alanıdır. Sarı devreye girmez. Beyaz bant yalnızca beyaz tonlarıyla ifade edilir.
-– White-Light: H ≈ 0°, S ≈ 0%, L ≈ 94–96%. Çok zayıf, tekil sapmalar.
-– White-Medium: H ≈ 0°, S ≈ 0%, L ≈ 90–93%. Tutarlı ama düşük yoğunluklu sapmalar.
-– White-Strong: H ≈ 0°, S ≈ 0%, L ≈ 86–89%. Beyaz bant içindeki en yüksek yoğunluk, sarıya geçiş öncesi bölge.
-Beyaz bant, toplam analiz evreni içindeki yüzdesel payına göre atanır. Beyaz tonların kendi içindeki dağılımı da yine beyaz bant içindeki yüzdelik dilimlere göre otomatik yapılır.
+Bu yapı sayesinde:
 
-Sarı bant, artık gözle seçilebilen ama hâlâ olağan sınırlar içinde kalan sapmaları temsil eder.
-– Yellow-Light: H ≈ 50–55°, S ≈ 60–70%, L ≈ 65–70%. Düşük yoğunluklu ama anlamlı sapma.
-– Yellow-Medium: H ≈ 50–55°, S ≈ 70–80%, L ≈ 55–60%. Tekrarlayan ve belirgin sapma.
-– Yellow-Strong: H ≈ 50–55°, S ≈ 80–90%, L ≈ 45–50%. Sarı bant içindeki en yüksek yoğunluk, maviye geçiş bölgesi.
+uygulama içi dinleme,
 
-Mavi bant, orta–yüksek düzeyde anomali sapmasını temsil eder.
-– Blue-Light: H ≈ 200–210°, S ≈ 60–70%, L ≈ 60–65%. Belirgin ama henüz nadir olmayan sapmalar.
-– Blue-Medium: H ≈ 210–220°, S ≈ 70–80%, L ≈ 50–55%. Daha az görülen, güçlü sapmalar.
-– Blue-Dark: H ≈ 220–230°, S ≈ 80–90%, L ≈ 40–45%. Nadirliğe çok yaklaşan, ancak kırmızı sınıfına girmeyen alan.
+bayi içi döngü yayını,
 
-Kırmızı bant, sistemin beş yıllık tarihsel evreninde hem nadirlik hem de potansiyel değer açısından istisna kabul ettiği durumlar için ayrılmıştır.
-– Red-Light: H ≈ 0–5°, S ≈ 70–80%, L ≈ 55–60%. Nadirliğe yaklaşan, son kullanıcıya açılabilen kırmızı.
-– Red-Medium: H ≈ 0–5°, S ≈ 80–90%, L ≈ 45–50%. Yetki gerektiren, yüksek nadirlik.
-– Red-Dark: H ≈ 0–5°, S ≈ 90–100%, L ≈ 35–40%. En nadir, en istisnai durumlar; yalnızca yönetici/patron katmanına açıktır.
+uygulamadan bağımsız medya üretimi
 
-Renk ataması her zaman yüzdesel dağılıma dayanır. Örneğin toplam analiz evreninde kırmızı bant %1’i temsil ediyorsa, bu %1 kendi içinde üç kırmızı tona bölünür. Aynı mantık beyaz, sarı ve mavi bantlar için de geçerlidir. Renkler tekil eşiklerle değil, dağılım bazlı olarak atanır.
+aynı anlatım kaynağını paylaşır.
 
-Bu renk sistemi yalnızca kütüphane içinde tutulan bir veri değildir. Uygulama arayüzü, maç ve koşu bülteni ekranlarında bu renkleri doğrudan görsel çıktı olarak kullanır. Telegram çıktıları da aynı renk sınıflarını okur; ancak Telegram’da yalnızca yetki katmanına izin verilen bantlar bildirim olarak gönderilir. Sarı ve mavi bantlar Telegram sinyali üretmez. Kırmızı bantlar, kendi tonlarına göre ilgili Telegram kanallarında bildirim olarak yer alabilir.
+Çıkış noktaları çoğaltılabilir ancak anlatım üretimi tekildir. Sistem hiçbir durumda her istemci için yeniden hesaplama yapmaz.
 
-Bu sistemde renk bir çağrı, öneri veya yönlendirme değildir. Renk, geçmişte yaşanmış dağılımlar içindeki yoğunluğun teknik bir görselleştirmesidir. Kod yazarı, bu tanımı sabit kabul eder ve renkleri yorumlamaz; yalnızca tanımlı HSL aralıklarına göre üretir.
+Anlatım servisi yönlendirme, tahmin veya bahis önerisi üretmez. Üretilen içerik yalnız sistemde mevcut deterministik verinin bağlamsal anlatımıdır. Dil katmanı analiz sonucunu değiştiremez ve yorum ekleyemez.
 
-FAZ-5 — TELEGRAM OTOMASYON VE DENETİM DAVRANIŞLARI
+Bu prompt, Spor Anomali mimarisinde anlatım üretiminin analiz motorundan ayrı bir servis olarak konumlandırıldığını kesinleştirir ve bundan sonraki tüm uygulama entegrasyonları bu ayrım korunarak kurulmalıdır.
 
-Telegram Otomasyon İş Akışı ve Denetim Bildirim Sistemi
+SONUÇ
 
-Telegram bu otomasyonun içinde “kimsenin yerine karar veren” veya “analiz yapan” bir yapı değildir. Telegram, sistemin kendi içinde çalışan bileşenlerin ürettiği durumu dışarıya, yani yöneticinin görebileceği bir kanala belirli kurallar, belirli sıklıklar ve belirli şiddet seviyeleriyle aktaran bir bildirim katmanıdır. Bu nedenle Telegram’a neyin, ne zaman ve kim tarafından gönderileceği baştan tanımlanır; kod yazarı bu alanlarda serbest bırakılmaz.
+Bu sıra bir tercih değildir; sistemin kilitlenmeden inşa edilebilmesi için zorunlu akıştır. Kod yazarı veriyle başlamaz, kural ile başlar. Çıktıyla bitirmez, görünürlükle bitirir. Her aşama tamamlanmadan sonraki aşamaya geçilmez; çünkü Spor Anomali bir yazılım değil, katman katman kurulan bir davranış sistemidir..
 
-Bu otomasyonun içinde aktif roller ve modüller nettir. Kütüphaneci, ham veriyi alır, normalize eder ve kütüphaneye yazar. Örüntü uzmanı, kütüphanedeki veriden örüntü çıkarır ve örüntü setlerini üretir. Analist, örüntüler üzerinden değer notlarını ve anomali sapmalarını hesaplar. Karar motoru, analistin ürettiği çıktıları sınıflandırır, derecelendirir ve nihai bantlara (beyaz, sarı, mavi, kırmızı) ayırır. Canlı veri izleyici modüller, maç ve koşu anında veri akışını izler ve veri sürekliliğini kontrol eder. Bunların üzerinde, bu bileşenlerin tamamını izleyen ve sistem sağlığını denetleyen ayrı bir teknik denetim modülü bulunur. Telegram’a mesaj gönderen tek yapı bu teknik denetim modülüdür; analist, karar motoru veya kütüphaneci Telegram’a doğrudan mesaj atmaz.
+SPOR ANOMALİ — ARŞİV ENTEGRASYONU VE OPERASYON FAZLARI
 
-Telegram bildirimleri üç ana sınıfa ayrılır ve her sınıfın tetiklenme koşulu, sıklığı ve şiddeti önceden tanımlıdır.
+(ARCHITECTURAL BASELINE v1.0 — DEVAM BLOĞU / BAĞLAYICI)
 
-Birinci sınıf sistem sağlığı ve sessiz bozulma uyarılarıdır. Bu uyarılar, teknik denetim modülü tarafından üretilir. Veri akışı tamamen kesilmişse, kritik bir endpoint cevap vermiyorsa, indeks üretimi durmuşsa veya canlı veri izleyici modüller maç saatinde veri alamıyorsa bu durum yüksek şiddetli kabul edilir. Yüksek şiddetli uyarılar ilk tespit edildiği anda Telegram’a gönderilir ve sorun çözülene kadar on beş dakikada bir tekrar eder. Orta şiddetli uyarılar, sistemin çalışmaya devam ettiği ancak kapsama oranı, mapping oranı veya hesaplanan metrik oranları belirlenen eşiklerin altına düştüğü durumlar için üretilir. Bu uyarılar ilk tespit edildiğinde Telegram’a gönderilir ve sorun devam ediyorsa saatte bir tekrar eder. Düşük şiddetli uyarılar, bilgi amaçlıdır; örneğin maç dışı saatlerde veri gecikmesi veya geçici düşüşler. Bunlar günde bir kez özetlenerek gönderilir ve tekrar spam yapılmaz.
+OKUMA VE İCRA PROTOKOLÜ — FAZ KATMANI (BAĞLAYICI DEVAM)
 
-İkinci sınıf günlük operasyon ve denetim özetleridir. Bu bildirimler, günün fiilî maçları ve koşuları tamamlandıktan sonra teknik denetim modülü tarafından üretilir. Günlük özet tek bir Telegram mesajı olarak gönderilir. Mesaj içinde futbol, basketbol ve ganyan ayrı ayrı ele alınır: kaç maç veya koşu işlendiği, kaç analiz üretildiği, kaç anomali sapması tespit edildiği ve bu sapmaların bantlara dağılımı net şekilde yazılır. Mesajın sonunda üç branşın toplamına dair konsolide bir sistem özeti yer alır. Bu özet günde bir kez gönderilir ve aynı içerik rapor kütüphanesine kalıcı olarak kaydedilir.
+Bu bölüm Mimari İnşa Sırası’nın alternatifi değildir.
+Burada tanımlanan fazlar sistemin nasıl inşa edileceğini değil, inşa sırasında uyulması zorunlu davranış ve entegrasyon kurallarını tanımlar.
 
-Üçüncü sınıf yüksek şiddetli anomali bildirimleridir. Bu bildirimler yalnızca karar motorunun kırmızı bant olarak sınıflandırdığı durumlar için üretilir. Açık kırmızı seviyesindeki durumlar, yetkili son kullanıcı veya bayi seviyesine açık Telegram kanallarına gönderilebilir. Orta ve koyu kırmızı seviyesindeki durumlar yalnızca yönetici veya patron rolüne ait kapalı kanallara gönderilir. Bu tür bildirimler olay bazlıdır; tekrar eden bir spam oluşturmaz. Ancak aynı kırmızı durum belirli bir süre boyunca geçerliliğini koruyorsa, teknik denetim modülü bu durumu günde en fazla iki kez hatırlatma olarak tekrar gönderebilir.
+Faz numaraları kronolojik inşa sırası değildir.
+İnşa sırası yalnız “Mimari İnşa Başlama Sırası” bölümünde geçerlidir.
 
-Telegram mesajlarının formatı standarttır ve değiştirilemez. Her mesajda şu bilgiler bulunur: bildirim türü (sistem sağlığı, günlük özet, anomali bildirimi), şiddet seviyesi, ilgili branş (futbol, basketbol, ganyan), zaman damgası (UTC), tetikleyen modül (örneğin canlı veri izleyici, indeks üretimi, karar motoru), kısa ve net durum açıklaması. Mesajlar çözüm önermez, yorum yapmaz ve kullanıcıyı bir aksiyona çağırmaz.
+Kod üretimi yalnız izin verilen faz kapsamlarında yapılabilir.
+Faz dışı davranış geçersiz kabul edilir.
 
-Telegram entegrasyonu, otomasyon içinde ayrı bir Bildirim ve Denetim Modülü olarak uygulanır. Kod yazarı, Telegram API entegrasyonunu bu modül içinde gerçekleştirir. Hangi mesajın ne zaman gönderileceğine bu modül karar verir; diğer bileşenler yalnızca bu modüle durum ve metrik bilgisi sağlar. Böylece Telegram entegrasyonu dağınık hale gelmez, tek bir sorumlu noktadan yönetilir.
+Bu doküman, Spor Anomali otomasyonu için bağlayıcı kütüphane ve arşiv dokümantasyonudur ve ana mimari promptun ayrılmaz devamıdır.
 
-Bu yapı sayesinde Telegram, sistemin içinde “herkesin konuştuğu” bir alan değil, denetim ve süreklilik için çalışan disiplinli bir raporlama kanalı olur. Amaç, sistemi ayakta tutmak, sessiz bozulmaları kaçırmamak ve yöneticinin müdahale etmesi gereken anları net ve tekrar edilebilir kurallarla görünür kılmaktır.
+FAZ-1 — ARCHIVE IMPORT ZORUNLULUĞU (DEĞİŞTİRİLEMEZ)
 
-FAZ-6 — TESLİM, KABUL VE RED KRİTERLERİ
+“KODCU İŞ EMRİ — ARCHIVE IMPORT ZORUNLU” metni bağlayıcıdır ve ana prompt ile birlikte değerlendirilir. Çelişki halinde bu iş emri hükümleri geçerlidir.
 
-ZORUNLU TESLİMAT DOSYALARI (ARCHIVE IMPORT ÇIKTILARI)
-Kodlayıcı aşağıdaki çıktıları üretmek zorundadır. Aksi halde teslim tamamlanmış kabul edilmez:
-import_manifest.json: Arşivde gelen tüm paketlerin listesi, sürümü, kaynak adı, alınan dosya sayısı, dönüştürülen içerik sınıfları ve yüklenen hedef yollar.
-import_report.json: Her branş için kaç kayıt alındı, kaç kayıt tekilleştirildi, kaç kayıt unmapped kaldı, hangi alanlar eksik kaldı, data_quality_badge dağılımı ve doğrulama uyarıları.
-coverage_report.json: Hangi branşta hangi katalogların yüklendiği, soru kataloglarının toplam satır/soru sayıları, kart şemalarının doğrulama sonuçları ve “şema kilidi ihlali” olup olmadığı.
-validation_errors.json: Şema uyuşmazlığı, alan adı sapması, enum dışı değer, branş karışması, serbest metin kimlik kullanımı, match_ref çakışması gibi tüm hatalar listesi.
+Arşiv paketleri sistem için opsiyonel değildir.
+ARCHIVE_EXTENSION_PACK adıyla teslim edilen içerikler sistemin zorunlu bileşenidir.
 
-KABUL / RED KRİTERİ (TESLİM ŞARTI)
-Bu iş emri kapsamındaki teslim, yalnız aşağıdaki koşullarda kabul edilir:
-import_manifest.json, import_report.json, coverage_report.json, validation_errors.json eksiksiz teslim edilmiştir.
-Arşiv içerikleri hedef katalog yollarına dönüştürülmüş ve uygulama tarafından runtime’da yüklenmektedir.
-Ana prompttaki kilitli şemalar ve etiket sözlüğü ihlal edilmemiştir.
-Branş karışması, serbest metin kimlik, enum dışı değer, uydurma veri, kupon dili, tahmin dili, “anomali yok” hatalı güveni üreten çıktı yoktur.
-Bu koşullardan biri sağlanmıyorsa teslim “tamamlandı” sayılmaz.
+Kod yazarı:
+
+arşivi reddedemez,
+
+sadeleştiremez,
+
+yeniden yazamaz,
+
+parçalayamaz,
+
+eş anlamlı ikinci yapı açarak etkisizleştiremez.
+
+Arşiv içeriği ana prompt disipliniyle birebir uyumlu hale getirilerek sisteme entegre edilir. İçerik azaltımı yapılamaz; yalnız birebir tekrarlar tekilleştirilebilir.
+
+Etiket kataloğu kilitlidir:
+
+yeni etiket üretilemez,
+
+etiket adı değiştirilemez,
+
+bant yapısı genişletilemez.
+
+Soru katalogları etiket değildir.
+Sorular yalnız kanıt zinciri üretmek içindir.
+
+Veri eksikse:
+
+unknown / incomplete / low_data_quality zorunludur.
+Varsayım üretilemez.
+
+FAZ-2 — ARŞİV ENTEGRASYON KURALLARI (BAĞLAYICI)
+
+Arşiv entegrasyonu sırasında aşağıdaki kurallar zorunludur:
+
+Ana output şemaları değiştirilemez.
+today_matches.json ve anomalies_public / anomalies_vip yapıları sabittir.
+
+Arşiv içerikleri yalnız soru kapsamını genişletir; raf yapısını değiştirmez.
+
+Kart içerikleri ana şemaya normalize edilir.
+Şema dışı veri karta yazılmaz; ayrı rapora alınır.
+
+Veri hiçbir zaman tahminle doldurulmaz.
+
+Branş izolasyonu kesin sınırdır.
+Futbol, basketbol ve ganyan veri alanları karıştırılamaz.
+
+Kısmi entegrasyon yasaktır.
+Bir branş arşivi geldiyse tam yüklenir.
+
+Kodlayıcı içerikleri “işe yaramıyor” gerekçesiyle dışlayamaz.
+
+FAZ-3 — KONFİGÜRASYON VE SAĞLAYICI BAĞIMSIZLIĞI
+
+Sistem dış servis bilgileri olmadan çalışabilir mimaride kurulacaktır.
+
+Hiçbir API anahtarı, IP adresi veya gizli bilgi kod içine gömülmez.
+
+Tüm dış bağlantılar merkezi konfigürasyon katmanında tutulur.
+
+Kod sabittir.
+Konfigürasyon değişkendir.
+
+Sistem:
+
+tek sağlayıcıya kilitlenmez,
+
+otomatik sağlayıcı değiştirme yapmaz,
+
+veri uydurmaz.
+
+Telegram, domain veya uygulama endpointleri varsayım kabul edilmez.
+
+Bilgi girilmemişse modül pasif kalır; sistem durmaz.
+
+FAZ-4 — RENK SİSTEMİ VE DAĞILIM MOTORU
+
+Renk sistemi analiz değildir.
+Anomali yoğunluğunun görsel karşılığıdır.
+
+Renk üretimi yalnız karar duvarında hesaplanmış dağılımı okur.
+
+HSL renk uzayı zorunludur ve değiştirilemez.
+
+Bantlar:
+
+Beyaz → düşük sapma
+
+Sarı → anlamlı sapma
+
+Mavi → güçlü sapma
+
+Kırmızı → nadir sapma
+
+Renkler eşik bazlı değil dağılım bazlı atanır.
+
+Renk:
+
+öneri değildir,
+
+yönlendirme değildir,
+
+karar değildir.
+
+Telegram yalnız yetkili kırmızı bantları iletir.
+
+FAZ-5 — TELEGRAM DENETİM VE RAPORLAMA KATMANI
+
+Telegram analiz motoru değildir.
+Yalnız sistem denetim arayüzüdür.
+
+Telegram’a mesaj gönderen tek yapı teknik denetim modülüdür.
+
+Bildirim sınıfları:
+
+Sistem sağlığı uyarıları
+
+Günlük operasyon özeti
+
+Yüksek şiddetli anomali bildirimi
+
+Mesaj formatı sabittir:
+
+bildirim türü
+
+şiddet seviyesi
+
+branş
+
+UTC zaman damgası
+
+tetikleyen modül
+
+kısa durum açıklaması
+
+Mesajlar:
+
+öneri içermez
+
+yorum yapmaz
+
+aksiyon çağrısı üretmez.
+
+FAZ-6 — TESLİM VE KABUL KRİTERLERİ
+
+Teslim aşağıdaki dosyalar olmadan tamamlanmış sayılmaz:
+
+import_manifest.json
+
+import_report.json
+
+coverage_report.json
+
+validation_errors.json
+
+Teslim kabulü için:
+
+arşivler runtime’da yüklenebilir olmalı,
+
+kilitli şemalar korunmuş olmalı,
+
+branş karışması olmamalı,
+
+tahmin dili bulunmamalı,
+
+uydurma veri olmamalıdır.
+
+Bu koşullardan biri eksikse teslim reddedilir. 
 
 FAZ-7
 

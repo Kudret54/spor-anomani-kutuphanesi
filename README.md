@@ -169,31 +169,23 @@ Varsayım üretilemez.
 FAZ-2 — ARŞİV ENTEGRASYON KURALLARI (BAĞLAYICI)
 
 Arşiv entegrasyonu sırasında aşağıdaki kurallar zorunludur:
-
 Ana output şemaları değiştirilemez.
 today_matches.json ve anomalies_public / anomalies_vip yapıları sabittir.
-
 Arşiv içerikleri yalnız soru kapsamını genişletir; raf yapısını değiştirmez.
 
 Kart içerikleri ana şemaya normalize edilir.
 Şema dışı veri karta yazılmaz; ayrı rapora alınır.
-
 Veri hiçbir zaman tahminle doldurulmaz.
 
 Branş izolasyonu kesin sınırdır.
 Futbol, basketbol ve ganyan veri alanları karıştırılamaz.
-
 Kısmi entegrasyon yasaktır.
 Bir branş arşivi geldiyse tam yüklenir.
-
 Kodlayıcı içerikleri “işe yaramıyor” gerekçesiyle dışlayamaz.
 
 FAZ-3 — KONFİGÜRASYON VE SAĞLAYICI BAĞIMSIZLIĞI
-
 Sistem dış servis bilgileri olmadan çalışabilir mimaride kurulacaktır.
-
 Hiçbir API anahtarı, IP adresi veya gizli bilgi kod içine gömülmez.
-
 Tüm dış bağlantılar merkezi konfigürasyon katmanında tutulur.
 
 Kod sabittir.

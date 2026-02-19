@@ -125,171 +125,69 @@ Bu sıra bir tercih değildir; sistemin kilitlenmeden inşa edilebilmesi için z
 SPOR ANOMALİ — OPERASYONEL YAYIN KATMANI
 (ÇEKİRDEK SONRASI FAZLAR / BAĞLAYICI)
 
-FFAZ-41 — MERKEZİ KARAR DUVARI (DISPLAY ONLY / TEK KAYNAK)
+MERKEZİ KARAR DUVARI (DISPLAY ONLY / TEK KAYNAK)
 
 Bu fazda merkezi karar duvarı oluşturulur. Merkezi karar duvarı, futbol, basketbol ve ganyan branşlarına ait karar motorlarından üretilmiş karar çıktılarının tek noktada toplandığı vitrindir. Bu duvar bir analiz katmanı değildir; herhangi bir hesaplama, yeniden sınıflandırma, filtreleme veya yorum üretimi yapmaz.
-
 Merkezi karar duvarı, branş kütüphanelerinden veri çekmez. Branşlar kendi karar duvarlarına yazım yapar; merkezi karar duvarı yalnızca bu branş karar duvarlarının birebir kopyasını alır. Okuma modeli push esaslıdır; pull yasaktır. Merkezi karar duvarı, branş kütüphanelerine veya branş içi dosyalara doğrudan erişemez.
-
 Merkezi karar duvarında tutulan veriler, branş karar duvarlarıyla byte-byte aynı olmak zorundadır. Herhangi bir ek alan, türetilmiş değer veya hesaplama izi bulunamaz. Merkezi karar duvarı yalnızca yayın ve orkestrasyon katmanları için tek ve mutlak okuma kaynağıdır.
-
 Bu faz tamamlanmadan yayın, Telegram, uygulama veya harici servis entegrasyonlarına geçilemez. Merkezi karar duvarı oluşmadan yapılan herhangi bir yayın veya bildirim işlemi geçersiz teslim sayılır.
 
-FAZ-42 — YAYIN VE ORKESTRASYON KATMANI (BROADCAST COORDINATOR)
-
+YAYIN VE ORKESTRASYON KATMANI (BROADCAST COORDINATOR)
 Bu fazda yayın ve bildirim orkestrasyonu kurulur. Yayın orkestrasyonu, merkezi karar duvarında yer alan nihai kararları okuyan ve bu kararların hangi kanala, hangi yetki seviyesinde ve hangi sıklıkla iletileceğini yöneten tek sorumlu katmandır.
-
 Yayın orkestrasyonu, branş kütüphanelerine, branş karar duvarlarına veya analiz katmanlarına erişemez. Yalnızca merkezi karar duvarını okur. Telegram, uygulama çıktıları, bayi bildirimleri ve yönetici bildirimleri bu katmandan çıkar. Hiçbir modül bu katmanı baypas edemez.
-
 Yayın orkestrasyonu karar üretmez, değer notu hesaplamaz ve anomali sınıflandırmaz. Sadece mevcut kararların dağıtımını yapar. Yetki ayrımı, kanal ayrımı ve bant bazlı yayın kuralları bu fazda uygulanır. Kırmızı bant dışındaki çıktılar, ilgili yayın politikalarına göre bastırılabilir veya sessiz kalabilir.
-
 Bu faz, sistemin son katmanıdır. Bu faz tamamlandıktan sonra sistem “çalışır” kabul edilir. Bu fazdan sonra yeni analiz, karar veya kütüphane fazı eklenemez.AZ-0 — PROJE TANIMI (OKU / ÜRETME)
 
-
 SPOR ANOMALİ — ARŞİV ENTEGRASYONU VE OPERASYON FAZLARI
-
 (ARCHITECTURAL BASELINE v1.0 — DEVAM BLOĞU / BAĞLAYICI)
-
 OKUMA VE İCRA PROTOKOLÜ — FAZ KATMANI (BAĞLAYICI DEVAM)
 
 Bu bölüm Mimari İnşa Sırası’nın alternatifi değildir.
 Burada tanımlanan fazlar sistemin nasıl inşa edileceğini değil, inşa sırasında uyulması zorunlu davranış ve entegrasyon kurallarını tanımlar.
-
 Faz numaraları kronolojik inşa sırası değildir.
 İnşa sırası yalnız “Mimari İnşa Başlama Sırası” bölümünde geçerlidir.
-
 Kod üretimi yalnız izin verilen faz kapsamlarında yapılabilir.
 Faz dışı davranış geçersiz kabul edilir.
-
 Bu doküman, Spor Anomali otomasyonu için bağlayıcı kütüphane ve arşiv dokümantasyonudur ve ana mimari promptun ayrılmaz devamıdır.
 
-FAZ-1 — ARCHIVE IMPORT ZORUNLULUĞU (DEĞİŞTİRİLEMEZ)
-
+ARCHIVE IMPORT ZORUNLULUĞU (DEĞİŞTİRİLEMEZ)
 “KODCU İŞ EMRİ — ARCHIVE IMPORT ZORUNLU” metni bağlayıcıdır ve ana prompt ile birlikte değerlendirilir. Çelişki halinde bu iş emri hükümleri geçerlidir.
-
 Arşiv paketleri sistem için opsiyonel değildir.
 ARCHIVE_EXTENSION_PACK adıyla teslim edilen içerikler sistemin zorunlu bileşenidir.
 
-Kod yazarı:
-
-arşivi reddedemez,
-sadeleştiremez,
-yeniden yazamaz,
-parçalayamaz,
-eş anlamlı ikinci yapı açarak etkisizleştiremez.
-Arşiv içeriği ana prompt disipliniyle birebir uyumlu hale getirilerek sisteme entegre edilir. İçerik azaltımı yapılamaz; yalnız birebir tekrarlar tekilleştirilebilir.
-Etiket kataloğu kilitlidir:
-yeni etiket üretilemez,
-etiket adı değiştirilemez,
-bant yapısı genişletilemez.
-Soru katalogları etiket değildir.
-Sorular yalnız kanıt zinciri üretmek içindir.
+Kod yazarı: arşivi reddedemez, sadeleştiremez, yeniden yazamaz, parçalayamaz, eş anlamlı ikinci yapı açarak etkisizleştiremez. Arşiv içeriği ana prompt disipliniyle birebir uyumlu hale getirilerek sisteme entegre edilir. 
+İçerik azaltımı yapılamaz; yalnız birebir tekrarlar tekilleştirilebilir. 
+Etiket kataloğu kilitlidir: yeni etiket üretilemez, etiket adı değiştirilemez, bant yapısı genişletilemez. Soru katalogları etiket değildir. Sorular yalnız kanıt zinciri üretmek içindir.
 
 Veri eksikse:
-
 unknown / incomplete / low_data_quality zorunludur.
 Varsayım üretilemez.
 
 FAZ-2 — ARŞİV ENTEGRASYON KURALLARI (BAĞLAYICI)
-
-Arşiv entegrasyonu sırasında aşağıdaki kurallar zorunludur:
-Ana output şemaları değiştirilemez.
-today_matches.json ve anomalies_public / anomalies_vip yapıları sabittir.
-Arşiv içerikleri yalnız soru kapsamını genişletir; raf yapısını değiştirmez.
-
-Kart içerikleri ana şemaya normalize edilir.
-Şema dışı veri karta yazılmaz; ayrı rapora alınır.
-Veri hiçbir zaman tahminle doldurulmaz.
-
-Branş izolasyonu kesin sınırdır.
-Futbol, basketbol ve ganyan veri alanları karıştırılamaz.
-Kısmi entegrasyon yasaktır.
-Bir branş arşivi geldiyse tam yüklenir.
-Kodlayıcı içerikleri “işe yaramıyor” gerekçesiyle dışlayamaz.
+Arşiv entegrasyonu sırasında aşağıdaki kurallar zorunludur: Ana output şemaları değiştirilemez. today_matches.json ve anomalies_public / anomalies_vip yapıları sabittir. Arşiv içerikleri yalnız soru kapsamını genişletir; raf yapısını değiştirmez.
+Kart içerikleri ana şemaya normalize edilir.Şema dışı veri karta yazılmaz; ayrı rapora alınır.Veri hiçbir zaman tahminle doldurulmaz.Branş izolasyonu kesin sınırdır.Futbol, basketbol ve ganyan veri alanları karıştırılamaz.Kısmi entegrasyon yasaktır.
+Bir branş arşivi geldiyse tam yüklenir.Kodlayıcı içerikleri “işe yaramıyor” gerekçesiyle dışlayamaz.
 
 FAZ-3 — KONFİGÜRASYON VE SAĞLAYICI BAĞIMSIZLIĞI
-Sistem dış servis bilgileri olmadan çalışabilir mimaride kurulacaktır.
-Hiçbir API anahtarı, IP adresi veya gizli bilgi kod içine gömülmez.
-Tüm dış bağlantılar merkezi konfigürasyon katmanında tutulur.
-
-Kod sabittir.
-Konfigürasyon değişkendir.
-
-Sistem:
-tek sağlayıcıya kilitlenmez,
-otomatik sağlayıcı değiştirme yapmaz,
-veri uydurmaz.
-Telegram, domain veya uygulama endpointleri varsayım kabul edilmez.
-Bilgi girilmemişse modül pasif kalır; sistem durmaz.
+Sistem dış servis bilgileri olmadan çalışabilir mimaride kurulacaktır.Hiçbir API anahtarı, IP adresi veya gizli bilgi kod içine gömülmez.Tüm dış bağlantılar merkezi konfigürasyon katmanında tutulur.Kod sabittir.Konfigürasyon değişkendir.
+Sistem: tek sağlayıcıya kilitlenmez,otomatik sağlayıcı değiştirme yapmaz,veri uydurmaz.Telegram, domain veya uygulama endpointleri varsayım kabul edilmez.Bilgi girilmemişse modül pasif kalır; sistem durmaz.
 
 FAZ-4 — RENK SİSTEMİ VE DAĞILIM MOTORU
-
-Renk sistemi analiz değildir.
-Anomali yoğunluğunun görsel karşılığıdır.
-Renk üretimi yalnız karar duvarında hesaplanmış dağılımı okur.
-HSL renk uzayı zorunludur ve değiştirilemez.
-
-Bantlar:
-Beyaz → düşük sapma
-Sarı → anlamlı sapma
-Mavi → güçlü sapma
-Kırmızı → nadir sapma
-Renkler eşik bazlı değil dağılım bazlı atanır.
-
-Renk:
-öneri değildir,
-yönlendirme değildir,
-karar değildir.
-Telegram yalnız yetkili kırmızı bantları iletir.
+Renk sistemi analiz değildir.Anomali yoğunluğunun görsel karşılığıdır.Renk üretimi yalnız karar duvarında hesaplanmış dağılımı okur.HSL renk uzayı zorunludur ve değiştirilemez.
+Bantlar: Beyaz → düşük sapma ,Sarı → anlamlı sapma ,Mavi → güçlü sapma ,Kırmızı → nadir sapma ,Renkler eşik bazlı değil dağılım bazlı atanır.
+Renk: öneri değildir,yönlendirme değildir,karar değildir.Telegram yalnız yetkili kırmızı bantları iletir.
 
 FAZ-5 — TELEGRAM DENETİM VE RAPORLAMA KATMANI
-
-Telegram analiz motoru değildir.
-Yalnız sistem denetim arayüzüdür.
-Telegram’a mesaj gönderen tek yapı teknik denetim modülüdür.
-
-Bildirim sınıfları:
-Sistem sağlığı uyarıları
-Günlük operasyon özeti
-Yüksek şiddetli anomali bildirimi
-
-Mesaj formatı sabittir:
-bildirim türü
-şiddet seviyesi
-
-branş
-UTC zaman damgası
-tetikleyen modül
-kısa durum açıklaması
-
-Mesajlar:
-öneri içermez
-yorum yapmaz
-aksiyon çağrısı üretmez.
+Telegram analiz motoru değildir.Yalnız sistem denetim arayüzüdür.Telegram’a mesaj gönderen tek yapı teknik denetim modülüdür.
+Bildirim sınıfları: Sistem sağlığı uyarıları ,Günlük operasyon özeti ,Yüksek şiddetli anomali bildirimi
+Mesaj formatı sabittir: bildirim türü ,şiddet seviyesi ,branş ,UTC zaman damgası ,tetikleyen modül ,kısa durum açıklaması
+Mesajlar: öneri içermez ,yorum yapmaz ,aksiyon çağrısı üretmez.
 
 FAZ-6 — TESLİM VE KABUL KRİTERLERİ
-Teslim aşağıdaki dosyalar olmadan tamamlanmış sayılmaz:
-import_manifest.json
-import_report.json
-coverage_report.json
-validation_errors.json
-
-Teslim kabulü için:
-arşivler runtime’da yüklenebilir olmalı,
-kilitli şemalar korunmuş olmalı,
-branş karışması olmamalı,
-tahmin dili bulunmamalı,
-uydurma veri olmamalıdır.
-Bu koşullardan biri eksikse teslim reddedilir. 
-
-
-
-
-
-
+Teslim aşağıdaki dosyalar olmadan tamamlanmış sayılmaz: import_manifest.json ,import_report.json ,coverage_report.json ,validation_errors.json
+Teslim kabulü için: arşivler runtime’da yüklenebilir olmalı, kilitli şemalar korunmuş olmalı, branş karışması olmamalı, tahmin dili bulunmamalı, uydurma veri olmamalıdır. Bu koşullardan biri eksikse teslim reddedilir. 
 
 FAZ-7
-
 FOOTBALL ANOMANİ TAM SÜRÜM V-0-
 
 SEGMENT SORULARI (1–5)**
@@ -4102,230 +4000,60 @@ strong, normal, weak,player\\\_control\\\_loss\\\_risk\\\_band yalnız şu değe
 
 FAZ-8-
 TEKNİK DİREKTÖR KARTI — FAZ-1 TESLİMİ 
-
 (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
-
-person_ref: UNKNOWN_PERSON_REF
-Kart Durumu: FAZ-1_SKELETON_ACTIVE
-Kart Politikası: Tek person_ref / Sıfırlanmaz / Takım bağımsız büyür / Reference ile bağlanır / Unmapped korunur
+person_ref: UNKNOWN_PERSON_REF .Kart Durumu: FAZ-1_SKELETON_ACTIVE .Kart Politikası: Tek person_ref / Sıfırlanmaz / Takım bağımsız büyür / Reference ile bağlanır / Unmapped korunur
 Üretim Notu: Bu teslim yalnız iskelet üretimidir. Reference_dictionary ve maç–basın–odds akışları Faz-2 doğrulama ve doldurma içindir. Veri yokken hiçbir alan boş bırakılmaz; unknown/none/inactive bantları deterministik kullanılır.
 
-TEKNİK DİREKTÖR KARTI — TAM PROFİL 
-(FAZ-1 İSKELET)
-Kimlik Rafı
-full_name: unknown
-short_name_alias: unknown
-name_variants: none
-birth_date: unknown
-age: unknown
-birth_place: unknown
-nationality_primary: unknown
-nationality_secondary: none
-languages: unknown
-public_profile_notes: unknown
+TEKNİK DİREKTÖR KARTI — TAM PROFİL (FAZ-1 İSKELET)  Kimlik Rafıfull_name: 
+unknownshort_name_alias: unknownname_variants: nonebirth_date: unknownage: unknownbirth_place: unknownnationality_primary: unknownnationality_secondary: nonelanguages: unknownpublic_profile_notes: unknown
+Köken Rafı (Oyunculuk + Geçiş): playing_career_origin: unknown ,playing_positions: unknown ,coaching_transition_origin: unknown ,early_coaching_roles: unknown ,licenses_badges: unknown
+Kariyer Timeline Rafı (Kulüp ve Görevler): career_timeline: none .Kural: Bu raf boş kalmaz; veri yoksa none bandında kalır ve Faz-2’de kayıtlar person_ref üzerinden eklenir.role_types_supported: head | interim | assistantstart_end_policy: unknown tarih varsa unknown bandı ile tutulur; zorla yıl/ay uydurulmaz.departure_band_policy: unknown | normal_exit | forced_exit | target_miss_context | inactiveera_policy: append_only / eras_are_non_overwriting
+Sezon Etiket Rafı: season_tags: none,Kural: Sezon etiketleri Faz-2’de league_ref/team_ref ile bağlanır; serbest metinle bağ kurulmaz.Başarı Rafı (Trophy Shelf): trophies: none Kural: trophy_type + season_tag + team_ref ile tutulur; Faz-1’de veri yoksa none.
+Hedef Sapması Rafı (Target Miss): target_miss_records: none Kural: başarısızlık “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
+Davranış ve Oyun DNA (Era Bazlı): era_blocks: era_tag: unknown_era_1status: active_unknownevidence_level: low play_philosophy_core:
 
-Köken Rafı (Oyunculuk + Geçiş):
-playing_career_origin: unknown
-playing_positions: unknown
-coaching_transition_origin: unknown
-early_coaching_roles: unknown
-licenses_badges: unknown
+press_approach: unknown block_preference: unknown transition_priority: unknown set_play_patience: unknown wing_central_balance: unknown defensive_line_risk: unknown set_piece_approach: unknown rotation_tendency: unknown match_start_plan: unknown crisis_plan: unknown
 
-Kariyer Timeline Rafı (Kulüp ve Görevler):
-career_timeline: none
-Kural: Bu raf boş kalmaz; veri yoksa none bandında kalır ve Faz-2’de kayıtlar person_ref üzerinden eklenir.
-role_types_supported: head | interim | assistant
-start_end_policy: unknown tarih varsa unknown bandı ile tutulur; zorla yıl/ay uydurulmaz.
-departure_band_policy: unknown | normal_exit | forced_exit | target_miss_context | inactive
-era_policy: append_only / eras_are_non_overwriting
+in_game_intervention: substitution_timing_patterns: unknown score_protection_reflex: unknown risk_increase_reflex: unknown intervention_type_preference: unknown post_change_shape_effect: unknown
 
-Sezon Etiket Rafı:
-season_tags: none
-Kural: Sezon etiketleri Faz-2’de league_ref/team_ref ile bağlanır; serbest metinle bağ kurulmaz.
-
-Başarı Rafı (Trophy Shelf):
-trophies: none
-Kural: trophy_type + season_tag + team_ref ile tutulur; Faz-1’de veri yoksa none.
-
-Hedef Sapması Rafı (Target Miss):
-target_miss_records: none
-Kural: başarısızlık “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
-
-Davranış ve Oyun DNA (Era Bazlı):
-era_blocks:
-era_tag: unknown_era_1
-status: active_unknown
-
-evidence_level: low
-play_philosophy_core:
-
-press_approach: unknown
-block_preference: unknown
-transition_priority: unknown
-set_play_patience: unknown
-wing_central_balance: unknown
-defensive_line_risk: unknown
-set_piece_approach: unknown
-rotation_tendency: unknown
-match_start_plan: unknown
-crisis_plan: unknown
-
-in_game_intervention:
-substitution_timing_patterns: unknown
-score_protection_reflex: unknown
-risk_increase_reflex: unknown
-intervention_type_preference: unknown
-post_change_shape_effect: unknown
-
-critical_bands:
-band_60_75: unknown
-band_80_plus: unknown
-people_management:
-youth_care: unknown
-academy_promotion_tendency: unknown
-star_player_dependency_tendency: unknown
-fighter_press_player_preference: unknown
+critical_bands: band_60_75: unknown band_80_plus: unknown people_management: youth_care: unknown academy_promotion_tendency: unknown star_player_dependency_tendency: unknown fighter_press_player_preference: unknown
 
 squad_governance:
-squad_stability: unknown
-youth_integration: unknown
-captain_leader_profile: unknown
-discipline_management: unknown
-crisis_management: unknown
-public_communication_style: unknown
-
-Basın Dili Rafı:
-press_language_themes: unknown
-strong_signal_policy: multi_source_required
-signal_strength: weak_signal
-Kural: Basın verisi tek başına hüküm kurmaz; maç içi eksik event basından “kesin olay” diye tamamlanmaz.
-
-Hakem Etkileşim Rafı:
-referee_interaction_pattern: unknown
-protest_intensity_band: unknown
-tension_pattern_band: unknown
-Kural: Hakem yargısı üretilmez; yalnız patern ölçülür.
-
-Odds / Market Zaman Hizası Rafı:
-market_alignment_status: inactive_market
-time_alignment_notes: unknown
-Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
-
-Bağlantılar (informed_by):
-informed_by:
-match_cards: none
-match_events: none
-press_rack: none
-player_cards: none
-referee_cards: none
-odds_market_timeline: none
-Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
-
-Data Quality:
-data_quality_badge: low
-coverage_map:
-identity: unknown
-career_timeline: none
-dna_eras: active_unknown
-press: weak_signal
-referee_interaction: unknown
-market_alignment: inactive_market
-informed_by_links: none
+squad_stability: unknown youth_integration: unknown captain_leader_profile: unknown discipline_management: unknown crisis_management: unknown public_communication_style: unknown
+Basın Dili Rafı: press_language_themes: unknown strong_signal_policy: multi_source_required signal_strength: weak_signal Kural: Basın verisi tek başına hüküm kurmaz; maç içi eksik event basından “kesin olay” diye tamamlanmaz.
+Hakem Etkileşim Rafı: referee_interaction_pattern: unknown protest_intensity_band: unknown tension_pattern_band: unknown Kural: Hakem yargısı üretilmez; yalnız patern ölçülür.
+Odds / Market Zaman Hizası Rafı: market_alignment_status: inactive_market time_alignment_notes: unknown Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
+Bağlantılar (informed_by): informed_by: match_cards: none match_events: none press_rack: none player_cards: none referee_cards: none odds_market_timeline: none Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
+Data Quality: data_quality_badge: low coverage_map: identity: unknown career_timeline: none dna_eras: active_unknown press: weak_signal referee_interaction: unknown market_alignment: inactive_market informed_by_links: none
 
 TEKNİK DİREKTÖR ETİKET DUVARI
-
-(FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI)
-
-Bantlar ve Durum Etiketleri:
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok (kayıt yok)
-inactive: kaynak var ama şu an aktif değil
-inactive_market: market verisi yok veya pasif
-
-unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
-weak_signal: tekil veya zayıf kaynak sinyali
-strong_signal: yalnız çoklu kaynak teyidi ile açılır
-active_unknown: era bloğu var ama içeriği doğrulanmadı
-
-Kimlik Etiketleri:
-identity_status: unknown | verified
-nationality_band: unknown | single | dual
-name_variant_band: none | exists
-
-Kariyer Timeline Etiketleri:
-role_type: head | interim | assistant
-tenure_band: unknown | short | medium | long
-start_date_band: unknown | known
-end_date_band: unknown | known | active
-departure_band: unknown | normal_exit | forced_exit | target_miss_context
-
-Başarı Etiketleri:
-trophy_band: none | exists
-trophy_scope: domestic_league | domestic_cup | super_cup | continental | other
-
-Hedef Sapması Etiketleri:
-target_miss_band: none | exists
-target_type: title | europe_qualification | relegation_avoid | points_target | other
-deviation_band: unknown | low | medium | high
-
-Oyun DNA Çekirdek Etiketleri:
-press_approach: unknown | high_press | mid_press | low_block
-block_preference: unknown | high_line | mid_block | low_block
-transition_priority: unknown | transition_first | balanced | possession_first
-set_play_patience: unknown | low_patience | balanced | high_patience
-wing_central_balance: unknown | wing_focus | balanced | central_focus
-
-defensive_line_risk: unknown | low_risk | balanced | high_risk
-set_piece_approach: unknown | set_piece_focus_low | balanced | set_piece_focus_high
-rotation_tendency: unknown | low_rotation | balanced | high_rotation
-match_start_plan: unknown | aggressive_start | balanced_start | cautious_start
+(FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI) Bantlar ve Durum Etiketleri: unknown: veri yok / doğrulanmadı none: alan geçerli ama içerik yok (kayıt yok) inactive: kaynak var ama şu an aktif değil inactive_market: market verisi yok veya pasif
+unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı weak_signal: tekil veya zayıf kaynak sinyali strong_signal: yalnız çoklu kaynak teyidi ile açılır active_unknown: era bloğu var ama içeriği doğrulanmadı
+Kimlik Etiketleri: identity_status: unknown | verified nationality_band: unknown | single | dual name_variant_band: none | exists Kariyer Timeline Etiketleri: role_type: head | interim | assistant tenure_band: unknown | short | medium | long
+start_date_band: unknown | known end_date_band: unknown | known | active departure_band: unknown | normal_exit | forced_exit | target_miss_context
+Başarı Etiketleri: trophy_band: none | exists trophy_scope: domestic_league | domestic_cup | super_cup | continental | other
+Hedef Sapması Etiketleri: target_miss_band: none | exists target_type: title | europe_qualification | relegation_avoid | points_target | other deviation_band: unknown | low | medium | high
+Oyun DNA Çekirdek Etiketleri: press_approach: unknown | high_press | mid_press | low_block block_preference: unknown | high_line | mid_block | low_block transition_priority: unknown | transition_first | balanced | possession_first set_play_patience: unknown | low_patience | balanced | high_patience wing_central_balance: unknown | wing_focus | balanced | central_focus
+defensive_line_risk: unknown | low_risk | balanced | high_riskset_piece_approach: unknown | set_piece_focus_low | balanced | set_piece_focus_high rotation_tendency: unknown | low_rotation | balanced | high_rotation match_start_plan: unknown | aggressive_start | balanced_start | cautious_start.
 crisis_plan: unknown | early_intervention | late_intervention | reactive
-
-Maç İçi Müdahale Etiketleri:
-substitution_timing_patterns: unknown | early | mid | late
-score_protection_reflex: unknown | low | medium | high
-risk_increase_reflex: unknown | low | medium | high
-intervention_type_preference: unknown | player_change | system_change | mixed
-post_change_shape_effect: unknown | stabilizes | destabilizes | unknown
-critical_band_60_75: unknown | inactive | active
-critical_band_80_plus: unknown | inactive | active
+Maç İçi Müdahale Etiketleri: substitution_timing_patterns: unknown | early | mid | late score_protection_reflex: unknown | low | medium | high risk_increase_reflex: unknown | low | medium | high intervention_type_preference: unknown | player_change | system_change | mixed post_change_shape_effect: unknown | stabilizes | destabilizes | unknown critical_band_60_75: unknown | inactive | active critical_band_80_plus: unknown | inactive | active
 
 İnsan Yönetimi Etiketleri:
-youth_care: unknown | low | medium | high
-academy_promotion_tendency: unknown | low | medium | high
-star_player_dependency_tendency: unknown | low | medium | high
-fighter_press_player_preference: unknown | low | medium | high
-
-Kadro ve Yönetim Etiketleri:
-squad_stability: unknown | low | medium | high
-youth_integration: unknown | low | medium | high
-captain_leader_profile: unknown | undefined | stable_leader | rotating_leader
-discipline_management: unknown | soft | balanced | strict
-crisis_management: unknown | low | medium | high
-public_communication_style: unknown | calm | assertive | confrontational | mixed
-
+youth_care: unknown | low | medium | high ,academy_promotion_tendency: unknown | low | medium | high ,star_player_dependency_tendency: unknown | low | medium | high ,fighter_press_player_preference: unknown | low | medium | high
+Kadro ve Yönetim Etiketleri: squad_stability: unknown | low | medium | high ,youth_integration: unknown | low | medium | high ,captain_leader_profile: unknown | undefined | stable_leader | rotating_leader ,discipline_management: unknown | soft | balanced | strict
+crisis_management: unknown | low | medium | high ,public_communication_style: unknown | calm | assertive | confrontational | mixed
 Basın Etiketleri
-press_theme_status: unknown | tracked
-signal_strength: weak_signal | strong_signal
-
+press_theme_status: unknown | tracked ,signal_strength: weak_signal | strong_signal
 Hakem Etkileşim Etiketleri
-referee_interaction_pattern: unknown | low_contact | medium_contact | high_contact
-protest_intensity_band: unknown | low | medium | high
-tension_pattern_band: unknown | low | medium | high
-
+referee_interaction_pattern: unknown | low_contact | medium_contact | high_contact ,protest_intensity_band: unknown | low | medium | high ,tension_pattern_band: unknown | low | medium | high
 Market Etiketleri
-market_alignment_status: inactive_market | active_aligned | active_misaligned
-market_data_strength: none | weak | strong
-
+market_alignment_status: inactive_market | active_aligned | active_misaligned ,market_data_strength: none | weak | strong
 Reference Bağ Etiketleri
-team_ref_status: unmapped | mapped
-league_ref_status: unmapped | mapped
-country_ref_status: unmapped | mapped
+team_ref_status: unmapped | mapped ,league_ref_status: unmapped | mapped ,country_ref_status: unmapped | mapped
 
 FAZ-9-
 TEKNİK DİREKTÖR SORU KÜTÜPHANESİ 
 (FAZ-1 GENİŞ TARAMA SETİ)
-
 Kimlik ve Doğrulama:
 Teknik direktörün resmi kayıt ad-soyad eşleşmesi nedir ve bilinen kısa adı/alias hangi kayıtlarda geçer?
 İsim varyantları hangi kaynaklarda görülür ve hangileri yanlış eşleşme riski taşır?
@@ -4417,54 +4145,22 @@ Eksik veri varken “anomali yok” demeden kart nasıl güvenli biçimde sunulm
 
 FAZ-10
 HAKEM KARTI — EK RAF: İTİBAR / RİSK / UYUMLULUK PROFİLİ
-
-integrity_risk_profile: unknown
-match_fixing_allegation_history: none
-corruption_case_history: none
-disciplinary_case_history: none
-conflict_of_interest_flags: none
-investigation_status_band: unknown
-Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Kanıt yoksa none. Belirsiz iddia varsa weak_signal.
+integrity_risk_profile: unknown ,match_fixing_allegation_history: none ,corruption_case_history: none ,disciplinary_case_history: none ,conflict_of_interest_flags: none ,investigation_status_band: unknown ,Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Kanıt yoksa none. Belirsiz iddia varsa weak_signal.
 
 HAKEM KARTI — EK RAF: TARAFSIZLIK VE AYRIMCILIK RİSKİ
-
-bias_risk_profile: unknown
-club_bias_allegation_band: unknown
-country_bias_allegation_band: unknown
-star_player_bias_band: unknown
-youth_player_bias_band: unknown
-xenophobia_risk_band: unknown
-ethnic_discrimination_risk_band: unknown
-racism_incident_history: none
-Kural: Bu raf “önyargı var” demek için değil; “iddia/olay kaydı var mı” takibi içindir. Çoklu kaynak teyidi olmadan strong_signal açılmaz.
+bias_risk_profile: unknown ,club_bias_allegation_band: unknown ,country_bias_allegation_band: unknown ,star_player_bias_band: unknown ,youth_player_bias_band: unknown ,xenophobia_risk_band: unknown ,ethnic_discrimination_risk_band: unknown ,racism_incident_history: none ,Kural: Bu raf “önyargı var” demek için değil; “iddia/olay kaydı var mı” takibi içindir. Çoklu kaynak teyidi olmadan strong_signal açılmaz.
 
 HAKEM KARTI — EK RAF: YILDIZ OYUNCU ve GENÇ OYUNCU MUAMELESİ (SAHA İZİ)
-
-star_player_protection_tendency: unknown
-star_player_foul_threshold_delta: unknown
-youth_player_protection_tendency: unknown
-youth_player_foul_threshold_delta: unknown
-dialogue_asymmetry_band: unknown
+star_player_protection_tendency: unknown ,star_player_foul_threshold_delta: unknown ,youth_player_protection_tendency: unknown ,youth_player_foul_threshold_delta: unknown ,dialogue_asymmetry_band: unknown
 Kural: Eğer veri varsa ölçülür; yoksa unknown kalır. “Korumuyor” diye negatif hüküm üretilmez.
 
 HAKEM ETİKET DUVARI — EK ETİKETLER
-
-allegation_strength: none | weak_signal | strong_signal
-investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown
-conflict_of_interest_flags: none | exists
-club_bias_allegation_band: none | weak_signal | strong_signal | unknown
-country_bias_allegation_band: none | weak_signal | strong_signal | unknown
-star_player_bias_band: none | weak_signal | strong_signal | unknown
-youth_player_bias_band: none | weak_signal | strong_signal | unknown
-xenophobia_risk_band: none | weak_signal | strong_signal | unknown
-ethnic_discrimination_risk_band: none | weak_signal | strong_signal | unknown
-star_player_protection_tendency: unknown | low | medium | high
-youth_player_protection_tendency: unknown | low | medium | high
+allegation_strength: none | weak_signal | strong_signal .investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown .conflict_of_interest_flags: none | exists .club_bias_allegation_band: none | weak_signal | strong_signal | unknown
+country_bias_allegation_band: none | weak_signal | strong_signal | unknown .star_player_bias_band: none | weak_signal | strong_signal | unknown .youth_player_bias_band: none | weak_signal | strong_signal | unknown .xenophobia_risk_band: none | weak_signal | strong_signal | unknown .ethnic_discrimination_risk_band: none | weak_signal | strong_signal | unknown .star_player_protection_tendency: unknown | low | medium | high .youth_player_protection_tendency: unknown | low | medium | high
 dialogue_asymmetry_band: unknown | low | medium | high
 
 FAZ-11
 HAKEM SORU KÜTÜPHANESİ — EK SORU SETİ (HASSAS RİSK TARAMASI)
-
 Hakemin geçmişte şike/etik soruşturması veya disiplin dosyası var mı; doğrulanabilir kayıtlarla hangi band açılmalı?
 Hakem hakkında rüşvet, maç yönlendirme veya çıkar ilişkisi iddiaları geçmişte gündeme geldi mi; varsa allegation_strength nasıl atanmalı?
 Hakemin belirli kulüplere karşı ayrıcalık gösterdiği iddiası var mı; hangi maç kümelerinde tekrarlanıyor ve kanıt zinciri var mı?
@@ -4477,388 +4173,95 @@ Tekil tartışmalı maçlar kartta nasıl saklanmalı; “kanıt yoksa” none/w
 Bu hassas başlıklar hiçbir zaman hüküm cümlesiyle mi yazılmalı, yoksa yalnız kayıt ve sinyal bandı mı tutulmalı?
 
 FAZ-12
-FUTBOLCU KARTI — FAZ-1 TESLİMİ (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
-player_ref: UNKNOWN_PLAYER_REF
-Kart Durumu: FAZ-1_SKELETON_ACTIVE
-Kart Politikası: Tek player_ref / Sıfırlanmaz / Takım bağımsız büyür / Reference ile bağlanır / Unmapped korunur
+FUTBOLCU KARTI — FAZ-1 TESLİMİ (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi) player_ref: UNKNOWN_PLAYER_REF Kart Durumu: FAZ-1_SKELETON_ACTIVE Kart Politikası: Tek player_ref / Sıfırlanmaz / Takım bağımsız büyür / Reference ile bağlanır / Unmapped korunur
 Üretim Notu: Bu teslim yalnız iskelet üretimidir. Reference_dictionary ve maç–basın–odds akışları Faz-2 doğrulama ve doldurma içindir. Veri yokken hiçbir alan boş bırakılmaz; unknown/none/inactive bantları deterministik kullanılır.
 
-
 FUTBOLCU KARTI — TAM PROFİL (FAZ-1 İSKELET)
+Kimlik Rafı: full_name: unknown .short_name_alias: unknown .name_variants: none .birth_date: unknown .age: unknown .birth_place: unknown .nationality_primary: unknown .nationality_secondary: none .languages: unknown .public_profile_notes: unknown
+player_ref: UNKNOWN_PLAYER_REF .identity_status: unknown.
+Köken Rafı (Altyapı + Geçiş): .academy_origin: unknown .youth_clubs_timeline: none .debut_context: unknown .early_role_profile: unknown .licenses_badges: none
+Kariyer Timeline Rafı (Kulüp ve Görevler): .career_timeline: none .Kural: Bu raf boş kalmaz; veri yoksa none bandında kalır ve Faz-2’de kayıtlar player_ref üzerinden eklenir. timeline_entry_schema_policy: team_ref + league_ref + country_ref + season_tag + role_profile + start_date_band + end_date_band + departure_band + evidence_level .start_end_policy: unknown tarih varsa unknown bandı ile tutulur; zorla yıl/ay uydurulmaz. departure_band_policy: unknown | normal_exit | forced_exit | loan_start | loan_end | injury_exit | disciplinary_exit | inactive .era_policy: append_only / eras_are_non_overwriting
+Pozisyon ve Rol Haritası Rafı: .primary_position: unknown .secondary_positions: none .role_profiles: unknown .field_zone_preferences: unknown .tactical_discipline_band: unknown .role_flexibility_band: unknown .press_role_fit_band: unknown
+Fiziksel Profil Rafı: .height: unknown .weight: unknown .dominant_foot: unknown .body_type_band: unknown .stamina_band: unknown .sprint_band: unknown .acceleration_band: unknown .strength_band: unknown .agility_band: unknown .balance_band: unknown
 
-Kimlik Rafı:
-full_name: unknown
-short_name_alias: unknown
-name_variants: none
-birth_date: unknown
-age: unknown
-birth_place: unknown
-nationality_primary: unknown
-nationality_secondary: none
-languages: unknown
-public_profile_notes: unknown
-player_ref: UNKNOWN_PLAYER_REF
-identity_status: unknown
+Teknik Yetenek Rafı: first_touch_band: unknown .short_pass_band: unknown .long_pass_band: unknown .crossing_band: unknown .dribbling_band: unknown .ball_carrying_speed_band: unknown .weak_foot_band: unknown .finishing_band: unknown .shot_quality_band: unknown
+heading_band: unknown .one_v_one_attack_band: unknown .one_v_one_defense_band: unknown
+Zihinsel ve Karar Mekaniği Rafı: .game_iq_band: unknown .positioning_band: unknown .decision_speed_band: unknown .risk_taking_band: unknown .composure_band: unknown .concentration_band: unknown .leadership_band: unknown .responsibility_band: unknown
+Hücum Davranışı Rafı: .run_variety_band: unknown .depth_run_threat_band: unknown .box_runs_band: unknown .wall_play_band: unknown .final_pass_band: unknown .shot_selection_band: unknown .goal_creation_band: unknown .assist_creation_band: unknown
+Defans Davranışı Rafı:.press_intensity_band: unknown .press_timing_band: unknown .tackle_band: unknown .interception_band: unknown .duel_win_band: unknown .aerial_duel_band: unknown .recovery_run_band: unknown .defensive_error_risk_band: unknown
+Geçiş Oyunları Rafı: .attack_transition_speed_band: unknown .defense_transition_reaction_band: unknown .counter_start_band: unknown .counter_stop_band: unknown .transition_discipline_band: unknown
 
-Köken Rafı (Altyapı + Geçiş):
-academy_origin: unknown
-youth_clubs_timeline: none
-debut_context: unknown
-early_role_profile: unknown
-licenses_badges: none
+Duran Top Profili Rafı: .set_piece_role: unknown .corner_taker_band: unknown .free_kick_taker_band: unknown .penalty_taker_band: unknown .throw_in_role_band: unknown .second_ball_instinct_band: unknown
+Disiplin ve Kart Riski Rafı: .foul_type_profile: unknown .yellow_card_tendency: unknown .red_card_tendency: unknown .dissent_band: unknown .aggression_band: unknown
+Sakatlık ve Devamlılık Rafı: .injury_history: none .injury_type_clusters: unknown .matches_missed_band: unknown .load_management_band: unknown .return_performance_band: unknown .chronic_risk_band: unknown
+Form ve İstikrar Rafı: .form_trend_band: unknown .performance_volatility_band: unknown .big_match_band: unknown .away_match_band: unknown .derby_match_band: unknown .Psikoloji ve Baskı Rafı .pressure_response_band: unknown .penalty_pressure_band: unknown
+collapse_under_crisis_band: unknown .rebound_after_failure_band: unknown
+Tribün Baskısı Rafı: .crowd_pressure_performance: unknown .home_crowd_performance_band: unknown .away_crowd_performance_band: unknown .derby_pressure_band: unknown .high_stakes_match_band: unknown .error_rate_under_pressure: unknown .decision_speed_under_pressure: unknown .discipline_risk_under_pressure: unknown .finishing_under_pressure: unknown.
+Kimya ve Takım İçi Uyum Rafı: .locker_room_influence_band: unknown .coach_fit_band: unknown .team_fit_band: unknown .adaptation_speed_band: unknown .captaincy_status_band: unknown
+Başarı Rafı (Trophy Shelf): .trophies: none .awards: none .Kural: trophy_type + season_tag + team_ref ile tutulur; Faz-1’de veri yoksa none. .Hedef Sapması Rafı (Target Miss): .target_miss_records: none .Kural: başarısızlık “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
 
-Kariyer Timeline Rafı (Kulüp ve Görevler):
-career_timeline: none
-Kural: Bu raf boş kalmaz; veri yoksa none bandında kalır ve Faz-2’de kayıtlar player_ref üzerinden eklenir.
-timeline_entry_schema_policy: team_ref + league_ref + country_ref + season_tag + role_profile + start_date_band + end_date_band + departure_band + evidence_level
-start_end_policy: unknown tarih varsa unknown bandı ile tutulur; zorla yıl/ay uydurulmaz.
-departure_band_policy: unknown | normal_exit | forced_exit | loan_start | loan_end | injury_exit | disciplinary_exit | inactive
-era_policy: append_only / eras_are_non_overwriting
+Oyun DNA (Era Bazlı): .era_blocks: .era_tag: unknown_era_1 .status: active_unknown .evidence_level: low .role_evolution: unknown .position_evolution: unknown .physical_evolution: unknown .technical_evolution: unknown .mental_evolution: unknown
+Basın ve Kamu Algısı Rafı: .press_themes: unknown .strong_signal_policy: multi_source_required .signal_strength: weak_signal .Kural: Basın verisi tek başına hüküm kurmaz; maç içi eksik event basından “kesin olay” diye tamamlanmaz.
+Etik ve Risk Rafı: .integrity_risk_profile: unknown .doping_case_history: none .betting_related_allegation_history: none .disciplinary_case_history: none .serious_off_field_incidents_history: none .allegation_strength: none .investigation_status_band: unknown
+Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur. Odds / Market Zaman Hizası Rafı: .market_alignment_status: inactive_market .time_alignment_notes: unknown .Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
 
-Pozisyon ve Rol Haritası Rafı:
-primary_position: unknown
-secondary_positions: none
-role_profiles: unknown
-field_zone_preferences: unknown
-tactical_discipline_band: unknown
-role_flexibility_band: unknown
-press_role_fit_band: unknown
-
-Fiziksel Profil Rafı:
-height: unknown
-weight: unknown
-dominant_foot: unknown
-body_type_band: unknown
-stamina_band: unknown
-sprint_band: unknown
-acceleration_band: unknown
-strength_band: unknown
-agility_band: unknown
-balance_band: unknown
-
-Teknik Yetenek Rafı:
-first_touch_band: unknown
-short_pass_band: unknown
-long_pass_band: unknown
-crossing_band: unknown
-dribbling_band: unknown
-ball_carrying_speed_band: unknown
-weak_foot_band: unknown
-finishing_band: unknown
-shot_quality_band: unknown
-heading_band: unknown
-one_v_one_attack_band: unknown
-one_v_one_defense_band: unknown
-
-Zihinsel ve Karar Mekaniği Rafı:
-game_iq_band: unknown
-positioning_band: unknown
-decision_speed_band: unknown
-risk_taking_band: unknown
-composure_band: unknown
-concentration_band: unknown
-leadership_band: unknown
-responsibility_band: unknown
-
-Hücum Davranışı Rafı:
-run_variety_band: unknown
-depth_run_threat_band: unknown
-box_runs_band: unknown
-wall_play_band: unknown
-final_pass_band: unknown
-shot_selection_band: unknown
-goal_creation_band: unknown
-assist_creation_band: unknown
-
-Defans Davranışı Rafı:
-press_intensity_band: unknown
-press_timing_band: unknown
-tackle_band: unknown
-interception_band: unknown
-duel_win_band: unknown
-aerial_duel_band: unknown
-recovery_run_band: unknown
-defensive_error_risk_band: unknown
-
-Geçiş Oyunları Rafı:
-attack_transition_speed_band: unknown
-defense_transition_reaction_band: unknown
-counter_start_band: unknown
-counter_stop_band: unknown
-transition_discipline_band: unknown
-
-Duran Top Profili Rafı:
-set_piece_role: unknown
-corner_taker_band: unknown
-free_kick_taker_band: unknown
-penalty_taker_band: unknown
-throw_in_role_band: unknown
-second_ball_instinct_band: unknown
-
-Disiplin ve Kart Riski Rafı:
-foul_type_profile: unknown
-yellow_card_tendency: unknown
-red_card_tendency: unknown
-dissent_band: unknown
-aggression_band: unknown
-
-Sakatlık ve Devamlılık Rafı:
-injury_history: none
-injury_type_clusters: unknown
-matches_missed_band: unknown
-load_management_band: unknown
-return_performance_band: unknown
-chronic_risk_band: unknown
-
-Form ve İstikrar Rafı:
-form_trend_band: unknown
-performance_volatility_band: unknown
-big_match_band: unknown
-away_match_band: unknown
-derby_match_band: unknown
-Psikoloji ve Baskı Rafı
-pressure_response_band: unknown
-penalty_pressure_band: unknown
-collapse_under_crisis_band: unknown
-rebound_after_failure_band: unknown
-
-Tribün Baskısı Rafı:
-crowd_pressure_performance: unknown
-home_crowd_performance_band: unknown
-away_crowd_performance_band: unknown
-derby_pressure_band: unknown
-high_stakes_match_band: unknown
-error_rate_under_pressure: unknown
-decision_speed_under_pressure: unknown
-discipline_risk_under_pressure: unknown
-finishing_under_pressure: unknown
-
-Kimya ve Takım İçi Uyum Rafı:
-locker_room_influence_band: unknown
-coach_fit_band: unknown
-team_fit_band: unknown
-adaptation_speed_band: unknown
-captaincy_status_band: unknown
-
-Başarı Rafı (Trophy Shelf):
-trophies: none
-awards: none
-Kural: trophy_type + season_tag + team_ref ile tutulur; Faz-1’de veri yoksa none.
-
-Hedef Sapması Rafı (Target Miss):
-target_miss_records: none
-Kural: başarısızlık “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
-
-Oyun DNA (Era Bazlı):
-era_blocks:
-era_tag: unknown_era_1
-status: active_unknown
-evidence_level: low
-role_evolution: unknown
-position_evolution: unknown
-physical_evolution: unknown
-technical_evolution: unknown
-mental_evolution: unknown
-
-Basın ve Kamu Algısı Rafı:
-press_themes: unknown
-strong_signal_policy: multi_source_required
-signal_strength: weak_signal
-Kural: Basın verisi tek başına hüküm kurmaz; maç içi eksik event basından “kesin olay” diye tamamlanmaz.
-
-Etik ve Risk Rafı:
-integrity_risk_profile: unknown
-doping_case_history: none
-betting_related_allegation_history: none
-disciplinary_case_history: none
-serious_off_field_incidents_history: none
-allegation_strength: none
-investigation_status_band: unknown
-Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.
-
-Odds / Market Zaman Hizası Rafı:
-market_alignment_status: inactive_market
-time_alignment_notes: unknown
-Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
-
-Bağlantılar (informed_by):
-informed_by:
-match_cards: none
-match_events: none
-press_rack: none
-team_cards: none
-coach_cards: none
-referee_cards: none
-odds_market_timeline: none
-Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
-
-Data Quality:
-data_quality_badge: low
-coverage_map:
-identity: unknown
-career_timeline: none
-position_role: unknown
-physical_profile: unknown
-technical: unknown
-mental: unknown
-attack_defense: unknown
-injury: none
-press: weak_signal
-ethics_risk: none
-market_alignment: inactive_market
-informed_by_links: none
-
+Bağlantılar (informed_by): .informed_by: .match_cards: none .match_events: none .press_rack: none .team_cards: none .coach_cards: none .referee_cards: none .odds_market_timeline: none .Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
+Data Quality: .data_quality_badge: low .coverage_map: .identity: unknown .career_timeline: none .position_role: unknown .physical_profile: unknown .technical: unknown .mental: unknown .attack_defense: unknown .injury: none .press: weak_signal
+ethics_risk: none .market_alignment: inactive_market .informed_by_links: none
 
 FAZ-13
 FUTBOLCU ETİKET DUVARI (FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI)
-
 Bantlar ve Durum Etiketleri:
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok (kayıt yok)
-inactive: kaynak var ama şu an aktif değil
-inactive_market: market verisi yok veya pasif
-unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
-weak_signal: tekil veya zayıf kaynak sinyali
-strong_signal: yalnız çoklu kaynak teyidi ile açılır
-active_unknown: segment var ama içeriği doğrulanmadı
-
+unknown: veri yok / doğrulanmadı none: alan geçerli ama içerik yok (kayıt yok) inactive: kaynak var ama şu an aktif değil inactive_market: market verisi yok veya pasif unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
+weak_signal: tekil veya zayıf kaynak sinyali strong_signal: yalnız çoklu kaynak teyidi ile açılır active_unknown: segment var ama içeriği doğrulanmadı
 Kimlik Etiketleri:
-identity_status: unknown | verified
-nationality_band: unknown | single | dual
-name_variant_band: none | exists
-
+identity_status: unknown | verified nationality_band: unknown | single | dual name_variant_band: none | exists
 Kariyer Timeline Etiketleri:
-tenure_band: unknown | short | medium | long
-start_date_band: unknown | known
-end_date_band: unknown | known | active
-departure_band: unknown | normal_exit | forced_exit | loan_start | loan_end | injury_exit | disciplinary_exit | inactive
-
+tenure_band: unknown | short | medium | long start_date_band: unknown | known end_date_band: unknown | known | active departure_band: unknown | normal_exit | forced_exit | loan_start | loan_end | injury_exit | disciplinary_exit | inactive
 Pozisyon ve Rol Etiketleri:
-primary_position: unknown | gk | df | mf | fw
-role_flexibility_band: unknown | low | medium | high
-tactical_discipline_band: unknown | low | medium | high
-press_role_fit_band: unknown | low | medium | high
-
+primary_position: unknown | gk | df | mf | fw ,role_flexibility_band: unknown | low | medium | high ,tactical_discipline_band: unknown | low | medium | high ,press_role_fit_band: unknown | low | medium | high
 Fiziksel Etiketler:
-dominant_foot: unknown | right | left | both
-body_type_band: unknown | light | balanced | strong
-stamina_band: unknown | low | medium | high
-sprint_band: unknown | low | medium | high
-acceleration_band: unknown | low | medium | high
-strength_band: unknown | low | medium | high
-agility_band: unknown | low | medium | high
-balance_band: unknown | low | medium | high
+dominant_foot: unknown | right | left | both ,body_type_band: unknown | light | balanced | strong,stamina_band: unknown | low | medium | high,sprint_band: unknown | low | medium | high,acceleration_band: unknown | low | medium | high,strength_band: unknown | low | medium | high,agility_band: unknown | low | medium | high,balance_band: unknown | low | medium | high
 
 Teknik Etiketler:
-first_touch_band: unknown | low | medium | high
-short_pass_band: unknown | low | medium | high
-long_pass_band: unknown | low | medium | high
-crossing_band: unknown | low | medium | high
-dribbling_band: unknown | low | medium | high
-ball_carrying_speed_band: unknown | low | medium | high
-weak_foot_band: unknown | low | medium | high
-finishing_band: unknown | low | medium | high
-shot_quality_band: unknown | low | medium | high
-heading_band: unknown | low | medium | high
-one_v_one_attack_band: unknown | low | medium | high
+first_touch_band: unknown | low | medium | high,short_pass_band: unknown | low | medium | high,long_pass_band: unknown | low | medium | high,crossing_band: unknown | low | medium | high,dribbling_band: unknown | low | medium | high,ball_carrying_speed_band: unknown | low | medium | high,weak_foot_band: unknown | low | medium | high,finishing_band: unknown | low | medium | high,shot_quality_band: unknown | low | medium | high,heading_band: unknown | low | medium | high,one_v_one_attack_band: unknown | low | medium | high
 one_v_one_defense_band: unknown | low | medium | high
-
 Mental Etiketler:
-game_iq_band: unknown | low | medium | high
-positioning_band: unknown | low | medium | high
-decision_speed_band: unknown | low | medium | high
-risk_taking_band: unknown | low | medium | high
-composure_band: unknown | low | medium | high
-concentration_band: unknown | low | medium | high
-leadership_band: unknown | low | medium | high
-responsibility_band: unknown | low | medium | high
-
+game_iq_band: unknown | low | medium | high,positioning_band: unknown | low | medium | high,decision_speed_band: unknown | low | medium | high,risk_taking_band: unknown | low | medium | high,composure_band: unknown | low | medium | high,concentration_band: unknown | low | medium | high,leadership_band: unknown | low | medium | high,responsibility_band: unknown | low | medium | high
 Hücum Etiketleri:
-run_variety_band: unknown | low | medium | high
-depth_run_threat_band: unknown | low | medium | high
-box_runs_band: unknown | low | medium | high
-wall_play_band: unknown | low | medium | high
-final_pass_band: unknown | low | medium | high
-shot_selection_band: unknown | low | medium | high
-goal_creation_band: unknown | low | medium | high
-assist_creation_band: unknown | low | medium | high
+run_variety_band: unknown | low | medium | high,depth_run_threat_band: unknown | low | medium | high,box_runs_band: unknown | low | medium | high,wall_play_band: unknown | low | medium | high,final_pass_band: unknown | low | medium | high
+shot_selection_band: unknown | low | medium | high,goal_creation_band: unknown | low | medium | highassist_creation_band: unknown | low | medium | high
 
 Defans Etiketleri:
-press_intensity_band: unknown | low | medium | high
-press_timing_band: unknown | low | medium | high
-duel_win_band: unknown | low | medium | high
-aerial_duel_band: unknown | low | medium | high
-recovery_run_band: unknown | low | medium | high
+press_intensity_band: unknown | low | medium | high,press_timing_band: unknown | low | medium | high,duel_win_band: unknown | low | medium | high,aerial_duel_band: unknown | low | medium | high,recovery_run_band: unknown | low | medium | high
 defensive_error_risk_band: unknown | low | medium | high
-
 Geçiş Etiketleri:
-attack_transition_speed_band: unknown | low | medium | high
-defense_transition_reaction_band: unknown | low | medium | high
-transition_discipline_band: unknown | low | medium | high
-
+attack_transition_speed_band: unknown | low | medium | high,defense_transition_reaction_band: unknown | low | medium | high,transition_discipline_band: unknown | low | medium | high
 Duran Top Etiketleri:
-set_piece_role: unknown | taker | target | none
-corner_taker_band: unknown | low | medium | high
-free_kick_taker_band: unknown | low | medium | high
-penalty_taker_band: unknown | low | medium | high
-second_ball_instinct_band: unknown | low | medium | high
-
+set_piece_role: unknown | taker | target | none,corner_taker_band: unknown | low | medium | high,free_kick_taker_band: unknown | low | medium | high,penalty_taker_band: unknown | low | medium | high,second_ball_instinct_band: unknown | low | medium | high
 Disiplin Etiketleri:
-yellow_card_tendency: unknown | low | medium | high
-red_card_tendency: unknown | low | medium | high
-dissent_band: unknown | low | medium | high
-aggression_band: unknown | low | medium | high
+yellow_card_tendency: unknown | low | medium | high,red_card_tendency: unknown | low | medium | high,dissent_band: unknown | low | medium | high,aggression_band: unknown | low | medium | high
 
 Sakatlık Etiketleri:
-matches_missed_band: unknown | low | medium | high
-load_management_band: unknown | low | medium | high
-return_performance_band: unknown | low | medium | high
-chronic_risk_band: unknown | low | medium | high
-
+matches_missed_band: unknown | low | medium | high,load_management_band: unknown | low | medium | high,return_performance_band: unknown | low | medium | high,chronic_risk_band: unknown | low | medium | high
 Form Etiketleri:
-form_trend_band: unknown | low | medium | high
-performance_volatility_band: unknown | low | medium | high
-big_match_band: unknown | low | medium | high
-away_match_band: unknown | low | medium | high
-derby_match_band: unknown | low | medium | high
-
+form_trend_band: unknown | low | medium | high,performance_volatility_band: unknown | low | medium | high,big_match_band: unknown | low | medium | high,away_match_band: unknown | low | medium | high,derby_match_band: unknown | low | medium | high
 Baskı Etiketleri:
-pressure_response_band: unknown | low | medium | high
-penalty_pressure_band: unknown | low | medium | high
-collapse_under_crisis_band: unknown | low | medium | high
-rebound_after_failure_band: unknown | low | medium | high
-
+pressure_response_band: unknown | low | medium | high,penalty_pressure_band: unknown | low | medium | high,collapse_under_crisis_band: unknown | low | medium | high,rebound_after_failure_band: unknown | low | medium | high
 Tribün Baskısı Etiketleri:
-crowd_pressure_band: unknown | low | medium | high
-pressure_decision_risk_band: unknown | low | medium | high
-late_game_pressure_band: unknown | low | medium | high
+crowd_pressure_band: unknown | low | medium | high,pressure_decision_risk_band: unknown | low | medium | high,late_game_pressure_band: unknown | low | medium | high
 
 Kimya Etiketleri:
-locker_room_influence_band: unknown | low | medium | high
-coach_fit_band: unknown | low | medium | high
-team_fit_band: unknown | low | medium | high
-adaptation_speed_band: unknown | low | medium | high
-captaincy_status_band: unknown | none | vice | captain
-
+locker_room_influence_band: unknown | low | medium | high,coach_fit_band: unknown | low | medium | high,team_fit_band: unknown | low | medium | high,adaptation_speed_band: unknown | low | medium | high,captaincy_status_band: unknown | none | vice | captain
 Basın Etiketleri:
-press_theme_status: unknown | tracked
-signal_strength: weak_signal | strong_signal
-
+press_theme_status: unknown | tracked,signal_strength: weak_signal | strong_signal
 Etik ve Risk Etiketleri:
-allegation_strength: none | weak_signal | strong_signal
-investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown
-
+allegation_strength: none | weak_signal | strong_signal,investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown
 Market Etiketleri:
-market_alignment_status: inactive_market | active_aligned | active_misaligned
-market_data_strength: none | weak | strong
-Reference Bağ Etiketleri
-team_ref_status: unmapped | mapped
-league_ref_status: unmapped | mapped
-country_ref_status: unmapped | mapped
+market_alignment_status: inactive_market | active_aligned | active_misaligned,market_data_strength: none | weak | strong,Reference Bağ Etiketleri,team_ref_status: unmapped | mapped,league_ref_status: unmapped | mapped,country_ref_status: unmapped | mapped
 
 FAZ-14
 FUTBOLCU SORU KÜTÜPHANESİ (FAZ-1 GENİŞ TARAMA SETİ)
-
 Kimlik ve Doğrulama:
 Futbolcunun resmi kayıt ad-soyad eşleşmesi nedir ve bilinen kısa adı/alias hangi kayıtlarda geçer?
 İsim varyantları hangi kaynaklarda görülür ve hangileri yanlış eşleşme riski taşır?
@@ -4867,143 +4270,60 @@ Doğum tarihi, doğum yeri ve uyruk bilgileri hangi güvenilir kaynaklarla doğr
 Futbolcunun kariyerinde ülke/lig değişimleri hangi dönemlere denk gelir ve country_ref/league_ref eşlemesi nasıl yapılmalı?
 
 Köken ve Altyapı:
-Altyapı kökeni hangi kulüp/akademi üzerinden doğrulanabilir?
-Genç yaşta rolü ve saha profili nasıldı; early_role_profile nasıl tutulmalı?
-Profesyonel debut hangi maç/turnuva bağlamında oldu; debut_context nasıl doğrulanmalı?
+Altyapı kökeni hangi kulüp/akademi üzerinden doğrulanabilir?,Genç yaşta rolü ve saha profili nasıldı; early_role_profile nasıl tutulmalı?,Profesyonel debut hangi maç/turnuva bağlamında oldu; debut_context nasıl doğrulanmalı?
 Genç yaşta pozisyon değişimi veya rol dönüşümü yaşandı mı; position_evolution nasıl işaretlenmeli?
-
 Kariyer Timeline:
-Çalıştığı tüm kulüpler, kiralık dönemler ve görev rol profilleri tam liste olarak çıkarılabilir mi?
-Her dönem için sezon_tag, team_ref ve tarih bandı hangi kaynaklarla doğrulanabilir?
-Kiralık başlangıç ve bitişleri loan_start/loan_end bandlarıyla nasıl tutulmalı?
+Çalıştığı tüm kulüpler, kiralık dönemler ve görev rol profilleri tam liste olarak çıkarılabilir mi?,Her dönem için sezon_tag, team_ref ve tarih bandı hangi kaynaklarla doğrulanabilir?,Kiralık başlangıç ve bitişleri loan_start/loan_end bandlarıyla nasıl tutulmalı?
 Ayrılış sebepleri forced_exit mi normal_exit mi yoksa injury_exit mi; hangi eşiklerle açılmalı?
 
 Pozisyon ve Rol:
-Ana pozisyonu ve yan pozisyonları hangi sezonlarda değişti?
-Rol profili (box-to-box, inverted winger vb.) nasıl doğrulanacak; maç verisi yoksa unknown mı kalmalı?
-Taktik disiplin ve rol esnekliği hangi metriklerle ayrıştırılabilir?
+Ana pozisyonu ve yan pozisyonları hangi sezonlarda değişti?,Rol profili (box-to-box, inverted winger vb.) nasıl doğrulanacak; maç verisi yoksa unknown mı kalmalı?,Taktik disiplin ve rol esnekliği hangi metriklerle ayrıştırılabilir?
 Pres rol uyumu hangi takım oyun planlarında yükseliyor/düşüyor?
-
-Fiziksel Profil:
-Boy/kilo ve dominant ayak doğrulanabilir mi?
-Sprint/ivmelenme/güç/çeviklik bantları hangi maç verileriyle doğrulanmalı?
-Dayanıklılık ve yük yönetimi sakatlık geçmişiyle nasıl ilişkilendirilmeli?
-
+Fiziksel Profil:Boy/kilo ve dominant ayak doğrulanabilir mi?,Sprint/ivmelenme/güç/çeviklik bantları hangi maç verileriyle doğrulanmalı?,Dayanıklılık ve yük yönetimi sakatlık geçmişiyle nasıl ilişkilendirilmeli?
 Teknik Profil:
-İlk kontrol ve pas kalitesi hangi gözlem veya metrikle güçlü sinyal olur?
-Bitiricilik ve şut kalitesi ayrımı nasıl yapılmalı?
-Dripling ve top taşıma hızı aynı şey değilse nasıl ayrıştırılmalı?
-Zayıf ayak bandı nasıl doğrulanır?
-
-Mental Profil:
-Oyun zekâsı ve karar hızı nasıl ölçülür; yalnız gözlemle mi, metrikle mi?
-Risk alma eğilimi hangi maç senaryolarında artıyor?
-Soğukkanlılık ve konsantrasyon düşüşü hangi dakikalarda belirginleşiyor?
-Liderlik ve sorumluluk alma hangi durumlarda görünür olur?
-
+İlk kontrol ve pas kalitesi hangi gözlem veya metrikle güçlü sinyal olur?,Bitiricilik ve şut kalitesi ayrımı nasıl yapılmalı?,Dripling ve top taşıma hızı aynı şey değilse nasıl ayrıştırılmalı?,Zayıf ayak bandı nasıl doğrulanır?
+Mental Profil:Oyun zekâsı ve karar hızı nasıl ölçülür; yalnız gözlemle mi, metrikle mi?,Risk alma eğilimi hangi maç senaryolarında artıyor?,Soğukkanlılık ve konsantrasyon düşüşü hangi dakikalarda belirginleşiyor?,Liderlik ve sorumluluk alma hangi durumlarda görünür olur?
 Hücum ve Defans Davranışı:
-Koşu çeşitliliği ve derin koşu tehdidi hangi maçlarda yükseliyor?
-Final pası ve asist üretimi birbirinden nasıl ayrıştırılır?
-Pres şiddeti ve pres zamanlaması birlikte mi ölçülür, ayrı mı?
-Savunma hatası riski hangi stres senaryolarında artar?
-
+Koşu çeşitliliği ve derin koşu tehdidi hangi maçlarda yükseliyor?,Final pası ve asist üretimi birbirinden nasıl ayrıştırılır?,Pres şiddeti ve pres zamanlaması birlikte mi ölçülür, ayrı mı?,Savunma hatası riski hangi stres senaryolarında artar?
 Geçiş Oyunları:
-Top kaybı sonrası reaksiyon süresi nasıl ölçülecek?
-Kontra başlatma ve kontra durdurma rolleri aynı oyuncuda birlikte mi görünür?
-
+Top kaybı sonrası reaksiyon süresi nasıl ölçülecek?,Kontra başlatma ve kontra durdurma rolleri aynı oyuncuda birlikte mi görünür?
 Duran Top:
-Duran top kullanıcısı mı hedef mi; set_piece_role nasıl atanmalı?
-Penaltı kullanma geçmişi ve baskı altında performansı nasıl tutulmalı?
-
+Duran top kullanıcısı mı hedef mi; set_piece_role nasıl atanmalı?,Penaltı kullanma geçmişi ve baskı altında performansı nasıl tutulmalı?
 Disiplin:
-Kart eğilimi hangi maç türlerinde artıyor?
-İtiraz bandı tek maçla mı açılır yoksa trend mi gerekir?
-
+Kart eğilimi hangi maç türlerinde artıyor?,İtiraz bandı tek maçla mı açılır yoksa trend mi gerekir?
 Sakatlık:
-Sakatlık geçmişi doğrulanabilir mi; injury_type_clusters nasıl tutulmalı?
-Kronik risk bandı hangi tekrar eşiğinde açılır?
-Geri dönüş performansı düşüyor mu yükseliyor mu; return_performance_band nasıl ölçülür?
-
+Sakatlık geçmişi doğrulanabilir mi; injury_type_clusters nasıl tutulmalı?,Kronik risk bandı hangi tekrar eşiğinde açılır?,Geri dönüş performansı düşüyor mu yükseliyor mu; return_performance_band nasıl ölçülür?
 Form ve İstikrar:
-Form trendi ve dalgalanma hangi periyotlarda belirgin?
-Büyük maç, derbi ve deplasman performansı ayrı bantlarda mı izlenmeli?
-
+Form trendi ve dalgalanma hangi periyotlarda belirgin?,Büyük maç, derbi ve deplasman performansı ayrı bantlarda mı izlenmeli?
 Psikoloji ve Baskı:
-Penaltı anı performansı ve baskı altında hata riski nasıl ölçülmeli?
-Kriz anında düşüş mü toparlanma mı baskın; rebound_after_failure bandı nasıl atanmalı?
-
+Penaltı anı performansı ve baskı altında hata riski nasıl ölçülmeli?,Kriz anında düşüş mü toparlanma mı baskın; rebound_after_failure bandı nasıl atanmalı?
 Tribün Baskısı:
-İç saha seyircisi performansı artırıyor mu düşürüyor mu; home_crowd_performance_band nasıl ölçülmeli?
-Deplasman tribünü baskısında karar hatası artıyor mu; error_rate_under_pressure nasıl tutulmalı?
-Derbi ve yüksek risk maçlarda finishing_under_pressure düşüyor mu?
-Kimya
-Soyunma odası etkisi ve takım uyumu nasıl gözlemlenir; tek kaynak yeterli mi?
-Koçla uyum bozulursa performans trendinde hangi sinyal görülür?
-
+İç saha seyircisi performansı artırıyor mu düşürüyor mu; home_crowd_performance_band nasıl ölçülmeli?,Deplasman tribünü baskısında karar hatası artıyor mu; error_rate_under_pressure nasıl tutulmalı?.Derbi ve yüksek risk maçlarda finishing_under_pressure düşüyor mu?
+Kimya:Soyunma odası etkisi ve takım uyumu nasıl gözlemlenir; tek kaynak yeterli mi? Koçla uyum bozulursa performans trendinde hangi sinyal görülür?
 Basın ve Algı:
-Basında futbolcu hakkında tekrar eden temalar var mı; hangi koşulda strong_signal olur?
-Basın metni ile maç içi event çelişirse hangisi baskın kabul edilir ve nasıl işaretlenir?
-
+Basında futbolcu hakkında tekrar eden temalar var mı; hangi koşulda strong_signal olur?,Basın metni ile maç içi event çelişirse hangisi baskın kabul edilir ve nasıl işaretlenir?
 Etik ve Risk:
-Doping, bahis bağlantısı iddiası, disiplin soruşturması veya saha dışı olay geçmişi var mı; allegation_strength nasıl atanmalı?
-Resmi yaptırım varsa investigation_status_band nasıl işlenmeli?
-
+Doping, bahis bağlantısı iddiası, disiplin soruşturması veya saha dışı olay geçmişi var mı; allegation_strength nasıl atanmalı?,Resmi yaptırım varsa investigation_status_band nasıl işlenmeli?
 Odds/Market Zaman Hizası:
 Sakatlık duyurusu, ilk 11 sürprizi veya kadro dışı kalma sinyali market hizasında nasıl işaretlenmeli?
 
 Bağlantılar ve Reference Disiplini:
-Kulüp/lig/ülke bağlantıları serbest metin kullanmadan hangi minimum reference_dictionary alanlarıyla kurulmalı?
-Unmapped kayıtlar Faz-2’de nasıl ele alınacak; zorla eşleme hangi koşulda kesinlikle yapılmayacak?
+Kulüp/lig/ülke bağlantıları serbest metin kullanmadan hangi minimum reference_dictionary alanlarıyla kurulmalı?,Unmapped kayıtlar Faz-2’de nasıl ele alınacak; zorla eşleme hangi koşulda kesinlikle yapılmayacak?
 Match_card ve match_event bağları futbolcu kartının hangi raflarını kanıt zinciri olarak destekleyecek?
-
 Data Quality ve Kapsama Haritası:
-Hangi raflar dolmadan data_quality_badge low kalmalı ve hangi eşikle medium seviyesine çıkar?
-Coverage_map hangi düzende raporlanmalı ki analist hangi segmentin zayıf olduğunu tek bakışta görsün?
-Eksik veri varken “anomali yok” demeden futbolcu kartı nasıl güvenli biçimde sunulmalı?
+Hangi raflar dolmadan data_quality_badge low kalmalı ve hangi eşikle medium seviyesine çıkar?,Coverage_map hangi düzende raporlanmalı ki analist hangi segmentin zayıf olduğunu tek bakışta görsün?,Eksik veri varken “anomali yok” demeden futbolcu kartı nasıl güvenli biçimde sunulmalı
 
 FAZ-15
 TEKNİK DİREKTÖR KARTI — EK RAF: TRİBÜN BASKISI YÖNETİMİ
-
-crowd_pressure_handling: unknown
-home_crowd_effect_band: unknown
-away_crowd_effect_band: unknown
-derby_crowd_effect_band: unknown
-late_game_crowd_effect_band: unknown
-decision_risk_under_pressure: unknown
-tactical_deviation_under_pressure: unknown
-communication_shift_under_pressure: unknown
-Kural: Yorum yok; yalnız tekrar eden patern ve ölçülebilir sapma.
-
+crowd_pressure_handling: unknown,home_crowd_effect_band: unknown,away_crowd_effect_band: unknown,derby_crowd_effect_band: unknown,late_game_crowd_effect_band: unknown,decision_risk_under_pressure: unknown,tactical_deviation_under_pressure: unknown,communication_shift_under_pressure: unknown,Kural: Yorum yok; yalnız tekrar eden patern ve ölçülebilir sapma.
 HAKEM KARTI — EK RAF: TRİBÜN BASKISI ALTINDA MAÇ YÖNETİMİ
-
-crowd_pressure_handling: unknown
-home_bias_pressure_sensitivity: unknown
-away_bias_pressure_sensitivity: unknown
-derby_pressure_response: unknown
-late_decision_pressure_risk: unknown
-carding_shift_under_pressure: unknown
-penalty_decision_pressure_risk: unknown
-dialogue_control_under_pressure: unknown
-Kural: Taraf seçimi iddiası üretmez; yalnız patern ölçer.
-
+crowd_pressure_handling: unknown,home_bias_pressure_sensitivity: unknown,away_bias_pressure_sensitivity: unknown,derby_pressure_response: unknown,late_decision_pressure_risk: unknown,carding_shift_under_pressure: unknown,penalty_decision_pressure_risk: unknown,dialogue_control_under_pressure: unknown,Kural: Taraf seçimi iddiası üretmez; yalnız patern ölçer.
 FUTBOLCU KARTI — EK RAF: TRİBÜN BASKISI PERFORMANSI
-
-crowd_pressure_performance: unknown
-home_crowd_performance_band: unknown
-away_crowd_performance_band: unknown
-derby_pressure_band: unknown
-high_stakes_match_band: unknown
-error_rate_under_pressure: unknown
-decision_speed_under_pressure: unknown
-discipline_risk_under_pressure: unknown
-finishing_under_pressure: unknown
-Kural: Tek maçla hüküm yok; trend/patern yoksa unknown.
-
+crowd_pressure_performance: unknown,home_crowd_performance_band: unknown,away_crowd_performance_band: unknown,derby_pressure_band: unknown,high_stakes_match_band: unknown,error_rate_under_pressure: unknown,decision_speed_under_pressure: unknown
+discipline_risk_under_pressure: unknown,finishing_under_pressure: unknown,Kural: Tek maçla hüküm yok; trend/patern yoksa unknown.
 ETİKET DUVARI — ORTAK BANTLAR
+crowd_pressure_band: unknown | low | medium | high,pressure_decision_risk_band: unknown | low | medium | high,late_game_pressure_band: unknown | low | medium | high
 
-crowd_pressure_band: unknown | low | medium | high
-pressure_decision_risk_band: unknown | low | medium | high
-late_game_pressure_band: unknown | low | medium | high
 TAKIM KARTI — FAZ-1 TESLİMİ (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
 team_ref: UNKNOWN_TEAM_REF
 Kart Durumu: FAZ-1_SKELETON_ACTIVE
@@ -5011,299 +4331,72 @@ Kart Politikası: Tek team_ref / Sıfırlanmaz / Takım kartı takımda kalır /
 Üretim Notu: Bu teslim yalnız iskelet üretimidir. Reference_dictionary ve maç–basın–odds akışları Faz-2 doğrulama ve doldurma içindir. Veri yokken hiçbir alan boş bırakılmaz; unknown/none/inactive bantları deterministik kullanılır.
 
 TAKIM KARTI — TAM PROFİL (FAZ-1 İSKELET)
-
 Kimlik Rafı
-team_ref: UNKNOWN_TEAM_REF
-club_name: unknown
-short_name_alias: unknown
-name_variants: none
-founded_year: unknown
-city_ref: unknown
-country_ref: unknown
-league_ref: unknown
-stadium_ref: unknown
-stadium_capacity_band: unknown
-club_model_band: unknown
+team_ref: UNKNOWN_TEAM_REF,club_name: unknown,short_name_alias: unknown,name_variants: none,founded_year: unknown,city_ref: unknown,country_ref: unknown,league_ref: unknown,stadium_ref: unknown,stadium_capacity_band: unknownclub_model_band: unknown
 identity_status: unknown
-
 Tarihçe ve Statü Rafı
-era_policy: append_only / eras_are_non_overwriting
-era_blocks: none
-historical_identity_themes: unknown
-rise_fall_turning_points: unknown
-dominant_periods: none
-
+era_policy: append_only / eras_are_non_overwriting,era_blocks: none,historical_identity_themes: unknown,rise_fall_turning_points: unknown,dominant_periods: none
 Başarı Rafı (Trophy Shelf)
-trophies: none
-records: none
-Kural: trophy_type + season_tag + competition_ref ile tutulur; Faz-1’de veri yoksa none.
-
+trophies: none,records: none,Kural: trophy_type + season_tag + competition_ref ile tutulur; Faz-1’de veri yoksa none.
 Hedef Sapması Rafı (Target Miss)
-season_targets: none
-target_miss_records: none
-Kural: hedef sapması “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
-
+season_targets: none,target_miss_records: none,Kural: hedef sapması “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
 Kadro ve Transfer DNA Rafı
-academy_output_band: unknown
-star_transfer_tendency: unknown
-fighter_profile_preference: unknown
-sell_to_grow_model_band: unknown
-loan_dependency_band: unknown
-age_profile_trend_band: unknown
-scouting_region_bias: unknown
-
+academy_output_band: unknown,star_transfer_tendency: unknown,fighter_profile_preference: unknown,sell_to_grow_model_band: unknown,loan_dependency_band: unknown,age_profile_trend_band: unknown,scouting_region_bias: unknown
 Oyun DNA (Takım İmzası)
-press_approach: unknown
-block_preference: unknown
-transition_priority: unknown
-set_play_patience: unknown
-wing_central_balance: unknown
-defensive_line_risk: unknown
-set_piece_strength_band: unknown
-set_piece_weakness_band: unknown
-tempo_band: unknown
-flexibility_band: unknown
-creation_source_band: unknown
-press_resistance_band: unknown
-sterile_possession_band: unknown
-build_up_risk_band: unknown
+press_approach: unknown,block_preference: unknown,transition_priority: unknown,set_play_patience: unknown,wing_central_balance: unknown,defensive_line_risk: unknown,set_piece_strength_band: unknown,set_piece_weakness_band: unknown,tempo_band: unknown
+flexibility_band: unknown,creation_source_band: unknown,press_resistance_band: unknown,sterile_possession_band: unknown,build_up_risk_band: unknown
 
-Maç İçi Davranış DNA Rafı
-match_start_behavior_band: unknown
-concede_first_response_band: unknown
-score_first_behavior_band: unknown
-late_game_behavior_band: unknown
-comeback_capacity_band: unknown
-score_protection_discipline_band: unknown
-risk_increase_trigger_band: unknown
-panic_under_pressure_band: unknown
-
-Seri ve Momentum Rafı
-streak_building_ability_band: unknown
-win_streak_tendency_band: unknown
-loss_streak_risk_band: unknown
-draw_streak_tendency_band: unknown
-post_loss_response_band: unknown
-post_win_complacency_risk_band: unknown
-post_draw_response_band: unknown
+Maç İçi Davranış DNA Rafı: match_start_behavior_band: unknown,concede_first_response_band: unknown,score_first_behavior_band: unknown,late_game_behavior_band: unknown,comeback_capacity_band: unknown,score_protection_discipline_band: unknown,risk_increase_trigger_band: unknown ,panic_under_pressure_band: unknown
+Seri ve Momentum Rafı: streak_building_ability_band: unknown,win_streak_tendency_band: unknown,loss_streak_risk_band: unknown,draw_streak_tendency_band: unknown,post_loss_response_band: unknown,post_win_complacency_risk_band: unknown,post_draw_response_band: unknown
 Kural: Seri davranışı tek maçla hüküm üretmez; trend/patern yoksa unknown kalır.
+İç Saha / Deplasman Rafı: home_strength_band: unknown,away_resilience_band: unknown,home_crowd_effect_band: unknown,away_crowd_effect_band: unknown,travel_pressure_band: unknown
+Tribün ve Baskı Yönetimi Rafı: crowd_pressure_handling: unknown,derby_pressure_band: unknown,high_target_pressure_band: unknown,late_game_pressure_band: unknown,decision_risk_under_pressure_band: unknown
+Disiplin ve Kart Profili Rafı: discipline_profile: unknown,yellow_card_tendency: unknown,red_card_tendency: unknown,dissent_protest_band: unknown,aggression_band: unknown,foul_type_clusters: unknown
+Sakatlık ve Yük Yönetimi Rafı,injury_cluster_band: unknown,load_collapse_band: unknown,rotation_resilience_band: unknown,return_from_injury_impact_band: unknown
 
-İç Saha / Deplasman Rafı
-home_strength_band: unknown
-away_resilience_band: unknown
-home_crowd_effect_band: unknown
-away_crowd_effect_band: unknown
-travel_pressure_band: unknown
-
-Tribün ve Baskı Yönetimi Rafı
-crowd_pressure_handling: unknown
-derby_pressure_band: unknown
-high_target_pressure_band: unknown
-late_game_pressure_band: unknown
-decision_risk_under_pressure_band: unknown
-
-Disiplin ve Kart Profili Rafı
-discipline_profile: unknown
-yellow_card_tendency: unknown
-red_card_tendency: unknown
-dissent_protest_band: unknown
-aggression_band: unknown
-foul_type_clusters: unknown
-
-Sakatlık ve Yük Yönetimi Rafı
-injury_cluster_band: unknown
-load_collapse_band: unknown
-rotation_resilience_band: unknown
-return_from_injury_impact_band: unknown
-
-Koç Etkisi Haritası Rafı
-coach_dependence_band: unknown
-new_coach_bounce_band: unknown
-coach_change_disruption_band: unknown
-dna_persistence_after_coach_band: unknown
-
-Yıldız Oyuncu Bağımlılığı Rafı
-star_dependency_band: unknown
-leader_loss_impact_band: unknown
-youth_carry_capacity_band: unknown
-
-Hakem Etkileşim Profili Rafı
-referee_tension_pattern: unknown
-card_risk_under_ref_pressure_band: unknown
-penalty_incidence_band: unknown
-var_tension_band: unknown
-Basın ve Kamu Algısı Rafı
-press_themes: unknown
-strong_signal_policy: multi_source_required
-signal_strength: weak_signal
-crisis_communication_style: unknown
-expectation_inflation_band: unknown
-fan_protest_pressure_band: unknown
-narrative_gap_band: unknown
+Koç Etkisi Haritası Rafı: coach_dependence_band: unknown,new_coach_bounce_band: unknown,coach_change_disruption_band: unknown,dna_persistence_after_coach_band: unknown,Yıldız Oyuncu Bağımlılığı Rafı
+star_dependency_band: unknown,leader_loss_impact_band: unknown,youth_carry_capacity_band: unknown,Hakem Etkileşim Profili Rafı,referee_tension_pattern: unknown,card_risk_under_ref_pressure_band: unknown,penalty_incidence_band: unknown,var_tension_band: unknown
+Basın ve Kamu Algısı Rafı,press_themes: unknown,strong_signal_policy: multi_source_required,signal_strength: weak_signal,crisis_communication_style: unknown,expectation_inflation_band: unknown,fan_protest_pressure_band: unknown,narrative_gap_band: unknown
 Kural: Basın verisi tek başına hüküm kurmaz; eksik event basınla tamamlanmaz.
 
-Etik ve Risk Rafı
-integrity_risk_profile: unknown
-financial_crisis_band: unknown
-match_fixing_allegation_history: none
-disciplinary_case_history: none
-allegation_strength: none
-investigation_status_band: unknown
-Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.
-
-Odds / Market Zaman Hizası Rafı
-market_alignment_status: inactive_market
-time_alignment_notes: unknown
-Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
-
-Bağlantılar (informed_by)
-informed_by:
-match_cards: none
-match_events: none
-press_rack: none
-player_cards: none
-coach_cards: none
-referee_cards: none
-odds_market_timeline: none
-Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
-
-Data Quality
-data_quality_badge: low
-coverage_map:
-identity: unknown
-history_status: unknown
-trophies: none
-targets: none
-squad_transfer_dna: unknown
-team_dna: unknown
-in_game_behavior: unknown
-streak_momentum: unknown
-home_away: unknown
-pressure_crowd: unknown
-discipline: unknown
-injury_load: unknown
-coach_effect: unknown
-star_dependency: unknown
-press: weak_signal
-ethics_risk: none
-market_alignment: inactive_market
-informed_by_links: none
-
+Etik ve Risk Rafı:,integrity_risk_profile: unknown,financial_crisis_band: unknown,match_fixing_allegation_history: none,disciplinary_case_history: none,allegation_strength: none,investigation_status_band: unknown,Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.
+Odds / Market Zaman Hizası Rafı:,market_alignment_status: inactive_market,time_alignment_notes: unknown,Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
+Bağlantılar (informed_by),informed_by:,match_cards: none,match_events: none,press_rack: none,player_cards: none,coach_cards: none,referee_cards: none,odds_market_timeline: none,Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
+Data Quality:,data_quality_badge: low,coverage_map:,identity: unknown,history_status: unknowntrophies: none,targets: none,squad_transfer_dna: unknownteam_dna: unknown,in_game_behavior: unknown,streak_momentum: unknown,home_away: unknown,pressure_crowd: unknown,discipline: unknown,injury_load: unknown,coach_effect: unknown,star_dependency: unknown,press: weak_signal,ethics_risk: none,market_alignment: inactive_market,informed_by_links: none
 TAKIM ETİKET DUVARI (FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI)
-
-Bantlar ve Durum Etiketleri
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok (kayıt yok)
-inactive: kaynak var ama şu an aktif değil
-inactive_market: market verisi yok veya pasif
-unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
-weak_signal: tekil veya zayıf kaynak sinyali
-strong_signal: yalnız çoklu kaynak teyidi ile açılır
-active_unknown: segment var ama içeriği doğrulanmadı
-
-Kimlik Etiketleri
-identity_status: unknown | verified
-club_model_band: unknown | member_owned | private_owned | mixed
-stadium_capacity_band: unknown | small | medium | large
-
-Hedef ve Başarı Etiketleri
-trophy_band: none | exists
-trophy_scope: domestic_league | domestic_cup | super_cup | continental | other
-target_type: title | europe_qualification | relegation_avoid | points_target | other
-deviation_band: unknown | low | medium | high
-
-Kadro ve Transfer Etiketleri
-academy_output_band: unknown | low | medium | high
-star_transfer_tendency: unknown | low | medium | high
-fighter_profile_preference: unknown | low | medium | high
-sell_to_grow_model_band: unknown | low | medium | high
-loan_dependency_band: unknown | low | medium | high
-age_profile_trend_band: unknown | youth_focus | balanced | veteran_focus | unknown
+Bantlar ve Durum Etiketleri,unknown: veri yok / doğrulanmadı,none: alan geçerli ama içerik yok (kayıt yok),inactive: kaynak var ama şu an aktif değil,inactive_market: market verisi yok veya pasif,unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
+weak_signal: tekil veya zayıf kaynak sinyali,strong_signal: yalnız çoklu kaynak teyidi ile açılır,active_unknown: segment var ama içeriği doğrulanmadı
+Kimlik Etiketleri: identity_status: unknown | verified club_model_band: unknown | member_owned | private_owned | mixed stadium_capacity_band: unknown | small | medium | large
+Hedef ve Başarı EtiketleriÇ: trophy_band: none | exists trophy_scope: domestic_league | domestic_cup | super_cup | continental | othertarget_type: title | europe_qualification | relegation_avoid | points_target | other ,deviation_band: unknown | low | medium | high
+Kadro ve Transfer Etiketleri: academy_output_band: unknown | low | medium | high ,star_transfer_tendency: unknown | low | medium | high ,fighter_profile_preference: unknown | low | medium | high ,sell_to_grow_model_band: unknown | low | medium | high
+loan_dependency_band: unknown | low | medium | high .age_profile_trend_band: unknown | youth_focus | balanced | veteran_focus | unknown
 
 
 FAZ-16
-Takım Oyun DNA Etiketleri
-
-press_approach: unknown | high_press | mid_press | low_block
-block_preference: unknown | high_line | mid_block | low_block
-transition_priority: unknown | transition_first | balanced | possession_first
-set_play_patience: unknown | low_patience | balanced | high_patience
-wing_central_balance: unknown | wing_focus | balanced | central_focus
-defensive_line_risk: unknown | low_risk | balanced | high_risk
-set_piece_strength_band: unknown | low | medium | high
-set_piece_weakness_band: unknown | low | medium | high
-tempo_band: unknown | low | medium | high
-flexibility_band: unknown | low | medium | high
-creation_source_band: unknown | individual_quality | system | mixed | unknown
-press_resistance_band: unknown | low | medium | high
-sterile_possession_band: unknown | low | medium | high
-build_up_risk_band: unknown | low | medium | high
-Maç İçi Davranış Etiketleri
-match_start_behavior_band: unknown | low | medium | high
-concede_first_response_band: unknown | collapse | unstable | stable | comeback
-score_first_behavior_band: unknown | protect | control | push_more | unstable
-late_game_behavior_band: unknown | stable | volatile | aggressive | passive | unknown
-comeback_capacity_band: unknown | low | medium | high
-score_protection_discipline_band: unknown | low | medium | high
-risk_increase_trigger_band: unknown | early | mid | late | unknown
-panic_under_pressure_band: unknown | low | medium | high
-
-Seri ve Momentum Etiketleri
-
-streak_building_ability_band: unknown | low | medium | high
-win_streak_tendency_band: unknown | low | medium | high
-loss_streak_risk_band: unknown | low | medium | high
-draw_streak_tendency_band: unknown | low | medium | high
-post_loss_response_band: unknown | collapse | unstable | stable | rebound
-post_win_complacency_risk_band: unknown | low | medium | high
-post_draw_response_band: unknown | collapse | unstable | stable | rebound
-
+Takım Oyun DNA Etiketleri:
+press_approach: unknown | high_press | mid_press | low_block,block_preference: unknown | high_line | mid_block | low_block,transition_priority: unknown | transition_first | balanced | possession_first,set_play_patience: unknown | low_patience | balanced | high_patience
+wing_central_balance: unknown | wing_focus | balanced | central_focus,defensive_line_risk: unknown | low_risk | balanced | high_risk,set_piece_strength_band: unknown | low | medium | high,set_piece_weakness_band: unknown | low | medium | high
+tempo_band: unknown | low | medium | high,flexibility_band: unknown | low | medium | high,creation_source_band: unknown | individual_quality | system | mixed | unknown,press_resistance_band: unknown | low | medium | high,sterile_possession_band: unknown | low | medium | high,build_up_risk_band: unknown | low | medium | high
+Maç İçi Davranış Etiketleri:
+match_start_behavior_band: unknown | low | medium | high,concede_first_response_band: unknown | collapse | unstable | stable | comeback,score_first_behavior_band: unknown | protect | control | push_more | unstable,late_game_behavior_band: unknown | stable | volatile | aggressive | passive | unknown,comeback_capacity_band: unknown | low | medium | high,score_protection_discipline_band: unknown | low | medium | high,risk_increase_trigger_band: unknown | early | mid | late | unknown,panic_under_pressure_band: unknown | low | medium | high
+Seri ve Momentum Etiketleri:
+streak_building_ability_band: unknown | low | medium | high,win_streak_tendency_band: unknown | low | medium | high,loss_streak_risk_band: unknown | low | medium | high,draw_streak_tendency_band: unknown | low | medium | high,post_loss_response_band: unknown | collapse | unstable | stable | rebound,post_win_complacency_risk_band: unknown | low | medium | high,post_draw_response_band: unknown | collapse | unstable | stable | rebound
 İç Saha / Deplasman Etiketleri
-
-home_strength_band: unknown | low | medium | high
-away_resilience_band: unknown | low | medium | high
-travel_pressure_band: unknown | low | medium | high
-
+home_strength_band: unknown | low | medium | high,away_resilience_band: unknown | low | medium | hightravel_pressure_band: unknown | low | medium | high
 Baskı Etiketleri
-
-crowd_pressure_band: unknown | low | medium | high
-late_game_pressure_band: unknown | low | medium | high
-pressure_decision_risk_band: unknown | low | medium | high
-
+crowd_pressure_band: unknown | low | medium | high,late_game_pressure_band: unknown | low | medium | high,pressure_decision_risk_band: unknown | low | medium | high
 Disiplin Etiketleri
-
-yellow_card_tendency: unknown | low | medium | high
-red_card_tendency: unknown | low | medium | high
-aggression_band: unknown | low | medium | high
-dissent_protest_band: unknown | low | medium | high
-
+yellow_card_tendency: unknown | low | medium | high,red_card_tendency: unknown | low | medium | high,aggression_band: unknown | low | medium | high,dissent_protest_band: unknown | low | medium | high
 Sakatlık ve Yük Etiketleri
-
-load_collapse_band: unknown | low | medium | high
-rotation_resilience_band: unknown | low | medium | high
-
+load_collapse_band: unknown | low | medium | high,rotation_resilience_band: unknown | low | medium | high
 Basın Etiketleri
-
-press_theme_status: unknown | tracked
-signal_strength: weak_signal | strong_signal
-
+press_theme_status: unknown | tracked,signal_strength: weak_signal | strong_signal
 Etik ve Risk Etiketleri
-
-allegation_strength: none | weak_signal | strong_signal
-investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown
-financial_crisis_band: unknown | low | medium | high
-
+allegation_strength: none | weak_signal | strong_signal,investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown,financial_crisis_band: unknown | low | medium | high
 Market Etiketleri
-
-market_alignment_status: inactive_market | active_aligned | active_misaligned
-market_data_strength: none | weak | strong
-
+market_alignment_status: inactive_market | active_aligned | active_misaligned,market_data_strength: none | weak | strong
 Reference Bağ Etiketleri
-
-team_ref_status: unmapped | mapped
-league_ref_status: unmapped | mapped
-country_ref_status: unmapped | mapped
-
+team_ref_status: unmapped | mapped,league_ref_status: unmapped | mapped,country_ref_status: unmapped | mapped
 
 FAZ-17
 TAKIM SORU KÜTÜPHANESİ (FAZ-1 GENİŞ TARAMA SETİ — GENİŞLETİLMİŞ TAM)
@@ -5415,177 +4508,34 @@ Genel seri üretme kapasitesi düşük mü yüksek mi; streak_building_ability_b
 FAZ-18
 BAHİS ŞİRKETİ KARTI — FAZ-1 TESLİMİ 
 (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
-
 bookmaker_ref: UNKNOWN_BOOKMAKER_REF
 Kart Durumu: FAZ-1_SKELETON_ACTIVE
 Kart Politikası: Tek bookmaker_ref / Sıfırlanmaz / Market bağımsız büyür / Reference ile bağlanır / Unmapped korunur
 Üretim Notu: Bu teslim yalnız iskelet üretimidir. Reference_dictionary ve odds akışları Faz-2 doğrulama ve doldurma içindir. Veri yokken hiçbir alan boş bırakılmaz; unknown/none/inactive bantları deterministik kullanılır.
 
-BAHİS ŞİRKETİ KARTI — TAM PROFİL (FAZ-1 İSKELET)
-Kimlik Rafı
-bookmaker_ref: UNKNOWN_BOOKMAKER_REF
-brand_name: unknown
-short_name_alias: unknown
-name_variants: none
-website_domain_band: unknown
-headquarters_country_ref: unknown
-operating_countries_refs: none
-license_status_band: unknown
-identity_status: unknown
-
-Kaynak ve Entegrasyon Rafı
-data_provider_ref: unknown
-feed_schema_version: unknown
-odds_format_type: unknown
-timezone_handling_band: unknown
-schema_consistency_band: unknown
-provider_dependency_band: unknown
-system_latency_band: unknown
-odds_history_integrity_band: unknown
-
-Kapsam ve Ürün Rafı
-coverage_strength_by_league: unknown
-market_depth_band: unknown
-inactive_market_pattern: unknown
-event_coverage_gap_band: unknown
-opening_odds_availability_band: unknown
-inplay_coverage_band: unknown
-
-Oran Davranış DNA Rafı
-update_speed_band: unknown
-opening_timing_band: unknown
-reaction_speed_to_news_band: unknown
-volatility_band: unknown
-late_move_tendency_band: unknown
-revert_behavior_band: unknown
-line_vs_price_shift_preference: unknown
-cross_market_consistency_band: unknown
-repeat_bias_pattern_band: unknown
-
-Fiyatlama ve Marj Rafı
-margin_band: unknown
-margin_variation_by_league: unknown
-competitiveness_band: unknown
-market_leader_band: unknown
-reference_weight_band: unknown
-
-Bias ve Profil Rafı (Sadece Ölçüm)
-underdog_pricing_bias_band: unknown
-favorite_pricing_bias_band: unknown
-home_advantage_bias_band: unknown
-totals_line_aggressiveness_band: unknown
-handicap_line_shift_band: unknown
-cards_line_bias_band: unknown
-corners_line_bias_band: unknown
-
-Canlı Bahis Davranışı Rafı
-inplay_aggressiveness_band: unknown
-suspension_tendency_band: unknown
-inplay_suspend_pattern_band: unknown
-dialogue_freeze_behavior_band: unknown
-
-Anomali ve Kalite Rafı
-data_quality_badge: low
-missing_odds_frequency_band: unknown
-anomaly_spike_frequency_band: unknown
-source_outlier_tendency_band: unknown
-coverage_map:
-identity: unknown
-integration: unknown
-coverage: unknown
-odds_behavior: unknown
-pricing_margin: unknown
-bias_profile: unknown
-inplay: unknown
-anomaly_quality: unknown
-
-Etik ve Uyumluluk Rafı
-integrity_risk_profile: unknown
-disciplinary_case_history: none
-service_restriction_history: none
-allegation_strength: none
-investigation_status_band: unknown
-Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.
-
-Bağlantılar (informed_by)
-informed_by:
-odds_market_timeline: none
-market_library_refs: none
-team_refs: none
-match_refs: none
-Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
+BAHİS ŞİRKETİ KARTI — TAM PROFİL (FAZ-1 İSKELET) Kimlik Rafı
+bookmaker_ref: UNKNOWN_BOOKMAKER_REF brand_name: unknown,short_name_alias: unknown,name_variants: none,website_domain_band: unknown,headquarters_country_ref: unknown,operating_countries_refs: none,license_status_band: unknown,identity_status: unknown
+Kaynak ve Entegrasyon Rafı,data_provider_ref: unknown,feed_schema_version: unknown,odds_format_type: unknown,timezone_handling_band: unknown,schema_consistency_band: unknown,provider_dependency_band: unknown,system_latency_band: unknownodds_history_integrity_band: unknown
+Kapsam ve Ürün Rafı,coverage_strength_by_league: unknown,market_depth_band: unknown,inactive_market_pattern: unknown,event_coverage_gap_band: unknown,opening_odds_availability_band: unknown,inplay_coverage_band: unknown
+Oran Davranış DNA Rafı,update_speed_band: unknown,opening_timing_band: unknown,reaction_speed_to_news_band: unknown,volatility_band: unknown,late_move_tendency_band: unknown,revert_behavior_band: unknown,line_vs_price_shift_preference: unknown,cross_market_consistency_band: unknown,repeat_bias_pattern_band: unknown
+Fiyatlama ve Marj Rafı,margin_band: unknown,margin_variation_by_league: unknown,competitiveness_band: unknown,market_leader_band: unknown,reference_weight_band: unknown
+Bias ve Profil Rafı (Sadece Ölçüm),underdog_pricing_bias_band: unknown,favorite_pricing_bias_band: unknown,home_advantage_bias_band: unknown,totals_line_aggressiveness_band: unknown,handicap_line_shift_band: unknown,cards_line_bias_band:unknown,corners_line_bias_band: unknown
+Canlı Bahis Davranışı Rafı,inplay_aggressiveness_band: unknown,suspension_tendency_band: unknown,inplay_suspend_pattern_band: unknown,dialogue_freeze_behavior_band: unknown
+Anomali ve Kalite Rafı,data_quality_badge: low,missing_odds_frequency_band: unknown,anomaly_spike_frequency_band: unknown,source_outlier_tendency_band: unknown,coverage_map:,identity: unknown,integration: unknown,coverage: unknown,odds_behavior: unknown,pricing_margin: unknown,bias_profile: unknown,play: unknown,anomaly_quality: unknown
+Etik ve Uyumluluk Rafı,integrity_risk_profile: unknown,disciplinary_case_history: none,service_restriction_history: none,allegation_strength: none,investigation_status_band: unknown,Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.,Bağlantılar (informed_by),informed_by:,odds_market_timeline: none,market_library_refs: none,team_refs: none,match_refs: none,kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
 
 BAHİS ŞİRKETİ ETİKET DUVARI 
 (FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI)
-Bantlar ve Durum Etiketleri
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok (kayıt yok)
-inactive: kaynak var ama şu an aktif değil
-unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
-weak_signal: tekil veya zayıf kaynak sinyali
+Bantlar ve Durum Etiketleri,unknown: veri yok / doğrulanmadı,none: alan geçerli ama içerik yok (kayıt yok),inactive: kaynak var ama şu an aktif değil,unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı,weak_signal: tekil veya zayıf kaynak sinyali
 strong_signal: yalnız çoklu kaynak teyidi ile açılır
-
-Kimlik Etiketleri
-identity_status: unknown | verified
-license_status_band: unknown | licensed | restricted | unlicensed
-
-Entegrasyon Etiketleri
-timezone_handling_band: unknown | correct | inconsistent
-schema_consistency_band: unknown | stable | unstable
-provider_dependency_band: unknown | low | medium | high
-system_latency_band: unknown | low | medium | high
-odds_history_integrity_band: unknown | low | medium | high
-Kapsam Etiketleri
-market_depth_band: unknown | low | medium | high
-inactive_market_pattern: unknown | low | medium | high
-event_coverage_gap_band: unknown | low | medium | high
-opening_odds_availability_band: unknown | low | medium | high
-inplay_coverage_band: unknown | low | medium | high
-
-Oran Davranış Etiketleri
-update_speed_band: unknown | slow | medium | fast
-opening_timing_band: unknown | early | normal | late
-reaction_speed_to_news_band: unknown | slow | medium | fast
-volatility_band: unknown | low | medium | high
-late_move_tendency_band: unknown | low | medium | high
-revert_behavior_band: unknown | low | medium | high
-line_vs_price_shift_preference: unknown | line_shift | price_shift | mixed | unknown
-cross_market_consistency_band: unknown | low | medium | high
-repeat_bias_pattern_band: unknown | low | medium | high
-
-Fiyatlama Etiketleri
-margin_band: unknown | low | medium | high
-margin_variation_by_league: unknown | low | medium | high
-competitiveness_band: unknown | low | medium | high
-market_leader_band: unknown | low | medium | high
-reference_weight_band: unknown | low | medium | high
-
-Bias Etiketleri (Sadece Ölçüm)
-underdog_pricing_bias_band: unknown | low | medium | high
-favorite_pricing_bias_band: unknown | low | medium | high
-home_advantage_bias_band: unknown | low | medium | high
-totals_line_aggressiveness_band: unknown | low | medium | high
-handicap_line_shift_band: unknown | low | medium | high
-cards_line_bias_band: unknown | low | medium | high
-corners_line_bias_band: unknown | low | medium | high
-
-Canlı Bahis Etiketleri
-inplay_aggressiveness_band: unknown | low | medium | high
-suspension_tendency_band: unknown | low | medium | high
-inplay_suspend_pattern_band: unknown | low | medium | high
-dialogue_freeze_behavior_band: unknown | low | medium | high
-
-Anomali ve Kalite Etiketleri
-data_quality_badge: low | medium | high
-missing_odds_frequency_band: unknown | low | medium | high
-anomaly_spike_frequency_band: unknown | low | medium | high
-source_outlier_tendency_band: unknown | low | medium | high
-
-Etik ve Risk Etiketleri
-allegation_strength: none | weak_signal | strong_signal
-investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown
-integrity_risk_profile: unknown | low | medium | high
-
+Kimlik Etiketleri,identity_status: unknown | verified,license_status_band: unknown | licensed | restricted | unlicensed
+Entegrasyon Etiketleri,timezone_handling_band: unknown | correct | inconsistent,schema_consistency_band: unknown | stable | unstable,provider_dependency_band: unknown | low | medium | high,system_latency_band: unknown | low | medium | high
+odds_history_integrity_band: unknown | low | medium | high,Kapsam Etiketleri,market_depth_band: unknown | low | medium | high,inactive_market_pattern: unknown | low | medium | high,event_coverage_gap_band: unknown | low | medium | high,opening_odds_availability_band: unknown | low | medium | high,inplay_coverage_band: unknown | low | medium | high
+Oran Davranış Etiketleri,update_speed_band: unknown | slow | medium | fast,opening_timing_band: unknown | early | normal | late,reaction_speed_to_news_band: unknown | slow | medium | fast,volatility_band: unknown | low | medium | highlate_move_tendency_band: unknown | low | medium | high,line_vs_price_shift_preference: unknown | line_shift | price_shift | mixed | unknown,cross_market_consistency_band: unknown | low | medium | high,repeat_bias_pattern_band: unknown | low | medium | high
+Fiyatlama Etiketleri,margin_band: unknown | low | medium | high,margin_variation_by_league: unknown | low | medium | high,competitiveness_band: unknown | low | medium | high,market_leader_band: unknown | low | medium | high,reference_weight_band: unknown | low | medium | high,Bahis Etiketleri (Sadece Ölçüm),underdog_pricing_bias_band: unknown | low | medium | high,favorite_pricing_bias_band: unknown | low | medium | high,home_advantage_bias_band: unknown | low | medium | high,totals_line_aggressiveness_band: unknown | low | medium | high,handicap_line_shift_band: unknown | low | medium | high,cards_line_bias_band: unknown | low | medium | high,corners_line_bias_band: unknown | low | medium | high
+Canlı Bahis Etiketleri,inplay_aggressiveness_band: unknown | low | medium | high,suspension_tendency_band: unknown | low | medium | high,inplay_suspend_pattern_band: unknown | low | medium | high,dialogue_freeze_behavior_band: unknown | low | medium | high
+Anomali ve Kalite Etiketleri,data_quality_badge: low | medium | high,missing_odds_frequency_band: unknown | low | medium | high,anomaly_spike_frequency_band: unknown | low | medium | high,source_outlier_tendency_band: unknown | low | medium | high
+Etik ve Risk Etiketleri,allegation_strength: none | weak_signal | strong_signal,investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown,integrity_risk_profile: unknown | low | medium | high
 
 BAHİS ŞİRKETİ SORU KÜTÜPHANESİ (FAZ-1 GENİŞ TARAMA SETİ)
 Bu bahis şirketinin bookmaker_ref kimliği tekil mi, isim varyantları ve marka uzantıları var mı?
@@ -5636,7 +4586,6 @@ Fiyatlama “şüpheli” diye hüküm kurmadan, yalnız sapma ölçümüyle nas
 Bu firmanın canlı bahis akışında market kapatıp açma kararları “piyasa geneliyle” aynı mı farklı mı; source_outlier_tendency_band buna göre mi tutulmalı?
 Bu firmanın odds açılışında “korumacı” davranıp sonradan hızlanma paterni var mı; opening_to_mid_game_shift_band gerekir mi?
 Bu firmanın kapanış fiyatı (closing line) piyasa ortalamasından sistematik sapıyor mu; closing_bias_band nasıl ölçülmeli?
-
 Kapanış Notu: Bahis Şirketi Kartı — tamamlandı / dosyalanabilir çıktı
 
 FAZ-19
@@ -5647,201 +4596,16 @@ Kart Durumu: FAZ-1_SKELETON_ACTIVE
 Kart Politikası: Market listesi deterministik ve sabittir / Her market market_ref ile yaşar / İsimler serbest metin değildir / Provider map ile bağlanır / Unmapped korunur / Eksik veri inactive/unknown bantlarıyla taşınır
 Üretim Notu: Bu teslim yalnız ana market rafını kurar. Odds akışı ve BOOKMAKER_ALLOWLIST Faz-2’de marketlere bağlanır. Bu kütüphane bahis önerisi üretmez; yalnız zaman hizası ve bant sapması ölçer.
 
-MARKET KÜTÜPHANESİ — 30 ANA MARKET 
-(DETERMINİSTİK LİSTE)
-market_ref: FT_MKT_001
-market_name: 1X2 (Match Result)
-market_group: core_result
-required_fields: home_price | draw_price | away_price
-status: active
+MARKET KÜTÜPHANESİ — 30 ANA MARKET (DETERMINİSTİK LİSTE)
+market_ref: FT_MKT_001,market_name: 1X2 (Match Result),market_group: core_result,required_fields: home_price | draw_price | away_price,status: active,market_ref: FT_MKT_002,market_name: Double Chance,market_group: core_result,required_fields: 1X_price | 12_price | X2_price,status: active,market_ref: FT_MKT_003,market_name: Draw No Bet,market_group: core_result,required_fields: home_price | away_price,status: active,market_ref: FT_MKT_004,market_name: Asian Handicap,market_group: handicaprequired_fields: line | home_price | away_price,status: active,market_ref: FT_MKT_005,market_name: European Handicap,market_group: handicap,required_fields: line | home_price | away_price,status: active,market_ref: FT_MKT_006,market_name: Over/Under 0.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_007,market_name: Over/Under 1.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_008,market_name: Over/Under 2.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active
 
-market_ref: FT_MKT_002
-market_name: Double Chance
-market_group: core_result
-required_fields: 1X_price | 12_price | X2_price
-status: active
+market_ref: FT_MKT_009,market_name: Over/Under 3.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_010,market_name: Over/Under 4.5 Goals,market_group: totals,required_fields: line | over_price | under_price
+status: active,market_ref: FT_MKT_011,market_name: Both Teams To Score (BTTS),market_group: goals_btts,required_fields: yes_price | no_price,status: active,market_ref: FT_MKT_012,market_name: BTTS + Match Result,market_group: comborequired_fields:,combinations_price_map,status: active,market_ref: FT_MKT_013,market_name: Correct Score,market_group: score,required_fields: score_price_map,status: active,market_ref: FT_MKT_014,market_name: Half Time Result,market_group:,halftime,required_fields: home_price | draw_price | away_price,status: active,market_ref: FT_MKT_015,market_name: Half Time / Full Time,market_group: combo,required_fields: combinations_price_map,status: active,market_ref: FT_MKT_016market_name: Team Total Goals,market_group: team_totals,required_fields: team_side | line | over_price | under_price,status: active,market_ref: FT_MKT_017,market_name: First Team To Score,market_group: goals_timing,required_fields: home_price | away_price | no_goal_pricestatus: active,market_ref: FT_MKT_018,market_name: Last Team To Score,market_group: goals_timing,required_fields: home_price | away_price | no_goal_price,status: active
 
-market_ref: FT_MKT_003
-market_name: Draw No Bet
-market_group: core_result
-required_fields: home_price | away_price
-status: active
+market_ref: FT_MKT_019,market_name: Next Goal,market_group: inplay_goals,required_fields: home_price | away_price | no_goal_price,status: active,,market_ref: FT_MKT_020,market_name: Anytime Goalscorer,market_group: player_goalsrequired_fields: player_ref | yes_price,status: active,market_ref: FT_MKT_021,market_name: First Goalscorer,market_group: player_goals,required_fields: player_ref | yes_pricestatus: activ,market_ref: FT_MKT_022,market_name: Player Shots,market_group: player_shots,required_fields: player_ref | line | over_price | under_price,status: active,market_ref: FT_MKT_023,market_name: Player Shots on Target,market_group: player_shots,required_fields: player_ref | line | over_price | under_price,status: active,,market_ref: FT_MKT_024market_name: Total Cornersmarket_group: corners,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_025,market_name: Asian Corners,market_group: cornersrequired_fields: line | home_price | away_price,status: active,market_ref: FT_MKT_026,market_name: Team Corners,market_group: corners,required_fields: team_side | line | over_price | under_price,status: active,market_ref: FT_MKT_027,market_name: Total Cards,market_group: cards,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_028,market_name: Player Cards
+market_group: player_cards,required_fields: player_ref | yes_price,status: active,market_ref: FT_MKT_029,market_name: Penalty Awarded,market_group: penalties,required_fields: yes_price | no_pricestatus: active,market_ref: FT_MKT_030,market_name: Red Card,market_group: cards,required_fields: yes_price | no_price,status: active
 
-market_ref: FT_MKT_004
-market_name: Asian Handicap
-market_group: handicap
-required_fields: line | home_price | away_price
-status: active
-
-market_ref: FT_MKT_005
-market_name: European Handicap
-market_group: handicap
-required_fields: line | home_price | away_price
-status: active
-
-market_ref: FT_MKT_006
-market_name: Over/Under 0.5 Goals
-market_group: totals
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_007
-market_name: Over/Under 1.5 Goals
-market_group: totals
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_008
-market_name: Over/Under 2.5 Goals
-market_group: totals
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_009
-market_name: Over/Under 3.5 Goals
-market_group: totals
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_010
-market_name: Over/Under 4.5 Goals
-market_group: totals
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_011
-market_name: Both Teams To Score (BTTS)
-market_group: goals_btts
-required_fields: yes_price | no_price
-status: active
-
-market_ref: FT_MKT_012
-market_name: BTTS + Match Result
-market_group: combo
-required_fields: combinations_price_map
-status: active
-
-market_ref: FT_MKT_013
-market_name: Correct Score
-market_group: score
-required_fields: score_price_map
-status: active
-
-market_ref: FT_MKT_014
-market_name: Half Time Result
-market_group: halftime
-required_fields: home_price | draw_price | away_price
-status: active
-
-market_ref: FT_MKT_015
-market_name: Half Time / Full Time
-market_group: combo
-required_fields: combinations_price_map
-status: active
-
-market_ref: FT_MKT_016
-market_name: Team Total Goals
-market_group: team_totals
-required_fields: team_side | line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_017
-market_name: First Team To Score
-market_group: goals_timing
-required_fields: home_price | away_price | no_goal_price
-status: active
-
-market_ref: FT_MKT_018
-market_name: Last Team To Score
-market_group: goals_timing
-required_fields: home_price | away_price | no_goal_price
-status: active
-
-market_ref: FT_MKT_019
-market_name: Next Goal
-market_group: inplay_goals
-required_fields: home_price | away_price | no_goal_price
-status: active
-
-market_ref: FT_MKT_020
-market_name: Anytime Goalscorer
-market_group: player_goals
-required_fields: player_ref | yes_price
-status: active
-
-market_ref: FT_MKT_021
-market_name: First Goalscorer
-market_group: player_goals
-required_fields: player_ref | yes_price
-status: active
-
-market_ref: FT_MKT_022
-market_name: Player Shots
-market_group: player_shots
-required_fields: player_ref | line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_023
-market_name: Player Shots on Target
-market_group: player_shots
-required_fields: player_ref | line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_024
-market_name: Total Corners
-market_group: corners
-required_fields: line | over_price | under_price
-status: active
-market_ref: FT_MKT_025
-market_name: Asian Corners
-market_group: corners
-required_fields: line | home_price | away_price
-status: active
-
-market_ref: FT_MKT_026
-market_name: Team Corners
-market_group: corners
-required_fields: team_side | line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_027
-market_name: Total Cards
-market_group: cards
-required_fields: line | over_price | under_price
-status: active
-
-market_ref: FT_MKT_028
-market_name: Player Cards
-market_group: player_cards
-required_fields: player_ref | yes_price
-status: active
-
-market_ref: FT_MKT_029
-market_name: Penalty Awarded
-market_group: penalties
-required_fields: yes_price | no_price
-status: active
-
-market_ref: FT_MKT_030
-market_name: Red Card
-market_group: cards
-required_fields: yes_price | no_price
-status: active
-
-MARKET ETİKET DUVARI 
-(FAZ-1 DETERMINİSTİK)
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok
-inactive: kaynak var ama aktif değil
-unmapped: provider eşleşmesi yok
-active: takipte
-
-market_group: core_result | handicap | totals | goals_btts | combo | score | halftime | team_totals | goals_timing | inplay_goals | player_goals | player_shots | corners | cards | player_cards | penalties
-market_status: active | inactive
-required_fields_completeness: low | medium | high
-provider_mapping_status: unmapped | mapped
-odds_update_speed_band: unknown | slow | medium | fast
-market_latency_band: unknown | low | medium | high
+MARKET ETİKET DUVARI  (FAZ-1 DETERMINİSTİK),unknown: veri yok / doğrulanmadı,none: alan geçerli ama içerik yok,inactive: kaynak var ama aktif değil,unmapped: provider eşleşmesi yok,active: takipte,market_group: core_result | handicap | totals | goals_btts | combo | score | halftime | team_totals | goals_timing | inplay_goals | player_goals | player_shots | corners | cards | player_cards | penalties,market_status: active | inactive,required_fields_completeness: low | medium | high,provider_mapping_status: unmapped | mapped,odds_update_speed_band: unknown | slow | medium | fastmarket_latency_band: unknown | low | medium | high
 
 MARKET SORU KÜTÜPHANESİ (FAZ-1)
 Bu market provider akışında hangi isimle geliyor ve market_ref’e nasıl maplenecek?
@@ -5852,1185 +4616,285 @@ Bookmakerlar arası aynı markette sapma ölçümü hangi eşikle “anomali” 
 Bu markette line değişiyor mu yoksa fiyat mı değişiyor; line_vs_price_shift nasıl izlenecek?
 Market pasifse inactive mi none mı; hangi koşulda hangisi seçilecek?
 Yan market (alt tahta) geldiğinde bu market kütüphanesine mi, yoksa extended rafına mı girecek?
-
 Kapanış Notu: Market Kütüphanesi (30 Ana Market) — tamamlandı / dosyalanabilir çıktı
 
-FAZ-20
-ALT TAHTA MARKET KÜTÜPHANESİ — FAZ-1 TESLİMİ 
-(Niş / Extended Markets)
+FAZ-20: ALT TAHTA MARKET KÜTÜPHANESİ — FAZ-1 TESLİMİ  (Niş / Extended Markets) Bu, 30 ana marketin üstüne ek bir kütüphane katmanı gibi çalışır.,library_ref: FOOTBALL_EXTENDED_MARKET_LIBRARY_V1,Kart Durumu: FAZ-1_SKELETON_ACTIVE,Kart Politikası: Alt tahta marketler deterministik raflarda tutulur / Her market market_ref ile yaşar / Provider map ile bağlanır / Unmapped korunur / Eksik veri inactive/unknown bantlarıyla taşınır / Bu kütüphane bahis önerisi üretmez, yalnız sapma ve iz ölçer,Üretim Notu: Bu raf “veri gelsin gelmesin” kütüphanede hazır durur. Provider kapsamı yoksa inactive_market olarak işaretlenir.
 
-Bu, 30 ana marketin üstüne ek bir kütüphane katmanı gibi çalışır.
+ALT TAHTA MARKETLER — GENİŞ RAF LİSTESİ (DETERMINİSTİK),market_ref: FT_XMKT_001,market_name: Goal Time Bands (Gol Zaman Aralığı),market_group: goal_timing_bands,required_fields: band_window | yes_price | no_price,status: inactive,market_ref: FT_XMKT_002
+market_name: Goal In Both Halves,market_group: goal_timing_bands,required_fields: yes_price | no_price,status: inactiv,market_ref: FT_XMKT_003,market_name: First Half Over/Under (0.5/1.5/2.5),market_group: halftime_totals,required_fields: line | over_price | under_price,status: inactive,market_ref: FT_XMKT_004,market_name: Second Half Over/Under (0.5/1.5/2.5),market_group: secondhalf_totals,required_fields: line | over_price | under_price,status: inactive,market_ref: FT_XMKT_005,market_name: Team To Score In Both Halves
+market_group: team_goal_timing,required_fields: team_side | yes_price | no_price,status: inactive,market_ref: FT_XMKT_006,market_name: Clean Sheet,market_group: team_defense,required_fields: team_side | yes_price | no_price,status: inactive,market_ref: FT_XMKT_007
+market_name: Win To Nil,market_group: combo,required_fields: team_side | yes_price | no_price,status: inactive,market_ref: FT_XMKT_008,market_name: Draw No Bet (Half-Time),market_group: halftime_result,required_fields: home_price | away_price,status: inactive
+market_ref: FT_XMKT_009,market_name: Exact Goals (0/1/2/3/4/5+),market_group: exact_totals,required_fields: goal_count_price_map,status: inactive,,market_ref: FT_XMKT_010,market_name: Total Goals Odd/Even,market_group: totals_parity,required_fields: odd_price | even_price,status: inactive,market_ref: FT_XMKT_011,market_name: Team Total Goals (Exact),market_group: team_exact_totals,required_fields: team_side | goal_count_price_map,status: inactive,market_ref: FT_XMKT_012market_name: Winning Margin,market_group: margin,required_fields: margin_price_map,status: inactive,market_ref: FT_XMKT_013,market_name: To Win Either Half,market_group: halves_combo,required_fields: team_side | yes_price | no_price,status: inactive,market_ref: FT_XMKT_014,market_name: Result + Total Goals,market_group: combo,required_fields: combinations_price_map,status: inactive,market_ref: FT_XMKT_015,market_name: Result + Both Teams To Score,market_group: combo,required_fields: combinations_price_mapstatus: inactive market_ref: FT_XMKT_016,market_name: Time of First Goal,market_group: goal_timing_precision,required_fields: time_band_price_map,status: inactive,market_ref: FT_XMKT_017,market_name: Time of Last Goal,market_group: goal_timing_precision,required_fields: time_band_price_map,status: inactive,market_ref: FT_XMKT_018,market_name: No Goal,market_group: goals_btts,required_fields: yes_price | no_price,status: inactive,market_ref: FT_XMKT_019,market_name: Team To Score First + Match Result,market_group: combo,required_fields: combinations_price_map,status: inactive
 
-library_ref: FOOTBALL_EXTENDED_MARKET_LIBRARY_V1
-Kart Durumu: FAZ-1_SKELETON_ACTIVE
-Kart Politikası: Alt tahta marketler deterministik raflarda tutulur / Her market market_ref ile yaşar / Provider map ile bağlanır / Unmapped korunur / Eksik veri inactive/unknown bantlarıyla taşınır / Bu kütüphane bahis önerisi üretmez, yalnız sapma ve iz ölçer
-Üretim Notu: Bu raf “veri gelsin gelmesin” kütüphanede hazır durur. Provider kapsamı yoksa inactive_market olarak işaretlenir.
+market_ref: FT_XMKT_020,market_name: Penalty Missed,market_group: penalties,required_fields: yes_price | no_price,status: inactive,market_ref: FT_XMKT_021,market_name: VAR Review Occurs,market_group: var,required_fields: yes_price |no_price,statusin,active,market_ref: FT_XMKT_022,market_name: VAR Decision Overturned,market_group: var,required_fields: yes_price | no_price,status: inactive,market_ref: FT_XMKT_023,market_name: Offside Count (Team/Total),market_group: offsides,required_fields: side_or_total | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_024,market_name: Throw-Ins Count (Team/Total),market_group: throwins,required_fields: side_or_total | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_025,market_name: Goal Kicks Count (Team/Total)
+market_group: goalkicks,required_fields: side_or_total | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_026,market_name: Free Kicks Count (Team/Total),market_group: freekicks,required_fields: side_or_total | line | over_price | under_pricestatus: inactive,market_ref: FT_XMKT_027,market_name: Fouls Count (Team/Total),market_group: fouls,required_fields: side_or_total | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_028,market_name: Shots (Team/Total),market_group: shots,required_fields: side_or_total | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_029,market_name: Shots On Target (Team/Total),market_group: shots,required_fields: side_or_total  line | over_price  under_price,status: inactive,market_ref: FT_XMKT_030,market_name: Saves (Goalkeeper),market_group: goalkeeper,required_fields: player_ref | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_031,market_name: Player To Be Booked (Card),market_group: player_cards,required_fields: player_ref | yes_price,status: inactive,market_ref: FT_XMKT_032,market_name: Player Fouls Committed,market_group: player_fouls,required_fields: player_ref | line | over_price | under_price,status: inactive,market_ref:FT_XMKT_033,market_name:PlayerTackles,market_group.player_defense,required_fields: player_ref | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_034,market_name: Player Assists,market_group: player_assists,required_fields: player_ref | yes_price,status: inactive,market_ref: FT_XMKT_035,market_name: Player Passes (Total/Accurate),market_group: player_passing,required_fields: player_ref | line | over_price | under_price,status: inactive,market_ref: FT_XMKT_036,market_name: Player To Make a Shot On Target,market_group: player_shots,required_fields: player_ref | yes_pricestatus: inactive,market_ref: FT_XMKT_037,market_name: Corners Race (First to X),market_group: corners,required_fields: target_count | home_price | away_price,status: inactive,market_ref: FT_XMKT_038,market_name: Cards Race (First to X),market_group: cards,required_fields: target_count | home_price | away_price,status: inactive,market_ref: FT_XMKT_039,market_name: Team Booking Points,market_group: cards,required_fields: team_side | line | over_price | under_price,status: inactive
 
-ALT TAHTA MARKETLER — GENİŞ RAF LİSTESİ (DETERMINİSTİK)
-market_ref: FT_XMKT_001
-market_name: Goal Time Bands (Gol Zaman Aralığı)
-market_group: goal_timing_bands
-required_fields: band_window | yes_price | no_price
-status: inactive
+market_ref: FT_XMKT_040,market_name: Booking Points Match Total,market_group: cards,required_fields: line | over_price | under_price,status: inactive,market_ref: FT_XMKT_041,market_name: First Card (Team/Player),market_group: cards,required_fields: entity_ref yes_price
+status: inactive,market_ref: FT_XMKT_042,market_name: First Corner (Team),market_group: corners,required_fields: home_price | away_price | no_corner_price,status: inactive,market_ref: FT_XMKT_043,market_name: First Throw-In(Team),market_group:throwins,required_fields: home_price | away_pricestatus: inactive,market_ref: FT_XMKT_044,market_name: Next Card (In-Play),market_group: inplay_cards,required_fields: home_price | away_price | no_card_price,status: inactive,market_ref: FT_XMKT_045,market_name: Next Corner(InPlay),market_group: inplay_corners,required_fields: home_price | away_price | no_corner_price,status: inactive,market_ref: FT_XMKT_046,market_name: Next Offside (In-Play),market_group: inplay_offsides,required_fields: home_price | away_price | no_offside_price,status:inactive,market_ref: FT_XMKT_047,market_name: Player To Score 2+ Goals,market_group: player_goals,required_fields: player_ref | yes_price,status: inactive,market_ref: FT_XMKT_048market_name: Hat-trick Occurs,market_group: player_goals,required_fields: yes_price | no_price,status: inactive
+market_ref: FT_XMKT_049,market_name: Own Goal Occurs,market_group: goals_misc,required_fields: yes_price | no_price,status: inactive,market_ref: FT_XMKT_050,market_name: Goal In Added Time,market_group: goal_timing_bands,required_fields: yes_price | no_price,status: inactive
 
-market_ref: FT_XMKT_002
-market_name: Goal In Both Halves
-market_group: goal_timing_bands
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_003
-market_name: First Half Over/Under (0.5/1.5/2.5)
-market_group: halftime_totals
-required_fields: line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_004
-market_name: Second Half Over/Under (0.5/1.5/2.5)
-market_group: secondhalf_totals
-required_fields: line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_005
-market_name: Team To Score In Both Halves
-market_group: team_goal_timing
-required_fields: team_side | yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_006
-market_name: Clean Sheet
-market_group: team_defense
-required_fields: team_side | yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_007
-market_name: Win To Nil
-market_group: combo
-required_fields: team_side | yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_008
-market_name: Draw No Bet (Half-Time)
-market_group: halftime_result
-required_fields: home_price | away_price
-status: inactive
-
-market_ref: FT_XMKT_009
-market_name: Exact Goals (0/1/2/3/4/5+)
-market_group: exact_totals
-required_fields: goal_count_price_map
-status: inactive
-
-market_ref: FT_XMKT_010
-market_name: Total Goals Odd/Even
-market_group: totals_parity
-required_fields: odd_price | even_price
-status: inactive
-
-market_ref: FT_XMKT_011
-market_name: Team Total Goals (Exact)
-market_group: team_exact_totals
-required_fields: team_side | goal_count_price_map
-status: inactive
-
-market_ref: FT_XMKT_012
-market_name: Winning Margin
-market_group: margin
-required_fields: margin_price_map
-status: inactive
-
-market_ref: FT_XMKT_013
-market_name: To Win Either Half
-market_group: halves_combo
-required_fields: team_side | yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_014
-market_name: Result + Total Goals
-market_group: combo
-required_fields: combinations_price_map
-status: inactive
-
-market_ref: FT_XMKT_015
-market_name: Result + Both Teams To Score
-market_group: combo
-required_fields: combinations_price_map
-status: inactive
-
-market_ref: FT_XMKT_016
-market_name: Time of First Goal
-market_group: goal_timing_precision
-required_fields: time_band_price_map
-status: inactive
-
-market_ref: FT_XMKT_017
-market_name: Time of Last Goal
-market_group: goal_timing_precision
-required_fields: time_band_price_map
-status: inactive
-
-market_ref: FT_XMKT_018
-market_name: No Goal
-market_group: goals_btts
-required_fields: yes_price | no_price
-status: inactive
-market_ref: FT_XMKT_019
-market_name: Team To Score First + Match Result
-market_group: combo
-required_fields: combinations_price_map
-status: inactive
-
-market_ref: FT_XMKT_020
-market_name: Penalty Missed
-market_group: penalties
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_021
-market_name: VAR Review Occurs
-market_group: var
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_022
-market_name: VAR Decision Overturned
-market_group: var
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_023
-market_name: Offside Count (Team/Total)
-market_group: offsides
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_024
-market_name: Throw-Ins Count (Team/Total)
-market_group: throwins
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_025
-market_name: Goal Kicks Count (Team/Total)
-market_group: goalkicks
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_026
-market_name: Free Kicks Count (Team/Total)
-market_group: freekicks
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_027
-market_name: Fouls Count (Team/Total)
-market_group: fouls
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_028
-market_name: Shots (Team/Total)
-market_group: shots
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_029
-market_name: Shots On Target (Team/Total)
-market_group: shots
-required_fields: side_or_total | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_030
-market_name: Saves (Goalkeeper)
-market_group: goalkeeper
-required_fields: player_ref | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_031
-market_name: Player To Be Booked (Card)
-market_group: player_cards
-required_fields: player_ref | yes_price
-status: inactive
-
-market_ref: FT_XMKT_032
-market_name: Player Fouls Committed
-market_group: player_fouls
-required_fields: player_ref | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_033
-market_name: Player Tackles
-market_group: player_defense
-required_fields: player_ref | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_034
-market_name: Player Assists
-market_group: player_assists
-required_fields: player_ref | yes_price
-status: inactive
-
-market_ref: FT_XMKT_035
-market_name: Player Passes (Total/Accurate)
-market_group: player_passing
-required_fields: player_ref | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_036
-market_name: Player To Make a Shot On Target
-market_group: player_shots
-required_fields: player_ref | yes_price
-status: inactive
-
-market_ref: FT_XMKT_037
-market_name: Corners Race (First to X)
-market_group: corners
-required_fields: target_count | home_price | away_price
-status: inactive
-
-market_ref: FT_XMKT_038
-market_name: Cards Race (First to X)
-market_group: cards
-required_fields: target_count | home_price | away_price
-status: inactive
-
-market_ref: FT_XMKT_039
-market_name: Team Booking Points
-market_group: cards
-required_fields: team_side | line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_040
-market_name: Booking Points Match Total
-market_group: cards
-required_fields: line | over_price | under_price
-status: inactive
-
-market_ref: FT_XMKT_041
-market_name: First Card (Team/Player)
-market_group: cards
-required_fields: entity_ref | yes_price
-status: inactive
-
-market_ref: FT_XMKT_042
-market_name: First Corner (Team)
-market_group: corners
-required_fields: home_price | away_price | no_corner_price
-status: inactive
-
-market_ref: FT_XMKT_043
-market_name: First Throw-In (Team)
-market_group: throwins
-required_fields: home_price | away_price
-status: inactive
-
-market_ref: FT_XMKT_044
-market_name: Next Card (In-Play)
-market_group: inplay_cards
-required_fields: home_price | away_price | no_card_price
-status: inactive
-market_ref: FT_XMKT_045
-market_name: Next Corner (In-Play)
-market_group: inplay_corners
-required_fields: home_price | away_price | no_corner_price
-status: inactive
-
-market_ref: FT_XMKT_046
-market_name: Next Offside (In-Play)
-market_group: inplay_offsides
-required_fields: home_price | away_price | no_offside_price
-status: inactive
-
-market_ref: FT_XMKT_047
-market_name: Player To Score 2+ Goals
-market_group: player_goals
-required_fields: player_ref | yes_price
-status: inactive
-
-market_ref: FT_XMKT_048
-market_name: Hat-trick Occurs
-market_group: player_goals
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_049
-market_name: Own Goal Occurs
-market_group: goals_misc
-required_fields: yes_price | no_price
-status: inactive
-
-market_ref: FT_XMKT_050
-market_name: Goal In Added Time
-market_group: goal_timing_bands
-required_fields: yes_price | no_price
-status: inactive
-
-FAZ-21
-ALT TAHTA ETİKET DUVARI (FAZ-1 DETERMINİSTİK)
-unknown: veri yok / doğrulanmadı
-none: alan geçerli ama içerik yok
-inactive: provider yok veya market kapalı
-unmapped: provider eşleşmesi yok
-market_group: goal_timing_bands | halftime_totals | secondhalf_totals | team_goal_timing | team_defense | combo | halftime_result | exact_totals | totals_parity | team_exact_totals | margin | halves_combo | goal_timing_precision | penalties | var | offsides | throwins | goalkicks | freekicks | fouls | shots | goalkeeper | player_cards | player_fouls | player_defense | player_assists | player_passing | corners | cards | inplay_cards | inplay_corners | inplay_offsides | player_goals | goals_misc
-market_status: active | inactive
-required_fields_completeness: low | medium | high
-provider_mapping_status: unmapped | mapped
+FAZ-21:ALT TAHTA ETİKET DUVARI (FAZ-1 DETERMINİSTİK),unknown: veri yok / doğrulanmadı,none: alan geçerli ama içerik yok,inactive: provider yok veya market kapalı,unmapped: provider eşleşmesi yok,market_group: goal_timing_bands | halftime_totals | secondhalf_totals | team_goal_timing | team_defense | combo | halftime_result | exact_totals | totals_parity | team_exact_totals | margin | halves_combo | goal_timing_precision | penalties | var | offsides | throwins | goalkicks | freekicks | fouls | shots | goalkeeper | player_cards | player_fouls | player_defense | player_assists | player_passing | corners | cards | inplay_cards | inplay_corners | inplay_offsides | player_goals | goals_misc
+market_status: active | inactive,required_fields_completeness: low | medium | high,provider_mapping_status: unmapped | mapped
 
 ALT TAHTA SORU KÜTÜPHANESİ (FAZ-1)
-Bu niş market provider akışında hangi isimle geliyor ve market_ref’e nasıl maplenecek?
-Bu market “düşük hacimli / yüksek oranlı” davranış gösterebilir mi; anomaly_spike_risk bandı gerekir mi?
-Ana marketlerde sapma yokken alt tahtada sapma oluşuyorsa bu “iz” olarak nasıl işaretlenecek?
-Alt tahta markette line mı fiyat mı daha fazla oynuyor; line_vs_price_shift_preference nasıl tutulacak?
-Bu markette suspension ve geri açılma paterni normal mi anormal mi; inplay_suspend_pattern nasıl ölçülecek?
-Alt tahtada anomali görüldüğünde “kanıt” olarak hangi başka raflarla çapraz kontrol yapılacak; match_event mi basın mı yalnız odds mu?
-
+Bu niş market provider akışında hangi isimle geliyor ve market_ref’e nasıl maplenecek?,Bu market “düşük hacimli / yüksek oranlı” davranış gösterebilir mi; anomaly_spike_risk bandı gerekir mi?,Ana marketlerde sapma yokken alt tahtada sapma oluşuyorsa bu “iz” olarak nasıl işaretlenecek?,Alt tahta markette line mı fiyat mı daha fazla oynuyor; line_vs_price_shift_preference nasıl tutulacak?,Bu markette suspension ve geri açılma paterni normal mi anormal mi; inplay_suspend_pattern nasıl ölçülecek?,Alt tahtada anomali görüldüğünde “kanıt” olarak hangi başka raflarla çapraz kontrol yapılacak; match_event mi basın mı yalnız odds mu?
 Kapanış Notu: Alt Tahta Market Kütüphanesi — tamamlandı / dosyalanabilir çıktı
 Basın Etiket Duvarı v1.0
 ENUM SÖZLÜĞÜ v1.0
 MATCH SUPPORT TRACE FIELDS v1.0.1
 
-FAZ-22
-FUTBOL BASIN SORU KATALOĞU — ATOMİK GENİŞLETİLMİŞ KİLİTLİ LİSTE (v1.1)
-
-BÖLÜM A — HABER KAYDI / BAĞLAM KİMLİĞİ (HER HABERE ZORUNLU)
-Bu haber kaydı hangi UTC zaman damgası ile sabitlendi?
-Bu haberin yayın UTC zaman damgası var mı, unknown mu?
-Bu haberin kayıt UTC zaman damgası var mı, unknown mu?
-Bu haberin yayın saati ile kayıt saati arasındaki fark kaç dakikadır?
-Bu haberin kayıt saati yayın saatinden önce mi sonra mı?
-Bu haber sezon içi mi sezon arası mı?
-
-Bu haber “transfer dönemi” penceresinde mi?
-Bu haber hangi ülke_ref altında raflanacak?
-Bu haber country_ref map edilebildi mi, unmapped mi?
-Bu haber hangi lig_ref altında raflanacak?
-Bu haber lig_ref map edilebildi mi, unmapped mi?
-Bu haber hangi sezon_id içinde okunacak?
-
-Bu haber season_id map edilebildi mi, unmapped mi?
-Bu haber season_phase olarak hangi faza yazılacak (pre_season, season_start, season_mid, season_end, off_season)?
-Bu haber competition_type olarak hangi sınıfta (league, cup, continental, national_team) işlenecek?
-Bu haber cup_flag taşıyor mu (true/false)?
-Bu haber hangi team_ref ile ilişkilendirilecek?
-Bu haber team_ref map edilebildi mi, unmapped mi?
-
-Bu haber tek takıma mı bağlı yoksa iki takıma mı bağlı (tekil/çift takım bağlamı)?
-Bu haber iki takım bağlıysa rakip team_ref map edilebildi mi, unmapped mi?
-Bu haber match_ref’e bağlanabiliyor mu yoksa sadece takım bağlamında mı kalmalı?
-Bu haber match_ref map edilebildi mi, unmapped mi?
-Bu haber tek bir maç penceresine mi bağlı yoksa maç dışı genel haber mi?
-Bu haber bir maç öncesi penceresine mi ait yoksa maç sonrası penceresine mi ait?
-
-Bu haber “maç öncesi” mi “maç sonrası” mı “iki maç arası” mı?
-Bu haberin bağlandığı maçın kickoff_time_utc bilgisi kesin mi, unknown mu?
-Bu haber kickoff_time_utc ile haber zamanı arasında “aynı gün” ilişkisi var mı?
-Bu haberin kapsadığı pencere kaç gündür ve sabit mi?
-Bu haber pencere başlangıcı hesaplanabildi mi, unknown mu?
-Bu haber pencere bitişi hesaplanabildi mi, unknown mu?
-
-Bu haber “sezon içi maç haftası paketi” mi yoksa “off-season haftalık paket” mi?
-Bu haber tekil olay mı, çoklu olay seti mi?
-Bu haber çoklu olay setiyse alt olay sayısı çıkarılabildi mi, unknown mu?
-Bu haber aynı olayın kopyası mı, tekil olay mı?
-Bu haber aynı gün içinde birden fazla defa yeniden yayınlanmış mı?
-Bu haberin aynı içerikli kopyaları tekilleştirildi mi?
-
-Bu haber tekilleştirme anahtarı üretilebildi mi yoksa unmapped mi kaldı?
-Bu haberin birincil hedefi kimdir (takım/koç/oyuncu/hakem/yönetim/federasyon/taraftar)?
-Bu haber hedefi “kurum” mu “birey” mi?
-Bu haberin ikincil hedefi kimdir (rakip takım/oyuncu/kurum)?
-Bu haber tek takım mı, iki takım mı, lig geneli mi?
-Bu haber lig geneli ise team_ref boş mu?
-
-Bu haber aynı haftada başka haberlerle zincir oluşturuyor mu?
-Bu haber zincirin “ilk halkası” mı “devam halkası” mı?
-Bu haberin başlığı içerikle uyumlu mu?
-Bu haberde doğrudan alıntı var mı yoksa yorum aktarımı mı?
-Bu haberin dili açıklayıcı mı yoksa spekülatif mi?
+FAZ-22:FUTBOL BASIN SORU KATALOĞU — ATOMİK GENİŞLETİLMİŞ KİLİTLİ LİSTE (v1.1),BÖLÜM A — HABER KAYDI / BAĞLAM KİMLİĞİ (HER HABERE ZORUNLU)
+Bu haber kaydı hangi UTC zaman damgası ile sabitlendi?,Bu haberin yayın UTC zaman damgası var mı, unknown mu?,Bu haberin kayıt UTC zaman damgası var mı, unknown mu?,Bu haberin yayın saati ile kayıt saati arasındaki fark kaç dakikadır?
+Bu haberin kayıt saati yayın saatinden önce mi sonra mı?,Bu haber sezon içi mi sezon arası mı?,Bu haber “transfer dönemi” penceresinde mi?,Bu haber hangi ülke_ref altında raflanacak?,Bu haber country_ref map edilebildi mi, unmapped mi?,Bu haber hangi lig_ref altında raflanacak?,Bu haber lig_ref map edilebildi mi, unmapped mi?,Bu haber hangi sezon_id içinde okunacak?,Bu haber season_id map edilebildi mi, unmapped mi?,Bu haber season_phase olarak hangi faza yazılacak (pre_season, season_start, season_mid, season_end,off_season)?,Bu haber competition_type olarak hangi sınıfta (league, cup, continental, national_team) işlenecek?,Bu haber cup_flag taşıyor mu (true/false)?,Bu haber hangi team_ref ile ilişkilendirilecek?,Bu haber team_ref map edilebildi mi, unmapped mi?
+Bu haber tek takıma mı bağlı yoksa iki takıma mı bağlı (tekil/çift takım bağlamı)?,Bu haber iki takım bağlıysa rakip team_ref map edilebildi mi, unmapped mi?,Bu haber match_ref’e bağlanabiliyor mu yoksa sadece takım bağlamında mı kalmalı?,Bu haber match_ref map edilebildi mi, unmapped mi?,Bu haber tek bir maç penceresine mi bağlı yoksa maç dışı genel haber mi?,Bu haber bir maç öncesi penceresine mi ait yoksa maç sonrası penceresine mi ait?
+Bu haber “maç öncesi” mi “maç sonrası” mı “iki maç arası” mı?,Bu haberin bağlandığı maçın kickoff_time_utc bilgisi kesin mi, unknown mu?,Bu haber kickoff_time_utc ile haber zamanı arasında “aynı gün” ilişkisi var mı?,Bu haberin kapsadığı pencere kaç gündür ve sabit mi?
+Bu haber pencere başlangıcı hesaplanabildi mi, unknown mu?,Bu haber pencere bitişi hesaplanabildi mi, unknown mu?
+Bu haber “sezon içi maç haftası paketi” mi yoksa “off-season haftalık paket” mi?,Bu haber tekil olay mı, çoklu olay seti mi?,Bu haber çoklu olay setiyse alt olay sayısı çıkarılabildi mi, unknown mu?,Bu haber aynı olayın kopyası mı, tekil olay mı?,Bu haber aynı gün içinde birden fazla defa yeniden yayınlanmış mı?,Bu haberin aynı içerikli kopyaları tekilleştirildi mi?
+Bu haber tekilleştirme anahtarı üretilebildi mi yoksa unmapped mi kaldı?,Bu haberin birincil hedefi kimdir (takım/koç/oyuncu/hakem/yönetim/federasyon/taraftar)?,Bu haber hedefi “kurum” mu “birey” mi?,Bu haberin ikincil hedefi kimdir (rakip takım/oyuncu/kurum)?Bu haber tek takım mı, iki takım mı, lig geneli mi?,Bu haber lig geneli ise team_ref boş mu?
+Bu haber aynı haftada başka haberlerle zincir oluşturuyor mu?,Bu haber zincirin “ilk halkası” mı “devam halkası” mı?,Bu haberin başlığı içerikle uyumlu mu?,Bu haberde doğrudan alıntı var mı yoksa yorum aktarımı mı?,Bu haberin dili açıklayıcı mı yoksa spekülatif mi?
 Bu haberin dili “kesin” mi “iddia” mı?
-
-Bu haberde isimler net mi yoksa belirsiz kaynak dili mi var?
-Bu haberde isimler net ama map edilemedi mi?
-Bu haberde sayısal veri var mı yoksa anlatı mı?
-Bu haber doğrulandı mı, yalanlandı mı, güncellendi mi?
-Bu haber bir “ilk versiyon” mu “güncelleme” mi?
+Bu haberde isimler net mi yoksa belirsiz kaynak dili mi var?,Bu haberde isimler net ama map edilemedi mi?,Bu haberde sayısal veri var mı yoksa anlatı mı?,Bu haber doğrulandı mı, yalanlandı mı, güncellendi mi?,Bu haber bir “ilk versiyon” mu “güncelleme” mi?
 Bu haber önceki versiyonla çelişiyor mu?
 
 BÖLÜM B — ADRESLEME VE DOSYALAMA DUVARI (KÜTÜPHANECİ)
-Bu haber hangi ülke/lig/sezon bağlamına bağlıdır?
-Bu haber hangi organizasyon tipine bağlıdır (lig/kupa/kıtasal/milli takım)?
-Bu haberin bağlandığı yarışma sınıfı nedir (Tier-1/Tier-2/Cups)?
-Bu haberin kaynak URL’i var mı, yok mu?
-Bu haber URL formatı okunabilir mi yoksa bozuk mu?
-Bu haberin kaynak domain’i belirlenebiliyor mu?
-
-Bu haber domain allowlist içinde mi?
-Bu haberin canonical_url’i üretilebildi mi?
-Bu haber canonical_url ile kaynak URL aynı mı farklı mı?
-Bu haber bir ajans geçişi mi yoksa özgün içerik mi?
-Bu haber “doğrudan kaynak” mı yoksa “alıntı / reprint” mi?
-Bu haber alıntı ise birincil kaynak tespit edilebildi mi?
-
-Bu haberin içinde geçen özel isimler (takım, oyuncu, hoca, hakem) net map edilebildi mi?
-Bu haberde entity sayısı çıkarıldı mı?
-Bu haberin içinde geçen özel isimlerden map edilemeyen var mı, varsa hangileri unmapped kaldı?
-Bu haberin metni dil olarak hangi dilde yazılmış?
-Bu haber dil tespiti güvenilir mi, low mu?
-Bu haberin çeviri olduğu tespit edilebiliyor mu?
-Bu haberin “başlık + gövde” tutarlılığı var mı?
-
-Bu haberin başlığı tık tuzağı (clickbait) diline yakın mı, değil mi?
-Bu haberin gövdesi gerçek bilgi mi yoksa yorum dili mi ağırlıklı?
-Bu haber gövdesinde “duygu dili” baskın mı?
-Bu haberin görsel/video referansı var mı, yok mu?
-Bu haber görsel/video referansı olayla doğrudan ilişkili mi?
-Bu haberin kaynak gösterimi açık mı, kapalı mı?
-Bu haber kaynak gösterimi var ama muğlak mı?
+Bu haber hangi ülke/lig/sezon bağlamına bağlıdır?,Bu haber hangi organizasyon tipine bağlıdır (lig/kupa/kıtasal/milli takım)?,Bu haberin bağlandığı yarışma sınıfı nedir (Tier-1/Tier-2/Cups)?,Bu haberin kaynak URL’i var mı, yok mu?,Bu haber URL formatı okunabilir mi yoksa bozuk mu?,Bu haberin kaynak domain’i belirlenebiliyor mu?,Bu haber domain allowlist içinde mi?,Bu haberin canonical_url’i üretilebildi mi?,Bu haber canonical_url ile kaynak URL aynı mı farklı mı?,Bu haber bir ajans geçişi mi yoksa özgün içerik mi?,Bu haber “doğrudan kaynak” mı yoksa “alıntı / reprint” mi?,Bu haber alıntı ise birincil kaynak tespit edilebildi mi?,Bu haberin içinde geçen özel isimler (takım, oyuncu, hoca, hakem) net map edilebildi mi?,Bu haberde entity sayısı çıkarıldı mı?,Bu haberin içinde geçen özel isimlerden map edilemeyen var mı, varsa hangileri unmapped kaldı?,Bu haberin metni dil olarak hangi dilde yazılmış?,Bu haber dil tespiti güvenilir mi, low mu?,Bu haberin çeviri olduğu tespit edilebiliyor mu?,Bu haberin “başlık + gövde” tutarlılığı var mı?
+Bu haberin başlığı tık tuzağı (clickbait) diline yakın mı, değil mi?,Bu haberin gövdesi gerçek bilgi mi yoksa yorum dili mi ağırlıklı?,Bu haber gövdesinde “duygu dili” baskın mı?,Bu haberin görsel/video referansı var mı, yok mu?,Bu haber görsel/video referansı olayla doğrudan ilişkili mi?,Bu haberin kaynak gösterimi açık mı, kapalı mı?,Bu haber kaynak gösterimi var ama muğlak mı?
 
 BÖLÜM C — KAYNAK KİMLİĞİ VE DOĞRULUK PROFİLİ
-Bu haber tek kaynak mı çoklu kaynak mı?
-Bu haberin kaynakları birbirini doğruluyor mu yoksa ayrışıyor mu?
-Bu haber farklı kaynaklarda aynı gün çıktı mı?
-Bu haberin birincil kaynağı resmî mi gayriresmî mi?
-Bu haber hangi yayın_organı_ref ile eşleşti?
-Bu yayın organı allowlist içinde mi?
-
-Bu yayın organı lig özelinde düzenli haber üretmiş mi?
-Bu yayın organı takım özelinde aşırı yoğun haber üretiyor mu?
-Bu haberin yazarı/editörü adı metinden çekilebildi mi?
-Bu haberin yazarı/editörü map edilebildi mi?
-Bu haber “staff writer” gibi anonim bir yazar mı?
-Bu haber “editorial desk” gibi toplu editoryal imza mı?
-
-Bu yazar için örneklem yeterli mi, low sample mı?
-Bu yazar geçmişte aynı tema türünde isabetli mi?
-Bu yazar geçmişte aynı tema türünde gürültü üretiyor mu?
-Bu yayın organı haberleri maç sonrası yeniden yazma eğilimi taşıyor mu?
-Bu haber bir düzeltme (correction) içeriyor mu?
-Bu haber bir yalanlama (denial) içeriyor mu?
-
-Bu haber bir resmi açıklama alıntısı içeriyor mu?
-Bu haberin birincil kaynağı kulüp mü?
-Bu haberin birincil kaynağı federasyon mu?
-Bu haberin birincil kaynağı oyuncu mu?
-Bu haberin birincil kaynağı menajer mi?
-Bu haberin birincil kaynağı teknik direktör mü?
-Bu haber maçtan sonra doğrulandı mı?
-
-Bu haber maçtan sonra çöktü mü?
-Bu haber daha sonra düzeltildi mi?
-Bu haber birden fazla kez farklı sürümle yayınlandı mı?
-Bu haber çelişkili bilgi içeriyor mu?
-Bu çelişki “tarih” mi “isim” mi “kulüp” mü “rakam” mı?
-Bu haberin kanıt zinciri kalitesi yeterli mi yoksa yalnız bağlam mı?
-Bu haber “ilk sinyal” mi “sonradan hikâye” mi?
+Bu haber tek kaynak mı çoklu kaynak mı?,Bu haberin kaynakları birbirini doğruluyor mu yoksa ayrışıyor mu?,Bu haber farklı kaynaklarda aynı gün çıktı mı?,Bu haberin birincil kaynağı resmî mi gayriresmî mi?,Bu haber hangi yayın_organı_ref ile eşleşti?,Bu yayın organı allowlist içinde mi?,Bu yayın organı lig özelinde düzenli haber üretmiş mi?,Bu yayın organı takım özelinde aşırı yoğun haber üretiyor mu?,Bu haberin yazarı/editörü adı metinden çekilebildi mi?,Bu haberin yazarı/editörü map edilebildi mi?Bu haber “staff writer” gibi anonim bir yazar mı?,Bu haber “editorial desk” gibi toplu editoryal imza mı?,Bu yazar için örneklem yeterli mi, low sample mı?,Bu yazar geçmişte aynı tema türünde isabetli mi?,Bu yazar geçmişte aynı tema türünde gürültü üretiyor mu?,Bu yayın organı haberleri maç sonrası yeniden yazma eğilimi taşıyor mu?,Bu haber bir düzeltme (correction) içeriyor mu?,Bu haber bir yalanlama (denial) içeriyor mu?,Bu haber bir resmi açıklama alıntısı içeriyor mu?,Bu haberin birincil kaynağı kulüp mü?,Bu haberin birincil kaynağı federasyon mu?,Bu haberin birincil kaynağı oyuncu mu?,Bu haberin birincil kaynağı menajer mi?,Bu haberin birincil kaynağı teknik direktör mü?,Bu haber maçtan sonra doğrulandı mı?,Bu haber maçtan sonra çöktü mü?,Bu haber daha sonra düzeltildi mi?,Bu haber birden fazla kez farklı sürümle yayınlandı mı?,Bu haber çelişkili bilgi içeriyor mu?,Bu çelişki “tarih” mi “isim” mi “kulüp” mü “rakam” mı?,Bu haberin kanıt zinciri kalitesi yeterli mi yoksa yalnız bağlam mı?,Bu haber “ilk sinyal” mi “sonradan hikâye” mi?
 
 BÖLÜM D — TEMA SINIFLANDIRMA (ÜST KONU)
-Bu haberin ana teması yönetim mi?
-Bu haberin ana teması finans mı?
-Bu haberin ana teması transfer mi?
-Bu haberin ana teması sakatlık mı?
-Bu haberin ana teması kadro seçimi mi?
-Bu haberin ana teması teknik direktör kararı mı?
-
-Bu haberin ana teması taktik/oyun planı mı?
-Bu haberin ana teması disiplin/ceza mı?
-Bu haberin ana teması hakem/VAR mi?
-Bu haberin ana teması taraftar/tribün mü?
-Bu haberin ana teması antrenman/kamp mı?
-Bu haberin ana teması iç kriz/soyuna odası mı?
-
-Bu haberin ana teması basın toplantısı mı?
-Bu haberin ana teması kulüp içi çatışma mı?
-Bu haberin ana teması yayıncı/TV anlaşmazlığı mı?
-Bu haberin ana teması federasyon kararı mı?
-Bu haberin ana teması ceza kurulu kararı mı?
-Bu haberin ana teması güvenlik olayları mı?
-
-Bu haberin ana teması saha dışı skandal mı?
-Bu haberin ana teması doping iddiası mı?
-Bu haberin ana teması altyapı/genç oyuncu mu?
-Bu haberin ana teması milli takım çağrısı mı?
-Bu haber birden fazla ana tema taşıyor mu?
+Bu haberin ana teması yönetim mi?,Bu haberin ana teması finans mı?,Bu haberin ana teması transfer mi?,Bu haberin ana teması sakatlık mı?,Bu haberin ana teması kadro seçimi mi?,Bu haberin ana teması teknik direktör kararı mı?,Bu haberin ana teması taktik/oyun planı mı?
+Bu haberin ana teması disiplin/ceza mı?,Bu haberin ana teması hakem/VAR mi?,Bu haberin ana teması taraftar/tribün mü?,Bu haberin ana teması antrenman/kamp mı?,Bu haberin ana teması iç kriz/soyuna odası mı?,Bu haberin ana teması basın toplantısı mı?
+Bu haberin ana teması kulüp içi çatışma mı?,Bu haberin ana teması yayıncı/TV anlaşmazlığı mı?,Bu haberin ana teması federasyon kararı mı?,Bu haberin ana teması ceza kurulu kararı mı?,Bu haberin ana teması güvenlik olayları mı?Bu haberin ana teması saha dışı skandal mı?
+Bu haberin ana teması doping iddiası mı?,Bu haberin ana teması altyapı/genç oyuncu mu?,Bu haberin ana teması milli takım çağrısı mı?,Bu haber birden fazla ana tema taşıyor mu?
 
 BÖLÜM E — TON VE YÖNLENDİRME BANTLARI
-Bu haber tonu olumlu mu?
-Bu haber tonu olumsuz mu?
-Bu haber tonu karma mı?
-Bu haber tonu nötr mü?
-Bu haber dili provokatif mi?
-Bu haber dili sakin mi?
-Bu haber dili panik üretiyor mu?
-
-Bu haber dili güven telkin ediyor mu?
-Bu haber dili baskı üretiyor mu?
-Bu haber dili “kriz büyütme” eğilimi taşıyor mu?
-Bu haber dili “yumuşatma / toparlama” eğilimi taşıyor mu?
-Bu haber içinde doğrudan hedef gösterme var mı?
-Bu haber içinde kişisel saldırı dili var mı?
-
-Bu haber içinde taraftarı kışkırtan ifade var mı?
-Bu haber içinde kulüp yönetimine açık çağrı var mı?
-Bu haber içinde teknik direktöre istifa baskısı var mı?
-Bu haber içinde oyuncuya yönelik disiplin baskısı var mı?
-Bu haber içinde hakem hedef gösterme var mı?
-Bu haber içinde federasyon hedef gösterme var mı?
-
-Bu haber içinde “son dakika” dili var mı?
-Bu haber içinde “kesin bilgi” iddiası var mı?
-Bu haber içinde “kulüp kaynakları” gibi muğlak kaynak dili var mı?
-Bu haber dili “tehdit” çağrışımı taşıyor mu?
-Bu haber dili “linç” çağrışımı taşıyor mu?
+Bu haber tonu olumlu mu?,Bu haber tonu olumsuz mu?,Bu haber tonu karma mı?,Bu haber tonu nötr mü?,Bu haber dili provokatif mi?,Bu haber dili sakin mi?,Bu haber dili panik üretiyor mu?,Bu haber dili güven telkin ediyor mu?,Bu haber dili baskı üretiyor mu?Bu haber dili “kriz büyütme” eğilimi taşıyor mu?,Bu haber dili “yumuşatma / toparlama” eğilimi taşıyor mu?,Bu haber içinde doğrudan hedef gösterme var mı?,Bu haber içinde kişisel saldırı dili var mı?,Bu haber içinde taraftarı kışkırtan ifade var mı?,Bu haber içinde kulüp yönetimine açık çağrı var mı?,Bu haber içinde teknik direktöre istifa baskısı var mı?,Bu haber içinde oyuncuya yönelik disiplin baskısı var mı?,Bu haber içinde hakem hedef gösterme var mı?,Bu haber içinde federasyon hedef gösterme var mı?,Bu haber içinde “son dakika” dili var mı?
+Bu haber içinde “kesin bilgi” iddiası var mı?,Bu haber içinde “kulüp kaynakları” gibi muğlak kaynak dili var mı?,Bu haber dili “tehdit” çağrışımı taşıyor mu?,Bu haber dili “linç” çağrışımı taşıyor mu?
 
 BÖLÜM F — TAKIM GENEL HABERİ (KULÜP / KADRO / SEZON STRATEJİSİ)
-Bu haber kulüp yönetimiyle mi ilgili?
-Bu haber sportif direktör veya üst yönetim kararlarını içeriyor mu?
-Bu haber takımın sezon hedefini değiştiren bir söylem taşıyor mu?
-Bu haber hedef değişimi “yüksek hedef” mi “hedef düşürme” mi?
-Bu haber kadro istikrarını etkileyen bir problem içeriyor mu?
-Bu haber kadro istikrarını etkileyen problem “saklık yoğunluğu” mu “transfer belirsizliği” mi?
-
-Bu haber oyuncu huzursuzluğu veya soyunma odası gerilimi teması taşıyor mu?
-Bu haber “hoca” ile “oyuncu grubu” gerilimi mi?
-Bu haber “oyuncu-oyuncu” gerilimi mi?
-Bu haber takım içinde “liderlik boşluğu” teması taşıyor mu?
-Bu haber takımın iç disipliniyle ilgili bir karar içeriyor mu?
-Bu haber disiplin kararı “ceza” mı “uyarı” mı?
-Bu haber antrenman düzeninde değişiklik içeriyor mu?
-
-Bu haber antrenman değişikliği “saat” mi “yük” mü “metot” mu?
-Bu haber kamp / seyahat / hazırlık programı içeriyor mu?
-Bu haber hazırlık programı “iptal” mi “uzama” mı “yer değişimi” mi?
-Bu haber yoğun fikstür veya yorgunluk teması taşıyor mu?
-Bu haber rotasyon planını etkileyen bir baskı içeriyor mu?
-Bu haber rotasyon baskısı “zorunlu” mu “tercih” mi?
-
-Bu haber kulübün ekonomik durumu veya maaş ödemeleriyle ilgili mi?
-Bu haber maaş konusu “gecikme” mi “eksik ödeme” mi “tam ödeme” mi?
-Bu haber prim / bonus / ödeme gecikmesi gibi motivasyon etkisi taşıyor mu?
-Bu haber takım içinde gruplar oluştuğu iddiası taşıyor mu?
-Bu haber gruplar “yerli-yabancı” mı “genç-yaşlı” mı?
-Bu haber oyuncuların teknik direktöre güveni teması taşıyor mu?
-
-Bu haber yönetim-teknik ekip çatışması içeriyor mu?
-Bu haber taraftar baskısının kulüp kararlarını etkilediğini söylüyor mu?
-Bu haber takımın kadro dışı kararlarını içeriyor mu?
-Bu haber kadro dışı “disiplin” mi “performans” mı “transfer” mi?
-Bu haber takımın sakatlık yönetimiyle ilgili bir problem içeriyor mu?
-Bu haber sakatlık yönetimi “yanlış yükleme” iddiası mı?
-
-Bu haber kulüp içinde hukuki süreç / dava / ceza içeriyor mu?
-Bu haber hukuki süreç “para cezası” mı “transfer yasağı” mı?
-Bu haber kulüp içi güvenlik / tesis / stat problemi içeriyor mu?
-Bu haber stat sorunu “zemin” mi “seyirci” mi “güvenlik” mi?
-Bu haber takımın iç saha atmosferini büyüten bir gündem mi?
-Bu haber takımın deplasman baskısını büyüten bir gündem mi?
+Bu haber kulüp yönetimiyle mi ilgili?,Bu haber sportif direktör veya üst yönetim kararlarını içeriyor mu?,Bu haber takımın sezon hedefini değiştiren bir söylem taşıyor mu?,Bu haber hedef değişimi “yüksek hedef” mi “hedefdüşürme”,mi?,Bu,haber,kadro,istikrarınıetkileyen bir problem içeriyor mu?,Bu haber kadro istikrarını etkileyen problem “saklık yoğunluğu” mu “transfer belirsizliği” mi?,Bu haber oyuncu huzursuzluğu veya soyunma odası gerilimi teması taşıyor mu?,Bu haber “hoca” ile “oyuncu grubu” gerilimimi?,Bu,haber“oyuncu-oyuncu” gerilimi mi?,Bu haber takım içinde “liderlik boşluğu” teması taşıyor mu?,Bu haber takımın iç disipliniyle ilgili bir karar içeriyor mu?,Bu haber disiplin kararı “ceza” mı “uyarı” mı?Bu haber antrenman düzeninde değişiklik içeriyor mu?,Bu haberantrenman değişikliği “saat” mi “yük” mü “metot” mu?,Bu haber kamp / seyahat / hazırlık programı içeriyor mu?,Bu haber hazırlık programı “iptal” mi “uzama” mı “yer değişimi” mi?,Bu haber yoğun fikstür veya yorgunluk teması taşıyor mu?,Bu haber rotasyon planını etkileyen bir baskı içeriyor mu?,Bu haber rotasyon baskısı “zorunlu” mu “tercih” mi?,Bu haber kulübün ekonomik durumu veya maaş ödemeleriyle ilgili mi?,Bu haber maaş konusu “gecikme” mi “eksik ödeme” mi “tam ödeme” mi?,Bu haber prim / bonus / ödeme gecikmesi gibi motivasyon etkisi taşıyor mu?,Bu haber takım içinde gruplar oluştuğu iddiası taşıyor mu?,Bu haber gruplar “yerli-yabancı” mı “genç-yaşlı” mı?,Bu haber oyuncuların teknik direktöre güveni teması taşıyor mu?,Bu haber yönetim-teknik ekip çatışması içeriyor mu?Bu haber taraftar baskısının Kulüp kararlarını etkilediğini söylüyor mu?,Bu haber takımın kadro dışı kararlarını içeriyor mu?,Bu haber kadro dışı “disiplin” mi “performans” mı “transfer” mi?,Bu haber takımın sakatlık yönetimiyle ilgili bir problem içeriyor mu?,Bu haber sakatlık yönetimi “yanlış yükleme” iddiası mı?,Bu haber kulüp içinde hukuki süreç / dava / ceza içeriyor mu?,Bu haber hukuki süreç “para cezası” mı “transfer yasağı” mı?,Bu haber kulüp içi güvenlik / tesis / stat problemi içeriyor mu?,Bu haber stat sorunu “zemin” mi “seyirci” mi “güvenlik” mi?
+Bu haber takımın iç saha atmosferini büyüten bir gündem mi?,Bu haber takımın deplasman baskısını büyüten bir gündem mi?
 
 BÖLÜM G — TEKNİK DİREKTÖR HABERİ (KOÇ)
-Bu haberin hedefi teknik direktör mü?
-Bu haber teknik direktörün görev güvenliğiyle mi ilgili?
-Bu haber “istifa” mı “kovulma” mı “ultimatom” mu?
-Bu haber teknik direktörün yönetimle gerilim yaşadığını söylüyor mu?
-Bu haber gerilim “transfer” mi “hedef” mi “yetki” mi?
-Bu haber teknik direktörün oyuncularla gerilim yaşadığını söylüyor mu?
-
-Bu haber gerilim “yıldız oyuncu” mu “grup” mu?
-Bu haber teknik direktörün basın toplantısı çıkışı mı?
-Bu haber teknik direktörün maç öncesi plan beyanı içeriyor mu?
-Bu haber teknik direktörün maç sonrası açıklaması mı?
-Bu haber teknik direktörün hakem/VAR açıklaması içeriyor mu?
-Bu haber hakem/VAR açıklaması “sakin” mi “sert” mi?
-
-Bu haber teknik direktörün kadro seçiminde zorlandığını söylüyor mu?
-Bu haber zorlanma “sakatlık” mı “yorgunluk” mu “ceza” mı?
-Bu haber teknik direktörün rotasyon tercihleriyle ilgili mi?
-Bu haber teknik direktörün oyuncu disiplini yaklaşımıyla ilgili mi?
-Bu haber disiplin yaklaşımı “sertleşme” mi “yumuşama” mı?
-Bu haber teknik direktörün kendi ekibinde değişiklik yapacağını söylüyor mu?
-
-Bu haber teknik direktörün antrenman metodu değişimini söylüyor mu?
-Bu haber teknik direktörün “takım ruhu / birlik” mesajı mı?
-Bu haber teknik direktörün “kriz yönetimi” kapasitesini test eden bir gündem mi?
-Bu haber teknik direktörün “bahane” dili taşıdığı iddiası mı?
+Bu haberin hedefi teknik direktör mü?,Bu haber teknik direktörün görev güvenliğiyle mi ilgili?,Bu haber “istifa” mı “kovulma” mı “ultimatom” mu?,Bu haber teknik direktörün yönetimle gerilim yaşadığını söylüyor mu?,Bu haber gerilim “transfer” mi “hedef” mi “yetki” mi?Bu haber teknik direktörün oyuncularla gerilim yaşadığını söylüyor mu?,Bu haber gerilim “yıldız oyuncu” mu “grup” mu?,Bu haber teknik direktörün basın toplantısı çıkışı mı?,Bu haber teknik direktörün maç öncesi plan beyanı içeriyor mu?,Bu haber teknik direktörün maç sonrası açıklaması mı?,Bu haber teknik direktörün hakem/VAR açıklaması içeriyor mu?,Bu haber hakem/VAR açıklaması “sakin” mi “sert” mi?,Bu haber teknik direktörün kadro seçiminde zorlandığını söylüyor mu?,Bu haber zorlanma “sakatlık” mı “yorgunluk” mu “ceza” mı?,Bu haber teknik direktörün rotasyon tercihleriyle ilgili mi?,Bu haber teknik direktörün oyuncu disiplini yaklaşımıyla ilgili mi?,Bu haber disiplin yaklaşımı “sertleşme” mi “yumuşama” mı?,Bu haber teknik direktörün kendi ekibinde değişiklik yapacağını söylüyor mu?,Bu haber teknik direktörün antrenman metodu değişimini söylüyor mu?,Bu haber teknik direktörün “takım ruhu / birlik” mesajı mı?,Bu haber teknik direktörün “kriz yönetimi” kapasitesini test eden bir gündem mi?,Bu haber teknik direktörün “bahane” dili taşıdığı iddiası mı?
 
 BÖLÜM H — FUTBOLCU HABERİ (OYUNCU)
-Bu haberin hedefi futbolcu mu?
-Bu haber futbolcunun sakatlığıyla mı ilgili?
-Bu haber sakatlık “kas” mı “darbe” mi “kronik” mi?
-Bu haber futbolcunun sakatlıktan dönüş süreciyle mi ilgili?
-Bu haber dönüş süreci “takım antrenmanı” mı “bireysel çalışma” mı?
-Bu haber futbolcunun “oynar/oynamaz” netliği taşıyor mu?
-
-Bu haber netlik “kesin oynar” mı “riskli” mi “kesin yok” mu?
-Bu haber futbolcunun cezalı duruma düşmesiyle mi ilgili?
-Bu haber ceza “kırmızı” mı “kart birikimi” mi?
-Bu haber futbolcunun kadro dışı bırakılmasıyla mı ilgili?
-Bu haber kadro dışı sebebi “disiplin” mi “performans” mı?
-Bu haber futbolcunun disiplinsiz davranışıyla mı ilgili?
-
-Bu haber davranış “geç kalma” mı “kavga” mı?
-Bu haber futbolcunun antrenman performansı hakkında mı?
-Bu haber performans “düşük” mü “yüksek” mi?
-Bu haber futbolcunun teknik direktörle gerilimi hakkında mı?
-Bu haber futbolcunun takım arkadaşlarıyla gerilimi hakkında mı?
-Bu haber futbolcunun taraftarla gerilimi hakkında mı?
-
-Bu haber futbolcunun sosyal medya davranışı kaynaklı mı?
-Bu haber sosyal medya “paylaşım” mı “beğeni” mi “yorum” mu?
-Bu haber futbolcunun mental yorgunluk / stres taşıdığını söylüyor mu?
-Bu haber stres “aile” mi “performans baskısı” mı?
-Bu haber futbolcunun transfer söylentisi mi?
-Bu haber transfer “gidiş” mi “geliş” mi?
-
-Bu haber futbolcunun transferinde resmiyet var mı?
-Bu haber resmiyet “kulüp açıklaması” mı “menajer” mi?
-Bu haber futbolcunun maaş/prim tartışması içeriyor mu?
-Bu haber tartışma “zam” mı “gecikme” mi?
-Bu haber futbolcunun “sözleşme krizi” içeriyor mu?
-Bu haber sözleşme “uzatma” mı “fesih” mi?
+Bu haberin hedefi futbolcu mu?,Bu haber futbolcunun sakatlığıyla mı ilgili?,Bu haber sakatlık “kas” mı “darbe” mi “kronik” mi?,Bu haber futbolcunun sakatlıktan dönüş süreciyle mi ilgili?,Bu haber dönüş süreci “takım antrenmanı” mı “bireysel çalışma” mı?,Bu haber futbolcunun “oynar/oynamaz” netliği taşıyor mu?,Bu haber netlik “kesin oynar” mı “riskli” mi “kesin yok” mu?,Bu haber futbolcunun cezalı duruma düşmesiyle mi ilgili?,Bu haber ceza “kırmızı” mı “kart birikimi” mi?,Bu haber futbolcunun kadro dışı bırakılmasıyla mı ilgili?,Bu haber kadro dışı sebebi “disiplin” mi “performans” mı?Bu haber futbolcunun disiplinsiz davranışıyla mı ilgili?,Bu haber davranış “geç kalma” mı “kavga” mı?,Bu haber futbolcunun antrenman performansı hakkında mı?,Bu haber performans “düşük” mü “yüksek” mi?,Bu haber futbolcunun teknik direktörle gerilimi hakkında mı?,Bu haber futbolcunun takım arkadaşlarıyla gerilimi hakkında mı?,Bu haber futbolcunun taraftarla gerilimi hakkında mı?,Bu haber futbolcunun sosyal medya davranışı kaynaklı mı?,Bu haber sosyal medya “paylaşım” mı “beğeni” mi “yorum” mu?,Bu haber futbolcunun mental yorgunluk / stres taşıdığını söylüyor mu?,Bu haber stres “aile” mi “performans baskısı” mı?,Bu haber futbolcunun transfer söylentisi mi?,Bu haber transfer “gidiş” mi “geliş” mi?,Bu haber futbolcunun transferinde resmiyet var mı?,Bu haber resmiyet “kulüp açıklaması” mı “menajer” mi?,Bu haber futbolcunun maaş/prim tartışması içeriyor mu?,Bu haber tartışma “zam” mı “gecikme” mi?,Bu haber futbolcunun “sözleşme krizi” içeriyor mu?,Bu haber sözleşme “uzatma” mı “fesih” mi?
 
 BÖLÜM I — HAKEM / VAR HABERİ
-Bu haberin hedefi hakem mi?
-Bu haber hakemin atanmasıyla mı ilgili?
-Bu haber atama “maç özel” mi “genel politika” mı?
-Bu haber hakemin geçmiş maç performansına dair tartışma mı?
-Bu haber tartışma “kart” mı “penaltı” mı “VAR” mı?
-Bu haber hakemin kart standardı hakkında bir gündem mi?
-
-Bu haber hakemin penaltı standardı hakkında bir gündem mi?
-Bu haber hakemin VAR kararlarıyla ilgili mi?
-Bu haber VAR hakemiyle ilgili mi?
-Bu haber hakemin disiplin soruşturması iddiası mı?
-Bu haber kulübün hakem şikâyeti mi?
-Bu haber rakip kulübün hakem şikâyeti mi?
-
-Bu haber medya tarafından “hakem baskısı” kurulması mı?
-Bu haber hakemle ilgili “yönetim açıklaması” içeriyor mu?
-Bu haber hakemle ilgili “federasyon açıklaması” içeriyor mu?
-Bu haber hakemle ilgili “maç sonu hedef gösterme” dili taşıyor mu?
+Bu haberin hedefi hakem mi?,Bu haber hakemin atanmasıyla mı ilgili?,Bu haber atama “maç özel” mi “genel politika” mı?,Bu haber hakemin geçmiş maç performansına dair tartışma mı?,Bu haber tartışma “kart” mı “penaltı” mı “VAR” mı?,Bu haber hakemin kart standardı hakkında bir gündem mi?,Bu haber hakemin penaltı standardı hakkında bir gündem mi?,Bu haber hakemin VAR kararlarıyla ilgili mi?,Bu haber VAR hakemiyle ilgili mi?,Bu haber hakemin disiplin soruşturması iddiası mı?,Bu haber kulübün hakem şikâyeti mi?Bu haber rakip kulübün hakem şikâyeti mi?,Bu haber medya tarafından “hakem baskısı” kurulması mı?,Bu haber hakemle ilgili “yönetim açıklaması” içeriyor mu?,Bu haber hakemle ilgili “federasyon açıklaması” içeriyor mu?,Bu haber hakemle ilgili “maç sonu hedef gösterme” dili taşıyor mu?
 Bu haber hakem haberinde “video/kanıt dolaşımı” var mı?
 
 BÖLÜM J — YÖNETİM / FEDERASYON / LİG POLİTİK HABERİ
-Bu haber federasyon kararı içeriyor mu?
-Bu haber disiplin kurulu kararı içeriyor mu?
-Bu haber puan silme / ceza / seyirci yasağı içeriyor mu?
-Bu haber ceza “seyirci” mi “puan” mı “para” mı?
-Bu haber hükmen mağlubiyet veya itiraz süreciyle ilgili mi?
-
-Bu haber itiraz süreci “başvuru” mu “sonuç” mu?
-Bu haber fikstür değişikliği içeriyor mu?
-Bu haber maç saati/stadı değişikliği içeriyor mu?
-Bu haber güvenlik nedeniyle maçın riskli sınıfa alınması mı?
-Bu haber kulüp lisans / finansal fair-play süreci içeriyor mu?
-
-Bu haber transfer yasağı / kadro kısıtı içeriyor mu?
-Bu haber sezon planlaması / maç sıkışıklığı gibi yapısal konu mu?
-Bu haber “yabancı kuralı / kadro kuralı” değişimi gibi düzenleme mi?
-Bu haber saha içi değil “masa başı” etki taşıyor mu?
-Bu haberin etkisi bir sonraki maçı etkiler mi?
+Bu haber federasyon kararı içeriyor mu?,Bu haber disiplin kurulu kararı içeriyor mu?,Bu haber puan silme / ceza / seyirci yasağı içeriyor mu?,Bu haber ceza “seyirci” mi “puan” mı “para” mı?,Bu haber hükmen mağlubiyet veya itiraz süreciyle ilgili mi?,Bu haber itiraz süreci “başvuru” mu “sonuç” mu?,Bu haber fikstür değişikliği içeriyor mu?,Bu haber maç saati/stadı değişikliği içeriyor mu?,Bu haber güvenlik nedeniyle maçın riskli sınıfa alınması mı?,Bu haber kulüp lisans / finansal fair-play süreci içeriyor mu?,Bu haber transfer yasağı / kadro kısıtı içeriyor mu?,Bu haber sezon planlaması / maç sıkışıklığı gibi yapısal konu mu?,Bu haber “yabancı kuralı / kadro kuralı” değişimi gibi düzenleme mi?,Bu haber saha içi değil “masa başı” etki taşıyor mu?,Bu haberin etkisi bir sonraki maçı etkiler mi?
 
 BÖLÜM K — RAKİP / DERBİ / STRES
-Bu haber iki takımı aynı anda kapsıyor mu?
-Bu haber derbi baskısı teması taşıyor mu?
-Bu haber “prestij maçı” bandında mı?
-Bu haber “intikam maçı” bandında mı?
-Bu haber “şampiyonluk maçı” baskısı taşıyor mu?
-
-Bu haber “küme düşme maçı” baskısı taşıyor mu?
-Bu haber tribün güvenliği ve olay beklentisi içeriyor mu?
-Bu haber maç öncesi gerginlik artışı içeriyor mu?
-Bu haber iki takım oyuncuları arasında bireysel rekabet teması mı?
-Bu haber iki takım koçları arasında gerilim teması mı?
-
-Bu haber maçın “kapalı gişe” baskısı taşıyor mu?
-Bu haber maçın “seyircisiz” olması gibi atmosfer etkisi taşıyor mu?
-Bu haber maç öncesi provokasyon iddiası içeriyor mu?
-Bu haber maç sonrası gerilimin büyüdüğünü ve bir sonraki maça taşınacağını söylüyor mu?
+Bu haber iki takımı aynı anda kapsıyor mu?,Bu haber derbi baskısı teması taşıyor mu?,Bu haber “prestij maçı” bandında mı?,Bu haber “intikam maçı” bandında mı?,Bu haber “şampiyonluk maçı” baskısı taşıyor mu?,Bu haber “küme düşme maçı” baskısı taşıyor mu?,Bu haber tribün güvenliği ve olay beklentisi içeriyor mu?,Bu haber maç öncesi gerginlik artışı içeriyor mu?,Bu haber iki takım oyuncuları arasında bireysel rekabet teması mı?,Bu haber iki takım koçları arasında gerilim teması mı?,Bu haber maçın “kapalı gişe” baskısı taşıyor mu?,Bu haber maçın “seyircisiz” olması gibi atmosfer etkisi taşıyor mu?,Bu haber maç öncesi provokasyon iddiası içeriyor mu?,Bu haber maç sonrası gerilimin büyüdüğünü ve bir sonraki maça taşınacağını söylüyor mu?
 
 BÖLÜM L — TARAFTAR HABERLERİ
-Bu haber taraftar protestosu içeriyor mu?
-Bu haber taraftarın yönetime baskısı teması mı?
-Bu haber taraftarın teknik direktöre baskısı teması mı?
-Bu haber taraftarın belirli bir oyuncuyu hedef aldığı teması mı?
-Bu haber tribün içi kavga/gerilim içeriyor mu?
-
-Bu haber güvenlik riski içeriyor mu?
-Bu haber deplasman yasağı / taraftar kısıtı içeriyor mu?
-Bu haber taraftarın sosyal medya linci gibi baskı içeriyor mu?
-Bu haber maç önü şehirde gerginlik içeriyor mu?
-Bu haber maç içinde sahaya yabancı madde/olay ihtimali taşıyor mu?
-
-Bu haber taraftarın maç içi davranışını etkileyen bir çağrı mı?
-Bu haberin sahaya yansıması geçmişte tekrar etmiş mi?
-Bu haber belirli dönemlerde artıyor mu (kötü seri, kötü sonuç)?
-Bu haber belirli maçlarda artıyor mu (derbi, final, küme düşme)?
-Bu haberin yarattığı baskı kart/tempo/disiplin bandına yansıyor mu?
+Bu haber taraftar protestosu içeriyor mu?,Bu haber taraftarın yönetime baskısı teması mı?,Bu haber taraftarın teknik direktöre baskısı teması mı?,Bu haber taraftarın belirli bir oyuncuyu hedef aldığı teması mı?,Bu haber tribün içi kavga/gerilim içeriyor mu?,Bu haber güvenlik riski içeriyor mu?,Bu haber deplasman yasağı / taraftar kısıtı içeriyor mu?,Bu haber taraftarın sosyal medya linci gibi baskı içeriyor mu?,Bu haber maç önü şehirde gerginlik içeriyor mu?Bu haber maç içinde sahaya yabancı madde/olay ihtimali taşıyor mu?,Bu haber taraftarın maç içi davranışını etkileyen bir çağrı mı?,Bu haberin sahaya yansıması geçmişte tekrar etmiş mi?,Bu haber belirli dönemlerde artıyor mu (kötü seri, kötü sonuç)?,Bu haber belirli maçlarda artıyor mu (derbi, final, küme düşme)?,Bu haberin yarattığı baskı kart/tempo/disiplin bandına yansıyor mu?
 
 BÖLÜM M — VERİ KALİTESİ / BOZULMA KONTROL
-Bu haber kaydı complete mi, partial mi, incomplete mi, low mu?
-Bu haberin missing_fields listesi çıkarıldı mı?
-Bu haber kaynağı belirsiz mi?
-Bu haber yazarı belirsiz mi?
-Bu haber tarih hizası belirsiz mi?
+Bu haber kaydı complete mi, partial mi, incomplete mi, low mu?,Bu haberin missing_fields listesi çıkarıldı mı?,Bu haber kaynağı belirsiz mi?,Bu haber yazarı belirsiz mi?,Bu haber tarih hizası belirsiz mi?,Bu haber team_ref’e map edilemedi mi?,Bu haber lig_ref’e map edilemedi mi?Bu haber country_ref’e map edilemedi mi?,Bu haber match_ref’e map edilemedi mi?,Bu haber tekilleştirme başarısız mı kaldı?,Bu haber çelişkili bilgi içeriyor mu?,Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi?,Bu haber “doğrulanmış veri” olarak işaretlenebildi mi?,Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı?,Bu haber “sonradan yanlışlandığı” tespit edildi mi?
 
-Bu haber team_ref’e map edilemedi mi?
-Bu haber lig_ref’e map edilemedi mi?
-Bu haber country_ref’e map edilemedi mi?
-Bu haber match_ref’e map edilemedi mi?
-Bu haber tekilleştirme başarısız mı kaldı?
-
-Bu haber çelişkili bilgi içeriyor mu?
-Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi?
-Bu haber “doğrulanmış veri” olarak işaretlenebildi mi?
-Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı?
-Bu haber “sonradan yanlışlandığı” tespit edildi mi?
-
-FAZ-22
-KURAL BLOĞU — EVENT EKSİK / BASIN ÇAPRAZ OKUMA (KİLİTLİ)
-Event akışı eksik/parçalıysa sistem hiçbir alanı uydurmaz; eksikler missing_fields’e yazılır ve data_quality_badge deterministik olarak incomplete/low olur.
-Bu durumda canlı izleme kadrosu sadece paket kapsamındaki ham olay izlerini toplar; yorum üretmez, raportör yalnız tekilleştirir, analist tek birleşik maç raporunu yazar.
-Basın rafı event alanlarını doldurmak için kullanılmaz; basın yalnız “destek izi” üretir ve maç kartına ayrı blok olarak eklenir.
-Destek izi yalnız çoklu kaynak tekrarıyla işaretlenir; tek kaynakla hüküm kurulmaz ve skor/tahmin dili üretilmez.
-Event zayıfsa sonuç: güven düşer, kayıt saklanır, örüntü yalnız tekrar ve şart bağımlılığıyla güçlenir; uydurma ile kapatma yasaktır.
+FAZ-22:KURAL BLOĞU — EVENT EKSİK / BASIN ÇAPRAZ OKUMA (KİLİTLİ)
+Event akışı eksik/parçalıysa sistem hiçbir alanı uydurmaz; eksikler missing_fields’e yazılır ve data_quality_badge deterministik olarak incomplete/low olur.Bu durumda canlı izleme kadrosu sadece paket kapsamındaki ham olay izlerini toplar; yorum üretmez, raportör yalnız tekilleştirir, analist tek birleşik maç raporunu yazar.Basın rafı event alanlarını doldurmak için kullanılmaz; basın yalnız “destek izi” üretir ve maç kartına ayrı blok olarak eklenir.Destek izi yalnız çoklu kaynak tekrarıyla işaretlenir; tek kaynakla hüküm kurulmaz ve skor/tahmin dili üretilmez.Event zayıfsa sonuç: güven düşer, kayıt saklanır, örüntü yalnız tekrar ve şart bağımlılığıyla güçlenir; uydurma ile kapatma yasaktır.
 
 BÖLÜM A — Haber Kaydı / Bağlam Kimliği
-Bu haber kaydı hangi UTC zaman damgası ile sabitlendi? → news.context.locked_at_utc → timestamp_utc → unknown
-Bu haberin yayın UTC zaman damgası var mı, unknown mu? → news.time.published_at_utc → timestamp_utc → unknown
-Bu haberin kayıt UTC zaman damgası var mı, unknown mu? → news.time.recorded_at_utc → timestamp_utc → unknown
-Bu haberin yayın saati ile kayıt saati arasındaki fark kaç dakikadır? → news.time.publish_record_delta_minutes → integer → unknown
-Bu haberin kayıt saati yayın saatinden önce mi sonra mı? → news.time.record_vs_publish_order → enum(before,after,unknown) → unknown
+Bu haber kaydı hangi UTC zaman damgası ile sabitlendi?→ news.context.locked_at_utc→ timestamp_ut → unknown,Bu haberin yayın UTC zaman damgası var mı, unknown mu?→ news.time.published_at_utc→ timestamp_utc→ unknown,Bu haberin kayıt UTC zaman damgası var mı, unknown mu? →news.time.recorded_at_utc→ timestamp_utc→ unknown,Bu haberin yayın saati ile kayıt saati arasındaki fark kaç dakikadır?→news.time.publish_record_delta_minutes→ integer→unknown,Bu haberin kayıt saati yayın saatinden önce mi sonra mı?→news.time.record_vs_publish_order→ enum(before,after,unknown)→ unknown,Bu haber sezon içi mi sezon arası mı?→ news.season.in_or_off→ enum(in_season,off_season,unknown)→ unknown,Bu haber “transfer dönemi” penceresinde mi?→ news.season.transfer_window_flag→ boolean→ unknown,Bu haber hangi ülke_ref altında raflanacak?→ news.refs.country_ref→ string→ unknown,Bu haber country_ref map edilebildi mi, unmapped mi?→ news.refs.country_ref_map_status → enum(mapped,unmapped,unknown) → unknown,Bu haber hangi lig_ref altında raflanacak? → news.refs.league_ref→ string→ unknown,Bu haber lig_ref map edilebildi mi, unmapped mi?→ news.refs.league_ref_map_status→ enum(mapped,unmapped,unknown)→ unknown,Bu haber hangi sezon_id içinde okunacak?→ news.refs.season_id→ string → unknown,Bu haber season_id map edilebildi mi, unmapped mi? → news.refs.season_id_map_status→ enum(mapped,unmapped,unknown)→ unknown,Bu haber season_phase olarak hangi faza yazılacak(pre_season,season_start,season_mid,season_end,off_season)→news.season.phase→enum(pre_season,season_start,season_mid,season_end,off_season,unknown)→ unknown,Bu haber competition_type olarak hangi sınıfta (league, cup,continental,national_team)işlenecek?→ news.competition.type→ enum(league,cup,continental,national_team,unknown) → unknown,Bu haber cup_flag taşıyor mu (true/false)? → news.competition.cup_flag → boolean → unknown,Bu haber hangi team_ref ile ilişkilendirilecek? → news.refs.team_primary_ref → string → unknown,Bu haber team_refmapedilebildimi,unmappedmi→news.refs.team_primary_ref_map_statu→ enum(mapped,unmapped,unknown) → unknown,bu haber tek takıma mı bağlı yoksa iki takıma mı bağlı (tekil/çift takım bağlamı)? → news.context.team_binding_mode → enum(single_team,two_teams,unknown)→ unknown,Bu haber ikitakımbağlıysarakipteam_refmapedilebildimi,unmappedmi→news.refs.team_secondary_ref_map_status→enum(mapped,unmapped,unknown) → unknown,Bu haber match_ref’e bağlanabiliyor mu yoksa sadece takım bağlamında mı kalmalı? → news.context.match_linking_mode → enum(match_ref,team_only,unknown) → unknown,bu haber match_ref map edilebildi mi, unmapped mi? → news.refs.match_ref_map_status → enum(mapped,unmapped,unknown) → unknown,Bu haber tek bir maç penceresine mi bağlı yoksa maçdışıgenelhabermi→news.context.match_window_scope→enum(single_match_window,non_match_general,unknown) → unknown,Bu haber bir maç öncesi penceresine mi ait yoksa maç sonrası penceresine mi ait? → news.context.pre_post_window → enum(pre_match,post_match,unknown) → unknown,Bu haber “maç öncesi” mi “maç sonrası” mı “iki maç arası” mı? → news.context.timing_bucket → enum(pre_match,post_match,between_matches,unknown) → unknown,Bu haberin bağlandığı maçın kickoff_time_utc bilgisi kesin mi, unknown mu? → news.match.kickoff_time_utc → timestamp_utc → unknown,Bu haber kickoff_time_utc ile haber zamanı arasında “aynı gün” ilişkisi var mı? → news.match.kickoff_same_day_flag → boolean → unknown,Bu haberin kapsadığı pencere kaç gündür ve sabit mi? → news.window.coverage_days → integer → unknown,Bu haber pencere başlangıcı hesaplanabildi mi, unknown mu? → news.window.start_at_utc → timestamp_utc → unknown,Bu haber pencere bitişi hesaplanabildi mi, unknown mu? → news.window.end_at_utc → timestamp_utc → unknown,Bu haber “sezon içi maç haftası paketi” mi yoksa “off-season haftalıkpaket”mi→news.window.package_type→enum(in_season_matchweek,off_season_weekly,unknown) → unknown,Bu haber tekil olay mı, çoklu olay seti mi? → news.event.set_mode → enum(single_event,multi_event_set,unknown) → unknown,Bu haber çoklu olay setiyse alt olay sayısı çıkarılabildi mi, unknown mu? →news.event.sub_event_count → integer → unknown,Bu haber aynı olayın kopyası mı, tekil olay mı? → news.dedupe.is_duplicate_flag → boolean → unknown,Bu haber aynı gün içinde birden fazla defa yeniden yayınlanmış mı? → news.dedupe.republished_same_day_flag → boolean → unknown,Bu haberin aynı içerikli kopyaları tekilleştirildi mi? → news.dedupe.deduplicated_flag → boolean → unknown,Bu haber tekilleştirme anahtarıüretilebildi,miyoksaunmappedmikaldı→news.dedupe.dedup_key_status→enum(mapped,unmapped,unknown)→unknown,Buhaberinbirincilhedefikimdir(takım/koç/oyuncu/hakem/yönetim/federasyon/taraftar)? → news.target.primary_actor_type → enum(team,coach,player,referee,management,federation,fans,unknown) → unknown,Bu haber hedefi “kurum” mu “birey” mi? → news.target.primary_actor_class → enum(institution,individual,unknown) → unknown
 
-Bu haber sezon içi mi sezon arası mı? → news.season.in_or_off → enum(in_season,off_season,unknown) → unknown
-Bu haber “transfer dönemi” penceresinde mi? → news.season.transfer_window_flag → boolean → unknown
-Bu haber hangi ülke_ref altında raflanacak? → news.refs.country_ref → string → unknown
-Bu haber country_ref map edilebildi mi, unmapped mi? → news.refs.country_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-Bu haber hangi lig_ref altında raflanacak? → news.refs.league_ref → string → unknown
+Bu haberin ikincil hedefi kimdir (rakip takım/oyuncu/kurum)?→news.target.secondary_actor_type →enum(opponent_team,player,institution,unknown)→unknown.Bu haber tek takımmı,ikitakımmı,lig genelimi?→news.scope.team_scope→enum(single_team,two_teams,league_wide,unknown)→ unknown..Bu haber lig geneli ise team_ref boş mu?→ news.scope.league_wide_team_ref_empty_flag→ boolean→ unknown.Bu haber aynı haftada başka haberlerle zincir oluşturuyor mu?→ news.chain.chain_flag→ boolean→ unknown.Bu haber zincirin “ilk halkası” mı “devam halkası” mı?→news.chain.chain_position→ enum(first,continuation,unknown)→ unknown,Bu haberin başlığı içerikle uyumlu mu?→ news.content.title_content_alignment→ enum(aligned,misaligned,unknown)→ unknown.Bu haberde doğrudan alıntı var mıyoksayorumaktarımımı→news.content.quote_mode→ enum(direct_quote,commentary,unknown)→ unknown,Bu haberin dili açıklayıcı mı yoksa spekülatif mi?→ news.content.tone→ enum(explanatory,speculative,unknown)→ unknown,Bu haberin dili “kesin” mi “iddia” mı?→ news.content.claim_strength→ enum(definite,allegation,unknown)→ unknown,Bu haberde isimler net mi yoksa belirsiz kaynak dili mi var?→ news.entities.naming_claritc→ enum(clear_names,vague_sources,unknown)→ unknown
 
-Bu haber lig_ref map edilebildi mi, unmapped mi? → news.refs.league_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-Bu haber hangi sezon_id içinde okunacak? → news.refs.season_id → string → unknown
-Bu haber season_id map edilebildi mi, unmapped mi? → news.refs.season_id_map_status → enum(mapped,unmapped,unknown) → unknown
-Bu haber season_phase olarak hangi faza yazılacak (pre_season, season_start, season_mid, season_end, off_season)? → news.season.phase → enum(pre_season,season_start,season_mid,season_end,off_season,unknown) → unknown
-Bu haber competition_type olarak hangi sınıfta (league, cup, continental, national_team) işlenecek? → news.competition.type → enum(league,cup,continental,national_team,unknown) → unknown
-Bu haber cup_flag taşıyor mu (true/false)? → news.competition.cup_flag → boolean → unknown
-
-Bu haber hangi team_ref ile ilişkilendirilecek? → news.refs.team_primary_ref → string → unknown
-Bu haber team_ref map edilebildi mi, unmapped mi? → news.refs.team_primary_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-Bu haber tek takıma mı bağlı yoksa iki takıma mı bağlı (tekil/çift takım bağlamı)? → news.context.team_binding_mode → enum(single_team,two_teams,unknown) → unknown
-Bu haber iki takım bağlıysa rakip team_ref map edilebildi mi, unmapped mi? → news.refs.team_secondary_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-Bu haber match_ref’e bağlanabiliyor mu yoksa sadece takım bağlamında mı kalmalı? → news.context.match_linking_mode → enum(match_ref,team_only,unknown) → unknown
-Bu haber match_ref map edilebildi mi, unmapped mi? → news.refs.match_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-
-Bu haber tek bir maç penceresine mi bağlı yoksa maç dışı genel haber mi? → news.context.match_window_scope → enum(single_match_window,non_match_general,unknown) → unknown
-Bu haber bir maç öncesi penceresine mi ait yoksa maç sonrası penceresine mi ait? → news.context.pre_post_window → enum(pre_match,post_match,unknown) → unknown
-Bu haber “maç öncesi” mi “maç sonrası” mı “iki maç arası” mı? → news.context.timing_bucket → enum(pre_match,post_match,between_matches,unknown) → unknown
-Bu haberin bağlandığı maçın kickoff_time_utc bilgisi kesin mi, unknown mu? → news.match.kickoff_time_utc → timestamp_utc → unknown
-Bu haber kickoff_time_utc ile haber zamanı arasında “aynı gün” ilişkisi var mı? → news.match.kickoff_same_day_flag → boolean → unknown
-Bu haberin kapsadığı pencere kaç gündür ve sabit mi? → news.window.coverage_days → integer → unknown
-
-Bu haber pencere başlangıcı hesaplanabildi mi, unknown mu? → news.window.start_at_utc → timestamp_utc → unknown
-Bu haber pencere bitişi hesaplanabildi mi, unknown mu? → news.window.end_at_utc → timestamp_utc → unknown
-Bu haber “sezon içi maç haftası paketi” mi yoksa “off-season haftalık paket” mi? → news.window.package_type → enum(in_season_matchweek,off_season_weekly,unknown) → unknown
-Bu haber tekil olay mı, çoklu olay seti mi? → news.event.set_mode → enum(single_event,multi_event_set,unknown) → unknown
-Bu haber çoklu olay setiyse alt olay sayısı çıkarılabildi mi, unknown mu? → news.event.sub_event_count → integer → unknown
-Bu haber aynı olayın kopyası mı, tekil olay mı? → news.dedupe.is_duplicate_flag → boolean → unknown
-
-Bu haber aynı gün içinde birden fazla defa yeniden yayınlanmış mı? → news.dedupe.republished_same_day_flag → boolean → unknown
-Bu haberin aynı içerikli kopyaları tekilleştirildi mi? → news.dedupe.deduplicated_flag → boolean → unknown
-Bu haber tekilleştirme anahtarı üretilebildi mi yoksa unmapped mi kaldı? → news.dedupe.dedup_key_status → enum(mapped,unmapped,unknown) → unknown
-Bu haberin birincil hedefi kimdir (takım/koç/oyuncu/hakem/yönetim/federasyon/taraftar)? → news.target.primary_actor_type → enum(team,coach,player,referee,management,federation,fans,unknown) → unknown
-Bu haber hedefi “kurum” mu “birey” mi? → news.target.primary_actor_class → enum(institution,individual,unknown) → unknown
-
-Bu haberin ikincil hedefi kimdir (rakip takım/oyuncu/kurum)? → news.target.secondary_actor_type → enum(opponent_team,player,institution,unknown) → unknown
-Bu haber tek takım mı, iki takım mı, lig geneli mi? → news.scope.team_scope → enum(single_team,two_teams,league_wide,unknown) → unknown
-Bu haber lig geneli ise team_ref boş mu? → news.scope.league_wide_team_ref_empty_flag → boolean → unknown
-Bu haber aynı haftada başka haberlerle zincir oluşturuyor mu? → news.chain.chain_flag → boolean → unknown
-Bu haber zincirin “ilk halkası” mı “devam halkası” mı? → news.chain.chain_position → enum(first,continuation,unknown) → unknown
-
-Bu haberin başlığı içerikle uyumlu mu? → news.content.title_content_alignment → enum(aligned,misaligned,unknown) → unknown
-Bu haberde doğrudan alıntı var mı yoksa yorum aktarımı mı? → news.content.quote_mode → enum(direct_quote,commentary,unknown) → unknown
-Bu haberin dili açıklayıcı mı yoksa spekülatif mi? → news.content.tone → enum(explanatory,speculative,unknown) → unknown
-Bu haberin dili “kesin” mi “iddia” mı? → news.content.claim_strength → enum(definite,allegation,unknown) → unknown
-Bu haberde isimler net mi yoksa belirsiz kaynak dili mi var? → news.entities.naming_clarity → enum(clear_names,vague_sources,unknown) → unknown
-
-Bu haberde isimler net ama map edilemedi mi? → news.entities.names_clear_but_unmapped_flag → boolean → unknown
-Bu haberde sayısal veri var mı yoksa anlatı mı? → news.content.data_mode → enum(numeric_data,narrative,unknown) → unknown
-Bu haber doğrulandı mı, yalanlandı mı, güncellendi mi? → news.verification.status → enum(verified,debunked,updated,unknown) → unknown
-Bu haber bir “ilk versiyon” mu “güncelleme” mi? → news.version.kind → enum(first_version,update,unknown) → unknown
-Bu haber önceki versiyonla çelişiyor mu? → news.version.conflicts_with_previous_flag → boolean → unknown
+Bu haberde isimler net ama map edilemedi mi? → news.entities.names_clear_but_unmapped_flag → boolean → unknown.Bu haberde sayısal veri var mı yoksa anlatı mı? → news.content.data_mode → enum(numeric_data,narrative,unknown) → unknown.
+Bu haber doğrulandı mı, yalanlandı mı, güncellendi mi? → news.verification.status → enum(verified,debunked,updated,unknown) → unknown.Bu haber bir “ilk versiyon” mu “güncelleme” mi? → news.version.kind → enum(first_version,update,unknown) → unknown.
+Bu haber önceki versiyonla çelişiyor mu? → news.version.conflicts_with_previous_flag → boolean → unknown.
 
 BÖLÜM B — Adresleme ve Dosyalama Duvarı
-Bu haber hangi ülke/lig/sezon bağlamına bağlıdır? → library.addressing.context_scope → object → unknown
-Bu haber hangi organizasyon tipine bağlıdır (lig/kupa/kıtasal/milli takım)? → library.addressing.competition_org_type → enum → unknown
-Bu haberin bağlandığı yarışma sınıfı nedir (Tier-1/Tier-2/Cups)? → library.addressing.competition_tier_class → enum → unknown
-Bu haberin kaynak URL’i var mı, yok mu? → library.addressing.source_url_presence → boolean → unknown
-Bu haber URL formatı okunabilir mi yoksa bozuk mu? → library.addressing.source_url_readability → enum → unknown
-
-Bu haberin kaynak domain’i belirlenebiliyor mu? → library.addressing.source_domain_detected → boolean → unknown
-Bu haber domain allowlist içinde mi? → library.addressing.source_domain_allowlisted → boolean → unknown
-Bu haberin canonical_url’i üretilebildi mi? → library.addressing.canonical_url_generated → boolean → unknown
-Bu haber canonical_url ile kaynak URL aynı mı farklı mı? → library.addressing.canonical_vs_source_url_match → enum → unknown
-Bu haber bir ajans geçişi mi yoksa özgün içerik mi? → library.addressing.content_origin_type → enum → unknown
-
-Bu haber “doğrudan kaynak” mı yoksa “alıntı / reprint” mi? → library.addressing.content_reprint_status → enum → unknown
-Bu haber alıntı ise birincil kaynak tespit edilebildi mi? → library.addressing.primary_source_identified → boolean → unknown
-Bu haberin içinde geçen özel isimler (takım, oyuncu, hoca, hakem) net map edilebildi mi? → library.addressing.entities_mapped_cleanly → boolean → unknown
-Bu haberde entity sayısı çıkarıldı mı? → library.addressing.entity_count_extracted → boolean → unknown
+Bu haber hangi ülke/lig/sezon bağlamına bağlıdır? → library.addressing.context_scope → object → unknown.Bu haber hangi organizasyon tipine bağlıdır (lig/kupa/kıtasal/milli takım)? → library.addressing.competition_org_type → enum → unknown
+Bu haberin bağlandığı yarışma sınıfı nedir (Tier-1/Tier-2/Cups)? → library.addressing.competition_tier_class → enum → unknown.Bu haberin kaynak URL’i var mı, yok mu? → library.addressing.source_url_presence → boolean → unknown
+Bu haber URL formatı okunabilir mi yoksa bozuk mu? → library.addressing.source_url_readability → enum → unknown.Bu haberin kaynak domain’i belirlenebiliyor mu? → library.addressing.source_domain_detected → boolean → unknown
+Bu haber domain allowlist içinde mi? → library.addressing.source_domain_allowlisted → boolean → unknown.Bu haberin canonical_url’i üretilebildi mi? → library.addressing.canonical_url_generated → boolean → unknown
+Bu haber canonical_url ile kaynak URL aynı mı farklı mı? → library.addressing.canonical_vs_source_url_match → enum → unknown.Bu haber bir ajans geçişi mi yoksa özgün içerik mi? → library.addressing.content_origin_type → enum → unknown
+Bu haber “doğrudan kaynak” mı yoksa “alıntı / reprint” mi? → library.addressing.content_reprint_status → enum → unknown.Bu haber alıntı ise birincil kaynak tespit edilebildi mi? → library.addressing.primary_source_identified → boolean → unknown
+Bu haberin içinde geçen özel isimler (takım, oyuncu, hoca, hakem) net map edilebildi mi? → library.addressing.entities_mapped_cleanly → boolean → unknown.Bu haberde entity sayısı çıkarıldı mı? → library.addressing.entity_count_extracted → boolean → unknown
 Bu haberin içinde geçen özel isimlerden map edilemeyen var mı, varsa hangileri unmapped kaldı? → library.addressing.unmapped_entities → list → unknown
-
-Bu haberin metni dil olarak hangi dilde yazılmış? → library.addressing.detected_language → enum → unknown
-Bu haber dil tespiti güvenilir mi, low mu? → library.addressing.language_detection_confidence → enum → unknown
-Bu haberin çeviri olduğu tespit edilebiliyor mu? → library.addressing.translation_detected → boolean → unknown
-Bu haberin “başlık + gövde” tutarlılığı var mı? → library.addressing.title_body_consistency → enum → unknown
-Bu haberin başlığı tık tuzağı (clickbait) diline yakın mı, değil mi? → library.addressing.title_clickbait_likelihood → enum → unknown
-
-Bu haberin gövdesi gerçek bilgi mi yoksa yorum dili mi ağırlıklı? → library.addressing.body_fact_vs_commentary → enum → unknown
-Bu haber gövdesinde “duygu dili” baskın mı? → library.addressing.body_emotion_language_dominance → enum → unknown
-Bu haberin görsel/video referansı var mı, yok mu? → library.addressing.media_reference_presence → boolean → unknown
+Bu haberin metni dil olarak hangi dilde yazılmış? → library.addressing.detected_language → enum → unknown.Bu haber dil tespiti güvenilir mi, low mu? → library.addressing.language_detection_confidence → enum → unknown
+Bu haberin çeviri olduğu tespit edilebiliyor mu? → library.addressing.translation_detected → boolean → unknown.Bu haberin “başlık + gövde” tutarlılığı var mı? → library.addressing.title_body_consistency → enum → unknown
+Bu haberin başlığı tık tuzağı (clickbait) diline yakın mı, değil mi? → library.addressing.title_clickbait_likelihood → enum → unknown.Bu haberin gövdesi gerçek bilgi mi yoksa yorum dili mi ağırlıklı? → library.addressing.body_fact_vs_commentary → enum → unknown
+Bu haber gövdesinde “duygu dili” baskın mı? → library.addressing.body_emotion_language_dominance → enum → unknown.Bu haberin görsel/video referansı var mı, yok mu? → library.addressing.media_reference_presence → boolean → unknown
 Bu haber görsel/video referansı olayla doğrudan ilişkili mi? → library.addressing.media_reference_relevance → enum → unknown
-Bu haberin kaynak gösterimi açık mı, kapalı mı? → library.addressing.attribution_clarity → enum → unknown
-Bu haber kaynak gösterimi var ama muğlak mı? → library.addressing.attribution_ambiguity → boolean → unknown
+Bu haberin kaynak gösterimi açık mı, kapalı mı? → library.addressing.attribution_clarity → enum → unknown.Bu haber kaynak gösterimi var ama muğlak mı? → library.addressing.attribution_ambiguity → boolean → unknown
 
 BÖLÜM C — Kaynak Kimliği ve Doğruluk Profili
-Bu haber tek kaynak mı çoklu kaynak mı? → source.profile.count → enum(single,multi,unknown) → unknown
-Bu haberin kaynakları birbirini doğruluyor mu yoksa ayrışıyor mu? → source.profile.consensus → enum(confirming,diverging,mixed,unknown) → unknown
-Bu haber farklı kaynaklarda aynı gün çıktı mı? → source.profile.same_day_crosspost → boolean → unknown
-Bu haberin birincil kaynağı resmî mi gayriresmî mi? → source.primary.officiality → enum(official,unofficial,unknown) → unknown
-Bu haber hangi yayın_organı_ref ile eşleşti? → source.publisher.ref_id → string → unknown
-
-Bu yayın organı allowlist içinde mi? → source.publisher.allowlist_status → enum(allowlisted,not_allowlisted,unknown) → unknown
-Bu yayın organı lig özelinde düzenli haber üretmiş mi? → source.publisher.league_regular → boolean → unknown
-Bu yayın organı takım özelinde aşırı yoğun haber üretiyor mu? → source.publisher.team_overconcentration → boolean → unknown
-Bu haberin yazarı/editörü adı metinden çekilebildi mi? → source.author.name_extracted → boolean → unknown
-Bu haberin yazarı/editörü map edilebildi mi? → source.author.mapped → boolean → unknown
-
-Bu haber “staff writer” gibi anonim bir yazar mı? → source.author.anonymous_staff_writer → boolean → unknown
-Bu haber “editorial desk” gibi toplu editoryal imza mı? → source.author.editorial_desk_signature → boolean → unknown
-Bu yazar için örneklem yeterli mi, low sample mı? → source.author.sample_sufficiency → enum(sufficient,low_sample,unknown) → unknown
-Bu yazar geçmişte aynı tema türünde isabetli mi? → source.author.theme_hit_history → enum(accurate,noisy,unknown) → unknown
-Bu yayın organı haberleri maç sonrası yeniden yazma eğilimi taşıyor mu? → source.publisher.post_match_rewrite_tendency → boolean → unknown
-
-Bu haber bir düzeltme (correction) içeriyor mu? → source.article.contains_correction → boolean → unknown
-Bu haber bir yalanlama (denial) içeriyor mu? → source.article.contains_denial → boolean → unknown
-Bu haber bir resmi açıklama alıntısı içeriyor mu? → source.article.contains_official_statement_quote → boolean → unknown
-Bu haberin birincil kaynağı kulüp mü? → source.primary.entity_type → enum(club,federation,player,agent,coach,unknown) → unknown
-Bu haber maçtan sonra doğrulandı mı? → source.lifecycle.post_match_confirmed → boolean → unknown
-Bu haber maçtan sonra çöktü mü? → source.lifecycle.post_match_collapsed → boolean → unknown
-
-Bu haber daha sonra düzeltildi mi? → source.lifecycle.later_corrected → boolean → unknown
+Bu haber tek kaynak mı çoklu kaynak mı? → source.profile.count → enum(single,multi,unknown) → unknown,Bu haberin kaynakları birbirini doğruluyor mu yoksa ayrışıyor mu? → source.profile.consensus → enum(confirming,diverging,mixed,unknown) → unknown
+Bu haber farklı kaynaklarda aynı gün çıktı mı? → source.profile.same_day_crosspost → boolean → unknown,Bu haberin birincil kaynağı resmî mi gayriresmî mi? → source.primary.officiality → enum(official,unofficial,unknown) → unknown
+Bu haber hangi yayın_organı_ref ile eşleşti? → source.publisher.ref_id → string → unknown,Bu yayın organı allowlist içinde mi? → source.publisher.allowlist_status → enum(allowlisted,not_allowlisted,unknown) → unknown
+Bu yayın organı lig özelinde düzenli haber üretmiş mi? → source.publisher.league_regular → boolean → unknown,Bu yayın organı takım özelinde aşırı yoğun haber üretiyor mu? → source.publisher.team_overconcentration → boolean → unknown
+Bu haberin yazarı/editörü adı metinden çekilebildi mi? → source.author.name_extracted → boolean → unknown,Bu haberin yazarı/editörü map edilebildi mi? → source.author.mapped → boolean → unknown
+Bu haber “staff writer” gibi anonim bir yazar mı? → source.author.anonymous_staff_writer → boolean → unknown,Bu haber “editorial desk” gibi toplu editoryal imza mı? → source.author.editorial_desk_signature → boolean → unknown
+Bu yazar için örneklem yeterli mi, low sample mı? → source.author.sample_sufficiency → enum(sufficient,low_sample,unknown) → unknown,Bu yazar geçmişte aynı tema türünde isabetli mi? → source.author.theme_hit_history → enum(accurate,noisy,unknown) → unknown
+Bu yayın organı haberleri maç sonrası yeniden yazma eğilimi taşıyor mu? → source.publisher.post_match_rewrite_tendency → boolean → unknown,Bu haber bir düzeltme (correction) içeriyor mu? → source.article.contains_correction → boolean → unknown
+Bu haber bir yalanlama (denial) içeriyor mu? → source.article.contains_denial → boolean → unknown,Bu haber bir resmi açıklama alıntısı içeriyor mu? → source.article.contains_official_statement_quote → boolean → unknown
+Bu haberin birincil kaynağı kulüp mü? → source.primary.entity_type → enum(club,federation,player,agent,coach,unknown) → unknown,Bu haber maçtan sonra doğrulandı mı? → source.lifecycle.post_match_confirmed → boolean → unknown
+Bu haber maçtan sonra çöktü mü? → source.lifecycle.post_match_collapsed → boolean → unknown,Bu haber daha sonra düzeltildi mi? → source.lifecycle.later_corrected → boolean → unknown
 Bu haber birden fazla kez farklı sürümle yayınlandı mı? → source.lifecycle.multiple_versions_published → boolean → unknown
-Bu haber çelişkili bilgi içeriyor mu? → source.contradiction.present → boolean → unknown
-Bu çelişki “tarih” mi “isim” mi “kulüp” mü “rakam” mı? → source.contradiction.type → enum(date,name,club,number,unknown) → unknown
-Bu haberin kanıt zinciri kalitesi yeterli mi yoksa yalnız bağlam mı? → source.evidence.chain_quality → enum(sufficient,context_only,unknown) → unknown
-Bu haber “ilk sinyal” mi “sonradan hikâye” mi? → source.signal.stage → enum(first_signal,late_story,unknown) → unknown
+Bu haber çelişkili bilgi içeriyor mu? → source.contradiction.present → boolean → unknown,Bu çelişki “tarih” mi “isim” mi “kulüp” mü “rakam” mı? → source.contradiction.type → enum(date,name,club,number,unknown) → unknown
+Bu haberin kanıt zinciri kalitesi yeterli mi yoksa yalnız bağlam mı? → source.evidence.chain_quality → enum(sufficient,context_only,unknown) → unknown,Bu haber “ilk sinyal” mi “sonradan hikâye” mi? → source.signal.stage → enum(first_signal,late_story,unknown) → unknown
 
 BÖLÜM D — Tema Sınıflandırma
-Bu haberin ana teması yönetim mi? → theme.primary.governance → boolean → unknown
-Bu haberin ana teması finans mı? → theme.primary.finance → boolean → unknown
-Bu haberin ana teması transfer mi? → theme.primary.transfer → boolean → unknown
-Bu haberin ana teması sakatlık mı? → theme.primary.injury → boolean → unknown
-Bu haberin ana teması kadro seçimi mi? → theme.primary.lineup_selection → boolean → unknown
-Bu haberin ana teması teknik direktör kararı mı? → theme.primary.coach_decision → boolean → unknown
-
-Bu haberin ana teması taktik/oyun planı mı? → theme.primary.tactics_gameplan → boolean → unknown
-Bu haberin ana teması disiplin/ceza mı? → theme.primary.discipline_sanction → boolean → unknown
-Bu haberin ana teması hakem/VAR mi? → theme.primary.referee_var → boolean → unknown
-Bu haberin ana teması taraftar/tribün mü? → theme.primary.fans_stands → boolean → unknown
-Bu haberin ana teması antrenman/kamp mı? → theme.primary.training_camp → boolean → unknown
-Bu haberin ana teması iç kriz/soyuna odası mı? → theme.primary.internal_crisis_lockeroom → boolean → unknown
-
-Bu haberin ana teması basın toplantısı mı? → theme.primary.press_conference → boolean → unknown
-Bu haberin ana teması kulüp içi çatışma mı? → theme.primary.internal_conflict → boolean → unknown
-Bu haberin ana teması yayıncı/TV anlaşmazlığı mı? → theme.primary.broadcaster_tv_dispute → boolean → unknown
-Bu haberin ana teması federasyon kararı mı? → theme.primary.federation_decision → boolean → unknown
-Bu haberin ana teması ceza kurulu kararı mı? → theme.primary.disciplinary_board_decision → boolean → unknown
-Bu haberin ana teması güvenlik olayları mı? → theme.primary.security_incidents → boolean → unknown
-
-Bu haberin ana teması saha dışı skandal mı? → theme.primary.off_field_scandal → boolean → unknown
-Bu haberin ana teması doping iddiası mı? → theme.primary.doping_allegation → boolean → unknown
-Bu haberin ana teması altyapı/genç oyuncu mu? → theme.primary.youth_academy → boolean → unknown
-Bu haberin ana teması milli takım çağrısı mı? → theme.primary.national_team_callup → boolean → unknown
-Bu haber birden fazla ana tema taşıyor mu? → theme.primary.multiple → boolean → unknown
+Bu haberin ana teması yönetim mi? → theme.primary.governance → boolean → unknown.Bu haberin ana teması finans mı? → theme.primary.finance → boolean → unknown.Bu haberin ana teması transfer mi? → theme.primary.transfer → boolean → unknown
+Bu haberin ana teması sakatlık mı? → theme.primary.injury → boolean → unknowniBu haberin ana teması kadro seçimi mi? → theme.primary.lineup_selection → boolean → unknowniBu haberin ana teması teknik direktör kararı mı? → theme.primary.coach_decision → boolean → unknown
+Bu haberin ana teması taktik/oyun planı mı? → theme.primary.tactics_gameplan → boolean → unknowniBu haberin ana teması disiplin/ceza mı? → theme.primary.discipline_sanction → boolean → unknowni 
+Bu haberin ana teması hakem/VAR mi? → theme.primary.referee_var → boolean → unknown.Bu haberin ana teması taraftar/tribün mü? → theme.primary.fans_stands → boolean → unknown.Bu haberin ana teması antrenman/kamp mı? → theme.primary.training_camp → boolean → unknown.
+Bu haberin ana teması içkriz/soyunaodasımıtheme.primary.internal_crisis_lockeroom → boolean → unknown.Bu haberin ana teması basın toplantısı mı? → theme.primary.press_conference → boolean → unknown
+Bu haberin ana teması kulüp içi çatışma mı? → theme.primary.internal_conflict → boolean → unknown.Bu haberin ana teması yayıncı/TV anlaşmazlığı mı? → theme.primary.broadcaster_tv_dispute → boolean → unknown.
+Bu haberin ana teması federasyon kararı mı? → theme.primary.federation_decision → boolean → unknown.Bu haberin ana teması ceza kurulu kararı mı? → theme.primary.disciplinary_board_decision → boolean → unknown
+Bu haberin ana teması güvenlik olayları mı? → theme.primary.security_incidents → boolean → unknown.Bu haberin ana teması saha dışı skandal mı? → theme.primary.off_field_scandal → boolean → unknown
+Bu haberin ana teması doping iddiası mı? → theme.primary.doping_allegation → boolean → unknown.Bu haberin ana teması altyapı/genç oyuncu mu? → theme.primary.youth_academy → boolean → unknown
+Bu haberin ana teması milli takım çağrısı mı? → theme.primary.national_team_callup → boolean → unknown.Bu haber birden fazla ana tema taşıyor mu? → theme.primary.multiple → boolean → unknown
 
 BÖLÜM E — Ton ve Yönlendirme Bantları
-Bu haber tonu olumlu mu? → tone.sentiment.positive → boolean → unknown
-Bu haber tonu olumsuz mu? → tone.sentiment.negative → boolean → unknown
-Bu haber tonu karma mı? → tone.sentiment.mixed → boolean → unknown
-Bu haber tonu nötr mü? → tone.sentiment.neutral → boolean → unknown
-Bu haber dili provokatif mi? → tone.direction.provocative → boolean → unknown
-Bu haber dili sakin mi? → tone.direction.calm → boolean → unknown
-
-Bu haber dili panik üretiyor mu? → tone.direction.panic_amplifying → boolean → unknown
-Bu haber dili güven telkin ediyor mu? → tone.direction.reassuring → boolean → unknown
-Bu haber dili baskı üretiyor mu? → tone.direction.pressure_building → boolean → unknown
-Bu haber dili “kriz büyütme” eğilimi taşıyor mu? → tone.bias.crisis_escalation → boolean → unknown
-Bu haber dili “yumuşatma / toparlama” eğilimi taşıyor mu? → tone.bias.de_escalation → boolean → unknown
-
-Bu haber içinde doğrudan hedef gösterme var mı? → tone.risk.direct_targeting → boolean → unknown
-Bu haber içinde kişisel saldırı dili var mı? → tone.risk.personal_attack → boolean → unknown
-Bu haber içinde taraftarı kışkırtan ifade var mı? → tone.risk.fan_incitement → boolean → unknown
-Bu haber içinde kulüp yönetimine açık çağrı var mı? → tone.risk.management_callout → boolean → unknown
-Bu haber içinde teknik direktöre istifa baskısı var mı? → tone.risk.coach_resignation_pressure → boolean → unknown
-
-Bu haber içinde oyuncuya yönelik disiplin baskısı var mı? → tone.risk.player_discipline_pressure → boolean → unknown
-Bu haber içinde hakem hedef gösterme var mı? → tone.risk.referee_targeting → boolean → unknown
-Bu haber içinde federasyon hedef gösterme var mı? → tone.risk.federation_targeting → boolean → unknown
-Bu haber içinde “son dakika” dili var mı? → tone.claim.breaking_news → boolean → unknown
-Bu haber içinde “kesin bilgi” iddiası var mı? → tone.claim.certainty_assertion → boolean → unknown
-
-Bu haber içinde “kulüp kaynakları” gibi muğlak kaynak dili var mı? → tone.claim.vague_source_language → boolean → unknown
-Bu haber dili “tehdit” çağrışımı taşıyor mu? → tone.association.threat_imagery → boolean → unknown
+Bu haber tonu olumlu mu? → tone.sentiment.positive → boolean → unknown.Bu haber tonu olumsuz mu? → tone.sentiment.negative → boolean → unknown.Bu haber tonu karma mı? → tone.sentiment.mixed → boolean → unknown
+Bu haber tonu nötr mü? → tone.sentiment.neutral → boolean → unknown.Bu haber dili provokatif mi? → tone.direction.provocative → boolean → unknown.Bu haber dili sakin mi? → tone.direction.calm → boolean → unknown
+Bu haber dili panik üretiyor mu? → tone.direction.panic_amplifying → boolean → unknown.Bu haber dili güven telkin ediyor mu? → tone.direction.reassuring → boolean → unknown.Bu haber dili baskı üretiyor mu? → tone.direction.pressure_building → boolean → unknown
+Bu haber dili “kriz büyütme” eğilimi taşıyor mu? → tone.bias.crisis_escalation → boolean → unknown.Bu haber dili “yumuşatma / toparlama” eğilimi taşıyor mu? → tone.bias.de_escalation → boolean → unknown
+Bu haber içinde doğrudan hedef gösterme var mı? → tone.risk.direct_targeting → boolean → unknown.Bu haber içinde kişisel saldırı dili var mı? → tone.risk.personal_attack → boolean → unknown
+Bu haber içinde taraftarı kışkırtan ifade var mı? → tone.risk.fan_incitement → boolean → unknown.Bu haber içinde kulüp yönetimine açık çağrı var mı? → tone.risk.management_callout → boolean → unknown
+Bu haber içinde teknik direktöre istifa baskısı var mı? → tone.risk.coach_resignation_pressure → boolean → unknown.Bu haber içinde oyuncuya yönelik disiplin baskısı var mı? → tone.risk.player_discipline_pressure → boolean → unknown
+Bu haber içinde hakem hedef gösterme var mı? → tone.risk.referee_targeting → boolean → unknown.Bu haber içinde federasyon hedef gösterme var mı? → tone.risk.federation_targeting → boolean → unknown
+Bu haber içinde “son dakika” dili var mı? → tone.claim.breaking_news → boolean → unknown.Bu haber içinde “kesin bilgi” iddiası var mı? → tone.claim.certainty_assertion → boolean → unknown
+Bu haber içinde “kulüp kaynakları” gibi muğlak kaynak dili var mı? → tone.claim.vague_source_language → boolean → unknown.Bu haber dili “tehdit” çağrışımı taşıyor mu? → tone.association.threat_imagery → boolean → unknown
 Bu haber dili “linç” çağrışımı taşıyor mu? → tone.association.mobbing_imagery → boolean → unknown
 
 BÖLÜM F — Takım Genel Haberi
-Bu haber kulüp yönetimiyle mi ilgili? → team.news.club.management_related → boolean → unknown
-Bu haber sportif direktör veya üst yönetim kararlarını içeriyor mu? → team.news.club.executive_decision_included → boolean → unknown
-Bu haber takımın sezon hedefini değiştiren bir söylem taşıyor mu? → team.news.season_goal.change_signal → boolean → unknown
-Bu haber hedef değişimi “yüksek hedef” mi “hedef düşürme” mi? → team.news.season_goal.change_direction → enum → unknown
-Bu haber kadro istikrarını etkileyen bir problem içeriyor mu? → team.news.squad.stability_issue_present → boolean → unknown
-Bu haber kadro istikrarını etkileyen problem “saklık yoğunluğu” mu “transfer belirsizliği” mi? → team.news.squad.stability_issue_type → enum → unknown
-
-Bu haber oyuncu huzursuzluğu veya soyunma odası gerilimi teması taşıyor mu? → team.news.lockeroom.tension_present → boolean → unknown
-Bu haber “hoca” ile “oyuncu grubu” gerilimi mi? → team.news.lockeroom.tension_coach_vs_group → boolean → unknown
-Bu haber “oyuncu-oyuncu” gerilimi mi? → team.news.lockeroom.tension_player_vs_player → boolean → unknown
-Bu haber takım içinde “liderlik boşluğu” teması taşıyor mu? → team.news.squad.leadership_vacuum_present → boolean → unknown
-Bu haber takımın iç disipliniyle ilgili bir karar içeriyor mu? → team.news.discipline.decision_present → boolean → unknown
-
-Bu haber disiplin kararı “ceza” mı “uyarı” mı? → team.news.discipline.decision_type → enum → unknown
-Bu haber antrenman düzeninde değişiklik içeriyor mu? → team.news.training.schedule_change_present → boolean → unknown
-Bu haber antrenman değişikliği “saat” mi “yük” mü “metot” mu? → team.news.training.change_type → enum → unknown
-Bu haber kamp / seyahat / hazırlık programı içeriyor mu? → team.news.prep.program_change_present → boolean → unknown
-Bu haber hazırlık programı “iptal” mi “uzama” mı “yer değişimi” mi? → team.news.prep.program_change_type → enum → unknown
-
-Bu haber yoğun fikstür veya yorgunluk teması taşıyor mu? → team.news.fatigue.fixture_congestion_theme → boolean → unknown
-Bu haber rotasyon planını etkileyen bir baskı içeriyor mu? → team.news.rotation.pressure_present → boolean → unknown
-Bu haber rotasyon baskısı “zorunlu” mu “tercih” mi? → team.news.rotation.pressure_type → enum → unknown
-Bu haber kulübün ekonomik durumu veya maaş ödemeleriyle ilgili mi? → team.news.finance.salary_payment_related → boolean → unknown
-Bu haber maaş konusu “gecikme” mi “eksik ödeme” mi “tam ödeme” mi? → team.news.finance.salary_payment_status → enum → unknown
-
-Bu haber prim / bonus / ödeme gecikmesi gibi motivasyon etkisi taşıyor mu? → team.news.finance.motivation_payment_issue → boolean → unknown
-Bu haber takım içinde gruplar oluştuğu iddiası taşıyor mu? → team.news.lockeroom.factions_claim_present → boolean → unknown
-Bu haber gruplar “yerli-yabancı” mı “genç-yaşlı” mı? → team.news.lockeroom.factions_type → enum → unknown
-Bu haber oyuncuların teknik direktöre güveni teması taşıyor mu? → team.news.coach.trust_theme_present → boolean → unknown
-Bu haber yönetim-teknik ekip çatışması içeriyor mu? → team.news.club.board_vs_staff_conflict → boolean → unknown
-
-Bu haber taraftar baskısının kulüp kararlarını etkilediğini söylüyor mu? → team.news.fan_pressure.affects_decisions → boolean → unknown
-Bu haber takımın kadro dışı kararlarını içeriyor mu? → team.news.squad.exclusion_decision_present → boolean → unknown
-Bu haber kadro dışı “disiplin” mi “performans” mı “transfer” mi? → team.news.squad.exclusion_reason → enum → unknown
-Bu haber takımın sakatlık yönetimiyle ilgili bir problem içeriyor mu? → team.news.medical.injury_management_issue → boolean → unknown
-Bu haber sakatlık yönetimi “yanlış yükleme” iddiası mı? → team.news.medical.wrong_load_claim → boolean → unknown
-
-Bu haber kulüp içinde hukuki süreç / dava / ceza içeriyor mu? → team.news.club.legal_process_present → boolean → unknown
-Bu haber hukuki süreç “para cezası” mı “transfer yasağı” mı? → team.news.club.legal_process_type → enum → unknown
-Bu haber kulüp içi güvenlik / tesis / stat problemi içeriyor mu? → team.news.club.facility_or_stadium_issue → boolean → unknown
-Bu haber stat sorunu “zemin” mi “seyirci” mi “güvenlik” mi? → team.news.club.stadium_issue_type → enum → unknown
-Bu haber takımın iç saha atmosferini büyüten bir gündem mi? → team.news.home.atmosphere_pressure_theme → boolean → unknown
+Bu haber kulüp yönetimiyle mi ilgili? → team.news.club.management_related → boolean → unknown.Bu haber sportif direktör veya üst yönetim kararlarını içeriyor mu? → team.news.club.executive_decision_included → boolean → unknown
+Bu haber takımın sezon hedefini değiştiren bir söylem taşıyor mu? → team.news.season_goal.change_signal → boolean → unknown.Bu haber hedef değişimi “yüksek hedef” mi “hedef düşürme” mi? → team.news.season_goal.change_direction → enum → unknown
+Bu haber kadro istikrarını etkileyen bir problem içeriyor mu?→ team.news.squad.stability_issue_present→ boolean→ unknown.Bu haber kadro istikrarını etkileyen problem “saklık yoğunluğu”mu“transfer belirsizliği” mi? → team.news.squad.stability_issue_type → enum → unknown
+Bu haber oyuncu huzursuzluğu veya soyunma odası gerilimi teması taşıyor mu? → team.news.lockeroom.tension_present → boolean → unknown.Bu haber “hoca” ile “oyuncu grubu” gerilimi mi? → team.news.lockeroom.tension_coach_vs_group → boolean → unknown
+Bu haber “oyuncu-oyuncu” gerilimi mi? → team.news.lockeroom.tension_player_vs_player → boolean → unknown.Bu haber takım içinde “liderlik boşluğu” teması taşıyor mu? → team.news.squad.leadership_vacuum_present → boolean → unknown
+Bu haber takımın iç disipliniyle ilgili bir karar içeriyor mu? → team.news.discipline.decision_present → boolean → unknown.Bu haber disiplin kararı “ceza” mı “uyarı” mı? → team.news.discipline.decision_type → enum → unknown
+Bu haber antrenman düzeninde değişiklik içeriyor mu? → team.news.training.schedule_change_present → boolean → unknown.Bu haber antrenman değişikliği “saat” mi “yük” mü “metot” mu? → team.news.training.change_type → enum → unknown
+Bu haber kamp / seyahat / hazırlık programı içeriyor mu? → team.news.prep.program_change_present → boolean → unknown.Bu haber hazırlık programı “iptal” mi “uzama” mı “yer değişimi” mi? → team.news.prep.program_change_type → enum → unknown
+Bu haber yoğun fikstür veya yorgunluk teması taşıyor mu? → team.news.fatigue.fixture_congestion_theme → boolean → unknown.Bu haber rotasyon planını etkileyen bir baskı içeriyor mu? → team.news.rotation.pressure_present → boolean → unknown
+Bu haber rotasyon baskısı “zorunlu” mu “tercih” mi? → team.news.rotation.pressure_type → enum → unknown.Bu haber kulübün ekonomik durumu veya maaş ödemeleriyle ilgili mi? → team.news.finance.salary_payment_related → boolean → unknown
+Bu haber maaş konusu “gecikme” mi “eksik ödeme” mi “tam ödeme” mi? → team.news.finance.salary_payment_status → enum → unknown.Bu haber prim / bonus / ödeme gecikmesi gibi motivasyon etkisi taşıyor mu? → team.news.finance.motivation_payment_issue → boolean → unknown
+Bu haber takım içinde gruplar oluştuğu iddiası taşıyor mu? → team.news.lockeroom.factions_claim_present → boolean → unknown.Bu haber gruplar “yerli-yabancı” mı “genç-yaşlı” mı? → team.news.lockeroom.factions_type → enum → unknown
+Bu haber oyuncuların teknik direktöre güveni teması taşıyor mu? → team.news.coach.trust_theme_present → boolean → unknown.Bu haber yönetim-teknik ekip çatışması içeriyor mu? → team.news.club.board_vs_staff_conflict → boolean → unknown
+Bu haber taraftar baskısının kulüp kararlarını etkilediğini söylüyor mu? → team.news.fan_pressure.affects_decisions → boolean → unknown.Bu haber takımın kadro dışı kararlarını içeriyor mu? → team.news.squad.exclusion_decision_present → boolean → unknown
+Bu haber kadro dışı “disiplin” mi “performans” mı “transfer” mi? → team.news.squad.exclusion_reason → enum → unknown.Bu haber takımın sakatlık yönetimiyle ilgili bir problem içeriyor mu? → team.news.medical.injury_management_issue → boolean → unknown
+Bu haber sakatlık yönetimi “yanlış yükleme” iddiası mı? → team.news.medical.wrong_load_claim → boolean → unknown.Bu haber kulüp içinde hukuki süreç / dava / ceza içeriyor mu? → team.news.club.legal_process_present → boolean → unknown
+Bu haber hukuki süreç “para cezası” mı “transfer yasağı” mı? → team.news.club.legal_process_type → enum → unknown.Bu haber kulüp içi güvenlik / tesis / stat problemi içeriyor mu? → team.news.club.facility_or_stadium_issue → boolean → unknown
+Bu haber stat sorunu “zemin” mi “seyirci” mi “güvenlik” mi? → team.news.club.stadium_issue_type → enum → unknown.Bu haber takımın iç saha atmosferini büyüten bir gündem mi? → team.news.home.atmosphere_pressure_theme → boolean → unknown
 Bu haber takımın deplasman baskısını büyüten bir gündem mi? → team.news.away.pressure_theme → boolean → unknown
 
 BÖLÜM G — Teknik Direktör Haberi
-Bu haberin hedefi teknik direktör mü? → coach.target.is_head_coach → boolean → unknown
-Bu haber teknik direktörün görev güvenliğiyle mi ilgili? → coach.job_security.is_topic → boolean → unknown
-Bu haber “istifa” mı “kovulma” mı “ultimatom” mu? → coach.job_security.outcome_type → enum(resignation,sacked,ultimatum,unknown) → unknown
-Bu haber teknik direktörün yönetimle gerilim yaşadığını söylüyor mu? → coach.tension.with_board.is_claimed → boolean → unknown
-Bu haber gerilim “transfer” mi “hedef” mi “yetki” mi? → coach.tension.with_board.topic → enum(transfer,targets,authority,unknown) → unknown
-
-Bu haber teknik direktörün oyuncularla gerilim yaşadığını söylüyor mu? → coach.tension.with_players.is_claimed → boolean → unknown
-Bu haber gerilim “yıldız oyuncu” mu “grup” mu? → coach.tension.with_players.scope → enum(star_player,group,unknown) → unknown
-Bu haber teknik direktörün basın toplantısı çıkışı mı? → coach.media.is_press_conference → boolean → unknown
-Bu haber teknik direktörün maç öncesi plan beyanı içeriyor mu? → coach.statements.pre_match_plan.is_included → boolean → unknown
-Bu haber teknik direktörün maç sonrası açıklaması mı? → coach.media.is_post_match_statement → boolean → unknown
-
-Bu haber teknik direktörün hakem/VAR açıklaması içeriyor mu? → coach.officials.ref_var.is_included → boolean → unknown
-Bu haber hakem/VAR açıklaması “sakin” mi “sert” mi? → coach.officials.ref_var.tone → enum(calm,harsh,unknown) → unknown
-Bu haber teknik direktörün kadro seçiminde zorlandığını söylüyor mu? → coach.squad_selection.is_struggling_claimed → boolean → unknown
-Bu haber zorlanma “sakatlık” mı “yorgunluk” mu “ceza” mı? → coach.squad_selection.struggle_reason → enum(injury,fatigue,suspension,unknown) → unknown
-Bu haber teknik direktörün rotasyon tercihleriyle ilgili mi? → coach.rotation.is_topic → boolean → unknown
-Bu haber teknik direktörün oyuncu disiplini yaklaşımıyla ilgili mi? → coach.discipline.is_topic → boolean → unknown
-
-Bu haber disiplin yaklaşımı “sertleşme” mi “yumuşama” mı? → coach.discipline.direction → enum(stricter,softer,unknown) → unknown
-Bu haber teknik direktörün kendi ekibinde değişiklik yapacağını söylüyor mu? → coach.staff_changes.is_planned_claimed → boolean → unknown
-Bu haber teknik direktörün antrenman metodu değişimini söylüyor mu? → coach.training_method.change_claimed → boolean → unknown
-Bu haber teknik direktörün “takım ruhu / birlik” mesajı mı? → coach.messaging.team_unity.is_emphasized → boolean → unknown
-Bu haber teknik direktörün “kriz yönetimi” kapasitesini test eden bir gündem mi? → coach.crisis_management.is_test_topic → boolean → unknown
-Bu haber teknik direktörün “bahane” dili taşıdığı iddiası mı? → coach.messaging.excuse_tone.is_claimed → boolean → unknown
+Bu haberin hedefi teknik direktör mü? → coach.target.is_head_coach → boolean → unknown.Bu haber teknik direktörün görev güvenliğiyle mi ilgili? → coach.job_security.is_topic → boolean → unknown
+Bu haber “istifa” mı “kovulma” mı “ultimatom” mu? → coach.job_security.outcome_type → enum(resignation,sacked,ultimatum,unknown) → unknown.Bu haber teknik direktörün yönetimle gerilim yaşadığını söylüyor mu? → coach.tension.with_board.is_claimed → boolean → unknown
+Bu haber gerilim “transfer” mi “hedef” mi “yetki” mi?→ coach.tension.with_board.topic → enum(transfer,targets,authority,unknown) → unknown.Bu haber teknik direktörün oyuncularla gerilim yaşadığını söylüyor mu? → coach.tension.with_players.is_claimed → boolean → unknown
+Bu haber gerilim “yıldız oyuncu” mu “grup” mu? → coach.tension.with_players.scope → enum(star_player,group,unknown) → unknown.Bu haber teknik direktörün basın toplantısı çıkışı mı? → coach.media.is_press_conference → boolean → unknown
+Bu haber teknik direktörün maç öncesi plan beyanı içeriyor mu? → coach.statements.pre_match_plan.is_included → boolean → unknown.Bu haber teknik direktörün maç sonrası açıklaması mı? → coach.media.is_post_match_statement → boolean → unknown
+Bu haber teknik direktörün hakem/VAR açıklaması içeriyor mu? → coach.officials.ref_var.is_included → boolean → unknown.Bu haber hakem/VAR açıklaması “sakin” mi “sert” mi? → coach.officials.ref_var.tone → enum(calm,harsh,unknown) → unknown
+Bu haber teknik direktörün kadro seçiminde zorlandığını söylüyor mu?,coach.squad_selection.is_struggling_claimed,boolean,unknown.Bu haber zorlanma“sakatlık” mı“yorgunluk” mu“ceza” mı?→coach.squad_selection.struggle_reason→enum(injury,fatigue,suspension,unknown→ unknown
+Bu haber teknik direktörün rotasyon tercihleriyle ilgili mi? → coach.rotation.is_topic → boolean → unknown.Bu haber teknik direktörün oyuncu disiplini yaklaşımıyla ilgili mi? → coach.discipline.is_topic → boolean → unknown
+Bu haber disiplin yaklaşımı “sertleşme” mi “yumuşama” mı? → coach.discipline.direction → enum(stricter,softer,unknown) → unknown.Bu haber teknik direktörün kendi ekibinde değişiklik yapacağını söylüyor mu? → coach.staff_changes.is_planned_claimed → boolean → unknown
+Bu haber teknik direktörün antrenman metodu değişimini söylüyor mu? → coach.training_method.change_claimed → boolean → unknown.Bu haber teknik direktörün “takım ruhu / birlik” mesajı mı? → coach.messaging.team_unity.is_emphasized → boolean → unknown
+Bu haber teknik direktörün “kriz yönetimi” kapasitesini test eden bir gündem mi? → coach.crisis_management.is_test_topic → boolean → unknown.Bu haber teknik direktörün “bahane” dili taşıdığı iddiası mı? → coach.messaging.excuse_tone.is_claimed → boolean → unknown
 
 BÖLÜM H — Futbolcu Haberi
-Bu haberin hedefi futbolcu mu? → player.target.is_player → boolean → unknown
-Bu haber futbolcunun sakatlığıyla mı ilgili? → player.injury.is_related → boolean → unknown
-Bu haber sakatlık “kas” mı “darbe” mi “kronik” mi? → player.injury.type → enum → unknown
-Bu haber futbolcunun sakatlıktan dönüş süreciyle mi ilgili? → player.injury.recovery.is_related → boolean → unknown
-Bu haber dönüş süreci “takım antrenmanı” mı “bireysel çalışma” mı? → player.injury.recovery.mode → enum → unknown
-
-Bu haber futbolcunun “oynar/oynamaz” netliği taşıyor mu? → player.availability.has_clarity → boolean → unknown
-Bu haber netlik “kesin oynar” mı “riskli” mi “kesin yok” mu? → player.availability.clarity_level → enum → unknown
-Bu haber futbolcunun cezalı duruma düşmesiyle mi ilgili? → player.suspension.is_related → boolean → unknown
-Bu haber ceza “kırmızı” mı “kart birikimi” mi? → player.suspension.type → enum → unknown
-Bu haber futbolcunun kadro dışı bırakılmasıyla mı ilgili? → player.squad_status.is_excluded → boolean → unknown
-
-Bu haber kadro dışı sebebi “disiplin” mi “performans” mı? → player.squad_status.exclusion_reason → enum → unknown
-Bu haber futbolcunun disiplinsiz davranışıyla mı ilgili? → player.discipline.is_related → boolean → unknown
-Bu haber davranış “geç kalma” mı “kavga” mı? → player.discipline.behavior_type → enum → unknown
-Bu haber futbolcunun antrenman performansı hakkında mı? → player.training.performance.is_related → boolean → unknown
-Bu haber performans “düşük” mü “yüksek” mi? → player.training.performance.level → enum → unknown
-
-Bu haber futbolcunun teknik direktörle gerilimi hakkında mı? → player.conflict.coach.is_related → boolean → unknown
+Bu haberin hedefi futbolcu mu? → player.target.is_player → boolean → unknown.Bu haber futbolcunun sakatlığıyla mı ilgili? → player.injury.is_related → boolean → unknown
+Bu haber sakatlık “kas” mı “darbe” mi “kronik” mi? → player.injury.type → enum → unknown.Bu haber futbolcunun sakatlıktan dönüş süreciyle mi ilgili? → player.injury.recovery.is_related → boolean → unknown
+Bu haber dönüş süreci “takım antrenmanı” mı “bireysel çalışma” mı? → player.injury.recovery.mode → enum → unknown.Bu haber futbolcunun “oynar/oynamaz” netliği taşıyor mu? → player.availability.has_clarity → boolean → unknown
+Bu haber netlik “kesin oynar” mı “riskli” mi “kesin yok” mu? → player.availability.clarity_level → enum → unknown.Bu haber futbolcunun cezalı duruma düşmesiyle mi ilgili? → player.suspension.is_related → boolean → unknown
+Bu haber ceza “kırmızı” mı “kart birikimi” mi? → player.suspension.type → enum → unknown.Bu haber futbolcunun kadro dışı bırakılmasıyla mı ilgili? → player.squad_status.is_excluded → boolean → unknown
+Bu haber kadro dışı sebebi “disiplin” mi “performans” mı? → player.squad_status.exclusion_reason → enum → unknown.Bu haber futbolcunun disiplinsiz davranışıyla mı ilgili? → player.discipline.is_related → boolean → unknown
+Bu haber davranış “geç kalma” mı “kavga” mı? → player.discipline.behavior_type → enum → unknown.Bu haber futbolcunun antrenman performansı hakkında mı? → player.training.performance.is_related → boolean → unknown
+Bu haber performans “düşük” mü “yüksek” mi? → player.training.performance.level → enum → unknown.Bu haber futbolcunun teknik direktörle gerilimi hakkında mı? → player.conflict.coach.is_related → boolean → unknown
 Bu haber futbolcunun takım arkadaşlarıyla gerilimi hakkında mı? → player.conflict.teammates.is_related → boolean → unknown
-Bu haber futbolcunun taraftarla gerilimi hakkında mı? → player.conflict.fans.is_related → boolean → unknown
-Bu haber futbolcunun sosyal medya davranışı kaynaklı mı? → player.social_media.is_related → boolean → unknown
-Bu haber sosyal medya “paylaşım” mı “beğeni” mi “yorum” mu? → player.social_media.action_type → enum → unknown
-
-Bu haber futbolcunun mental yorgunluk / stres taşıdığını söylüyor mu? → player.mental_fatigue.is_related → boolean → unknown
+Bu haber futbolcunun taraftarla gerilimi hakkında mı? → player.conflict.fans.is_related → boolean → unknown.Bu haber futbolcunun sosyal medya davranışı kaynaklı mı? → player.social_media.is_related → boolean → unknown
+Bu haber sosyal medya “paylaşım” mı “beğeni” mi “yorum” mu? → player.social_media.action_type → enum → unknown.Bu haber futbolcunun mental yorgunluk / stres taşıdığını söylüyor mu? → player.mental_fatigue.is_related → boolean → unknown
 Bu haber stres “aile” mi “performans baskısı” mı? → player.mental_fatigue.stress_source → enum → unknown
-Bu haber futbolcunun transfer söylentisi mi? → player.transfer_rumor.is_related → boolean → unknown
-Bu haber transfer “gidiş” mi “geliş” mi? → player.transfer_rumor.direction → enum → unknown
-Bu haber futbolcunun transferinde resmiyet var mı? → player.transfer_rumor.has_officiality → boolean → unknown
-
-Bu haber resmiyet “kulüp açıklaması” mı “menajer” mi? → player.transfer_rumor.official_source → enum → unknown
+Bu haber futbolcunun transfer söylentisi mi? → player.transfer_rumor.is_related → boolean → unknown.Bu haber transfer “gidiş” mi “geliş” mi? → player.transfer_rumor.direction → enum → unknown
+Bu haber futbolcunun transferinde resmiyet var mı? → player.transfer_rumor.has_officiality → boolean → unknown.Bu haber resmiyet “kulüp açıklaması” mı “menajer” mi? → player.transfer_rumor.official_source → enum → unknown
 Bu haber futbolcunun maaş/prim tartışması içeriyor mu? → player.contract.payment_dispute.is_related → boolean → unknown
-Bu haber tartışma “zam” mı “gecikme” mi? → player.contract.payment_dispute.type → enum → unknown
-Bu haber futbolcunun “sözleşme krizi” içeriyor mu? → player.contract.crisis.is_related → boolean → unknown
+Bu haber tartışma “zam” mı “gecikme” mi? → player.contract.payment_dispute.type → enum → unknown.Bu haber futbolcunun “sözleşme krizi” içeriyor mu? → player.contract.crisis.is_related → boolean → unknown
 Bu haber sözleşme “uzatma” mı “fesih” mi? → player.contract.crisis.type → enum → unknown
 
 BÖLÜM I — Hakem / VAR Haberi
-Bu haberin hedefi hakem mi? → news.referee_var.is_referee_targeted → boolean → unknown
-Bu haber hakemin atanmasıyla mı ilgili? → news.referee_var.is_assignment_related → boolean → unknown
-Bu haber atama “maç özel” mi “genel politika” mı? → news.referee_var.assignment_scope → enum → unknown
-Bu haber hakemin geçmiş maç performansına dair tartışma mı? → news.referee_var.is_past_performance_discussion → boolean → unknown
-Bu haber tartışma “kart” mı “penaltı” mı “VAR” mı? → news.referee_var.discussion_topic → enum → unknown
-
-Bu haber hakemin kart standardı hakkında bir gündem mi? → news.referee_var.is_card_standard_discussion → boolean → unknown
+Bu haberin hedefi hakem mi? → news.referee_var.is_referee_targeted → boolean → unknown.Bu haber hakemin atanmasıyla mı ilgili? → news.referee_var.is_assignment_related → boolean → unknown
+Bu haber atama “maç özel” mi “genel politika” mı? → news.referee_var.assignment_scope → enum → unknown.Bu haber hakemin geçmiş maç performansına dair tartışma mı? → news.referee_var.is_past_performance_discussion → boolean → unknown
+Bu haber tartışma “kart” mı “penaltı” mı “VAR” mı? → news.referee_var.discussion_topic → enum → unknown.Bu haber hakemin kart standardı hakkında bir gündem mi? → news.referee_var.is_card_standard_discussion → boolean → unknown
 Bu haber hakemin penaltı standardı hakkında bir gündem mi? → news.referee_var.is_penalty_standard_discussion → boolean → unknown
-Bu haber hakemin VAR kararlarıyla ilgili mi? → news.referee_var.is_var_decision_discussion → boolean → unknown
-Bu haber VAR hakemiyle ilgili mi? → news.referee_var.is_var_referee_related → boolean → unknown
-Bu haber hakemin disiplin soruşturması iddiası mı? → news.referee_var.is_disciplinary_investigation_claim → boolean → unknown
-Bu haber kulübün hakem şikâyeti mi? → news.referee_var.is_home_club_referee_complaint → boolean → unknown
-
-Bu haber rakip kulübün hakem şikâyeti mi? → news.referee_var.is_away_club_referee_complaint → boolean → unknown
-Bu haber medya tarafından “hakem baskısı” kurulması mı? → news.referee_var.is_media_referee_pressure → boolean → unknown
-Bu haber hakemle ilgili “yönetim açıklaması” içeriyor mu? → news.referee_var.has_club_board_statement → boolean → unknown
-Bu haber hakemle ilgili “federasyon açıklaması” içeriyor mu? → news.referee_var.has_federation_statement → boolean → unknown
-Bu haber hakemle ilgili “maç sonu hedef gösterme” dili taşıyor mu? → news.referee_var.has_post_match_targeting_language → boolean → unknown
-Bu haber hakem haberinde “video/kanıt dolaşımı” var mı? → news.referee_var.has_video_evidence_circulation → boolean → unknown
+Bu haber hakemin VAR kararlarıyla ilgili mi? → news.referee_var.is_var_decision_discussion → boolean → unknown.Bu haber VAR hakemiyle ilgili mi? → news.referee_var.is_var_referee_related → boolean → unknown
+Bu haber hakemin disiplin soruşturması iddiası mı? → news.referee_var.is_disciplinary_investigation_claim → boolean → unknown.Bu haber kulübün hakem şikâyeti mi? → news.referee_var.is_home_club_referee_complaint → boolean → unknown
+Bu haber rakip kulübün hakem şikâyeti mi? → news.referee_var.is_away_club_referee_complaint → boolean → unknown.Bu haber medya tarafından “hakem baskısı” kurulması mı? → news.referee_var.is_media_referee_pressure → boolean → unknown
+Bu haber hakemle ilgili “yönetim açıklaması” içeriyor mu? → news.referee_var.has_club_board_statement → boolean → unknown.Bu haber hakemle ilgili “federasyon açıklaması” içeriyor mu? → news.referee_var.has_federation_statement → boolean → unknown
+Bu haber hakemle ilgili “maç sonu hedef gösterme” dili taşıyor mu? → news.referee_var.has_post_match_targeting_language → boolean → unknown.Bu haber hakem haberinde “video/kanıt dolaşımı” var mı? → news.referee_var.has_video_evidence_circulation → boolean → unknown
 
 BÖLÜM J — Yönetim / Federasyon / Lig Politik Haberi
-Bu haber federasyon kararı içeriyor mu? → news.governance.is_federation_decision → boolean → unknown
-Bu haber disiplin kurulu kararı içeriyor mu? → news.governance.is_disciplinary_board_decision → boolean → unknown
-Bu haber puan silme / ceza / seyirci yasağı içeriyor mu? → news.governance.has_sanction_or_ban → boolean → unknown
-Bu haber ceza “seyirci” mi “puan” mı “para” mı? → news.governance.sanction_type → enum → unknown
-Bu haber hükmen mağlubiyet veya itiraz süreciyle ilgili mi? → news.governance.is_forfeit_or_appeal_process → boolean → unknown
-
-Bu haber itiraz süreci “başvuru” mu “sonuç” mu? → news.governance.appeal_stage → enum → unknown
-Bu haber fikstür değişikliği içeriyor mu? → news.governance.has_fixture_change → boolean → unknown
-Bu haber maç saati/stadı değişikliği içeriyor mu? → news.governance.has_kickoff_or_venue_change → boolean → unknown
-Bu haber güvenlik nedeniyle maçın riskli sınıfa alınması mı? → news.governance.is_high_risk_security_classification → boolean → unknown
-Bu haber kulüp lisans / finansal fair-play süreci içeriyor mu? → news.governance.is_license_or_ffp_process → boolean → unknown
-
-Bu haber transfer yasağı / kadro kısıtı içeriyor mu? → news.governance.has_transfer_ban_or_squad_restriction → boolean → unknown
-Bu haber sezon planlaması / maç sıkışıklığı gibi yapısal konu mu? → news.governance.is_structural_schedule_congestion_topic → boolean → unknown
-Bu haber “yabancı kuralı / kadro kuralı” değişimi gibi düzenleme mi? → news.governance.is_roster_rule_change → boolean → unknown
-Bu haber saha içi değil “masa başı” etki taşıyor mu? → news.governance.is_off_field_desk_impact → boolean → unknown
+Bu haber federasyon kararı içeriyor mu? → news.governance.is_federation_decision → boolean → unknown.Bu haber disiplin kurulu kararı içeriyor mu? → news.governance.is_disciplinary_board_decision → boolean → unknown
+Bu haber puan silme / ceza / seyirci yasağı içeriyor mu? → news.governance.has_sanction_or_ban → boolean → unknown.Bu haber ceza “seyirci” mi “puan” mı “para” mı? → news.governance.sanction_type → enum → unknown
+Bu haber hükmen mağlubiyet veya itiraz süreciyle ilgili mi? → news.governance.is_forfeit_or_appeal_process → boolean → unknown.Bu haber itiraz süreci “başvuru” mu “sonuç” mu? → news.governance.appeal_stage → enum → unknown
+Bu haber fikstür değişikliği içeriyor mu? → news.governance.has_fixture_change → boolean → unknown.Bu haber maç saati/stadı değişikliği içeriyor mu? → news.governance.has_kickoff_or_venue_change → boolean → unknown
+Bu haber güvenlik nedeniyle maçın riskli sınıfa alınması mı? → news.governance.is_high_risk_security_classification → boolean → unknown.Bu haber kulüp lisans / finansal fair-play süreci içeriyor mu? → news.governance.is_license_or_ffp_process → boolean → unknown
+Bu haber transfer yasağı / kadro kısıtı içeriyor mu?→ news.governance.has_transfer_ban_or_squad_restriction→ boolean→ unknown.Bu haber sezon planlaması / maç sıkışıklığı gibi yapısal konu mu? → news.governance.is_structural_schedule_congestion_topic → boolean → unknown
+Bu haber “yabancı kuralı / kadro kuralı” değişimi gibi düzenleme mi? → news.governance.is_roster_rule_change → boolean → unknown.Bu haber saha içi değil “masa başı” etki taşıyor mu? → news.governance.is_off_field_desk_impact → boolean → unknown
 Bu haberin etkisi bir sonraki maçı etkiler mi? → news.governance.affects_next_match → boolean → unknown
 
 BÖLÜM K — Rakip / Derbi / Stres
-Bu haber iki takımı aynı anda kapsıyor mu? → news.rivalry.is_both_teams_involved → boolean → unknown
-Bu haber derbi baskısı teması taşıyor mu? → news.rivalry.has_derby_pressure_theme → boolean → unknown
-Bu haber “prestij maçı” bandında mı? → news.rivalry.is_prestige_match_band → boolean → unknown
-Bu haber “intikam maçı” bandında mı? → news.rivalry.is_revenge_match_band → boolean → unknown
-
-Bu haber “şampiyonluk maçı” baskısı taşıyor mu? → news.rivalry.has_title_race_pressure → boolean → unknown
-Bu haber “küme düşme maçı” baskısı taşıyor mu? → news.rivalry.has_relegation_pressure → boolean → unknown
-Bu haber tribün güvenliği ve olay beklentisi içeriyor mu? → news.rivalry.has_crowd_security_incident_risk → boolean → unknown
-Bu haber maç öncesi gerginlik artışı içeriyor mu? → news.rivalry.has_pre_match_tension_increase → boolean → unknown
-Bu haber iki takım oyuncuları arasında bireysel rekabet teması mı? → news.rivalry.has_player_to_player_rivalry_theme → boolean → unknown
-
-Bu haber iki takım koçları arasında gerilim teması mı? → news.rivalry.has_coach_to_coach_tension_theme → boolean → unknown
-Bu haber maçın “kapalı gişe” baskısı taşıyor mu? → news.rivalry.has_sold_out_pressure → boolean → unknown
-Bu haber maçın “seyircisiz” olması gibi atmosfer etkisi taşıyor mu? → news.rivalry.has_no_fans_atmosphere_impact → boolean → unknown
-Bu haber maç öncesi provokasyon iddiası içeriyor mu? → news.rivalry.has_pre_match_provocation_claim → boolean → unknown
-Bu haber maç sonrası gerilimin büyüdüğünü ve bir sonraki maça taşınacağını söylüyor mu? → news.rivalry.has_post_match_tension_carryover → boolean → unknown
+Bu haber iki takımı aynı anda kapsıyor mu? → news.rivalry.is_both_teams_involved → boolean → unknown.Bu haber derbi baskısı teması taşıyor mu? → news.rivalry.has_derby_pressure_theme → boolean → unknown
+Bu haber “prestij maçı” bandında mı? → news.rivalry.is_prestige_match_band → boolean → unknown.Bu haber “intikam maçı” bandında mı? → news.rivalry.is_revenge_match_band → boolean → unknown
+Bu haber “şampiyonluk maçı” baskısı taşıyor mu? → news.rivalry.has_title_race_pressure → boolean → unknown.Bu haber “küme düşme maçı” baskısı taşıyor mu? → news.rivalry.has_relegation_pressure → boolean → unknown
+Bu haber tribün güvenliği ve olay beklentisi içeriyor mu? → news.rivalry.has_crowd_security_incident_risk → boolean → unknown.Bu haber maç öncesi gerginlik artışı içeriyor mu? → news.rivalry.has_pre_match_tension_increase → boolean → unknown
+Bu haber iki takım oyuncuları arasında bireysel rekabet teması mı? → news.rivalry.has_player_to_player_rivalry_theme → boolean → unknown.Bu haber iki takım koçları arasında gerilim teması mı? → news.rivalry.has_coach_to_coach_tension_theme → boolean → unknown
+Bu haber maçın “kapalı gişe” baskısı taşıyor mu? → news.rivalry.has_sold_out_pressure → boolean → unknown.Bu haber maçın “seyircisiz” olması gibi atmosfer etkisi taşıyor mu? → news.rivalry.has_no_fans_atmosphere_impact → boolean → unknown
+Bu haber maç öncesi provokasyon iddiası içeriyor mu?→ news.rivalry.has_pre_match_provocation_claim→ boolean→ unknown.Bu haber maç sonrası gerilimin büyüdüğünü ve bir sonraki maça taşınacağını söylüyor mu?→ news.rivalry.has_post_match_tension_carryover→ boolean→ unknown
 
 BÖLÜM L — Taraftar Haberleri
-Bu haber taraftar protestosu içeriyor mu? → fan.incident.protest.flag → boolean → unknown
-Bu haber taraftarın yönetime baskısı teması mı? → fan.pressure.board.theme_flag → boolean → unknown
-Bu haber taraftarın teknik direktöre baskısı teması mı? → fan.pressure.coach.theme_flag → boolean → unknown
-Bu haber taraftarın belirli bir oyuncuyu hedef aldığı teması mı? → fan.pressure.player_target.theme_flag → boolean → unknown
-Bu haber tribün içi kavga/gerilim içeriyor mu? → fan.incident.stands_conflict.flag → boolean → unknown
-
-Bu haber güvenlik riski içeriyor mu? → fan.risk.security.flag → boolean → unknown
-Bu haber deplasman yasağı / taraftar kısıtı içeriyor mu? → fan.restriction.away_ban.flag → boolean → unknown
-Bu haber taraftarın sosyal medya linci gibi baskı içeriyor mu? → fan.pressure.social_media_mob.flag → boolean → unknown
-Bu haber maç önü şehirde gerginlik içeriyor mu? → fan.incident.pre_match_city_tension.flag → boolean → unknown
-Bu haber maç içinde sahaya yabancı madde/olay ihtimali taşıyor mu? → fan.risk.in_match_object_throw.flag → boolean → unknown
-
-Bu haber taraftarın maç içi davranışını etkileyen bir çağrı mı? → fan.call.in_match_behavior_influence.flag → boolean → unknown
-Bu haberin sahaya yansıması geçmişte tekrar etmiş mi? → fan.pattern.prior_repeat_on_field.flag → boolean → unknown
-Bu haber belirli dönemlerde artıyor mu (kötü seri, kötü sonuç)? → fan.pattern.bad_form_period_spike.flag → boolean → unknown
-Bu haber belirli maçlarda artıyor mu (derbi, final, küme düşme)? → fan.pattern.high_stakes_match_spike.flag → boolean → unknown
+Bu haber taraftar protestosu içeriyor mu? → fan.incident.protest.flag → boolean → unknown.Bu haber taraftarın yönetime baskısı teması mı? → fan.pressure.board.theme_flag → boolean → unknown
+Bu haber taraftarın teknik direktöre baskısı teması mı? → fan.pressure.coach.theme_flag → boolean → unknown.Bu haber taraftarın belirli bir oyuncuyu hedef aldığı teması mı? → fan.pressure.player_target.theme_flag → boolean → unknown
+Bu haber tribün içi kavga/gerilim içeriyor mu? → fan.incident.stands_conflict.flag → boolean → unknown.Bu haber güvenlik riski içeriyor mu? → fan.risk.security.flag → boolean → unknown
+Bu haber deplasman yasağı / taraftar kısıtı içeriyor mu? → fan.restriction.away_ban.flag → boolean → unknown.Bu haber taraftarın sosyal medya linci gibi baskı içeriyor mu? → fan.pressure.social_media_mob.flag → boolean → unknown
+Bu haber maç önü şehirde gerginlik içeriyor mu? → fan.incident.pre_match_city_tension.flag → boolean → unknown.Bu haber maç içinde sahaya yabancı madde/olay ihtimali taşıyor mu? → fan.risk.in_match_object_throw.flag → boolean → unknown
+Bu haber taraftarın maç içi davranışını etkileyen bir çağrı mı? → fan.call.in_match_behavior_influence.flag → boolean → unknown.Bu haberin sahaya yansıması geçmişte tekrar etmiş mi? → fan.pattern.prior_repeat_on_field.flag → boolean → unknown
+Bu haber belirli dönemlerde artıyor mu (kötü seri, kötü sonuç)? → fan.pattern.bad_form_period_spike.flag → boolean → unknown.Bu haber belirli maçlarda artıyor mu (derbi, final, küme düşme)? → fan.pattern.high_stakes_match_spike.flag → boolean → unknown
 Bu haberin yarattığı baskı kart/tempo/disiplin bandına yansıyor mu? → fan.impact.cards_tempo_discipline_band.flag → boolean → unknown
 
 BÖLÜM M — Veri Kalitesi / Bozulma Kontrol
-Bu haber kaydı complete mi, partial mi, incomplete mi, low mu? → quality.data_quality_badge → enum → unknown
-Bu haberin missing_fields listesi çıkarıldı mı? → quality.missing_fields.extracted_flag → boolean → unknown
-Bu haber kaynağı belirsiz mi? → quality.source.unknown_flag → boolean → unknown
-Bu haber yazarı belirsiz mi? → quality.author.unknown_flag → boolean → unknown
-Bu haber tarih hizası belirsiz mi? → quality.time_alignment.uncertain_flag → boolean → unknown
-
-Bu haber team_ref’e map edilemedi mi? → quality.mapping.team_ref.unmapped_flag → boolean → unknown
-Bu haber lig_ref’e map edilemedi mi? → quality.mapping.league_ref.unmapped_flag → boolean → unknown
-Bu haber country_ref’e map edilemedi mi? → quality.mapping.country_ref.unmapped_flag → boolean → unknown
-Bu haber match_ref’e map edilemedi mi? → quality.mapping.match_ref.unmapped_flag → boolean → unknown
-Bu haber tekilleştirme başarısız mı kaldı? → quality.deduplication.failed_flag → boolean → unknown
-
-Bu haber çelişkili bilgi içeriyor mu? → quality.consistency.conflict_flag → boolean → unknown
-Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi? → quality.evidence_chain.context_only_flag → boolean → unknown
-Bu haber “doğrulanmış veri” olarak işaretlenebildi mi? → quality.verification.verified_flag → boolean → unknown
-Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı? → quality.verification.method → enum → unknown
+Bu haber kaydı complete mi, partial mi, incomplete mi, low mu? → quality.data_quality_badge → enum → unknown.Bu haberin missing_fields listesi çıkarıldı mı? → quality.missing_fields.extracted_flag → boolean → unknown
+Bu haber kaynağı belirsiz mi? → quality.source.unknown_flag → boolean → unknown.Bu haber yazarı belirsiz mi? → quality.author.unknown_flag → boolean → unknown
+Bu haber tarih hizası belirsiz mi? → quality.time_alignment.uncertain_flag → boolean → unknown.Bu haber team_ref’e map edilemedi mi? → quality.mapping.team_ref.unmapped_flag → boolean → unknown
+Bu haber lig_ref’e map edilemedi mi? → quality.mapping.league_ref.unmapped_flag → boolean → unknown.Bu haber country_ref’e map edilemedi mi? → quality.mapping.country_ref.unmapped_flag → boolean → unknown
+Bu haber match_ref’e map edilemedi mi? → quality.mapping.match_ref.unmapped_flag → boolean → unknown.Bu haber tekilleştirme başarısız mı kaldı? → quality.deduplication.failed_flag → boolean → unknown
+Bu haber çelişkili bilgi içeriyor mu? → quality.consistency.conflict_flag → boolean → unknown.Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi? → quality.evidence_chain.context_only_flag → boolean → unknown
+Bu haber “doğrulanmış veri” olarak işaretlenebildi mi? → quality.verification.verified_flag → boolean → unknown.Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı? → quality.verification.method → enum → unknown
 Bu haber “sonradan yanlışlandığı” tespit edildi mi? → quality.verification.later_refuted_flag → boolean → unknown
 
 KURAL BLOĞU — Event Eksik / Basın Çapraz Okuma
-Bu haber kaydı complete mi, partial mi, incomplete mi, low mu? → quality.data_quality_badge → enum → unknown
-Bu haberin missing_fields listesi çıkarıldı mı? → quality.missing_fields.extracted_flag → boolean → unknown
-Bu haber kaynağı belirsiz mi? → quality.source.unknown_flag → boolean → unknown
-Bu haber yazarı belirsiz mi? → quality.author.unknown_flag → boolean → unknown
-Bu haber tarih hizası belirsiz mi? → quality.time_alignment.uncertain_flag → boolean → unknown
-
-Bu haber team_ref’e map edilemedi mi? → quality.mapping.team_ref.unmapped_flag → boolean → unknown
-Bu haber lig_ref’e map edilemedi mi? → quality.mapping.league_ref.unmapped_flag → boolean → unknown
-Bu haber country_ref’e map edilemedi mi? → quality.mapping.country_ref.unmapped_flag → boolean → unknown
-Bu haber match_ref’e map edilemedi mi? → quality.mapping.match_ref.unmapped_flag → boolean → boolean → unknown
-Bu haber tekilleştirme başarısız mı kaldı? → quality.deduplication.failed_flag → boolean → unknown
-
-Bu haber çelişkili bilgi içeriyor mu? → quality.consistency.conflict_flag → boolean → unknown
-Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi? → quality.evidence_chain.context_only_flag → boolean → unknown
-Bu haber “doğrulanmış veri” olarak işaretlenebildi mi? → quality.verification.verified_flag → boolean → unknown
-Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı? → quality.verification.method → enum → unknown
+Bu haber kaydı complete mi, partial mi, incomplete mi, low mu? → quality.data_quality_badge → enum → unknown.Bu haberin missing_fields listesi çıkarıldı mı? → quality.missing_fields.extracted_flag → boolean → unknown
+Bu haber kaynağı belirsiz mi? → quality.source.unknown_flag → boolean → unknown.bu haber yazarı belirsiz mi? → quality.author.unknown_flag → boolean → unknown
+Bu haber tarih hizası belirsiz mi? → quality.time_alignment.uncertain_flag → boolean → unknown.Bu haber team_ref’e map edilemedi mi? → quality.mapping.team_ref.unmapped_flag → boolean → unknown
+Bu haber lig_ref’e map edilemedi mi? → quality.mapping.league_ref.unmapped_flag → boolean → unknown.Bu haber country_ref’e map edilemedi mi? → quality.mapping.country_ref.unmapped_flag → boolean → unknown
+Bu haber match_ref’e map edilemedi mi? → quality.mapping.match_ref.unmapped_flag → boolean → boolean → unknown.Bu haber tekilleştirme başarısız mı kaldı? → quality.deduplication.failed_flag → boolean → unknown
+Bu haber çelişkili bilgi içeriyor mu? → quality.consistency.conflict_flag → boolean → unknown.Bu haber “kanıt zinciri” için yalnız bağlam olarak mı işaretlendi? → quality.evidence_chain.context_only_flag → boolean → unknown
+Bu haber “doğrulanmış veri” olarak işaretlenebildi mi? → quality.verification.verified_flag → boolean → unknown.Bu haberin doğrulanma yöntemi tek kaynak mı, çoklu kaynak mı? → quality.verification.method → enum → unknown
 Bu haber “sonradan yanlışlandığı” tespit edildi mi? → quality.verification.later_refuted_flag → boolean → unknow
 
-FAZ-24
-MATCH SUPPORT TRACE FIELDS v1.0.1
-support_trace.match.link_mode → enum(match_ref,team_only,unknown) → unknown
-support_trace.match.match_ref → string → unknown,support_trace.match.match_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-support_trace.match.match_card_id → string → unknown,support_trace.match.kickoff_time_utc → timestamp_utc → unknown
-support_trace.match.kickoff_same_day_flag → boolean → unknown,support_trace.news.news_id → string → unknown
-support_trace.news.locked_at_utc → timestamp_utc → unknown,support_trace.news.published_at_utc → timestamp_utc → unknown
-
-support_trace.news.recorded_at_utc → timestamp_utc → unknown,support_trace.news.publish_record_delta_minutes → integer → unknown
+FAZ-24  MATCH SUPPORT TRACE FIELDS v1.0.1
+support_trace.match.link_mode → enum(match_ref,team_only,unknown) → unknown.support_trace.match.match_ref → string → unknown,support_trace.match.match_ref_map_status → enum(mapped,unmapped,unknown) → unknown
+support_trace.match.match_card_id → string → unknown,support_trace.match.kickoff_time_utc → timestamp_utc → unknown.support_trace.match.kickoff_same_day_flag → boolean → unknown,support_trace.news.news_id → string → unknown
+support_trace.news.locked_at_utc → timestamp_utc → unknown,support_trace.news.published_at_utc → timestamp_utc → unknown.support_trace.news.recorded_at_utc → timestamp_utc → unknown,support_trace.news.publish_record_delta_minutes → integer → unknown
 support_trace.news.record_vs_publish_order → enum(before,after,unknown) → unknown,support_trace.news.context_scope → enum(single_match_window,non_match_general,unknown) → unknown
 support_trace.news.pre_post_window → enum(pre_match,post_match,unknown) → unknown,support_trace.news.timing_bucket → enum(pre_match,post_match,between_matches,unknown) → unknown
-support_trace.refs.country_ref → string → unknown,support_trace.refs.country_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-support_trace.refs.league_ref → string → unknown,support_trace.refs.league_ref_map_status → enum(mapped,unmapped,unknown) → unknown
-
-support_trace.refs.season_id → string → unknown,support_trace.refs.season_id_map_status → enum(mapped,unmapped,unknown) → unknown
-support_trace.refs.team_primary_ref → string → unknown,support_trace.refs.team_primary_ref_map_status → enum(mapped,unmapped,unknown) → unknown
+support_trace.refs.country_ref → string → unknown,support_trace.refs.country_ref_map_status → enum(mapped,unmapped,unknown) → unknown.support_trace.refs.league_ref → string → unknown,support_trace.refs.league_ref_map_status → enum(mapped,unmapped,unknown) → unknown
+support_trace.refs.season_id→ string→ unknown,support_trace.refs.season_id_map_statu→ enum(mapped,unmapped,unknown) → unknown.support_trace.refs.team_primary_ref → string → unknown,support_trace.refs.team_primary_ref_map_status → enum(mapped,unmapped,unknown) → unknown
 support_trace.context.team_binding_mode → enum(single_team,two_teams,unknown) → unknown,support_trace.refs.team_secondary_ref → string → unknown
 support_trace.refs.team_secondary_ref_map_status → enum(mapped,unmapped,unknown) → unknown,support_trace.event.set_mode → enum(single_event,multi_event_set,unknown) → unknown
-support_trace.event.sub_event_count → integer → unknown,support_trace.dedupe.is_duplicate_flag → boolean → unknown
-
-support_trace.dedupe.republished_same_day_flag → boolean → unknown,support_trace.dedupe.deduplicated_flag → boolean → unknown
+support_trace.event.sub_event_count → integer → unknown,support_trace.dedupe.is_duplicate_flag → boolean → unknown.support_trace.dedupe.republished_same_day_flag → boolean → unknown,support_trace.dedupe.deduplicated_flag → boolean → unknown
 support_trace.dedupe.dedup_key_status → enum(mapped,unmapped,unknown) → unknown,support_trace.cross_reference.source_url_presence → boolean → unknown
-support_trace.cross_reference.source_url → string → unknown,support_trace.cross_reference.source_domain_detected → boolean → unknown
-support_trace.cross_reference.source_domain_allowlisted → boolean → unknown,support_trace.cross_reference.canonical_url_generated → boolean → unknown
-support_trace.cross_reference.canonical_url → string → unknown,support_trace.source.profile.count → enum(single,multi,unknown) → unknown
-
+support_trace.cross_reference.source_urlstring→unknown,support_trace.cross_reference.source_domain_detected→ boolean→unknown.support_trace.cross_reference.source_domain_allowlisted→ boolean→unknown,support_trace.cross_reference.canonical_url_generated→ boolean→ unknown
+support_trace.cross_reference.canonical_url→string→unknown,support_trace.source.profile.count→enum(single,multi,unknown)→unknown
 support_trace.source.profile.consensus → enum(confirming,diverging,mixed,unknown) → unknown,support_trace.source.profile.same_day_crosspost → boolean → unknown
 support_trace.source.primary.officiality → enum(official,unofficial,unknown) → unknown,support_trace.source.publisher.ref_id → string → unknown
 support_trace.source.publisher.allowlist_status → enum(allowlisted,not_allowlisted,unknown) → unknown,support_trace.source.author.name_extracted → boolean → unknown

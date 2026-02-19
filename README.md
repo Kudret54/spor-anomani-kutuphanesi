@@ -191,1055 +191,260 @@ FAZ-7
 FOOTBALL ANOMANİ TAM SÜRÜM V-0-
 
 SEGMENT SORULARI (1–5)**
-Maçın 1–5 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 1–5 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 1–5 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 1–5 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 1–5 dakikasında ilk baskıyı hangi takım başlattı?
-Maçın 1–5 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 1–5 dakikasında ilk net şut denemesi geldi mi?
-Maçın 1–5 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 1–5 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 1–5 dakikasında ilk tehlikeli duran top oluştu mu?
-Maçın 1–5 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 1–5 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 1–5 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 1–5 dakikasında pas hatası kümelenmesi var mıydı?
-Maçın 1–5 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 1–5 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 1–5 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 1–5 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 1–5 dakikasında topa sahip olma hangi takımdaydı?,Maçın 1–5 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 1–5 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 1–5 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 1–5 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 1–5 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 1–5 dakikasında ilk net şut denemesi geldi mi?,Maçın 1–5 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 1–5 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 1–5 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 1–5 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 1–5 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 1–5 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 1–5 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 1–5 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 1–5 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 1–5 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 1–5 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (6–10)
-Maçın 6–10 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 6–10 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 6–10 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 6–10 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 6–10 dakikasında ilk baskıyı hangi takım başlattı?
-Maçın 6–10 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-
-Maçın 6–10 dakikasında ilk net şut denemesi geldi mi?
-Maçın 6–10 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 6–10 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 6–10 dakikasında ilk tehlikeli duran top oluştu mu?
-Maçın 6–10 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 6–10 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-
-Maçın 6–10 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 6–10 dakikasında pas hatası kümelenmesi var mıydı?
-Maçın 6–10 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 6–10 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 6–10 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 6–10 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 6–10 dakikasında topa sahip olma hangi takımdaydı?,Maçın 6–10 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 6–10 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 6–10 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 6–10 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 6–10 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 6–10 dakikasında ilk net şut denemesi geldi mi?,Maçın 6–10 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 6–10 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 6–10 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 6–10 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 6–10 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 6–10 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 6–10 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 6–10 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 6–10 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 6–10 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 6–10 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (11–15)
-Maçın 11–15 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 11–15 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 11–15 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 11–15 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 11–15 dakikasında ilk baskıyı hangi takım başlattı?
-Maçın 11–15 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-
-Maçın 11–15 dakikasında ilk net şut denemesi geldi mi?
-Maçın 11–15 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 11–15 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 11–15 dakikasında ilk tehlikeli duran top oluştu mu?
-Maçın 11–15 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 11–15 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-
-Maçın 11–15 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 11–15 dakikasında pas hatası kümelenmesi var mıydı?
-Maçın 11–15 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 11–15 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 11–15 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 11–15 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 11–15 dakikasında topa sahip olma hangi takımdaydı?,Maçın 11–15 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 11–15 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,maçın 11–15 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 11–15 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 11–15 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 11–15 dakikasında ilk net şut denemesi geldi mi?,Maçın 11–15 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 11–15 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 11–15 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 11–15 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 11–15 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 11–15 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 11–15 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 11–15 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 11–15 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 11–15 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 11–15 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (16–20)
-Maçın 16–20 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 16–20 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 16–20 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 16–20 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 16–20 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 16–20 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 16–20 dakikasında ilk net şut denemesi geldi mi?
-Maçın 16–20 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 16–20 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 16–20 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 16–20 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 16–20 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 16–20 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 16–20 dakikasında pas hatası kümelenmesi var mıydı?
-Maçın 16–20 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-
-Maçın 16–20 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 16–20 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 16–20 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 16–20 dakikasında topa sahip olma hangi takımdaydı?,Maçın 16–20 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 16–20 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 16–20 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 16–20 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 16–20 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 16–20 dakikasında ilk net şut denemesi geldi mi?,Maçın 16–20 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 16–20 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 16–20 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 16–20 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 16–20 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 16–20 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 16–20 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 16–20 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 16–20 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 16–20 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 16–20 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (21–25)
-Maçın 21–25 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 21–25 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 21–25 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 21–25 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 21–25 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 21–25 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 21–25 dakikasında ilk net şut denemesi geldi mi?
-Maçın 21–25 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 21–25 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 21–25 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 21–25 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 21–25 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 21–25 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 21–25 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 21–25 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 21–25 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 21–25 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 21–25 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 21–25 dakikasında topa sahip olma hangi takımdaydı?,Maçın 21–25 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 21–25 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 21–25 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 21–25 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 21–25 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 21–25 dakikasında ilk net şut denemesi geldi mi?,Maçın 21–25 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 21–25 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 21–25 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 21–25 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 21–25 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 21–25 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 21–25 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 21–25 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 21–25 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 21–25 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 21–25 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (26–30)
-Maçın 26–30 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 26–30 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 26–30 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 26–30 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 26–30 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 26–30 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 26–30 dakikasında ilk net şut denemesi geldi mi?
-Maçın 26–30 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 26–30 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 26–30 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 26–30 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 26–30 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 26–30 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 26–30 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 26–30 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 26–30 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 26–30 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 26–30 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 26–30 dakikasında topa sahip olma hangi takımdaydı?,Maçın 26–30 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 26–30 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 26–30 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 26–30 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 26–30 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 26–30 dakikasında ilk net şut denemesi geldi mi?,Maçın 26–30 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 26–30 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 26–30 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 26–30 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 26–30 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 26–30 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 26–30 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 26–30 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 26–30 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 26–30 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 26–30 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (31–35)
-Maçın 31–35 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 31–35 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 31–35 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 31–35 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 31–35 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 31–35 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 31–35 dakikasında ilk net şut denemesi geldi mi?
-Maçın 31–35 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 31–35 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 31–35 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 31–35 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 31–35 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 31–35 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 31–35 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 31–35 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 31–35 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 31–35 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 31–35 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 31–35 dakikasında topa sahip olma hangi takımdaydı?,Maçın 31–35 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,maçın 31–35 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 31–35 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 31–35 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 31–35 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 31–35 dakikasında ilk net şut denemesi geldi mi?,Maçın 31–35 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 31–35 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 31–35 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 31–35 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 31–35 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 31–35 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 31–35 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 31–35 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 31–35 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 31–35 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 31–35 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (36–40)
-Maçın 36–40 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 36–40 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 36–40 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 36–40 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 36–40 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 36–40 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 36–40 dakikasında ilk net şut denemesi geldi mi?
-Maçın 36–40 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 36–40 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 36–40 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 36–40 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 36–40 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 36–40 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 36–40 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 36–40 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 36–40 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 36–40 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 36–40 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 36–40 dakikasında topa sahip olma hangi takımdaydı?,Maçın 36–40 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 36–40 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 36–40 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 36–40 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 36–40 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 36–40 dakikasında ilk net şut denemesi geldi mi?,Maçın 36–40 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 36–40 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 36–40 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 36–40 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 36–40 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 36–40 dakikasında ilk top kaybı hangi takımda kümelendi?,maçın 36–40 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 36–40 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 36–40 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 36–40 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 36–40 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (41–45)
-Maçın 41–45 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 41–45 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 41–45 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 41–45 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 41–45 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 41–45 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 41–45 dakikasında ilk net şut denemesi geldi mi?
-Maçın 41–45 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 41–45 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 41–45 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 41–45 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 41–45 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 41–45 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 41–45 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 41–45 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 41–45 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 41–45 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 41–45 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 41–45 dakikasında topa sahip olma hangi takımdaydı?,Maçın 41–45 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 41–45 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 41–45 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+maçın 41–45 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 41–45 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 41–45 dakikasında ilk net şut denemesi geldi mi?,Maçın 41–45 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 41–45 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 41–45 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 41–45 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 41–45 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 41–45 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 41–45 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 41–45 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 41–45 dakikasında rakip arkasına koşu denemesi oldu mu?,maçın 41–45 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (46–50)
-Maçın 46–50 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 46–50 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 46–50 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 46–50 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 46–50 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 46–50 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 46–50 dakikasında ilk net şut denemesi geldi mi?
-Maçın 46–50 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 46–50 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 46–50 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 46–50 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 46–50 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 46–50 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 46–50 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 46–50 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 46–50 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 46–50 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 46–50 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 46–50 dakikasında topa sahip olma hangi takımdaydı?,Maçın 46–50 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 46–50 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,maçın 46–50 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 46–50 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 46–50 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 46–50 dakikasında ilk net şut denemesi geldi mi?,Maçın 46–50 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 46–50 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 46–50 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 46–50 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 46–50 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 46–50 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 46–50 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 46–50 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 46–50 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 46–50 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 46–50 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (51–55)
-Maçın 51–55 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 51–55 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 51–55 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 51–55 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 51–55 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 51–55 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 51–55 dakikasında ilk net şut denemesi geldi mi?
-Maçın 51–55 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 51–55 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 51–55 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 51–55 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 51–55 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 51–55 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 51–55 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 51–55 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 51–55 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 51–55 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 51–55 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 51–55 dakikasında topa sahip olma hangi takımdaydı?,Maçın 51–55 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 51–55 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 51–55 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 51–55 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 51–55 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 51–55 dakikasında ilk net şut denemesi geldi mi?,Maçın 51–55 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 51–55 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 51–55 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 51–55 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 51–55 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 51–55 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 51–55 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 51–55 dakikasında savunma hattı hangi takımda daha önde kuruldu?,
+Maçın 51–55 dakikasında savunma hattı hangi takımda daha gerideydi?Maçın 51–55 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 51–55 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (56–60)
-Maçın 56–60 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 56–60 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 56–60 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 56–60 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 56–60 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 56–60 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 56–60 dakikasında ilk net şut denemesi geldi mi?
-Maçın 56–60 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 56–60 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 56–60 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 56–60 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 56–60 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 56–60 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 56–60 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 56–60 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 56–60 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 56–60 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 56–60 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 56–60 dakikasında topa sahip olma hangi takımdaydı?,Maçın 56–60 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 56–60 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 56–60 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 56–60 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 56–60 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 56–60 dakikasında ilk net şut denemesi geldi mi?,Maçın 56–60 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 56–60 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 56–60 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 56–60 dakikasında ilk faul hangi takım tarafından yapıldı?
+Maçın 56–60 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?,Maçın 56–60 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 56–60 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 56–60 dakikasında savunma hattı hangi takımda daha önde kuruldu?
+Maçın 56–60 dakikasında savunma hattı hangi takımda daha gerideydi?,Maçın 56–60 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 56–60 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
    
 SEGMENT SORULARI (61–65)
-Maçın 61–65 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 61–65 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 61–65 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 61–65 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 61–65 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 61–65 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 61–65 dakikasında ilk net şut denemesi geldi mi?
-Maçın 61–65 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 61–65 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 61–65 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 61–65 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 61–65 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 61–65 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 61–65 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 61–65 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 61–65 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 61–65 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 61–65 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 61–65 dakikasında topa sahip olma hangi takımdaydı?,Maçın 61–65 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 61–65 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 61–65 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 61–65 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 61–65 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 61–65 dakikasında ilk net şut denemesi geldi mi?,Maçın 61–65 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 61–65 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 61–65 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 61–65 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 61–65 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 61–65 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 61–65 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 61–65 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 61–65 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 61–65 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 61–65 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (66–70)
-Maçın 66–70 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 66–70 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 66–70 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 66–70 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 66–70 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 66–70 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 66–70 dakikasında ilk net şut denemesi geldi mi?
-Maçın 66–70 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 66–70 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 66–70 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 66–70 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 66–70 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 66–70 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 66–70 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 66–70 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 66–70 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 66–70 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 66–70 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 66–70 dakikasında topa sahip olma hangi takımdaydı?,Maçın 66–70 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 66–70 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 66–70 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 66–70 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 66–70 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 66–70 dakikasında ilk net şut denemesi geldi mi?,Maçın 66–70 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 66–70 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 66–70 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 66–70 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 66–70 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 66–70 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 66–70 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 66–70 dakikasında savunma hattı hangi takımda daha önde kuruldu?Maçın 66–70 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 66–70 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 66–70 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (71–75)
-Maçın 71–75 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 71–75 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 71–75 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 71–75 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 71–75 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 71–75 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 71–75 dakikasında ilk net şut denemesi geldi mi?
-Maçın 71–75 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 71–75 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 71–75 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 71–75 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 71–75 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 71–75 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 71–75 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 71–75 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 71–75 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 71–75 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 71–75 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 71–75 dakikasında topa sahip olma hangi takımdaydı?,Maçın 71–75 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 71–75 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 71–75 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 71–75 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 71–75 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 71–75 dakikasında ilk net şut denemesi geldi mi?,Maçın 71–75 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 71–75 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 71–75 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 71–75 dakikasında ilk faul hangi takım tarafından yapıldı?,
+Maçın 71–75 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?Maçın 71–75 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 71–75 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 71–75 dakikasında savunma hattı hangi takımda daha önde kuruldu?
+Maçın 71–75 dakikasında savunma hattı hangi takımda daha gerideydi?,Maçın 71–75 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 71–75 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
     
 SEGMENT SORULARI (76–80)
-Maçın 76–80 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 76–80 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 76–80 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 76–80 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 76–80 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 76–80 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 76–80 dakikasında ilk net şut denemesi geldi mi?
-Maçın 76–80 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 76–80 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 76–80 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 76–80 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 76–80 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 76–80 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 76–80 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 76–80 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 76–80 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 76–80 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 76–80 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
+Maçın 76–80 dakikasında topa sahip olma hangi takımdaydı?,Maçın 76–80 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 76–80 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 76–80 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 76–80 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 76–80 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 76–80 dakikasında ilk net şut denemesi geldi mi?,Maçın 76–80 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 76–80 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 76–80 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 76–80 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 76–80 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
+Maçın 76–80 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 76–80 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 76–80 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 76–80 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 76–80 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 76–80 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (81–85)
-Maçın 81–85 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 81–85 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 81–85 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 81–85 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 81–85 dakikasında ilk baskıyı hangi takım başlattı?
-
-Maçın 81–85 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 81–85 dakikasında ilk net şut denemesi geldi mi?
-Maçın 81–85 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 81–85 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 81–85 dakikasında ilk tehlikeli duran top oluştu mu?
-
-Maçın 81–85 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 81–85 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 81–85 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 81–85 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 81–85 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 81–85 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 81–85 dakikasında rakip arkasına koşu denemesi oldu mu?
+Maçın 81–85 dakikasında topa sahip olma hangi takımdaydı?,Maçın 81–85 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 81–85 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 81–85 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 81–85 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 81–85 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 81–85 dakikasında ilk net şut denemesi geldi mi?,Maçın 81–85 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 81–85 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 81–85 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 81–85 dakikasında ilk faul hangi takım tarafından yapıldı?
+Maçın 81–85 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?Maçın 81–85 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 81–85 dakikasında pas hatası kümelenmesi var mıydı?
+Maçın 81–85 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 81–85 dakikasında savunma hattı hangi takımda daha gerideydi?,Maçın 81–85 dakikasında rakip arkasına koşu denemesi oldu mu?
 Maçın 81–85 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?
 
 SEGMENT SORULARI (86–90 / UZATMA)
-Maçın 86–90 dakikasında topa sahip olma hangi takımdaydı?
-Maçın 86–90 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?
-Maçın 86–90 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?
-Maçın 86–90 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
-Maçın 86–90 dakikasında ilk baskıyı hangi takım başlattı?
+Maçın 86–90 dakikasında topa sahip olma hangi takımdaydı?,Maçın 86–90 dakikasında oyun hangi yarı sahada daha uzun süre oynandı?,Maçın 86–90 dakikasında baskı yoğunluğu hangi takımda daha yüksekti?,Maçın 86–90 dakikasında baskıyı daha hızlı kıran taraf hangi takımdı?
+Maçın 86–90 dakikasında ilk baskıyı hangi takım başlattı?,Maçın 86–90 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?,Maçın 86–90 dakikasında ilk net şut denemesi geldi mi?,Maçın 86–90 dakikasında ilk şut hangi takım tarafından çekildi?
+Maçın 86–90 dakikasında ilk korner hangi takım tarafından alındı?,Maçın 86–90 dakikasında ilk tehlikeli duran top oluştu mu?,Maçın 86–90 dakikasında ilk faul hangi takım tarafından yapıldı?,Maçın 86–90 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?,
+Maçın 86–90 dakikasında ilk top kaybı hangi takımda kümelendi?,Maçın 86–90 dakikasında pas hatası kümelenmesi var mıydı?,Maçın 86–90 dakikasında savunma hattı hangi takımda daha önde kuruldu?,Maçın 86–90 dakikasında savunma hattı hangi takımda daha gerideydi?
+Maçın 86–90 dakikasında rakip arkasına koşu denemesi oldu mu?,Maçın 86–90 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?  
 
-Maçın 86–90 dakikasında baskı sonrası ilk çıkışı hangi takım temiz yaptı?
-Maçın 86–90 dakikasında ilk net şut denemesi geldi mi?
-Maçın 86–90 dakikasında ilk şut hangi takım tarafından çekildi?
-Maçın 86–90 dakikasında ilk korner hangi takım tarafından alındı?
-Maçın 86–90 dakikasında ilk tehlikeli duran top oluştu mu?
+FAZ-7-1 İlk sarı kart çıktı mı?
+İlk sarı kartın dakikası nedir?,İlk sarı kartın dakikası ilk 10 dakikanın içinde mi?,İlk sarı kartın dakikası ilk 15 dakikanın içinde mi?,İlk sarı kartın dakikası ilk yarının son 10 dakikasında mı?,İlk sarı kartın dakikası ikinci yarının ilk 10 dakikasında mı?
+İlk sarı kartın dakikası ikinci yarının son 10 dakikasında mı?,İlk sarı kart hangi takım oyuncusuna çıktı?,İlk sarı kart ev sahibi takım oyuncusuna mı çıktı?,İlk sarı kart deplasman takım oyuncusuna mı çıktı?,İlk sarı kart hangi takım lehine verildi?
+İlk sarı kart ev sahibi takım lehine mi verildi?,İlk sarı kart deplasman takım lehine mi verildi?,İlk sarı kartı gören oyuncu savunma hattından mıydı?,İlk sarı kartı gören oyuncu orta saha hattından mıydı?,İlk sarı kartı gören oyuncu hücum hattından mıydı?
+İlk sarı kart “taktik faul” müydü?,İlk sarı kart “itiraz” nedeniyle mi çıktı?,İlk sarı kart “sinir/agresyon” nedeniyle mi çıktı?,İlk sarı kart “gecikme/time_waste” nedeniyle mi çıktı?,İlk sarı kart “sert müdahale” nedeniyle mi çıktı?
+İlk sarı kartın nedeni hakem standardı ile uyumsuz tartışma doğurdu mu?,İlk sarı karttan sonraki ilk 1 dakikada faul yoğunluğu arttı mı?,İlk sarı karttan sonraki ilk 3 dakikada faul yoğunluğu arttı mı?,İlk sarı karttan sonraki 5 dakikada faul yoğunluğu arttı mı?
+İlk sarı karttan sonraki 5 dakikada tempo bandı değişti mi?,İlk sarı karttan sonraki 5 dakikada topun oyunda kalma süresi düştü mü?,İlk sarı karttan sonraki 5 dakikada hakem daha fazla düdük çalmaya başladı mı?,İlk sarı karttan sonraki 10 dakikada faul yoğunluğu arttı mı?,İlk sarı karttan sonraki 10 dakikada tempo yükseldi mi?,İlk sarı karttan sonraki 10 dakikada tempo düştü mü?,İlk sarı karttan sonraki 10 dakikada kontrol bandı “unstable” oldu mu?,İlk sarı karttan sonraki 10 dakikada kart riski sinyali arttı mı?
+İlk sarı karttan sonraki 10 dakikada ikili mücadele sertliği arttı mı?,Kartların kümelendiği 5 dakikalık blok var mı?,Kartların kümelendiği 10 dakikalık blok var mı?,Kartların kümelendiği ilk 5 dakikalık blok hangi dakikalarda oluştu?
 
-Maçın 86–90 dakikasında ilk faul hangi takım tarafından yapıldı?
-Maçın 86–90 dakikasında faul yoğunluğu “low” mu “mid” mi “high” mıydı?
-Maçın 86–90 dakikasında ilk top kaybı hangi takımda kümelendi?
-Maçın 86–90 dakikasında pas hatası kümelenmesi var mıydı?
-
-Maçın 86–90 dakikasında savunma hattı hangi takımda daha önde kuruldu?
-Maçın 86–90 dakikasında savunma hattı hangi takımda daha gerideydi?
-Maçın 86–90 dakikasında rakip arkasına koşu denemesi oldu mu?
-Maçın 86–90 dakikasında rakip arkasına koşu hangi takım tarafından daha çok denendi?  
-
-FAZ-7-1
-İlk sarı kart çıktı mı?
-
-İlk sarı kartın dakikası nedir?
-İlk sarı kartın dakikası ilk 10 dakikanın içinde mi?
-İlk sarı kartın dakikası ilk 15 dakikanın içinde mi?
-İlk sarı kartın dakikası ilk yarının son 10 dakikasında mı?
-İlk sarı kartın dakikası ikinci yarının ilk 10 dakikasında mı?
-İlk sarı kartın dakikası ikinci yarının son 10 dakikasında mı?
-
-İlk sarı kart hangi takım oyuncusuna çıktı?
-İlk sarı kart ev sahibi takım oyuncusuna mı çıktı?
-İlk sarı kart deplasman takım oyuncusuna mı çıktı?
-İlk sarı kart hangi takım lehine verildi?
-İlk sarı kart ev sahibi takım lehine mi verildi?
-İlk sarı kart deplasman takım lehine mi verildi?
-
-İlk sarı kartı gören oyuncu savunma hattından mıydı?
-İlk sarı kartı gören oyuncu orta saha hattından mıydı?
-İlk sarı kartı gören oyuncu hücum hattından mıydı?
-
-İlk sarı kart “taktik faul” müydü?
-İlk sarı kart “itiraz” nedeniyle mi çıktı?
-İlk sarı kart “sinir/agresyon” nedeniyle mi çıktı?
-İlk sarı kart “gecikme/time_waste” nedeniyle mi çıktı?
-İlk sarı kart “sert müdahale” nedeniyle mi çıktı?
-
-İlk sarı kartın nedeni hakem standardı ile uyumsuz tartışma doğurdu mu?
-İlk sarı karttan sonraki ilk 1 dakikada faul yoğunluğu arttı mı?
-İlk sarı karttan sonraki ilk 3 dakikada faul yoğunluğu arttı mı?
-
-İlk sarı karttan sonraki 5 dakikada faul yoğunluğu arttı mı?
-İlk sarı karttan sonraki 5 dakikada tempo bandı değişti mi?
-İlk sarı karttan sonraki 5 dakikada topun oyunda kalma süresi düştü mü?
-İlk sarı karttan sonraki 5 dakikada hakem daha fazla düdük çalmaya başladı mı?
-
-İlk sarı karttan sonraki 10 dakikada faul yoğunluğu arttı mı?
-İlk sarı karttan sonraki 10 dakikada tempo yükseldi mi?
-İlk sarı karttan sonraki 10 dakikada tempo düştü mü?
-İlk sarı karttan sonraki 10 dakikada kontrol bandı “unstable” oldu mu?
-İlk sarı karttan sonraki 10 dakikada kart riski sinyali arttı mı?
-İlk sarı karttan sonraki 10 dakikada ikili mücadele sertliği arttı mı?
-
-Kartların kümelendiği 5 dakikalık blok var mı?
-Kartların kümelendiği 10 dakikalık blok var mı?
-Kartların kümelendiği ilk 5 dakikalık blok hangi dakikalarda oluştu?
 Kartların kümelendiği ilk 10 dakikalık blok hangi dakikalarda oluştu?
+Kartlar tek bir takımda mı kümelendi?,Kartlar ev sahibi takımda mı kümelendi?,Kartlar deplasman takımda mı kümelendi?,Kartlar iki takım arasında dengeli mi dağıldı?,Kartlar tek bir oyuncuda mı kümelendi?,Kartlar aynı pozisyon grubunda mı kümelendi?
+Kartlar savunma hattında mı kümelendi?,Kartlar orta saha hattında mı kümelendi?,Kartlar hücum hattında mı kümelendi?,Kartlar “itiraz” kaynaklı mı kümelendi?,Kartlar “gecikme/time_waste” kaynaklı mı kümelendi?,Kartlar “sert müdahale” kaynaklı mı kümelendi?
+Kartlar kümelenmesi sonrası sonraki 5 dakikada tempo düştü mü?,Kartlar kümelenmesi sonrası sonraki 5 dakikada oyun daha sık durdu mu?,Kartlar kümelenmesi sonrası sonraki 5 dakikada gerilim arttı mı?
 
-Kartlar tek bir takımda mı kümelendi?
-Kartlar ev sahibi takımda mı kümelendi?
-Kartlar deplasman takımda mı kümelendi?
-Kartlar iki takım arasında dengeli mi dağıldı?
-Kartlar tek bir oyuncuda mı kümelendi?
+FAZ-7-2  Bu maçta kırmızı kart çıktı mı?
+Kırmızı kartın dakikası nedir?,Kırmızı kartın dakikası ilk yarıda mı çıktı?,Kırmızı kartın dakikası ikinci yarıda mı çıktı?,Kırmızı kartın dakikası uzatma dakikalarında mı çıktı?,Kırmızı kart hangi takım oyuncusuna çıktı?,Kırmızı kart ev sahibi takım oyuncusuna mı çıktı?,Kırmızı kart deplasman takım oyuncusuna mı çıktı?,Kırmızı kart hangi takım aleyhine verildi?,Kırmızı kart ev sahibi takım aleyhine mi verildi?,Kırmızı kart deplasman takım aleyhine mi verildi?,Kırmızı kart direkt kırmızı mıydı?,Kırmızı kart ikinci sarı sonucu mu oluştu?,Kırmızı kart öncesi 1 dakikada ikinci sarı riski sinyali oluştu mu?,Kırmızı kart öncesi 3 dakikada ikinci sarı riski sinyali oluştu mu?,Kırmızı kart öncesi 5 dakikada ikinci sarı riski sinyali oluştu mu?,Kırmızı kart öncesi 10 dakikada ikinci sarı riski sinyali oluştu mu?,Kırmızı kart öncesi aynı oyuncuda faul tekrarları arttı mı?,Kırmızı kart öncesi aynı oyuncuda tartışma/itiraz sinyali var mıydı?,Kırmızı kart öncesi aynı oyuncu için hakem uyarısı sinyali var mıydı?,Kırmızı kart sonrası ilk 1 dakikada oyun planı aniden değişti mi?,Kırmızı kart sonrası ilk 1 dakikada baskı yönü değişti mi?,Kırmızı kart sonrası ilk 3 dakikada takım boyu kısaldı mı?,Kırmızı kart sonrası ilk 5 dakikada skor değişti mi?,Kırmızı kart sonrası ilk 5 dakikada gol yeme riski belirginleşti mi?
+Kırmızı kart sonrası ilk 5 dakikada tempo bandı değişti mi?,Kırmızı kart sonrası ilk 5 dakikada topa sahip olma oranı düştü mü?,Kırmızı kart sonrası ilk 5 dakikada rakip ceza sahasına giriş sayısı arttı mı?,Kırmızı kart sonrası takım “tempo_down + deep_defend” kombinasyonuna mı girdi?,Kırmızı kart sonrası takım “risk_down” moduna mı geçti?,Kırmızı kart sonrası takım “chaos” moduna mı girdi?,Kırmızı kart sonrası takım organize mi kaldı?,Kırmızı kart sonrası takım çöktü mü?,Kırmızı kart sonrası ilk 10 dakikada savunma hataları arttı mı?,Kırmızı kart gören takım 10 kişi kalınca baskı yönü değişti mi?,Kırmızı kart gören takım 10 kişi kalınca net pozisyon verdi mi?,Kırmızı kart gören takım 10 kişi kalınca duran top tehdidi arttı mı?,Kırmızı kart gören takım 10 kişi kalınca kontra atak planına mı döndü?,Kırmızı kart sonrası sonraki 5 dakikada rakip gol buldu mu?,Kırmızı kart sonrası sonraki 10 dakikada rakip gol buldu mu?
 
-Kartlar aynı pozisyon grubunda mı kümelendi?
-Kartlar savunma hattında mı kümelendi?
-Kartlar orta saha hattında mı kümelendi?
-Kartlar hücum hattında mı kümelendi?
+FAZ-7-3 Var incelemesi oldumu ?
+Maçta VAR incelemesi ilk yarıda oldu mu?,Maçta VAR incelemesi ikinci yarıda oldu mu?,Maçta VAR incelemesi uzatma dakikalarında oldu mu?
+VAR incelemesi 0–15 aralığında oldu mu?,VAR incelemesi 16–30 aralığında oldu mu?,VAR incelemesi 31–45+ aralığında oldu mu?,VAR incelemesi 46–60 aralığında oldu mu?,VAR incelemesi 61–75 aralığında oldu mu?,VAR incelemesi 76–90+ aralığında oldu mu?
+VAR incelemesi sonrası karar değişikliği ilk yarıda yaşandı mı?,VAR incelemesi sonrası karar değişikliği ikinci yarıda yaşandı mı?,VAR incelemesi sonrası karar değişikliği 0–15 aralığında yaşandı mı?
+VAR incelemesi sonrası karar değişikliği 16–30 aralığında yaşandı mı?,VAR incelemesi sonrası karar değişikliği 31–45+ aralığında yaşandı mı?,VAR incelemesi sonrası karar değişikliği 46–60 aralığında yaşandı mı?
+VAR incelemesi sonrası karar değişikliği 61–75 aralığında yaşandı mı?,VAR incelemesi sonrası karar değişikliği 76–90+ aralığında yaşandı mı?,VAR incelemesi sonrası oyun ritmi kırılması ilk 1 dakikada oldu mu?
+VAR incelemesi sonrası oyun ritmi kırılması ilk 1–3 dakikada oldu mu?,VAR incelemesi sonrası oyun ritmi kırılması ilk 3–5 dakikada oldu mu?,VAR incelemesi sonrası oyun ritmi kırılması sonraki 5–10 dakikada sürdü mü?
+VAR incelemesi sonrası tempo bandı “tempo_down” ilk 1–3 dakikada oluştu mu?,VAR incelemesi sonrası tempo bandı “tempo_down” ilk 3–5 dakikada oluştu mu?,VAR incelemesi sonrası tempo bandı “tempo_down” sonraki 5 dakikada devam etti mi?
+VAR incelemesi sonrası faul yoğunluğu ilk 1–3 dakikada arttı mı?,VAR incelemesi sonrası faul yoğunluğu ilk 3–5 dakikada arttı mı?,VAR incelemesi sonrası faul yoğunluğu sonraki 5 dakikada arttı mı?
+VAR incelemesi sonrası kart yoğunluğu ilk 1–3 dakikada arttı mı?,VAR incelemesi sonrası kart yoğunluğu ilk 3–5 dakikada arttı mı?,VAR incelemesi sonrası kart yoğunluğu sonraki 5 dakikada arttı mı?
+VAR incelemesi sonrası oyuncu itirazı ilk 1–3 dakikada kümelendi mi?,VAR incelemesi sonrası oyuncu itirazı ilk 3–5 dakikada kümelendi mi?,VAR incelemesi sonrası oyuncu itirazı sonraki 5 dakikada sürdü mü?
+VAR incelemesi sonrası kontrol bandı “unstable” ilk 1–3 dakikada oluştu mu?,VAR incelemesi sonrası kontrol bandı “unstable” ilk 3–5 dakikada oluştu mu?,VAR incelemesi sonrası kontrol bandı “unstable” sonraki 5 dakikada devam etti mi?
+VAR incelemesi ev sahibi lehine mi yapıldı?,VAR incelemesi deplasman lehine mi yapıldı?,VAR incelemesi gol kararı için mi yapıldı?,VAR incelemesi penaltı kararı için mi yapıldı?,VAR incelemesi kırmızı kart kararı için mi yapıldı?
+VAR incelemesi ofsayt kararı için mi yapıldı?,VAR incelemesi sırasında oyuncular hakeme toplu itiraz etti mi?,VAR incelemesi sırasında teknik direktör itirazı görüldü mü?,VAR incelemesi sırasında saha kenarı gerilimi arttı mı?
+VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede faul oldu mu?,VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede kart çıktı mı?,VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede top kaybı arttı mı?   
+VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede şut denemesi oldu mu?,VAR incelemesi sonrası maç tekrar başladığında ilk 5 dakikada baskı yönü değişti mi?
 
-Kartlar “itiraz” kaynaklı mı kümelendi?
-Kartlar “gecikme/time_waste” kaynaklı mı kümelendi?
-Kartlar “sert müdahale” kaynaklı mı kümelendi?
+FAZ-7-4 Peneltı pozüsyonu oldumu ?
+Penaltı ev sahibi lehine mi verildi?,Penaltı deplasman lehine mi verildi?,Penaltı kararı VAR ile mi verildi?,Penaltı kararı VAR sonrası mı iptal edildi?,Maçta penaltı pozisyonu ilk yarıda yaşandı mı?,Maçta penaltı pozisyonu ikinci yarıda yaşandı mı?
+Maçta penaltı pozisyonu uzatma dakikalarında yaşandı mı?,Penaltı pozisyonu 0–15 aralığında yaşandı mı?,Penaltı pozisyonu 16–30 aralığında yaşandı mı?,Penaltı pozisyonu 31–45+ aralığında yaşandı mı?,Penaltı pozisyonu 46–60 aralığında yaşandı mı?
+Penaltı pozisyonu 61–75 aralığında yaşandı mı?,Penaltı pozisyonu 76–90+ aralığında yaşandı mı?,Penaltı iptali sonrası 1 dakikalık itiraz kümelenmesi oldu mu?,Penaltı iptali sonrası 1–3 dakikalık itiraz kümelenmesi oldu mu?
+Penaltı iptali sonrası 3–5 dakikalık itiraz kümelenmesi oldu mu?,Penaltı kararı sonrası ilk 1 dakikada psikolojik kırılma oluştu mu?,Penaltı kararı sonrası 1–3 dakikalık psikolojik kırılma oluştu mu?,Penaltı kararı sonrası 3–5 dakikalık psikolojik kırılma oluştu mu?
+Penaltı kararı sonrası ilk 5 dakikada tempo bandı değişti mi?,Penaltı kararı sonrası sonraki 5 dakikada tempo bandı değişti mi?,Penaltı kararı sonrası ilk 5 dakikada disiplin bandı bozuldu mu?,Penaltı kararı sonrası sonraki 5 dakikada disiplin bandı bozuldu mu?
+Penaltı kararı sonrası geriye düşen takım ilk 1–3 dakikada “panic” bandına girdi mi?,Penaltı kararı sonrası geriye düşen takım 3–5 dakikada “panic” bandına girdi mi?,Penaltı kararı sonrası geriye düşen takım sonraki 5 dakikada “panic” bandında kaldı mı?
+Penaltı kararı sonrası öne geçen takım ilk 1–3 dakikada time-waste davranışına geçti mi?,Penaltı kararı sonrası öne geçen takım 3–5 dakikada time-waste davranışına geçti mi?,Penaltı kararı sonrası öne geçen takım sonraki 5 dakikada time-waste davranışını sürdürdü mü?
+Penaltı kararı sonrası ilk 5 dakikada faul yoğunluğu arttı mı?,Penaltı kararı sonrası ilk 5 dakikada kart yoğunluğu arttı mı?,Penaltı kararı sonrası ilk 5 dakikada kontrol bandı “unstable” oldu mu?,Penaltı sonrası yeniden başlama anında ilk 60 saniyede faul oldu mu?
+Penaltı sonrası yeniden başlama anında ilk 60 saniyede kart çıktı mı?,Penaltı sonrası yeniden başlama anında ilk 60 saniyede baskı yönü değişti mi?,Penaltı sonrası yeniden başlama anında ilk 5 dakikada baskı artışı oldu mu?    
 
-Kartlar kümelenmesi sonrası sonraki 5 dakikada tempo düştü mü?
-Kartlar kümelenmesi sonrası sonraki 5 dakikada oyun daha sık durdu mu?
-Kartlar kümelenmesi sonrası sonraki 5 dakikada gerilim arttı mı?
+FAZ-7-5 Maçta gol iptali varmı ?
+Maçta iptal edilen gol ilk yarıda oldu mu?,Maçta iptal edilen gol ikinci yarıda oldu mu?,Maçta iptal edilen gol uzatma dakikalarında oldu mu?,İptal edilen gol 0–15 aralığında oldu mu?,İptal edilen gol 16–30 aralığında oldu mu?,İptal edilen gol 31–45+ aralığında oldu mu?,İptal edilen gol 46–60 aralığında oldu mu?,İptal edilen gol 61–75 aralığında oldu mu?,İptal edilen gol 76–90+ aralığında oldu mu?,İptal edilen gol ev sahibi için miydi?,İptal edilen gol deplasman için miydi?,İptal edilen gol ofsayt gerekçesiyle mi iptal edildi?İptal edilen gol faul gerekçesiyle mi iptal edildi?,İptal edilen gol elle oynama gerekçesiyle mi iptal edildi?,İptal edilen gol VAR incelemesi sonrası mı iptal edildi?,İptal edilen gol sonrası ilk 1 dakikada itiraz kümesi oldu mu?,İptal edilen gol sonrası ilk 1–3 dakikada itiraz kümesi oldu mu?,İptal edilen gol sonrası 3–5 dakikada itiraz kümesi oldu mu?,İptal edilen gol sonrası ilk 1–3 dakikada takım “fight_harder” bandına geçti mi?,İptal edilen gol sonrası 3–5 dakikada takım “fight_harder” bandına geçti mi?,İptal edilen gol sonrası sonraki 5 dakikada takım “fight_harder” bandında kaldı mı?,İptal edilen gol sonrası ilk 1–3 dakikada takım “collapse” bandına geçti mi?,iptal edilen gol sonrası 3–5 dakikada takım “collapse” bandına geçti mi?,İptal edilen gol sonrası sonraki 5 dakikada takım “collapse” bandında kaldı mı?,İptal edilen gol sonrası ilk 5 dakikada kart yoğunluğu arttı mı?,İptal edilen gol sonrası ilk 5 dakikada faul yoğunluğu arttı mı?,İptal edilen gol sonrası ilk 5 dakikada tempo bandı değişti mi?,İptal edilen gol sonrası sonraki 5 dakikada tempo bandı değişti mi?,İptal edilen gol sonrası ilk 5 dakikada kontrol bandı “unstable” oldu mu?,İptal edilen gol sonrası sonraki 5 dakikada kontrol bandı “unstable” kaldı mı?,İptal edilen gol sonrası iptal kararına teknik direktör itirazı oldu mu?,İptal edilen gol sonrası oyuncu itirazı toplu halde mi gerçekleşti?,İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede faul oldu mu?,İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede kart çıktı mı?,İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede tempo düşüşü oldu mu?,İptal edilen gol sonrası maç yeniden başladığında ilk 5 dakikada baskı yönü değişti mi?
 
-FAZ-7-2
-Bu maçta kırmızı kart çıktı mı?
+FA-7-6- İlk gol geldi mi?
+İlk gol hangi dakikada geldi?,İlk gol öncesi 1 dakikada tempo bandı değişmiş miydi?,İlk gol öncesi 3 dakikada tempo bandı değişmiş miydi?,İlk gol öncesi 5 dakikada tempo bandı değişmiş miydi?,İlk gol öncesi 1 dakikada net pozisyon artışı var mıydı?
+İlk gol öncesi 3 dakikada net pozisyon artışı var mıydı?,İlk gol öncesi 5 dakikada net pozisyon artışı var mıydı?,İlk gol öncesi 1 dakikada baskı yönü değişmiş miydi?,İlk gol öncesi 3 dakikada baskı yönü değişmiş miydi?,İlk gol öncesi 5 dakikada baskı yönü değişmiş miydi?,İlk gol öncesi son 5 dakikada duran top yoğunluğu artmış mıydı?,İlk gol öncesi son 5 dakikada korner yoğunluğu artmış mıydı?,İlk gol öncesi son 5 dakikada serbest vuruş tehlikesi artmış mıydı?,İlk gol öncesi son 5 dakikada ceza sahası içi temaslar arttı mı?
+İlk gol öncesi son 5 dakikada şut sayısı artmış mıydı?,İlk gol öncesi son 5 dakikada isabetli şut artışı var mıydı?,İlk gol öncesi son 5 dakikada kaleci kurtarışları arttı mı?,İlk gol öncesi son 5 dakikada top kaybı yoğunluğu arttı mı?,İlk gol öncesi son 5 dakikada savunma yerleşim hatası tekrar etti mi?,İlk gol öncesi son 5 dakikada hızlı hücum denemeleri arttı mı?,İlk gol öncesi son 5 dakikada geçiş oyunu belirginleşti mi?,İlk gol öncesi son 5 dakikada pres şiddeti yükseldi mi?İlk gol öncesi son 5 dakikada pres şiddeti düştü mü?,İlk gol öncesi son 5 dakikada pas hızı arttı mı?,İlk gol öncesi son 5 dakikada pas hızı düştü mü?
 
-Kırmızı kartın dakikası nedir?
-Kırmızı kartın dakikası ilk yarıda mı çıktı?
-Kırmızı kartın dakikası ikinci yarıda mı çıktı?
-Kırmızı kartın dakikası uzatma dakikalarında mı çıktı?
+FAZ-7-7,İlk golü hangi takım attı?
+İlk golü atan takım gol öncesi 5 dakikada baskıyı artırmış mıydı?,ilk golü atan takım gol öncesi 5 dakikada risk seviyesini yükseltmiş miydi?,İlk golü yiyen takım gol öncesi 5 dakikada savunma çizgisini geriye mi çekti?,İlk golü yiyen takım gol öncesi 5 dakikada top kayıplarını artırdı mı?,İlk golden sonra geriye düşen takımın tempo bandı yükseldi mi?,İlk golden sonra geriye düşen takımın tempo bandı düştü mü?,İlk golden sonra geriye düşen takım “risk_up” moduna geçti mi?,İlk golden sonra geriye düşen takım ilk 1 dakikada baskıyı artırdı mı?,İlk golden sonra geriye düşen takım ilk 3 dakikada baskıyı artırdı mı?,İlk golden sonra geriye düşen takım ilk 5 dakikada baskıyı artırdı mı?,İlk golden sonra geriye düşen takım ilk 1 dakikada net pozisyon üretti mi?,İlk golden sonra geriye düşen takım ilk 3 dakikada net pozisyon üretti mi?,İlk golden sonra geriye düşen takım ilk 5 dakikada net pozisyon üretti mi?,İlk golden sonra geriye düşen takım ilk 5 dakikada daha fazla şut çekti mi?,İlk golden sonra geriye düşen takım ilk 5 dakikada topa sahip olmayı artırdı mı?
+İlk golden sonra geriye düşen takım ilk 5 dakikada geçiş hücumuna mı döndü?,İlk golden sonra geriye düşen takım ilk 5 dakikada uzun topa mı döndü?,İlk golden sonra geriye düşen takım ilk 5 dakikada kanat ortalarını artırdı mı?,İlk golden sonra geriye düşen takım ilk 5 dakikada ceza sahasına girişleri artırdı mı?,İlk golden sonra öne geçen takımın tempo bandı düştü mü?,İlk golden sonra öne geçen takım “risk_down” moduna geçti mi?,İlk golden sonra öne geçen takım time-waste davranışına geçti mi?,İlk golden sonra öne geçen takım ilk 1 dakikada tempo bandını düşürdü mü?,İlk golden sonra öne geçen takım ilk 3 dakikada tempo bandını düşürdü mü?,İlk golden sonra öne geçen takım ilk 5 dakikada tempo bandını düşürdü mü?,İlk golden sonra öne geçen takım ilk 5 dakikada topu tutma moduna geçti mi?
+İlk golden sonra öne geçen takım ilk 5 dakikada presi geri mi çekti?,İlk golden sonra öne geçen takım ilk 5 dakikada savunma çizgisini geri mi çekti?,İlk golden sonra öne geçen takım ilk 5 dakikada hızlı hücum kovaladı mı?,İlk golden sonra öne geçen takım ilk 5 dakikada kontra tehdit üretti mi?,İlk golden sonra öne geçen takım ilk 5 dakikada duran top kovaladı mı?,İlk golden sonra baskı yönü değişti mi?,İlk golden sonra ilk 1 dakikada baskı yönü değişti mi?,İlk golden sonra ilk 3 dakikada baskı yönü değişti mi?,İlk golden sonra ilk 5 dakikada baskı yönü değişti mi?,İlk golden sonra 5–10 dakikada baskı yönü değişti mi?
 
-Kırmızı kart hangi takım oyuncusuna çıktı?
-Kırmızı kart ev sahibi takım oyuncusuna mı çıktı?
-Kırmızı kart deplasman takım oyuncusuna mı çıktı?
-
-Kırmızı kart hangi takım aleyhine verildi?
-Kırmızı kart ev sahibi takım aleyhine mi verildi?
-Kırmızı kart deplasman takım aleyhine mi verildi?
-
-Kırmızı kart direkt kırmızı mıydı?
-Kırmızı kart ikinci sarı sonucu mu oluştu?
-
-Kırmızı kart öncesi 1 dakikada ikinci sarı riski sinyali oluştu mu?
-Kırmızı kart öncesi 3 dakikada ikinci sarı riski sinyali oluştu mu?
-Kırmızı kart öncesi 5 dakikada ikinci sarı riski sinyali oluştu mu?
-Kırmızı kart öncesi 10 dakikada ikinci sarı riski sinyali oluştu mu?
-
-Kırmızı kart öncesi aynı oyuncuda faul tekrarları arttı mı?
-Kırmızı kart öncesi aynı oyuncuda tartışma/itiraz sinyali var mıydı?
-Kırmızı kart öncesi aynı oyuncu için hakem uyarısı sinyali var mıydı?
-
-Kırmızı kart sonrası ilk 1 dakikada oyun planı aniden değişti mi?
-Kırmızı kart sonrası ilk 1 dakikada baskı yönü değişti mi?
-Kırmızı kart sonrası ilk 3 dakikada takım boyu kısaldı mı?
-   
-Kırmızı kart sonrası ilk 5 dakikada skor değişti mi?
-Kırmızı kart sonrası ilk 5 dakikada gol yeme riski belirginleşti mi?
-Kırmızı kart sonrası ilk 5 dakikada tempo bandı değişti mi?
-Kırmızı kart sonrası ilk 5 dakikada topa sahip olma oranı düştü mü?
-Kırmızı kart sonrası ilk 5 dakikada rakip ceza sahasına giriş sayısı arttı mı?
-
-Kırmızı kart sonrası takım “tempo_down + deep_defend” kombinasyonuna mı girdi?
-Kırmızı kart sonrası takım “risk_down” moduna mı geçti?
-Kırmızı kart sonrası takım “chaos” moduna mı girdi?
-Kırmızı kart sonrası takım organize mi kaldı?
-Kırmızı kart sonrası takım çöktü mü?
-
-Kırmızı kart sonrası ilk 10 dakikada savunma hataları arttı mı?
-Kırmızı kart gören takım 10 kişi kalınca baskı yönü değişti mi?
-Kırmızı kart gören takım 10 kişi kalınca net pozisyon verdi mi?
-Kırmızı kart gören takım 10 kişi kalınca duran top tehdidi arttı mı?
-Kırmızı kart gören takım 10 kişi kalınca kontra atak planına mı döndü?
-
-Kırmızı kart sonrası sonraki 5 dakikada rakip gol buldu mu?
-Kırmızı kart sonrası sonraki 10 dakikada rakip gol buldu mu?
-
-FAZ-7-3
-Var incelemesi oldumu ?
-
-Maçta VAR incelemesi ilk yarıda oldu mu?
-Maçta VAR incelemesi ikinci yarıda oldu mu?
-Maçta VAR incelemesi uzatma dakikalarında oldu mu?
-
-VAR incelemesi 0–15 aralığında oldu mu?
-VAR incelemesi 16–30 aralığında oldu mu?
-VAR incelemesi 31–45+ aralığında oldu mu?
-VAR incelemesi 46–60 aralığında oldu mu?
-VAR incelemesi 61–75 aralığında oldu mu?
-VAR incelemesi 76–90+ aralığında oldu mu?
-
-VAR incelemesi sonrası karar değişikliği ilk yarıda yaşandı mı?
-VAR incelemesi sonrası karar değişikliği ikinci yarıda yaşandı mı?
-VAR incelemesi sonrası karar değişikliği 0–15 aralığında yaşandı mı?
-VAR incelemesi sonrası karar değişikliği 16–30 aralığında yaşandı mı?
-
-VAR incelemesi sonrası karar değişikliği 31–45+ aralığında yaşandı mı?
-VAR incelemesi sonrası karar değişikliği 46–60 aralığında yaşandı mı?
-VAR incelemesi sonrası karar değişikliği 61–75 aralığında yaşandı mı?
-VAR incelemesi sonrası karar değişikliği 76–90+ aralığında yaşandı mı?
-
-VAR incelemesi sonrası oyun ritmi kırılması ilk 1 dakikada oldu mu?
-VAR incelemesi sonrası oyun ritmi kırılması ilk 1–3 dakikada oldu mu?
-VAR incelemesi sonrası oyun ritmi kırılması ilk 3–5 dakikada oldu mu?
-VAR incelemesi sonrası oyun ritmi kırılması sonraki 5–10 dakikada sürdü mü?
-
-VAR incelemesi sonrası tempo bandı “tempo_down” ilk 1–3 dakikada oluştu mu?
-VAR incelemesi sonrası tempo bandı “tempo_down” ilk 3–5 dakikada oluştu mu?
-VAR incelemesi sonrası tempo bandı “tempo_down” sonraki 5 dakikada devam etti mi?
-
-VAR incelemesi sonrası faul yoğunluğu ilk 1–3 dakikada arttı mı?
-VAR incelemesi sonrası faul yoğunluğu ilk 3–5 dakikada arttı mı?
-VAR incelemesi sonrası faul yoğunluğu sonraki 5 dakikada arttı mı?
-
-VAR incelemesi sonrası kart yoğunluğu ilk 1–3 dakikada arttı mı?
-VAR incelemesi sonrası kart yoğunluğu ilk 3–5 dakikada arttı mı?
-VAR incelemesi sonrası kart yoğunluğu sonraki 5 dakikada arttı mı?
-
-VAR incelemesi sonrası oyuncu itirazı ilk 1–3 dakikada kümelendi mi?
-VAR incelemesi sonrası oyuncu itirazı ilk 3–5 dakikada kümelendi mi?
-VAR incelemesi sonrası oyuncu itirazı sonraki 5 dakikada sürdü mü?
-
-VAR incelemesi sonrası kontrol bandı “unstable” ilk 1–3 dakikada oluştu mu?
-VAR incelemesi sonrası kontrol bandı “unstable” ilk 3–5 dakikada oluştu mu?
-VAR incelemesi sonrası kontrol bandı “unstable” sonraki 5 dakikada devam etti mi?
-
-VAR incelemesi ev sahibi lehine mi yapıldı?
-VAR incelemesi deplasman lehine mi yapıldı?
-VAR incelemesi gol kararı için mi yapıldı?
-VAR incelemesi penaltı kararı için mi yapıldı?
-
-VAR incelemesi kırmızı kart kararı için mi yapıldı?
-VAR incelemesi ofsayt kararı için mi yapıldı?
-VAR incelemesi sırasında oyuncular hakeme toplu itiraz etti mi?
-VAR incelemesi sırasında teknik direktör itirazı görüldü mü?
-VAR incelemesi sırasında saha kenarı gerilimi arttı mı?
-
-VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede faul oldu mu?
-VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede kart çıktı mı?
-VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede top kaybı arttı mı?   
-VAR incelemesi sonrası maç tekrar başladığında ilk 60 saniyede şut denemesi oldu mu?
-VAR incelemesi sonrası maç tekrar başladığında ilk 5 dakikada baskı yönü değişti mi?
-
-FAZ-7-4
-Peneltı pozüsyonu oldumu ?
-
-Penaltı ev sahibi lehine mi verildi?
-Penaltı deplasman lehine mi verildi?
-Penaltı kararı VAR ile mi verildi?
-Penaltı kararı VAR sonrası mı iptal edildi?
-
-Maçta penaltı pozisyonu ilk yarıda yaşandı mı?
-Maçta penaltı pozisyonu ikinci yarıda yaşandı mı?
-Maçta penaltı pozisyonu uzatma dakikalarında yaşandı mı?
-
-Penaltı pozisyonu 0–15 aralığında yaşandı mı?
-Penaltı pozisyonu 16–30 aralığında yaşandı mı?
-Penaltı pozisyonu 31–45+ aralığında yaşandı mı?
-Penaltı pozisyonu 46–60 aralığında yaşandı mı?
-Penaltı pozisyonu 61–75 aralığında yaşandı mı?
-Penaltı pozisyonu 76–90+ aralığında yaşandı mı?
-
-Penaltı iptali sonrası 1 dakikalık itiraz kümelenmesi oldu mu?
-Penaltı iptali sonrası 1–3 dakikalık itiraz kümelenmesi oldu mu?
-Penaltı iptali sonrası 3–5 dakikalık itiraz kümelenmesi oldu mu?
-Penaltı kararı sonrası ilk 1 dakikada psikolojik kırılma oluştu mu?
-Penaltı kararı sonrası 1–3 dakikalık psikolojik kırılma oluştu mu?
-Penaltı kararı sonrası 3–5 dakikalık psikolojik kırılma oluştu mu?
-Penaltı kararı sonrası ilk 5 dakikada tempo bandı değişti mi?
-Penaltı kararı sonrası sonraki 5 dakikada tempo bandı değişti mi?
-Penaltı kararı sonrası ilk 5 dakikada disiplin bandı bozuldu mu?
-Penaltı kararı sonrası sonraki 5 dakikada disiplin bandı bozuldu mu?
-
-Penaltı kararı sonrası geriye düşen takım ilk 1–3 dakikada “panic” bandına girdi mi?
-Penaltı kararı sonrası geriye düşen takım 3–5 dakikada “panic” bandına girdi mi?
-Penaltı kararı sonrası geriye düşen takım sonraki 5 dakikada “panic” bandında kaldı mı?
-
-Penaltı kararı sonrası öne geçen takım ilk 1–3 dakikada time-waste davranışına geçti mi?
-Penaltı kararı sonrası öne geçen takım 3–5 dakikada time-waste davranışına geçti mi?
-Penaltı kararı sonrası öne geçen takım sonraki 5 dakikada time-waste davranışını sürdürdü mü?
-
-Penaltı kararı sonrası ilk 5 dakikada faul yoğunluğu arttı mı?
-Penaltı kararı sonrası ilk 5 dakikada kart yoğunluğu arttı mı?
-Penaltı kararı sonrası ilk 5 dakikada kontrol bandı “unstable” oldu mu?
-
-Penaltı sonrası yeniden başlama anında ilk 60 saniyede faul oldu mu?
-Penaltı sonrası yeniden başlama anında ilk 60 saniyede kart çıktı mı?
-Penaltı sonrası yeniden başlama anında ilk 60 saniyede baskı yönü değişti mi?
-Penaltı sonrası yeniden başlama anında ilk 5 dakikada baskı artışı oldu mu?    
-
-FAZ-7-5
-Maçta gol iptali varmı ?
-
-Maçta iptal edilen gol ilk yarıda oldu mu?
-Maçta iptal edilen gol ikinci yarıda oldu mu?
-Maçta iptal edilen gol uzatma dakikalarında oldu mu?
-
-İptal edilen gol 0–15 aralığında oldu mu?
-İptal edilen gol 16–30 aralığında oldu mu?
-İptal edilen gol 31–45+ aralığında oldu mu?
-İptal edilen gol 46–60 aralığında oldu mu?
-İptal edilen gol 61–75 aralığında oldu mu?
-İptal edilen gol 76–90+ aralığında oldu mu?
-
-İptal edilen gol ev sahibi için miydi?
-İptal edilen gol deplasman için miydi?
-İptal edilen gol ofsayt gerekçesiyle mi iptal edildi?
-İptal edilen gol faul gerekçesiyle mi iptal edildi?
-İptal edilen gol elle oynama gerekçesiyle mi iptal edildi?
-İptal edilen gol VAR incelemesi sonrası mı iptal edildi?
-
-İptal edilen gol sonrası ilk 1 dakikada itiraz kümesi oldu mu?
-İptal edilen gol sonrası ilk 1–3 dakikada itiraz kümesi oldu mu?
-İptal edilen gol sonrası 3–5 dakikada itiraz kümesi oldu mu?
-
-İptal edilen gol sonrası ilk 1–3 dakikada takım “fight_harder” bandına geçti mi?
-İptal edilen gol sonrası 3–5 dakikada takım “fight_harder” bandına geçti mi?
-İptal edilen gol sonrası sonraki 5 dakikada takım “fight_harder” bandında kaldı mı?
-İptal edilen gol sonrası ilk 1–3 dakikada takım “collapse” bandına geçti mi?
-iptal edilen gol sonrası 3–5 dakikada takım “collapse” bandına geçti mi?
-İptal edilen gol sonrası sonraki 5 dakikada takım “collapse” bandında kaldı mı?
-
-İptal edilen gol sonrası ilk 5 dakikada kart yoğunluğu arttı mı?
-İptal edilen gol sonrası ilk 5 dakikada faul yoğunluğu arttı mı?
-İptal edilen gol sonrası ilk 5 dakikada tempo bandı değişti mi?
-İptal edilen gol sonrası sonraki 5 dakikada tempo bandı değişti mi?
-
-İptal edilen gol sonrası ilk 5 dakikada kontrol bandı “unstable” oldu mu?
-İptal edilen gol sonrası sonraki 5 dakikada kontrol bandı “unstable” kaldı mı?
-İptal edilen gol sonrası iptal kararına teknik direktör itirazı oldu mu?
-İptal edilen gol sonrası oyuncu itirazı toplu halde mi gerçekleşti?
-
-İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede faul oldu mu?
-İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede kart çıktı mı?
-İptal edilen gol sonrası maç yeniden başladığında ilk 60 saniyede tempo düşüşü oldu mu?
-İptal edilen gol sonrası maç yeniden başladığında ilk 5 dakikada baskı yönü değişti mi?
-
-FA-7-6-
-İlk gol geldi mi?
-
-İlk gol hangi dakikada geldi?
-İlk gol öncesi 1 dakikada tempo bandı değişmiş miydi?
-İlk gol öncesi 3 dakikada tempo bandı değişmiş miydi?
-İlk gol öncesi 5 dakikada tempo bandı değişmiş miydi?
-İlk gol öncesi 1 dakikada net pozisyon artışı var mıydı?
-İlk gol öncesi 3 dakikada net pozisyon artışı var mıydı?
-İlk gol öncesi 5 dakikada net pozisyon artışı var mıydı?
-İlk gol öncesi 1 dakikada baskı yönü değişmiş miydi?
-İlk gol öncesi 3 dakikada baskı yönü değişmiş miydi?
-İlk gol öncesi 5 dakikada baskı yönü değişmiş miydi?
-
-İlk gol öncesi son 5 dakikada duran top yoğunluğu artmış mıydı?
-İlk gol öncesi son 5 dakikada korner yoğunluğu artmış mıydı?
-İlk gol öncesi son 5 dakikada serbest vuruş tehlikesi artmış mıydı?
-İlk gol öncesi son 5 dakikada ceza sahası içi temaslar arttı mı?
-İlk gol öncesi son 5 dakikada şut sayısı artmış mıydı?
-İlk gol öncesi son 5 dakikada isabetli şut artışı var mıydı?
-İlk gol öncesi son 5 dakikada kaleci kurtarışları arttı mı?
-İlk gol öncesi son 5 dakikada top kaybı yoğunluğu arttı mı?
-İlk gol öncesi son 5 dakikada savunma yerleşim hatası tekrar etti mi?
-İlk gol öncesi son 5 dakikada hızlı hücum denemeleri arttı mı?
-İlk gol öncesi son 5 dakikada geçiş oyunu belirginleşti mi?
-İlk gol öncesi son 5 dakikada pres şiddeti yükseldi mi?
-İlk gol öncesi son 5 dakikada pres şiddeti düştü mü?
-İlk gol öncesi son 5 dakikada pas hızı arttı mı?
-İlk gol öncesi son 5 dakikada pas hızı düştü mü?
-
-FAZ-7-7
-İlk golü hangi takım attı?
-
-İlk golü atan takım gol öncesi 5 dakikada baskıyı artırmış mıydı?
-İlk golü atan takım gol öncesi 5 dakikada risk seviyesini yükseltmiş miydi?
-İlk golü yiyen takım gol öncesi 5 dakikada savunma çizgisini geriye mi çekti?
-İlk golü yiyen takım gol öncesi 5 dakikada top kayıplarını artırdı mı?
-  
-İlk golden sonra geriye düşen takımın tempo bandı yükseldi mi?
-İlk golden sonra geriye düşen takımın tempo bandı düştü mü?
-İlk golden sonra geriye düşen takım “risk_up” moduna geçti mi?
-İlk golden sonra geriye düşen takım ilk 1 dakikada baskıyı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 3 dakikada baskıyı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada baskıyı artırdı mı?
-
-İlk golden sonra geriye düşen takım ilk 1 dakikada net pozisyon üretti mi?
-İlk golden sonra geriye düşen takım ilk 3 dakikada net pozisyon üretti mi?
-İlk golden sonra geriye düşen takım ilk 5 dakikada net pozisyon üretti mi?
-İlk golden sonra geriye düşen takım ilk 5 dakikada daha fazla şut çekti mi?
-İlk golden sonra geriye düşen takım ilk 5 dakikada topa sahip olmayı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada geçiş hücumuna mı döndü?
-İlk golden sonra geriye düşen takım ilk 5 dakikada uzun topa mı döndü?
-İlk golden sonra geriye düşen takım ilk 5 dakikada kanat ortalarını artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada ceza sahasına girişleri artırdı mı?
-
-İlk golden sonra öne geçen takımın tempo bandı düştü mü?
-İlk golden sonra öne geçen takım “risk_down” moduna geçti mi?
-İlk golden sonra öne geçen takım time-waste davranışına geçti mi?
-
-İlk golden sonra öne geçen takım ilk 1 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 3 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 5 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 5 dakikada topu tutma moduna geçti mi?
-İlk golden sonra öne geçen takım ilk 5 dakikada presi geri mi çekti?
-İlk golden sonra öne geçen takım ilk 5 dakikada savunma çizgisini geri mi çekti?
-İlk golden sonra öne geçen takım ilk 5 dakikada hızlı hücum kovaladı mı?
-İlk golden sonra öne geçen takım ilk 5 dakikada kontra tehdit üretti mi?
-İlk golden sonra öne geçen takım ilk 5 dakikada duran top kovaladı mı?
-
-İlk golden sonra baskı yönü değişti mi?
-İlk golden sonra ilk 1 dakikada baskı yönü değişti mi?
-İlk golden sonra ilk 3 dakikada baskı yönü değişti mi?
-İlk golden sonra ilk 5 dakikada baskı yönü değişti mi?
-İlk golden sonra 5–10 dakikada baskı yönü değişti mi?
-
-FAZ-7-8
-Beraberlik golü geldi mi?
-Beraberlik golü hangi dakikada geldi?
-Beraberlik golü öncesi 1 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 3 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 5 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 1 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 3 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 5 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 5 dakikada kart/faul yoğunluğu arttı mı?
-Beraberlik golü öncesi 5 dakikada net pozisyon artışı var mıydı?
-
-Beraberlik golünden sonraki 5 dakikada baskı yönü değişti mi?
-Beraberlik golünden sonraki 10 dakikada baskı yönü değişti mi?
-Beraberlik golünden sonraki 5 dakikada tempo bandı değişti mi?
-Beraberlik golünden sonraki 10 dakikada tempo bandı değişti mi?
-Beraberlik golünden sonraki 5 dakikada kart/faul yoğunluğu arttı mı?
-Beraberlik golünden sonraki 10 dakikada kart/faul yoğunluğu arttı mı?
-
-Beraberlik golünden sonraki 5 dakikada net pozisyon sayısı arttı mı?
-Beraberlik golünden sonraki 10 dakikada net pozisyon sayısı arttı mı?
-Beraberlik golünden sonraki 5 dakikada “risk_up” moduna geçen takım oldu mu?
-Beraberlik golünden sonraki 10 dakikada “risk_down” moduna geçen takım oldu mu?
-Beraberlik golünden sonraki 5 dakikada time-waste davranışı başladı mı?
+FAZ-7-8,,Beraberlik golü geldi mi?,Beraberlik golü hangi dakikada geldi?
+Beraberlik golü öncesi 1 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 3 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 5 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 1 dakikada baskı yönü değişti mi?,Beraberlik golü öncesi 3 dakikada baskı yönü değişti mi?,Beraberlik golü öncesi 5 dakikada baskı yönü değişti mi?,Beraberlik golü öncesi 5 dakikada kart/faul yoğunluğu arttı mı?,Beraberlik golü öncesi 5 dakikada net pozisyon artışı var mıydı?,Beraberlik golünden sonraki 5 dakikada baskı yönü değişti mi?,Beraberlik golünden sonraki 10 dakikada baskı yönü değişti mi?,Beraberlik golünden sonraki 5 dakikada tempo bandı değişti mi?,Beraberlik golünden sonraki 10 dakikada tempo bandı değişti mi?,Beraberlik golünden sonraki 5 dakikada kart/faul yoğunluğu arttı mı?
+Beraberlik golünden sonraki 10 dakikada kart/faul yoğunluğu arttı mı?,Beraberlik golünden sonraki 5 dakikada net pozisyon sayısı arttı mı?,Beraberlik golünden sonraki 10 dakikada net pozisyon sayısı arttı mı?,Beraberlik golünden sonraki 5 dakikada “risk_up” moduna geçen takım oldu mu?,Beraberlik golünden sonraki 10 dakikada “risk_down” moduna geçen takım oldu mu?,Beraberlik golünden sonraki 5 dakikada time-waste davranışı başladı mı?
 Beraberlik golünden sonraki 10 dakikada time-waste davranışı başladı mı?
 
 FAZ-7-9
-Kopma golü geldi mi?
-Kopma golü hangi dakikada geldi?
-Kopma golü öncesi 1 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 3 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 5 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 5 dakikada net pozisyon artışı var mıydı?
-Kopma golü öncesi 5 dakikada baskı yönü değişti mi? 
-
+Kopma golü geldi mi?,Kopma golü hangi dakikada geldi?,Kopma golü öncesi 1 dakikada tempo bandı değişti mi?,Kopma golü öncesi 3 dakikada tempo bandı değişti mi?,Kopma golü öncesi 5 dakikada tempo bandı değişti mi?,Kopma golü öncesi 5 dakikada net pozisyon artışı var mıydı?,Kopma golü öncesi 5 dakikada baskı yönü değişti mi? 
 FAZ-7-10
-İlk golden sonra geriye düşen takımın tempo bandı yükseldi mi?
-İlk golden sonra geriye düşen takımın tempo bandı düştü mü?
-İlk golden sonra geriye düşen takım “risk_up” moduna geçti mi?
+İlk golden sonra geriye düşen takımın tempo bandı yükseldi mi?,İlk golden sonra geriye düşen takımın tempo bandı düştü mü?,İlk golden sonra geriye düşen takım “risk_up” moduna geçti mi?,ilk golden sonra geriye düşen takım ilk 1 dakikada baskıyı artırdı mı?
+İlk golden sonra geriye düşen takım ilk 3 dakikada baskıyı artırdı mı?,İlk golden sonra geriye düşen takım ilk 5 dakikada baskıyı artırdı mı?,İlk golden sonra geriye düşen takım ilk 1 dakikada net pozisyon üretti mi?
+İlk golden sonra geriye düşen takım ilk 3 dakikada net pozisyon üretti mi?,İlk golden sonra geriye düşen takım ilk 5 dakikada net pozisyon üretti mi?,İlk golden sonra geriye düşen takım ilk 5 dakikada daha fazla şut çekti mi?
+İlk golden sonra geriye düşen takım ilk 5 dakikada topa sahip olmayı artırdı mı?,İlk golden sonra geriye düşen takım ilk 5 dakikada geçiş hücumuna mı döndü?,İlk golden sonra geriye düşen takım ilk 5 dakikada uzun topa mı döndü?
+İlk golden sonra geriye düşen takım ilk 5 dakikada kanat ortalarını artırdı mı?,İlk golden sonra geriye düşen takım ilk 5 dakikada ceza sahasına girişleri artırdı mı?,İlk golden sonra öne geçen takımın tempo bandı düştü mü?
+İlk golden sonra öne geçen takım “risk_down” moduna geçti mi?,İlk golden sonra öne geçen takım time-waste davranışına geçti mi?,İlk golden sonra öne geçen takım ilk 1 dakikada tempo bandını düşürdü mü?
+İlk golden sonra öne geçen takım ilk 3 dakikada tempo bandını düşürdü mü?,İlk golden sonra öne geçen takım ilk 5 dakikada tempo bandını düşürdü mü?,İlk golden sonra öne geçen takım ilk 5 dakikada topu tutma moduna geçti mi?,
+İlk golden sonra öne geçen takım ilk 5 dakikada presi geri mi çekti?,ilk golden sonra öne geçen takım ilk 5 dakikada savunma çizgisini geri mi çekti?,ilk golden sonra öne geçen takım ilk 5 dakikada hızlı hücum kovaladı mı?
+İlk golden sonra öne geçen takım ilk 5 dakikada kontra tehdit üretti mi?,İlk golden sonra öne geçen takım ilk 5 dakikada duran top kovaladı mı?,İlk golden sonra baskı yönü değişti mi?,İlk golden sonra ilk 1 dakikada baskı yönü değişti mi?
+İlk golden sonra ilk 3 dakikada baskı yönü değişti mi?,İlk golden sonra ilk 5 dakikada baskı yönü değişti mi?,İlk golden sonra 5–10 dakikada baskı yönü değişti mi?
 
-İlk golden sonra geriye düşen takım ilk 1 dakikada baskıyı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 3 dakikada baskıyı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada baskıyı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 1 dakikada net pozisyon üretti mi?
-İlk golden sonra geriye düşen takım ilk 3 dakikada net pozisyon üretti mi?
-İlk golden sonra geriye düşen takım ilk 5 dakikada net pozisyon üretti mi?
-
-İlk golden sonra geriye düşen takım ilk 5 dakikada daha fazla şut çekti mi?
-İlk golden sonra geriye düşen takım ilk 5 dakikada topa sahip olmayı artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada geçiş hücumuna mı döndü?
-İlk golden sonra geriye düşen takım ilk 5 dakikada uzun topa mı döndü?
-İlk golden sonra geriye düşen takım ilk 5 dakikada kanat ortalarını artırdı mı?
-İlk golden sonra geriye düşen takım ilk 5 dakikada ceza sahasına girişleri artırdı mı?
-
-İlk golden sonra öne geçen takımın tempo bandı düştü mü?
-İlk golden sonra öne geçen takım “risk_down” moduna geçti mi?
-İlk golden sonra öne geçen takım time-waste davranışına geçti mi?
-
-İlk golden sonra öne geçen takım ilk 1 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 3 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 5 dakikada tempo bandını düşürdü mü?
-İlk golden sonra öne geçen takım ilk 5 dakikada topu tutma moduna geçti mi?
-İlk golden sonra öne geçen takım ilk 5 dakikada presi geri mi çekti?
-ilk golden sonra öne geçen takım ilk 5 dakikada savunma çizgisini geri mi çekti?
-İlk golden sonra öne geçen takım ilk 5 dakikada hızlı hücum kovaladı mı?
-İlk golden sonra öne geçen takım ilk 5 dakikada kontra tehdit üretti mi?
-İlk golden sonra öne geçen takım ilk 5 dakikada duran top kovaladı mı?
-
-İlk golden sonra baskı yönü değişti mi?
-İlk golden sonra ilk 1 dakikada baskı yönü değişti mi?
-İlk golden sonra ilk 3 dakikada baskı yönü değişti mi?
-İlk golden sonra ilk 5 dakikada baskı yönü değişti mi?
-İlk golden sonra 5–10 dakikada baskı yönü değişti mi?
-
-FAZ-7-11
-Beraberlik golü geldi mi?
-Beraberlik golü hangi dakikada geldi?
-Beraberlik golü öncesi 1 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 3 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 5 dakikada tempo bandı değişti mi?
-Beraberlik golü öncesi 1 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 3 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 5 dakikada baskı yönü değişti mi?
-Beraberlik golü öncesi 5 dakikada kart/faul yoğunluğu arttı mı?
-Beraberlik golü öncesi 5 dakikada net pozisyon artışı var mıydı?
-
-Beraberlik golünden sonraki 5 dakikada baskı yönü değişti mi?
-Beraberlik golünden sonraki 10 dakikada baskı yönü değişti mi?
-Beraberlik golünden sonraki 5 dakikada tempo bandı değişti mi?
-Beraberlik golünden sonraki 10 dakikada tempo bandı değişti mi?
-Beraberlik golünden sonraki 5 dakikada kart/faul yoğunluğu arttı mı?
-Beraberlik golünden sonraki 10 dakikada kart/faul yoğunluğu arttı mı?
-
-Beraberlik golünden sonraki 5 dakikada net pozisyon sayısı arttı mı?
-Beraberlik golünden sonraki 10 dakikada net pozisyon sayısı arttı mı?
-Beraberlik golünden sonraki 5 dakikada “risk_up” moduna geçen takım oldu mu?
-Beraberlik golünden sonraki 10 dakikada “risk_down” moduna geçen takım oldu mu?
-Beraberlik golünden sonraki 5 dakikada time-waste davranışı başladı mı?
+FAZ-7-11,,Beraberlik golü geldi mi?,Beraberlik golü hangi dakikada geldi?
+Beraberlik golü öncesi 1 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 3 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 5 dakikada tempo bandı değişti mi?,Beraberlik golü öncesi 1 dakikada baskı yönü değişti mi?
+Beraberlik golü öncesi 3 dakikada baskı yönü değişti mi?,Beraberlik golü öncesi 5 dakikada baskı yönü değişti mi?,Beraberlik golü öncesi 5 dakikada kart/faul yoğunluğu arttı mı?,Beraberlik golü öncesi 5 dakikada net pozisyon artışı var mıydı?
+Beraberlik golünden sonraki 5 dakikada baskı yönü değişti mi?,Beraberlik golünden sonraki 10 dakikada baskı yönü değişti mi?,Beraberlik golünden sonraki 5 dakikada tempo bandı değişti mi?,Beraberlik golünden sonraki 10 dakikada tempo bandı değişti mi?
+Beraberlik golünden sonraki 5 dakikada kart/faul yoğunluğu arttı mı?,Beraberlik golünden sonraki 10 dakikada kart/faul yoğunluğu arttı mı?,Beraberlik golünden sonraki 5 dakikada net pozisyon sayısı arttı mı?,Beraberlik golünden sonraki 10 dakikada net pozisyon sayısı arttı mı?Beraberlik golünden sonraki 5 dakikada “risk_up” moduna geçen takım oldu mu?,Beraberlik golünden sonraki 10 dakikada “risk_down” moduna geçen takım oldu mu?,Beraberlik golünden sonraki 5 dakikada time-waste davranışı başladı mı?
 Beraberlik golünden sonraki 10 dakikada time-waste davranışı başladı mı?
 
-FAZ-7-12
-Kopma golü geldi mi?
-Kopma golü hangi dakikada geldi?
-Kopma golü öncesi 1 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 3 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 5 dakikada tempo bandı değişti mi?
-Kopma golü öncesi 5 dakikada baskı yönü değişti mi?
-Kopma golü öncesi 5 dakikada net pozisyon artışı var mıydı?
+FAZ-7-12,Kopma golü geldi mi?,Kopma golü hangi dakikada geldi?,Kopma golü öncesi 1 dakikada tempo bandı değişti mi?,Kopma golü öncesi 3 dakikada tempo bandı değişti mi?,Kopma golü öncesi 5 dakikada tempo bandı değişti mi?,Kopma golü öncesi 5 dakikada baskı yönü değişti mi?,Kopma golü öncesi 5 dakikada net pozisyon artışı var mıydı?
 
-FAZ-7-13
-Oyun sık sık taça gittiği blok hangi 5 dakikalık penceredeydi?
-Maçta aut/taç bandı için oyun sık sık taça gitti mi?
-Maçta aut/taç bandı için tempo düşüşü oluşturdu mu?
-
-Taç yoğunluğu sonrası 1 dakikada tempo bandı düştü mü?
-Taç yoğunluğu sonrası 3 dakikada tempo bandı düştü mü?
-Taç yoğunluğu sonrası 5 dakikada tempo bandı düştü mü?
-Taç yoğunluğu sonrası baskı yönü değişti mi?
-Taç yoğunluğu sonrası topa sahip olma taraf değiştirdi mi?
+FAZ-7-13,Oyun sık sık taça gittiği blok hangi 5 dakikalık penceredeydi?,Maçta aut/taç bandı için oyun sık sık taça gitti mi?,Maçta aut/taç bandı için tempo düşüşü oluşturdu mu?
+Taç yoğunluğu sonrası 1 dakikada tempo bandı düştü mü?,Taç yoğunluğu sonrası 3 dakikada tempo bandı düştü mü?,Taç yoğunluğu sonrası 5 dakikada tempo bandı düştü mü?,Taç yoğunluğu sonrası baskı yönü değişti mi?,Taç yoğunluğu sonrası topa sahip olma taraf değiştirdi mi?
 
 FAZ-7-14
-Bu maçta kaleci ilk 5 dakikada büyük hata yaptı mı?
-Bu maçta kaleci ilk 10 dakikada büyük hata yaptı mı?
-Bu maçta kaleci 15–30 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 30–45 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 45–60 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 60–75 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 75–90 aralığında büyük hata yaptı mı?
+Bu maçta kaleci ilk 5 dakikada büyük hata yaptı mı?,Bu maçta kaleci ilk 10 dakikada büyük hata yaptı mı?,Bu maçta kaleci 15–30 aralığında büyük hata yaptı mı?,Bu maçta kaleci 30–45 aralığında büyük hata yaptı mı?,Bu maçta kaleci 45–60 aralığında büyük hata yaptı mı?,Bu maçta kaleci 60–75 aralığında büyük hata yaptı mı?,Bu maçta kaleci 75–90 aralığında büyük hata yaptı mı?,Kalecinin büyük hatası hangi dakikada oldu?,Kalecinin büyük hatası sonrası sonraki 5 dakikada rakip baskı bandı yükseldi mi?
+Kalecinin büyük hatası sonrası sonraki 5 dakikada takım panik bandına girdi mi?,Kalecinin büyük hatası sonrası sonraki 5 dakikada takım tempo bandı düştü mü?,Bu maçta kaleci ilk 5 dakikada kritik kurtarış yaptı mı?,Bu maçta kaleci ilk 10 dakikada kritik kurtarış yaptı mı?Bu maçta kaleci 15–30 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 30–45 aralında kritik kurtarış yaptı mı?,Bu maçta kaleci 45–60 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 60–75 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 75–90 aralığında kritik kurtarış yaptı mı?,Kalecinin kritik kurtarışı hangi dakikada oldu?,Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım tempo bandı yükseldi mi?,Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım moral bandı yükseldi mi?
 
-
-Kalecinin büyük hatası hangi dakikada oldu?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada rakip baskı bandı yükseldi mi?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada takım panik bandına girdi mi?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
-
-Bu maçta kaleci ilk 5 dakikada kritik kurtarış yaptı mı?
-Bu maçta kaleci ilk 10 dakikada kritik kurtarış yaptı mı?
-Bu maçta kaleci 15–30 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 30–45 aralında kritik kurtarış yaptı mı?
-Bu maçta kaleci 45–60 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 60–75 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 75–90 aralığında kritik kurtarış yaptı mı?
-
-Kalecinin kritik kurtarışı hangi dakikada oldu?
-Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım tempo bandı yükseldi mi?
-Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım moral bandı yükseldi mi?
-
-Bu maçta kaleci kurtarış serisi ilk 15 dakikada oluştu mu?
-Bu maçta kaleci kurtarış serisi 15–30 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 30–45 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 45–60 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 60–75 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 75–90 aralığında oluştu mu?
-
-Kalecinin kurtarış serisi hangi dakikalar arasında gerçekleşti?
-Kaleci kurtarış serisi sonrası sonraki 5 dakikada takım kontrol bandı yükseldi mi?
-Kaleci kurtarış serisi sonrası sonraki 5 dakikada rakip tempo bandı düştü mü?
-
-Bu maçta kaleci zaman geçirme davranışına ilk 15 dakikada girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 30–45 aralığında girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 60–75 aralığında girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi?
-
-Kalecinin zaman geçirme davranışı hangi dakikada başladı?
-Kalecinin zaman geçirme davranışı hangi dakikada bitti?
-Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü?
-Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?
-
-Bu maçta kaleci sakatlık/duraklama ile ritmi ilk yarıda bozdu mu?
-Bu maçta kaleci sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu?
-
-Kalecinin sakatlık/duraklaması hangi dakikada oldu?
-Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü?
-Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü?
-
-Bu maçta kalecinin uzun oyun kurma tercihi ilk 15 dakikada belirginleşti mi?
-Bu maçta kalecinin uzun oyun kurma tercihi 15–30 aralığında belirginleşti mi?
-Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti mi?
-
-Kalecinin uzun oyun kurma tercihi hangi dakikada belirginleşti?
-Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi?
-Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada ikinci top kazanımı arttı mı?
+Bu maçta kaleci kurtarış serisi ilk 15 dakikada oluştu mu?,Bu maçta kaleci kurtarış serisi 15–30 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 30–45 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 45–60 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 60–75 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 75–90 aralığında oluştu mu?
+Kalecinin kurtarış serisi hangi dakikalar arasında gerçekleşti?,Kaleci kurtarış serisi sonrası sonraki 5 dakikada takım kontrol bandı yükseldi mi?Kaleci kurtarış serisi sonrası sonraki 5 dakikada rakip tempo bandı düştü mü?
+Bu maçta kaleci zaman geçirme davranışına ilk 15 dakikada girdi mi?,Bu maçta kaleci zaman geçirme davranışına 30–45 aralığında girdi mi?,Bu maçta kaleci zaman geçirme davranışına 60–75 aralığında girdi mi?,Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi?,Kalecinin zaman geçirme davranışı hangi dakikada başladı?,Kalecinin zaman geçirme davranışı hangi dakikada bitti?,Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü?
+Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?,Bu maçta kaleci sakatlık/duraklama ile ritmi ilk yarıda bozdu mu?,Bu maçta kaleci sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu?
+Kalecinin sakatlık/duraklaması hangi dakikada oldu?,Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü?,Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü?
+Bu maçta kalecinin uzun oyun kurma tercihi ilk 15 dakikada belirginleşti mi?,Bu maçta kalecinin uzun oyun kurma tercihi 15–30 aralığında belirginleşti mi?,Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti mi?
+Kalecinin uzun oyun kurma tercihi hangi dakikada belirginleşti?,Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi?,Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada ikinci top kazanımı arttı mı?
      
-
-Bu maçta kaleci ilk 5 dakikada büyük hata yaptı mı?
-Bu maçta kaleci ilk 10 dakikada büyük hata yaptı mı?
-Bu maçta kaleci 15–30 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 30–45 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 45–60 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 60–75 aralığında büyük hata yaptı mı?
-Bu maçta kaleci 75–90 aralığında büyük hata yaptı mı?
-
-Kalecinin büyük hatası hangi dakikada oldu?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada rakip baskı bandı yükseldi mi?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada takım panik bandına girdi mi?
-Kalecinin büyük hatası sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
-
-Bu maçta kaleci ilk 5 dakikada kritik kurtarış yaptı mı?
-Bu maçta kaleci ilk 10 dakikada kritik kurtarış yaptı mı?
-Bu maçta kaleci 15–30 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 30–45 aralında kritik kurtarış yaptı mı?
-Bu maçta kaleci 45–60 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 60–75 aralığında kritik kurtarış yaptı mı?
-Bu maçta kaleci 75–90 aralığında kritik kurtarış yaptı mı?
-
-Kalecinin kritik kurtarışı hangi dakikada oldu?
-Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım tempo bandı yükseldi mi?
-Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım moral bandı yükseldi mi?
-
-Bu maçta kaleci kurtarış serisi ilk 15 dakikada oluştu mu?
-Bu maçta kaleci kurtarış serisi 15–30 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 30–45 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 45–60 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 60–75 aralığında oluştu mu?
-Bu maçta kaleci kurtarış serisi 75–90 aralığında oluştu mu?
-
-Kalecinin kurtarış serisi hangi dakikalar arasında gerçekleşti?
-Kaleci kurtarış serisi sonrası sonraki 5 dakikada takım kontrol bandı yükseldi mi?
+Bu maçta kaleci ilk 5 dakikada büyük hata yaptı mı?,Bu maçta kaleci ilk 10 dakikada büyük hata yaptı mı?,Bu maçta kaleci 15–30 aralığında büyük hata yaptı mı?,Bu maçta kaleci 30–45 aralığında büyük hata yaptı mı?,Bu maçta kaleci 45–60 aralığında büyük hata yaptı mı?
+Bu maçta kaleci 60–75 aralığında büyük hata yaptı mı?,Bu maçta kaleci 75–90 aralığında büyük hata yaptı mı?,Kalecinin büyük hatası hangi dakikada oldu?,Kalecinin büyük hatası sonrası sonraki 5 dakikada rakip baskı bandı yükseldi mi?,kalecinin büyük hatası sonrası sonraki 5 dakikada takım panik bandına girdi mi?,Kalecinin büyük hatası sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
+Bu maçta kaleci ilk 5 dakikada kritik kurtarış yaptı mı?,Bu maçta kaleci ilk 10 dakikada kritik kurtarış yaptı mı?,Bu maçta kaleci 15–30 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 30–45 aralında kritik kurtarış yaptı mı?
+Bu maçta kaleci 45–60 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 60–75 aralığında kritik kurtarış yaptı mı?,Bu maçta kaleci 75–90 aralığında kritik kurtarış yaptı mı?
+Kalecinin kritik kurtarışı hangi dakikada oldu?,Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım tempo bandı yükseldi mi?,Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım moral bandı yükseldi mi?
+Bu maçta kaleci kurtarış serisi ilk 15 dakikada oluştu mu?,Bu maçta kaleci kurtarış serisi 15–30 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 30–45 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 45–60 aralığında oluştu mu?
+Bu maçta kaleci kurtarış serisi 60–75 aralığında oluştu mu?,Bu maçta kaleci kurtarış serisi 75–90 aralığında oluştu mu?,Kalecinin kurtarış serisi hangi dakikalar arasında gerçekleşti?,Kaleci kurtarış serisi sonrası sonraki 5 dakikada takım kontrol bandı yükseldi mi?
 Kaleci kurtarış serisi sonrası sonraki 5 dakikada rakip tempo bandı düştü mü?
 
-Bu maçta kaleci zaman geçirme davranışına ilk 15 dakikada girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 30–45 aralığında girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 60–75 aralığında girdi mi?
-Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi?
-
-Kalecinin zaman geçirme davranışı hangi dakikada başladı?
-Kalecinin zaman geçirme davranışı hangi dakikada bitti?
-Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü?
-Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?
-
-Bu maçta kalecinin sakatlık/duraklama ile ritmi ilk yarıda bozdu mu?
-Bu maçta kalecinin sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu?
-
-Kalecinin sakatlık/duraklaması hangi dakikada oldu?
-Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü?
-Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü?
-
-Bu maçta kalecinin uzun oyun kurma tercihi ilk 15 dakikada belirginleşti mi?
-Bu maçta kalecinin uzun oyun kurma tercihi 15–30 aralığında belirginleşti mi?
-Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti mi?
-
-Kalecinin uzun oyun kurma tercihi hangi dakikada belirginleşti?
-Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi?
-Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada ikinci top kazanımı arttı mı?
-   
-Bu maçta kalecinin kısa oyun kurma tercihi ilk 15 dakikada belirginleşti mi?
-Bu maçta kalecinin kısa oyun kurma tercihi 15–30 aralığında belirginleşti mi?
-Bu maçta kalecinin kısa oyun kurma tercihi 60–75 aralığında belirginleşti mi?
-
-Kalecinin kısa oyun kurma tercihi hangi dakikada belirginleşti?
-Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada baskı altında top kaybı arttı mı?
-Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada rakip pres bandı yükseldi mi?
+Bu maçta kaleci zaman geçirme davranışına ilk 15 dakikada girdi mi?,Bu maçta kaleci zaman geçirme davranışına 30–45 aralığında girdi mi?,Bu maçta kaleci zaman geçirme davranışına 60–75 aralığında girdi mi?,Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi?,Kalecinin zaman geçirme davranışı hangi dakikada başladı?,Kalecinin zaman geçirme davranışı hangi dakikada bitti?,Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü?,Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?,Bu maçta kalecinin sakatlık/duraklama ile ritmi ilk yarıda bozdu mu?,Bu maçta kalecinin sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu?,Kalecinin sakatlık/duraklaması hangi dakikada oldu?
+Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü?,Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü?,Bu maçta kalecinin uzun oyun kurma tercihi ilk 15 dakikada belirginleşti mi?
+Bu maçta kalecinin uzun oyun kurma tercihi 15–30 aralığında belirginleşti mi?,Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti mi?
+alecinin uzun oyun kurma tercihi hangi dakikada belirginleşti?,Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi?,Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada ikinci top kazanımı arttı mı?
+Bu maçta kalecinin kısa oyun kurma tercihi ilk 15 dakikada belirginleşti mi?,Bu maçta kalecinin kısa oyun kurma tercihi 15–30 aralığında belirginleşti mi?,Bu maçta kalecinin kısa oyun kurma tercihi 60–75 aralığında belirginleşti mi?
+Kalecinin kısa oyun kurma tercihi hangi dakikada belirginleşti?,Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada baskı altında top kaybı arttı mı?,Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada rakip pres bandı yükseldi mi?
 
 FAZ-7-15
-Bu maçta forvet ilk 10 dakikada net pozisyon kaçırdı mı?
-Bu maçta forvet 10–20 aralığında net pozisyon kaçırdı mı?
-Bu maçta forvet 20–30 aralığında net pozisyon kaçırdı mı?
-Bu maçta forvet 30–45 aralığında net pozisyon kaçırdı mı?
-Bu maçta forvet 45–60 aralığında net pozisyon kaçırdı mı?
-Bu maçta forvet 60–75 aralığında net pozisyon kaçırdı mı?
-Bu maçta forvet 75–90 aralığında net pozisyon kaçırdı mı?
-
-Forvetin net pozisyon kaçırması hangi dakikada oldu?
-Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım panik bandı yükseldi mi?
-Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
-
-Bu maçta forvet art arda net pozisyon kaçırması ilk yarıda oldu mu?
-Bu maçta forvet art arda net pozisyon kaçırması ikinci yarıda oldu mu?
-
-Forvetin art arda net pozisyon kaçırması hangi dakikalar arasında oldu?
-Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?
-Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi?
-
-Bu maçta forvet baskı yükselince ilk yarıda kart/faul eğilimi arttı mı?
-Bu maçta forvet baskı yükselince ikinci yarıda kart/faul eğilimi arttı mı?
-
-Forvet baskı yükselince kart/faul eğilimi hangi dakikada belirginleşti?
-Forvetin kart/faul eğilimi sonrası sonraki 5 dakikada takım oyun akışı kesildi mi?
-
-Bu maçta forvet baskı yükselince ilk yarıda itiraz dili sertleşti mi?
-Bu maçta forvet baskı yükselince ikinci yarıda itiraz dili sertleşti mi?
-
-Forvetin itiraz dili hangi dakikada sertleşti?
-Forvetin itiraz dili sertleşince sonraki 5 dakikada kart riski yükseldi mi?
-
-Bu maçta forvet iptal gol sonrası ilk 5 dakikada mental olarak unstable’a döndü mü?
+Bu maçta forvet ilk 10 dakikada net pozisyon kaçırdı mı?,Bu maçta forvet 10–20 aralığında net pozisyon kaçırdı mı?,Bu maçta forvet 20–30 aralığında net pozisyon kaçırdı mı?,Bu maçta forvet 30–45 aralığında net pozisyon kaçırdı mı?
+Bu maçta forvet 45–60 aralığında net pozisyon kaçırdı mı?,Bu maçta forvet 60–75 aralığında net pozisyon kaçırdı mı?,Bu maçta forvet 75–90 aralığında net pozisyon kaçırdı mı?,Forvetin net pozisyon kaçırması hangi dakikada oldu?
+Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım panik bandı yükseldi mi?,Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
+Bu maçta forvet art arda net pozisyon kaçırması ilk yarıda oldu mu?,Bu maçta forvet art arda net pozisyon kaçırması ikinci yarıda oldu mu?,Forvetin art arda net pozisyon kaçırması hangi dakikalar arasında oldu?
+Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?,Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi?
+Bu maçta forvet baskı yükselince ilk yarıda kart/faul eğilimi arttı mı?,Bu maçta forvet baskı yükselince ikinci yarıda kart/faul eğilimi arttı mı?
+Forvet baskı yükselince kart/faul eğilimi hangi dakikada belirginleşti?,Forvetin kart/faul eğilimi sonrası sonraki 5 dakikada takım oyun akışı kesildi mi?
+Bu maçta forvet baskı yükselince ilk yarıda itiraz dili sertleşti mi?,Bu maçta forvet baskı yükselince ikinci yarıda itiraz dili sertleşti mi?
+Forvetin itiraz dili hangi dakikada sertleşti?,Forvetin itiraz dili sertleşince sonraki 5 dakikada kart riski yükseldi mi?,Bu maçta forvet iptal gol sonrası ilk 5 dakikada mental olarak unstable’a döndü mü?,
 Bu maçta forvet iptal gol sonrası sonraki 15 dakikada mental olarak unstable’a döndü mü?
 
 Forvetin iptal gol sonrası mental kırılma anı hangi dakikada oldu?

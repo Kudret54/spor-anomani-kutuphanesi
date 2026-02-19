@@ -122,6 +122,30 @@ Bu prompt, Spor Anomali mimarisinde anlatım üretiminin analiz motorundan ayrı
 SONUÇ
 Bu sıra bir tercih değildir; sistemin kilitlenmeden inşa edilebilmesi için zorunlu akıştır. Kod yazarı veriyle başlamaz, kural ile başlar. Çıktıyla bitirmez, görünürlükle bitirir. Her aşama tamamlanmadan sonraki aşamaya geçilmez; çünkü Spor Anomali bir yazılım değil, katman katman kurulan bir davranış sistemidir..
 
+SPOR ANOMALİ — OPERASYONEL YAYIN KATMANI
+(ÇEKİRDEK SONRASI FAZLAR / BAĞLAYICI)
+
+FFAZ-41 — MERKEZİ KARAR DUVARI (DISPLAY ONLY / TEK KAYNAK)
+
+Bu fazda merkezi karar duvarı oluşturulur. Merkezi karar duvarı, futbol, basketbol ve ganyan branşlarına ait karar motorlarından üretilmiş karar çıktılarının tek noktada toplandığı vitrindir. Bu duvar bir analiz katmanı değildir; herhangi bir hesaplama, yeniden sınıflandırma, filtreleme veya yorum üretimi yapmaz.
+
+Merkezi karar duvarı, branş kütüphanelerinden veri çekmez. Branşlar kendi karar duvarlarına yazım yapar; merkezi karar duvarı yalnızca bu branş karar duvarlarının birebir kopyasını alır. Okuma modeli push esaslıdır; pull yasaktır. Merkezi karar duvarı, branş kütüphanelerine veya branş içi dosyalara doğrudan erişemez.
+
+Merkezi karar duvarında tutulan veriler, branş karar duvarlarıyla byte-byte aynı olmak zorundadır. Herhangi bir ek alan, türetilmiş değer veya hesaplama izi bulunamaz. Merkezi karar duvarı yalnızca yayın ve orkestrasyon katmanları için tek ve mutlak okuma kaynağıdır.
+
+Bu faz tamamlanmadan yayın, Telegram, uygulama veya harici servis entegrasyonlarına geçilemez. Merkezi karar duvarı oluşmadan yapılan herhangi bir yayın veya bildirim işlemi geçersiz teslim sayılır.
+
+FAZ-42 — YAYIN VE ORKESTRASYON KATMANI (BROADCAST COORDINATOR)
+
+Bu fazda yayın ve bildirim orkestrasyonu kurulur. Yayın orkestrasyonu, merkezi karar duvarında yer alan nihai kararları okuyan ve bu kararların hangi kanala, hangi yetki seviyesinde ve hangi sıklıkla iletileceğini yöneten tek sorumlu katmandır.
+
+Yayın orkestrasyonu, branş kütüphanelerine, branş karar duvarlarına veya analiz katmanlarına erişemez. Yalnızca merkezi karar duvarını okur. Telegram, uygulama çıktıları, bayi bildirimleri ve yönetici bildirimleri bu katmandan çıkar. Hiçbir modül bu katmanı baypas edemez.
+
+Yayın orkestrasyonu karar üretmez, değer notu hesaplamaz ve anomali sınıflandırmaz. Sadece mevcut kararların dağıtımını yapar. Yetki ayrımı, kanal ayrımı ve bant bazlı yayın kuralları bu fazda uygulanır. Kırmızı bant dışındaki çıktılar, ilgili yayın politikalarına göre bastırılabilir veya sessiz kalabilir.
+
+Bu faz, sistemin son katmanıdır. Bu faz tamamlandıktan sonra sistem “çalışır” kabul edilir. Bu fazdan sonra yeni analiz, karar veya kütüphane fazı eklenemez.AZ-0 — PROJE TANIMI (OKU / ÜRETME)
+
+
 SPOR ANOMALİ — ARŞİV ENTEGRASYONU VE OPERASYON FAZLARI
 
 (ARCHITECTURAL BASELINE v1.0 — DEVAM BLOĞU / BAĞLAYICI)
@@ -257,6 +281,12 @@ branş karışması olmamalı,
 tahmin dili bulunmamalı,
 uydurma veri olmamalıdır.
 Bu koşullardan biri eksikse teslim reddedilir. 
+
+
+
+
+
+
 
 FAZ-7
 
@@ -3677,6 +3707,399 @@ Bu maçta VAR sonrası orta hakem otorite problemi hangi dakikada başladı? →
 Bu maçta VAR sonrası orta hakem otorite problemi sonrası sonraki 5 dakikada kart/faul yoğunluğu arttı mı? → officials.referee.authority.post_var.post_5m.cards_fouls_increase_flag → boolean → unknown
 
 
+ANALİZ EĞİTİM KATALOĞU + ETİKET KATALOĞU — FUTBOL (BAĞLAYICI GİRİŞ TALİMATI)
+Aşağıdaki bölüm, ana uygulama promptunun bir devamıdır ve ondan bağımsız okunamaz. Bu bölüm yeni özellik eklemez, akış değiştirmez, yalnız futbol branşı için “analistin nasıl okuyacağı” ve “kütüphanecinin hangi sözlükle etiketleyeceği” disiplinini bağlayıcı biçimde kilitler. Kod yazarı bu metni yorumlayamaz, sadeleştiremez, kısaltamaz, kendi mantığıyla yeniden yazamaz; burada geçen tüm soru katalogları ve etiket katalogları birebir uygulanır.
+
+Bu bölüm iki parçadan oluşur ve sırası değiştirilemez. Birinci parça “Futbol Analiz Eğitim Kataloğu (Soru Katalogları)”dır; analist, örüntü uzmanı ve ilgili kontrol rolleri bu soru setlerini ezberlemez, bu soru setlerine göre bakış açısını standardize eder ve hiçbir değerlendirme bu soruların dışında keyfi biçimde yapılamaz. İkinci parça “Futbol Etiket Kataloğu (Kütüphane Sözlüğü)”dür; kütüphaneci, maç izleme hattı ve örüntü hattı yalnız bu sözlükte tanımlı etiket adlarını ve bu etiketlerin izinli değer bantlarını kullanarak kayıt üretir, bu sözlük dışı tek bir etiket uydurulamaz.
+
+Soru katalogları “etiket değildir” ve doğrudan raflara yazılmaz; soru katalogları, hangi verinin hangi kartlarda aranacağını ve hangi bağlamların okunacağını tanımlar. Etiket kataloğu ise soru kataloglarının cevabını deterministik alanlara döken tek geçerli sözlüktür. Bir soruya karşılık gelen etiket alanı boş kalıyorsa bu “bilinmiyor” veya “unknown” bantlarıyla işaretlenir, asla varsayımla doldurulmaz. Hiçbir birim soru kataloglarını okuyup yalnız bu metin üzerinden hüküm kuramaz; tüm değerlendirmeler kanıt zinciri tamamlandıktan sonra yapılır.
+
+Bu kataloglar, futbol branşı için üç ana kart sınıfına bağlanır: maç kartı, takım DNA kartı ve ilgili kişi kartları (teknik direktör, hakem, futbolcu). Maç kartı tekil maçın olay izini taşır. Takım DNA kartı, tekil maçlardan türetilen tekrar eden refleksleri ve davranış bantlarını taşır. Kişi kartları ise bireysel davranış profillerini taşır ve kulüp değişse bile kimlik sürekliliğini korur. Bu ayrım korunur; takım kartı ile maç kartı karıştırılamaz.
+
+Durum etiketleri karar vermez. Etiketler yalnız sınıflandırma ve raf adreslemesi içindir. Analist dahil hiçbir rol, yalnız etiketlere bakarak “kolaycılık” ile sonuca gidemez. Etiketler yalnızca araştırmayı hızlandıran işaretlerdir; hüküm, yalnızca kaynak tutarlılığı, tekrar, şart bağımlılığı ve kanıt zinciri tamamlandıktan sonra üretilir. Bu bölümün amacı hız değil; yanlış hızla oluşan sessiz bozulmayı engelleyen deterministik bir analiz disiplini kurmaktır.
+
+FAZ-32
+BAĞLAM DUVARI VE ADRES SORULARI (FUTBOL)
+Bu kayıt hangi tarih penceresinde ve hangi UTC standardında sabitleniyor? Bu soru, tüm zaman hesaplarının tek standarda bağlanması içindir. Tarih penceresi sabitlenmeden sezon fazı, haber penceresi ve maç segmentleri doğru kurulamaz.
+Bu kayıt hangi ülke, hangi lig, hangi sezon ve hangi tekil takım kimliği içinde okunuyor? Bu soru, raf adresinin yanlış klasöre düşmesini engeller. Ülke/lig/sezon/takım net değilse aynı isimli ligler veya sezon kaymaları sessiz bozulma üretir.
+
+Bu kayıt lig seviyesinde hangi kütüphaneye aittir (Tier-1, Tier-2 veya Cups)? Bu soru, verinin hangi raf disiplininde tutulacağını kilitler. Tier-1, Tier-2 ve Cups verisi aynı raflarda birleştirilemez; birleştirme sessiz karışma üretir.
+
+Bu kayıt hangi organizasyon tipine aittir (lig, ulusal kupa, kıtasal kupa, süper kupa, milli takım turnuvası)? Bu soru, maçın ve haber akışının hangi organizasyon bağlamında okunacağını belirler. Organizasyon tipi net değilse kupa maçları lig performansına yanlış bağlanır.
+
+Bu kayıt kupa bayrağı taşır mı ve kupa bayrağı hangi seviyededir (domestic\\\_cup veya continental\\\_cup)? Bu soru, kupa verisini ayrı bir sistemde tutmak içindir. Kupa bayrağı yoksa kupa haberleri ve kupa maçları lig akışına karışır ve takım DNA’sı yanlış öğrenilir.
+Bu kayıt sezonun hangi fazına denk geliyor (sezon başı, sezon ortası, sezon sonu, sezon arası/off-season)? Bu soru, aynı davranışın sezonun farklı dönemlerinde neden değiştiğini ayırt etmek içindir. Sezon arası dönem, transfer ve kamp etkileri nedeniyle ayrı bağlam olarak tutulur.
+
+Bu kayıt sezon içi mi yoksa sezon arası haftalık paket mi? Bu soru, veri türünü deterministik ayırmak içindir. Sezon arası haber akışı günlük maç akışı gibi işlenmez; haftalık paketlenir ve bağlam rafına yazılır.
+Bu kayıt hangi tekil takım perspektifi için açılıyor? Bu soru DNA kartı okuma girişidir. Takım perspektifinde hedef, tek takımı öğrenmek ve takım kartını büyütmektir; rakip burada bağlamdır, kimlik değildir.
+
+Bu kayıt hangi tekil maç perspektifi için açılıyor? Bu soru maç olayı okuma girişidir. Maç perspektifinde hedef, maç kimliğini ve maçın olay zincirini sabitlemektir; bu kayıt daha sonra iki takımın geçmiş eşleşme okumasında referans olur.
+Bu kayıt takım perspektifinde açılıyorsa o tarihte takımın teknik direktör kimliği kim? Bu soru, takım davranış değişimini kişi kartlarına bağlamak içindir. Teknik direktör doğru sabitlenmezse takım DNA’sı yanlış kişiye bağlanır ve örüntü bozulur.
+Bu kayıt maç perspektifinde açılıyorsa bu maçın hakemi kim? Bu soru, hakemin maç içi disiplin bandını ve karar akışını deterministik bağlamak içindir. Hakem maç nesnesinin parçasıdır ve maç kırılmalarının okunmasında ayrı bir kimliktir.
+
+Bu kayıt takım perspektifinde açılıyorsa takımın bu maç dışında paralel yükü var mı (yakın takvimde başka organizasyon maçı)? Bu soru, takım performansının gerçek bağlamını okumak içindir. Takımın aynı hafta kupa/Avrupa/milli takım dönüşü gibi ek yükleri varsa tempo ve risk davranışı kayabilir.
+Bu kayıt takım perspektifinde açılıyorsa takım kadrosunda milli takım dönüşü, seyahat yoğunluğu veya kadro bölünmesi var mı? Bu soru, oyuncu ve takım DNA’sını bozan dış yükleri ayırt etmek içindir. Bu tür yükler yok sayılırsa performans sapması yanlış nedene bağlanır.
+
+Bu maç lig mi kupa mı ve maçın önem sınıfı hangi bantta? Bu soru, aynı takım ama farklı stres sınıfı ayrımını yapar. Maç önemi yoksa benzer görünen maçlar yanlış eşleştirilir.
+Bu maç ev/deplasman bağlamında hangi atmosfer sınıfında ve saha koşulu hangi davranış bandına yazılıyor? Bu soru, taraftar baskısı ve saha koşullarının takım davranışını nasıl kaydırdığını ölçmek içindir. Atmosfer sınıfı yoksa normal görünen sapmaların gerçek nedeni kaçabilir.
+Bu kayıt tam çözünürlük sezon kaydı mı yoksa iskelet sezon kaydı mı? Bu soru, hangi alt rafların zorunlu dolması gerektiğini belirler. İskelet sezonda bazı alanların boş kalması normal kabul edilir; tam çözünürlük sezonda boşluk data\\\_quality olarak işaretlenir.
+
+MAÇI SEGMENTLERE AYIRAN DNA OKUMA SORULARI (FUTBOL)
+Bu maç 90 dakika tek blok olarak okunmaz; deterministik segmentlere bölünür ve her segment için takımın davranış izi ayrı ayrı kaydedilir. Amaç “maç anlatmak” değil, takım DNA’sının hangi zaman dilimlerinde nasıl tepki verdiğini raf hafızasına yerleştirmektir. Segment okuması, kolay maçta yüzey taraması sağlar; zor maçta doğru katmana hızlı iniş verir.
+Takımın ilk 15 dakikadaki davranışı nedir ve bu davranış beş yıl boyunca tekrar ediyor mu? Bu soru, takımın maç başlangıç refleksini ölçer. Bazı takımlar sistematik hızlı başlar, bazıları sistematik geç açılır; bu fark sapma okumasında temel bağlamdır.
+
+Takımın 16–30 dakikadaki davranışı nedir ve ilk 15’e göre tempo veya disiplin yön değiştiriyor mu? Bu soru, ilk dalga geçtikten sonra takımın stabilize olup olmadığını gösterir. Eğer bu dilimde kayma oluyorsa kırılma daha erken başlamış olabilir.
+Takımın 31–45 dakikadaki davranışı nedir ve devreye giderken risk seviyesi artıyor mu azalıyor mu? Bu soru, ilk yarı kapanış davranışını ölçer. Devre öncesi kartlar, VAR kararları ve skor kırılmaları bu dilimde kader değiştirici çalışabilir.
+
+Takımın devre geçişi davranışı nedir ve ikinci yarıya çıkış refleksi hangi bantta? Bu soru, teknik direktör müdahalesinin ve oyuncu psikolojisinin en net okunduğu eşiktir. Devre çıkışı tempo spike veya çöküş tekrar ediyorsa DNA sinyali güçlenir.
+Takımın 46–60 dakikadaki davranışı nedir ve bu dilim takımın tekrar eden “ikinci yarı başlangıç bandı” mı? Bu soru, ikinci yarı başında oluşan sistematik davranışları yakalar. Bazı takımlar bu bantta sürekli baskı yer veya sürekli baskı kurar.
+
+Takımın 61–75 dakikadaki davranışı nedir ve maçın kaderini taşıyan değişimler bu dilimde mi birikiyor? Bu soru, yorgunluk, değişiklikler ve kart birikiminin davranışa yansıdığı orta-son evreyi ölçer. Bu bantta sürekli yön değişiyorsa sapma penceresi genişliyor olabilir.
+Takımın son 15 dakikadaki davranışı nedir ve bu davranış skor durumuna göre deterministik değişiyor mu? Bu soru, maç kapatma DNA’sını ölçer. Önde kapatma, geride risk alma veya beraberliğe razı olma davranışları bu segmentte görünür.
+Takımın son 5 dakikası ve uzatma dakikalarındaki davranışı nedir ve bu davranış tekrarlı bir panik/soğutma profili üretiyor mu? Bu soru, en yüksek stres anındaki davranışı ölçer. Tek maçta bile kritik olabilir; tekrar ediyorsa DNA’ya dönüşür.
+
+Bu maç segmentlerinde takımın tempo bandı nasıl değişiyor ve tempo değişimi hangi olaylarla eşleşiyor? Bu soru, segment okumasını olay zinciriyle bağlar. Tempo her zaman kendi kendine değişmez; tetikleyiciyle değişir.
+Bu maç segmentlerinde takımın disiplin bandı nasıl değişiyor ve kart/faul yoğunluğu hangi dilimde kümeleniyor? Bu soru, takımın sertlik ve kontrol profilini segment bazında çıkarır. Kart davranışı “maç geneli” değil, segment davranışıdır.
+Bu maç segmentlerinde takımın karar kalitesi nasıl değişiyor ve hata kümelenmesi hangi dilimde oluşuyor? Bu soru, “sapma”nın çoğu zaman karar kalitesi düşüşüyle başladığını yakalamak içindir. Hata kümelenmesi segment adresi verirse derin okuma hızlanır.
+
+Bu maçta skor durumu segment davranışını nasıl değiştiriyor (öndeyken, beraberken, gerideyken)? Bu soru, aynı segmentin farklı skor bağlamında farklı DNA ürettiğini ayırır. Önde kapatan takım geride dağılabilir; bu ayrım sabitlenmelidir.
+Bu maçta maçın kaderi hangi segmentte kırıldı ve kırılma anı hangi tetikleyicilerle başladı? Bu soru, segmentleri yalnız “zaman” değil “kader değişimi” olarak da bağlar. Kırılma segmenti doğru bulunursa analiz raf içinde doğru yere iner.
+Bu maçta bir segment içinde “normal bant dışına çıkış” olduysa, bu çıkışın başlangıç işareti neydi? Bu soru, sapmayı en başından yakalamak içindir. Çıkışın ilk işareti kaçarsa sistem yalnız sonuç okur, süreç okuyamaz.
+
+Bu maçta segment davranışı, sezon fazı ve organizasyon tipiyle tutarlı mı yoksa o gün “başka bir takım” gibi mi çalıştı? Bu soru, bağlam duvarı ile segment okumasını birleştirir. Aynı takım ligde başka, kupada başka DNA gösterebilir; bu ayrım kilitlenir.
+Takımın bir önceki maç sonucu bir sonraki haftayı deterministik şekilde etkiliyor mu? Bu soru, takımın “sonuç hafızası” olup olmadığını ölçer. Bazı takımlar galibiyet sonrası açılır, bazıları mağlubiyet sonrası toparlanır, bazıları ise seri içine girer.
+
+Takımın galibiyet, beraberlik ve mağlubiyet serisi davranışı var mı ve bu seri davranışı tekrar ediyor mu? Bu soru, takımın karakteristik dalga yapısını yakalar. Seri davranışı varsa takımın risk ve tempo profili seri içinde değişebilir.
+Takımın maçlara “yenileceğini bilerek rahat oynama” mı yoksa “beraberliği kurtarma” refleksiyle mi çıktığı tekrar ediyor mu? Bu soru, takımın psikolojik hedef bandını ölçer. Aynı lig ve sezon fazında bu refleks tekrar ediyorsa DNA sinyali güçlenir.
+Takımın sezon içi konum baskısı var mı (küme düşme hattı, Avrupa potası, şampiyonluk baskısı) ve bu baskı segment davranışını değiştiriyor mu? Bu soru, takımın stres sınıfını belirler. Aynı takım farklı tabloda farklı oynar; bu bağlam yok sayılırsa sapma yanlış okunur.
+
+Takımın cezalı oyuncu veya cezalı teknik ekip durumu var mı ve bu durum maç içi davranışı kaydırıyor mu? Bu soru, kadro bütünlüğü ve disiplin yükünü ölçer. Cezalı eksikliği çoğu zaman kart-tempo-kontrol profilini değiştirir.
+Takımın Avrupa/kıtasal maç yoğunluğu var mı ve bu yoğunluk lig maçında segment davranışına yansıyor mu? Bu soru, paralel yükün yorgunluk ve rotasyon etkisini ölçer. Aynı takım “Avrupa sonrası lig” haftalarında farklı DNA gösterebilir.
+Bu takımın maçlarını genelde tek bir oyuncu mu “kurtarıyor” ve sonuç belirleyici rol tekilde mi kümeleniyor? Bu soru, takımın yıldız bağımlılığını ölçer. Tek oyuncu bağımlılığı varsa takımın sapma profili o oyuncunun formuna kilitlenir.
+Takımın kazanma davranışı kolektif mi yoksa bir-iki oyuncunun performansına mı bağımlı? Bu soru, takımın sürdürülebilirlik profilini çıkarır. Kolektif kazanım ile yıldız bağımlılığı aynı kader tetikleyicilerini üretmez.
+
+Bu takımın skor üretimi belirli oyuncu üzerinden mi, yoksa sistem davranışı üzerinden mi tekrar ediyor? Bu soru, takımın “sistem takımı” mı “birey takımı” mı olduğunu raf içinde ayırır. Bu ayrım, haber ve transfer etkisini okumada belirleyicidir.
+Bu takımın kritik maçlarda sonucu belirleyen oyuncuları değişiyor mu, yoksa aynı isimler tekrar ediyor mu? Bu soru, baskı anındaki rol dağılımını ölçer. Aynı isimler tekrar ediyorsa o oyuncuların kartı daha yüksek öncelikli raf nesnesi olur. 
+Bunları ekledikten sonra senin dediğin şey tamamlanıyor: takımın DNA’sı sadece maç içi segment değil, maçlar arası sonuç hafızası + seri davranışı + yıldız bağımlılığı ile “kişilik” haline geliyor.
+
+FAZ-33
+MAÇ KADERİ TETİKLEYİCİLERİ SORULARI (FUTBOL) — GENİŞLETİLMİŞ KRİTİK SINIF
+Bu bölümün amacı, maç içindeki olayları saymak değildir. Bu bölümün amacı, tetikleyici olayların takımın davranışını hangi döngüye soktuğunu ve maçın kaderini nasıl evirdiğini adreslemektir. Bu tetikleyiciler, seyirci baskısı ve iç/dış saha bağlamıyla birleştiğinde daha da sertleşebilir; bu yüzden tetikleyiciler yalnız saha içi değil, saha çevresi etkisiyle birlikte okunur.
+
+İlk sarı kartın geldiği an hangi segmentte oldu ve takımın disiplin eşiğini değiştiriyor mu? Bu soru, maçın sertlik bandının nereden açıldığını ölçer. İlk kartın segmenti sabitlenmeden kart davranışı doğru okunamaz.
+Takım ilk yarıda kart gördüğünde davranış nasıl değişiyor, ikinci yarıda kart gördüğünde nasıl değişiyor? Bu soru, kartın etkisini maçın evresine bağlar. Aynı kart farklı segmentte tamamen farklı kader etkisi üretir.
+İlk karttan sonraki 10 dakikalık blokta faul yoğunluğu ve tempo bandı artıyor mu azalıyor mu? Bu soru, kart sonrası davranış döngüsünü ölçer. Kartın kendisi kadar kart sonrası “döngüye kilitlenme” kader belirleyicidir.
+Kart sonrası takım “kabullenme” moduna mı giriyor yoksa “agresif karşılık” moduna mı giriyor? Bu soru, senin tarif ettiğin psikolojik döngüyü adresler. Bazı takımlar haksızlık algısıyla sertleşir, bazıları geri çekilir ve oyun çözülür.
+Kartlar tek bir oyuncuda mı kümeleniyor yoksa takım geneline mi yayılıyor ve bu dağılım oyun planını değiştiriyor mu? Bu soru, disiplin riskinin lokal mi sistemik mi olduğunu ayırır. Lokal risk oyuncu kartına, sistemik risk takım DNA’sına yazılır.
+
+Kart gören oyuncu “bir sonraki maç ceza sınırına” girince davranışını değiştiriyor mu? Bu soru, oyuncunun bilinçli risk yönetimini ölçer. Ceza sınırındaki oyuncu ya fazla temkinli olur ya da panikleyip daha çok hata yapar.
+Ceza sınırındaki oyuncu, tribün baskısı altında daha mı fazla risk alıyor yoksa daha mı fazla geri çekiliyor? Bu soru, seyirci etkisinin oyuncu karar kalitesine yansımasını ölçer. Aynı oyuncu iç sahada farklı, deplasmanda farklı davranabilir.
+kımın kritik oyuncusu ceza sınırına girince teknik direktör segment içinde onu erken çıkarıyor mu? Bu soru, kart tetikleyicisinin teknik direktör kararına nasıl dönüştüğünü ölçer. Bu hamle takımın kaderini değiştirebilir.
+Kırmızı kart olduysa hangi türdendi (ikinci sarı veya direkt) ve kırmızı kart sonrası ilk 5 dakikada takım çöktü mü toparladı mı? Bu soru, kriz DNA’sını çıplak biçimde gösterir. İlk 5 dakika davranışı tekrar ediyorsa kader kalıbı oluşur.
+Kırmızı kart sonrası takımın risk profili nasıl değişti (savunmaya çekilme, tempo öldürme, ani kontra, panik hücum)? Bu soru, toparlanma stratejisini ölçer. Aynı takımın tekrar eden kriz stratejisi raflarda görünmelidir.
+Kırmızı kart iç sahada mı oldu deplasmanda mı ve taraftar etkisi davranışı sertleştirdi mi yumuşattı mı? Bu soru, iç/dış saha ile tetikleyici birleşimini ölçer. Aynı kırmızı kart farklı atmosferde farklı kader üretir.
+Tribün baskısı kırmızı kart sonrası takımı “daha çok hırçınlık” döngüsüne mi sokuyor? Bu soru, “kart doğurur kart” zincirini yakalar. Bazı takımlar baskı altında kontrol kaybına girer.
+
+Penaltı kararı geldi mi ve bu karar hangi segmentte geldi; karar sonrası psikolojik kırılma izi oluştu mu? Bu soru, penaltının skor dışında davranış değiştirici etkisini ölçer.
+Penaltı verilmedi/verildi/iptal olduysa, takım “hakem yanlı” algısına girip daha fazla kart döngüsüne giriyor mu? Bu soru, senin özellikle vurguladığın “kabullenme mi agresyon mu” mekanizmasını adresler. Bu döngü sapmanın ana kaynağı olabilir.
+Penaltı kararı veya iptali sonrası tribün baskısı oyuncu davranışını bozuyor mu? Bu soru, karar tetikleyicisinin seyirciyle birleştiğinde büyümesini ölçer. İç sahada bu etki genelde daha serttir.
+
+VAR incelemesi oldu mu, hangi karar türüne bağlandı ve VAR müdahalesi maçın ritmini kırarak tempo bandını değiştirdi mi? Bu soru, VAR’ın ritim kırıcı etkisini ölçer.
+VAR sonrası takım “kafa düşmesi” döngüsüne mi giriyor yoksa “öfke yükselişi” döngüsüne mi? Bu soru, VAR tetikleyicisinin davranış yönünü belirler. Aynı olay farklı takımlarda zıt kader üretir.
+
+İptal edilen gol oldu mu ve iptal sonrası ilk 5 dakikada takım davranışı neye döndü? Bu soru, moral kırılması veya agresyon artışı gibi kader değiştirici profilleri yakalar.
+İptal edilen gol sonrası tribün baskısı oyuncu karar kalitesini düşürüyor mu? Bu soru, “küçük tetikleyici + büyük basınç” birleşimini yakalar. Zor maçların çoğu bu birleşimde çözülür.
+
+İlk gol hangi segmentte geldi ve ilk gol takımın davranışını deterministik değiştiriyor mu? Bu soru, skor eşiğinin psikolojik etkisini ölçer.
+İlk gol sonrası takımın iç saha/deplasman davranışı ayrışıyor mu? Bu soru, “iç sahada kapanma”, “deplasmanda panik” gibi ayrımları yakalar.
+Beraberlik golü hangi segmentte geldi ve beraberlikten sonraki ilk 10 dakikada kopma oluşuyor mu? Bu soru, denge kırılmasının tekrar eden yönünü ölçer.
+
+Kopma golü sonrası takım “maçı bırakma” döngüsüne mi giriyor yoksa “son bir dalga” döngüsüne mi? Bu soru, takımın mücadele profili ve çöküş eşiğini adresler.
+Sakatlık veya uzun duraklama oldu mu ve bu duraklama ritmi bozarak takımın davranışını değiştirdi mi? Bu soru, ritim bozan küçük olayların kader etkisini ölçer.
+Sakatlık kritik oyuncuda mı oldu ve kritik oyuncu kaybı takımın skor üretimini çökertecek kadar bağımlı mı? Bu soru, takımın “tek oyuncu bağımlılığı” ile kader tetikleyicisini birleştirir.
+Time-waste davranışı görüldü mü ve hakem buna nasıl tepki verdi; tribün bunu büyüttü mü? Bu soru, kapanış stratejisi + hakem bandı + seyirci basıncı üçlüsünü birlikte okur.
+
+Maç kaderi tetikleyicileri iç saha/deplasman bağlamında sistematik tekrar ediyor mu? Bu soru, tetikleyici olayların aynı atmosfer sınıflarında daha sık üretilip üretilmediğini yakalar.
+Bu tetikleyiciler odds tarafında hareketle aynı zaman bandında mı çakıştı yoksa bağımsız mı göründü? Bu soru, tetikleyicinin “piyasa davranışı” ile beraber mi yürüdüğünü ayırır.
+Bu tetikleyiciler basın haber temalarıyla aynı hafta penceresinde mi çakıştı yoksa bağımsız mı? Bu soru, tetikleyicinin “haber kökenli mi” yoksa “saha kökenli mi” olduğuna dair sınıflamayı mümkün kılar.
+
+
+Önemli oyuncu atılınca takımın reaksiyonu soruları
+
+Takımın en kritik oyuncusu kırmızı kartla oyundan atılınca takımın reaksiyonu ne oluyor (mücadeleyi bırakma, sertleşme, skor korumaya gömülme, kontra arama)? Bu soru, kartın “kader etkisini” oyuncu ağırlığıyla bağlar. Aynı kart, sıradan oyuncuda farklı, bel kemiğinde farklı sonuç üretir.
+
+Kritik oyuncu oyundan atıldıktan sonraki ilk 10 dakikada takımın tempo ve disiplin bandı hangi yöne kayıyor? Bu soru, ilk şok tepkisini ölçer. Bazı takımlar bu 10 dakikada dağılır, bazıları tam tersine kitlenip direnç üretir.
+Kritik oyuncu çıkınca o mevkiyi dolduran yedek oyuncunun kalite farkı takımın oyun planını deterministik değiştiriyor mu? Bu soru, “kâğıt üstü 10 kişi” ile “fiilen çöken takım” ayrımını verir. Oyuncu değişimi bir olay değil, kapasite kaymasıdır.
+Kritik oyuncu kaybı sonrası takımın savunma çizgisi geri mi çekiliyor, yoksa kompakt kalıp agresif mi kalıyor? Bu soru, takımın kriz stratejisini sabitler. Geri yaslanma mı direnç mi, kaderi belirleyen ayrımdır.
+Kritik oyuncu atıldıktan sonra teknik direktörün müdahalesi hangi segmentte geliyor ve müdahale doğru mu çalışıyor? Bu soru, teknik direktörün kriz yönetimi DNA’sını ölçer. Krizde doğru hamle yapabilen takımın sapma profili farklıdır.
+Kondisyon ve tempo taşıma soruları. Bu takımın 90 dakika boyunca tempo taşıma kapasitesi var mı ve bu kapasite sezon fazına göre değişiyor mu? Bu soru, maçın son 20 dakikasında “çıkartamama” riskini adresler. Kondisyon düşüşü çoğu zaman sapmayı tetikler.
+
+Takım yüksek tempolu maçlarda aynı tempoyu kaç dakika sürdürebiliyor ve kırılma dakikası tekrar ediyor mu? Bu soru, tempo dayanıklılığını ölçer. Kırılma dakikası tekrar ediyorsa takımın biyolojik sınırı gibi çalışır.
+Takım 10 kişi kaldığında koşu kapasitesini koruyabiliyor mu yoksa tempo düşüşü hızlanıyor mu? Bu soru, eksik kalma krizinin fiziksel boyutunu ölçer. Bazı takımlar eksik kalınca bile daha çok koşar; bu ayrı bir DNA’dır.
+Takım 9 kişi kaldığı ekstrem senaryolarda bile mücadele bandını koruyabiliyor mu? Bu soru, senin verdiğin gerçek örneği raf disiplinine çevirir. Bu tekrar eden bir özellikse kartların kader etkisi farklı okunur.
+Takımın kondisyon düşüşü, maç segmentlerinde kart/faul artışıyla birlikte mi geliyor? Bu soru, yorgunluk–disiplin ilişkisini yakalar. Kondisyon düştüğünde kartlar artıyorsa kader tetikleyicisi büyür.
+Takımın sezon hazırlığı (kamp/rotasyon/transfer) sonrası ilk haftalarda kondisyon profili farklı mı? Bu soru, sezon arası bağlam ile saha içi tempo dayanıklılığını birbirine bağlar. Kamp ve kadro değişimi tempo DNA’sını etkiler.
+
+BASIN VE HABER AKIŞI SORULARI (FUTBOL) — MAÇ ÖNCESİ + MAÇ SONRASI + SEZON ARASI
+Bu bölümün amacı “haber var mı yok mu” kontrolü değildir. Amaç, haber akışını deterministik biçimde raflara ayırmak ve haberin maç içi davranışla, odds davranışıyla ve takım DNA’sıyla hangi şartlarda kesiştiğini ölçmektir. Haber, tek başına hüküm kurmaz; yalnız bağlam üretir ve kanıt zincirinin bir parçası olabilir. Bu yüzden haber akışı hem sezon içi hem sezon arası pencerede ayrı disiplinle kaydedilir.
+
+Bu kayıt sezon içi maç haftası haber paketi mi yoksa sezon arası haftalık off-season paketi mi? Bu soru, haberin hangi pencere disipliniyle işlendiğini kilitler. Sezon arası haberleri günlük maç akışı gibi değil, haftalık paket olarak raflara yazılır.
+Bu haber paketi hangi ülke, lig, sezon ve tekil takım adresine bağlanıyor? Bu soru, haberin doğru raf adresine düşmesi içindir. Yanlış bağlanan haber, beş yıl sonra yanlış DNA okuması üretir.
+Bu haber paketi lig (Tier-1/Tier-2) akışına mı yoksa Cups akışına mı aittir? Bu soru, kupa haberlerinin lig haberine karışmasını engeller. Kupa bayrağı, haber seviyesinde de deterministik işlenir.
+Bu haber paketi hangi organizasyon tipine aittir (lig, ulusal kupa, kıtasal kupa, milli takım)? Bu soru, haberin hangi stres sınıfını taşıdığını belirler. Organizasyon tipi belirlenmeden haber etkisi yanlış sınıfa yazılabilir.
+Bu haber penceresi maçtan kaç gün öncesini kapsıyor (örnek: 7 gün) ve pencere sabit mi? Bu soru, haberin “zaman hizasını” kilitler. Pencere kayarsa aynı olay farklı maçlara yanlış bağlanır.
+
+Maç öncesi haber akışında hangi temalar öne çıktı ve temalar kaç farklı kaynakta tekrar etti? Bu soru, tek kaynağın gürültüsü ile çoklu kaynağın tekrarını ayırır. Tekrar eden tema daha güçlü sinyal adayıdır.
+Haber temaları daha çok hangi eksende kümelendi (yönetim, teknik direktör, oyuncu, hakem, taraftar, transfer, sakatlık, disiplin)? Bu soru, haberin hangi kart nesnesine bağlanacağını belirler. Tema yanlış karta bağlanırsa analiz yanlış kişiyi suçlar gibi görünür.
+
+Haber tonu hangi bantta yoğunlaştı (olumlu, olumsuz, karma) ve ton aniden kırıldı mı? Bu soru, haberin duygusal iklimini adresler. Ton kırılması varsa maç içi davranış değişimiyle eşleşebilir.
+Aynı olay farklı kaynaklarda aynı biçimde mi geçti yoksa kaynaklar arasında ayrışma var mı?
+
+Bu soru, kaynak güven bandını ölçer. Ayrışma varsa “tek doğru” diye hüküm kurulmaz, yalnız işaretlenir.
+Bu takımın haber akışı sezon içinde “rutin” mi yoksa “kriz/çalkantı” mı taşıyor? Bu soru, takımın baskı altında olup olmadığını belirler. Kriz akışı varsa maç içi tetikleyiciler daha sert çalışabilir.
+Bu haber akışında transfer söylentileri var mı ve söylenti-gerçekleşme doğruluk bandı geçmişte nasıldı? Bu soru, haberin güvenilirliğini beş yıllık doğrulamayla ölçer. Transfer gürültüsü ile gerçek transfer ayrılır.
+Sezon arası haftalık paketlerde kamp, kadro dışı kalanlar, rotasyon ve hazırlık maçları konuşuluyor mu? Bu soru, sezon arası bağlamı takım DNA’sına bağlar. Kamp ve kadro değişimleri sezon başlangıcı davranışını belirler.
+
+Haber akışında kritik oyuncu sakatlığı veya dönüşü var mı ve bu bilgi maç segment davranışını etkiliyor mu? Bu soru, haber-temelli bağlamın saha içi gerçekliğe yansıyıp yansımadığını ölçer.
+Haber akışı teknik direktör üzerinde baskı üretiyor mu ve bu baskı maç içinde erken hamle veya panik hamle doğuruyor mu? Bu soru, haberin teknik karar davranışına etkisini test eder.
+Haber akışı taraftar baskısı içeriyor mu ve bu baskı iç saha davranışına yansıyor mu? Bu soru, tribün etkisinin haber üzerinden büyüyüp büyümediğini ölçer. Bazı baskılar saha içinde değil, haberle inşa edilir.
+
+Maç sonrası haber akışı hangi temada devam etti ve maç öncesi anlatıyla uyumlu mu? Bu soru, haberin “sonuçla yeniden yazılma” riskini test eder. Maç sonrası eksen değişiyorsa bu not düşülür.
+Maç sonrası haber akışı, bir sonraki maçın haber penceresinde tekrar eden bir yönlendirme oluşturuyor mu? Bu soru, zincir etkisini ölçer. Bazı haber döngüleri bir maçı değil, bir seri maçı etkiler.
+
+Bu haber akışı ile maç içi kader tetikleyicileri aynı hafta içinde çakıştı mı? Bu soru, “haber etkisi” iddiasını test edilebilir hale getirir. Çakışma yoksa haber yalnız gürültü olabilir.
+Bu haber akışı ile odds kırılmaları aynı zaman bandında mı ortaya çıktı? Bu soru, haber–piyasa davranışı ilişkisinin varlığını yokluğunu ölçer. Eşleşme varsa işaretlenir, hüküm kurulmaz.
+Bu haber akışı ile takımın segment DNA davranışı arasında tekrar eden eşleşme var mı? Bu soru, haberin takımı hangi segmentte etkilediğini yakalar. Bazı takımlar baskı altında ilk 15’te dağılır, bazıları son 15’te.
+Haber kaynakları tekilleştirildi mi ve aynı olayın kopyaları raf şişmesi yapmadan birleştirildi mi? Bu soru, kütüphane şişmesini kontrol eder. Aynı olayın 50 kopyası değil, tekil olayın kaynak referansları tutulur.
+
+Bu haber paketi “kanıt zinciri” için yalnız bağlam mı yoksa doğrulanmış bir veri mi? Bu soru, senin istediğin kilittir: haber karar vermez. Haber yalnız bağlamdır; doğrulama olmadan hüküm üretilemez.
+Bu haber yalnız yayın organı adıyla değil, yazar/editör kimliğiyle de etiketleniyor mu? Bu soru, aynı yayın organı içinde farklı doğruluk bantlarını ayırmak içindir. Kaynak tek başına yetmez; içerik üretici izi raf nesnesi olmalıdır.
+Bu yazar/editör geçmişte hangi tür haberlerde daha yüksek doğruluk bandı gösterdi? Bu soru, “boş haber” ile “erken sinyal” üreten haberi ayırır. Bu bir hüküm değil, istatistiksel güven bandıdır.
+Bu yazar/editörün haberleri hangi temalarda daha çok sapma üretiyor (transfer, sakatlık, yönetim, teknik direktör)? Bu soru, yazarın güçlü/zayıf alanını çıkarır. Analist hangi haberin hangi temada ciddiye alınacağını raf üzerinden görür.
+
+Bu yazar/editör haberleri ile gerçekleşen olaylar arasındaki gerçekleşme oranı dönemsel değişiyor mu? Bu soru, bir yazarın belirli dönemlerde “balon” üretip üretmediğini ölçer. Dönemsel değişim varsa not edilir.
+Bu yayın organının haberleri “sonuçtan sonra yeniden yazma” eğilimi taşıyor mu? Bu soru, maç sonrası anlatının manipülasyon değil ama “hikâye kurma” eğilimini ayırmak içindir. Analist bu riski bilir ve zincire göre tartar.
+Aynı haber farklı kaynaklarda doğrulanıyor mu yoksa tek kaynakta mı kalıyor? Bu soru, tek kaynak gürültüsü ile çoklu kaynak tekrarını ayırır. Tek kaynak varsa kanıt zinciri zayıf kabul edilir.
+Bu haberin dili deterministik mi yoksa abartılı/spekülatif mi ve bu dil profili yazar bazında tekrar ediyor mu? Bu soru, haberin “ton” profilini içerik üretici düzeyinde işler. Ton profili, doğruluk bandına doğrudan bağlanmaz ama risk işaretidir.
+
+FAZ-34
+BAHİS / ODDS DAVRANIŞI SORULARI (FUTBOL) — MAÇ ÖNCESİ + MAÇ SAATİ + MAÇ İÇİ
+Bu bölümün amacı odds verisini “tahmin” için kullanmak değildir. Amaç, piyasa davranışının normal banttan sapıp sapmadığını, sapıyorsa bunun maç içi tetikleyicilerle ve haber penceresiyle hangi şartlarda kesiştiğini deterministik biçimde işaretlemektir. Odds hareketi hüküm değildir; kanıt zincirinin yalnızca bir parçası olabilir.
+
+Bu odds kaydı hangi maç kimliğine ve hangi UTC zaman penceresine bağlanıyor? Bu soru, odds zaman hizasını kilitler. Zaman hizası bozuksa aynı odds hareketi yanlış maça yazılabilir.
+Odds snapshot penceresi nasıl tanımlandı ve pencereler deterministik mi? Bu soru, odds örüntüsünün doğru kıyaslanması içindir. Snapshot aralığı kayarsa bant okuması bozulur.
+Bu odds kaydı hangi bookmaker’lara aittir ve allowlist içinde midir? Bu soru, veri kaynağını kilitler. Allowlist dışı bookmaker verisi rafı kirletmez, dışarıda kalır.
+
+Bu maç için hangi market setleri zorunlu izlendi ve market kapsamı boşluk bırakmadan kaydedildi mi? Bu soru, izlenen alanın deterministik olmasını sağlar. Market kapsamı değişirse iki maç kıyaslanamaz.
+Maç öncesi odds çizgisi sabit mi kaldı yoksa keskin kırılma yaşadı mı? Bu soru, normal bant ile sapma arasını ayırır. Keskin kırılma varsa zaman damgası şarttır.
+Keskin kırılma tek bir bookmaker’da mı yoksa birden fazla bookmaker’da mı oluştu? Bu soru, tek kaynak sapması ile piyasa geneli sapmasını ayırır. Tekil sapma daha düşük güven sınıfıdır.
+Odds hareketi maç saatine yaklaştıkça mı hızlandı yoksa günler önceden mi başladı? Bu soru, hareketin zaman doğasını ölçer. Erken başlayan hareket farklı, son dakika hareketi farklı sınıfa yazılır.
+
+Maç saatinden önce odds hareketi “yumuşak akış” mı yoksa “kademeli sert kayma” mı gösterdi? Bu soru, piyasadaki yön değişiminin hız profilini çıkarır. Hız profili, sapma kalitesini belirler.
+Odds hareketi maçın hangi segmentinde yoğunlaştı (ilk 15, devre, son 15)? Bu soru, odds değişimini segment okumasına bağlar. Segment eşleşmesi yoksa olay-kaynak bağlantısı zayıftır.
+Maç içi odds hareketi, maç içi tetikleyicilerle açıklanabiliyor mu yoksa tetikleyici olmadan mı oluştu? Bu soru, “olay yokken hareket” durumunu işaretler. Bu bir suçlama değildir; sadece anomali sapma adaydır.
+Kart, VAR, penaltı, kırmızı kart gibi kader tetikleyicileri ile odds hareketi aynı zaman bandında mı çakıştı? Bu soru, piyasaya yansıyan maç içi kırılmaları yakalar. Çakışma varsa işaretlenir, hüküm kurulmaz.
+
+Odds hareketi iç saha/deplasman bağlamında tekrar ediyor mu? Bu soru, takımın ev-deplasman DNA’sının piyasa davranışına yansıyıp yansımadığını ölçer.
+Odds hareketi takımın seri davranışıyla ilişkili mi (galibiyet serisi, mağlubiyet serisi) Bu soru, takımın sonuç hafızasının piyasa tarafından nasıl fiyatlandığını ölçer.
+Odds hareketi kritik oyuncu yokluğu, ceza sınırı veya kondisyona dair bağlamla eşleşiyor mu? Bu soru, bağlam duvarıyla odds davranışını birleştirir. Eşleşme varsa sapma adayı güçlenir.
+Bu maçın odds örüntüsü, aynı takımın benzer bağlamlı geçmiş maçlarına göre normal bant içinde mi dışında mı? Bu soru, karşılaştırmayı mümkün kılar. Bant tanımı yoksa sapma işaretlenemez.
+Odds verisi eksik mi, parçalı mı, rate-limit nedeniyle degrade mi ve data\\\_quality\\\_badge ne? Bu soru, “anomali yok” ile “veri eksik” ayrımını korur. Eksik veri varsa hüküm kurulmaz.
+Bu odds kaydı bir sonraki cycle’da aynı şekilde doğrulanabiliyor mu? Bu soru, tek seferlik veri hatasıyla gerçek piyasa hareketini ayırır. Tekrar yoksa düşük güven sınıfıdır
+
+Bu bookmaker’ın sapma/anomali davranışı en çok hangi ülke liglerinde kümeleniyor? Bu soru, tek maç sapmasını “piyasa profiline” bağlar. Bazı bookmaker’lar belirli ülke liglerinde daha sık kırılma üretebilir; bu bir kanıt değildir ama analiz refleksini hızlandıran bir risk haritasıdır.
+Bu bookmaker’ın sapma davranışı organizasyon tipine göre değişiyor mu (lig, ulusal kupa, kıtasal kupa)? Bu soru, sapmanın maç türüne göre sistematikleşip sistematikleşmediğini ayırır. Kupa bağlamında daha sık kırılma görülüyorsa bu ayrı 
+band olarak işlenir.
+
+Bu bookmaker’ın sapma davranışı dönemsel mi, sabit mi, rotasyonlu mu? Bu soru, senin tarif ettiğin “bir ay Asya, bir ay başka bölge” davranışını yakalar. Rastgele görünen sapmaların dönemsel haritası olup olmadığı burada ortaya çıkar.
+Bookmaker sapmaları belirli haftalarda veya sezon fazlarında artıyor mu (sezon başı/sonu, transfer dönemi, yoğun fikstür)? Bu soru, sapmayı sezon fazı bağlamına bağlar. Bazı sapmalar sezon geçişlerinde artabilir.
+Bu bookmaker’ın sapması “maç öncesi”, “maç saatine yakın” veya “maç içi” hangi pencerede daha çok oluşuyor? Bu soru, sapmanın zaman tipini sınıflar. Zaman tipi, sapma yorumunun yönünü değiştiren bir ana anahtardır.
+Bu ligde aynı maç için farklı bookmaker’lar arasında sistematik ayrışma var mı? Bu soru, tek bookmaker sapması ile piyasa geneli ayrışmayı ayırır. Ayrışma tekrar ediyorsa lig bazlı piyasa davranışı işaretlenir.
+
+Bu takımın maçlarında belirli bookmaker sapmaları tekrar ediyor mu? Bu soru, bookmaker profili ile takım profili kesişimini yakalar. Tekrar varsa “takım+bookmaker” eşleşmesi raf nesnesi olur.
+Bu bookmaker için “normal bant” ve “sapma bandı” geçmiş veriden çıkarılabiliyor mu? Bu soru, sapmanın ölçülebilir hale gelmesi içindir. Bant tanımı yoksa sapma yalnız his olur; sistem bunu kabul etmez.
+Bu bookmaker’ın veri bütünlüğü ve veri kalitesi (eksik snapshot, gecikme, tutarsızlık) sapma gibi görünüyor olabilir mi? Bu soru, veri hatasını sapma sanma riskini engeller. Önce veri kalitesi ayrımı yapılır, sonra sapma işaretlenir.
+
+ÇAPRAZ KAYNAK OKUMA SORULARI (FUTBOL) — BASIN + ODDS + MAÇ İÇİ TETİKLEYİCİLER
+Bu bölümün amacı, üç ayrı hattı aynı anda “sonuç çıkarma” için birleştirmek değildir. Amaç, basın akışı, odds hareketi ve maç içi tetikleyiciler arasında tekrar eden zaman hizası ve davranış eşleşmesi olup olmadığını deterministik biçimde test etmektir. Bu bölüm, hüküm vermez; yalnız eşleşme ve eşleşmeme haritasını çıkarır. Kanıt zinciri tamamlanmadan hiçbir birim sonuç dili kuramaz.
+
+Bu maç için basın haber temaları ile odds hareketinin zaman penceresi çakışıyor mu? Bu soru, “haber çıktı → piyasa hareket etti” gibi bir iddiayı test edilebilir hale getirir. Çakışma yoksa ilişki zayıf kabul edilir.
+
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma tek bookmaker’da mı yoksa birden çok bookmaker’da mı görülüyor? Bu soru, tekil kaynak sapmasını piyasa geneli sapmadan ayırır. Tekil sapma düşük güven sınıfıdır.
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma hangi lig/organizasyon sınıfında daha sık görülüyor? Bu soru, çapraz eşleşmenin ülke/lig bazında kümelenip kümelenmediğini ölçer. Kümelenme varsa harita çıkar.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma dönemsel mi sabit mi rotasyonlu mu? Bu soru, rastgele görünen davranışın dönemsel haritası olup olmadığını test eder. Rotasyon varsa not edilir.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma sezon fazına göre artıyor mu (sezon başı/sonu, transfer dönemi)? Bu soru, “geçiş dönemleri” etkisini ölçer. Bazı çapraz eşleşmeler sezon geçişlerinde artabilir.
+
+Odds hareketi maç içi kader tetikleyicilerinden önce mi başladı yoksa tetikleyiciden sonra mı yoğunlaştı? Bu soru, zaman yönünü belirler. Tetikleyici sonrası hareket normal bant olabilir; tetikleyici öncesi hareket sapma adayını güçlendirir.
+Odds hareketi tetikleyici olmadan oluşuyorsa bu hareket maç içi segment davranışında bir değişimle eşleşiyor mu? Bu soru, “olay yok ama davranış kaydı var” senaryosunu yakalar. Segment DNA değişiyorsa bu ayrıca işaretlenir.
+
+Maç içi tetikleyicilerden hangileri odds hareketiyle en sık çakışıyor (kırmızı kart, VAR, penaltı, iptal gol)? Bu soru, piyasanın en hassas olduğu tetikleyici sınıfları çıkarır. Bu bir tahmin aracı değil, örüntü haritasıdır.
+Maç içi tetikleyiciler ile basın temaları aynı hafta penceresinde eşleşiyor mu? Bu soru, basının tetikleyici üretip üretmediğini değil, basın konuştuğu şeyle maç içinin kesişip kesişmediğini test eder.
+
+Basın teması “hakem/adalet” ise maç içi kart ve VAR tetikleyicileriyle eşleşme bandı artıyor mu? Bu soru, tematik eşleşmeyi test eder. Eşleşme varsa yalnız işaretlenir, hüküm kurulmaz.
+Basın teması “sakatlık/eksik” ise maç içi segmentlerde kondisyon düşüşü veya tempo kırılmasıyla eşleşme var mı? Bu soru, haber bağlamının sahaya yansıyıp yansımadığını ölçer.
+Basın teması “transfer/kriz/yönetim” ise maç içi disiplin bandında kart yoğunluğu artıyor mu? Bu soru, haber-temelli baskının disipline yansıma ihtimalini test eder. Tek seferlikte hüküm yoktur, tekrar aranır.
+
+Bu eşleşmeler takım bazında mı kümeleniyor yoksa lig bazında mı kümeleniyor? Bu soru, yapının nerede olduğunu ayırır. Takım bazlıysa takım DNA’sına, lig bazlıysa lig davranışına yazılır.
+Bu eşleşmeler bookmaker bazında mı kümeleniyor yoksa piyasa geneline mi yayılıyor?nBu soru, sapmanın kaynak sınıfını belirler. Bookmaker profili ayrı raf nesnesidir.
+Bu eşleşmeler belirli yazar/editör kaynaklarında mı yoğunlaşıyor? Bu soru, haber kaynağı güven haritasını çapraz hatla birleştirir. Aynı yazarın haberleriyle eşleşme yüksekse işaretlenir.
+
+Bu eşleşmelerde tekrar eden bir “tetikleyici sırası” var mı (haber tonu → odds kayması → kart/VAR → tempo kırılması)? Bu soru, zincir şeması çıkarır. Zincir şeması varsa bu yalnız örüntüdür, hüküm değildir.
+Bu eşleşmelerde “anomali yok” durumunda da normal bant korunuyor mu? *Bu soru, sistemin en kritik ilkesini korur: anomali çıkmaması da bir sonuçtur. Normal bant korunuyorsa bu bilgi raflara yazılır.
+Bu eşleşmelerde veri eksikliği veya kalite düşüşü var mı ve “anomali yok” ile karışıyor mu? Bu soru, data\\\_quality ayrımını çapraz okuma içinde de korur. Eksik veri varsa eşleşme hükmü kurulmaz.
+
+
+FAZ-35
+TAKIM DNA KARTI SORULARI (FUTBOL) — PROFİL, REFLEKS, BAĞIMLILIK
+Bu bölümün amacı takımın “iyi/kötü” olup olmadığını söylemek değildir. Amaç, takımın tekrar eden reflekslerini, stres altında verdiği tepkileri, seri davranışını, iç saha/deplasman karakterini ve bağımlılıklarını deterministik biçimde kartlaştırmaktır. Bu kart, maç tekilliğini aşan bir raf nesnesidir ve beş yıllık hafızanın ana omurgasıdır.
+
+Takımın temel oyun temposu hangi bantta ve bu tempo sezon fazına göre değişiyor mu? Bu soru, takımın normal hızını sabitler. Tempo değişimi tekrar ediyorsa sezon fazı etkisi kartın parçası olur.
+Takımın maç başlangıç refleksi nedir (ilk 15) ve bu refleks tekrar ediyor mu? Bu soru, “erken baskı/erken çözülme” profilini çıkarır. Tekrar eden refleks DNA sinyalidir.
+Takımın devre geçiş refleksi nedir ve ikinci yarıya çıkış davranışı hangi bantta? Bu soru, teknik direktör etkisinin en net görüldüğü eşiği ölçer. Devre çıkışı tekrar eden bir kimliktir.
+
+Takımın maç kapatma refleksi nedir (son 15 ve uzatma) ve skor durumuna göre değişiyor mu? Bu soru, takımın stres altında kapanış stratejisini sabitler. Önde/geride farklı davranışlar ayrı ayrı okunur.
+Takımın seri davranışı var mı (galibiyet/beraberlik/mağlubiyet serileri) ve seri içinde tempo-disiplin değişiyor mu? Bu soru, takımın dalga yapısını ölçer. Seri davranışı varsa kartlar ve risk profili seri içinde farklılaşabilir.
+Takımın bir önceki maç sonucu bir sonraki haftayı etkiliyor mu? Bu soru, takımın sonuç hafızasını ölçer. Bu hafıza varsa maçlar arası okuma güçlenir.
+
+Takımın iç saha davranışı ile deplasman davranışı deterministik ayrışıyor mu? Bu soru, atmosfer etkisini DNA’ya bağlar. Aynı takımın iç/dış saha profili farklı kartlar üretir.
+Takımın tribün baskısına dayanma profili nedir ve baskı altında disiplin bandı bozuluyor mu? Bu soru, seyirci etkisini doğrudan DNA’ya yazar. Baskı altında kart artışı tekrar ediyorsa sinyal güçlenir.
+Takımın kritik oyuncu bağımlılığı var mı ve skor üretimi tekilde mi kümeleniyor? Bu soru, yıldız bağımlılığını ölçer. Bağımlılık varsa takım sapma profili oyuncu kartına kilitlenir.
+
+Takımın kritik oyuncu kaybı sonrası reaksiyonu nedir (mücadeleyi bırakma, sertleşme, geriye yaslanma)? Bu soru, bel kemiği kırılınca takımın kriz stratejisini sabitler. Bu DNA kritik sınıftır.
+Takımın kart tetikleyicilerine tepkisi nedir (kabullenme döngüsü mü agresyon döngüsü mü)? Bu soru, kartların kader etkisini takım karakterine bağlar. Kartın anlamı takım refleksiyle ölçülür.
+Takımın kırmızı kart sonrası kriz yönetimi profili nedir ve ilk 10 dakikada çöker mi toparlar mı? Bu soru, eksik kalma dayanıklılığını ölçer. Bazı takımlar 10 kişi kalınca bile direnç üretir.
+
+Takımın kondisyon ve tempo taşıma kapasitesi nedir ve kırılma dakikası tekrar ediyor mu? Bu soru, son 20 dakika çöküş riskini ölçer. Kırılma dakikası tekrar ediyorsa kartın etkisi de büyür.
+Takımın yüksek tempolu rakip karşısında tempo koruma süresi nedir? Bu soru, maç başlamadan “tempo yetmez” riskini işaretleyebilir. Bu bir hüküm değil, profil işaretidir.
+Takımın disiplin profili nedir (kart kümelenmesi, faul yoğunluğu) ve hangi segmentlerde artıyor? Bu soru, disiplinin maç geneline değil, segmentlere dağılımını sabitler. Segment bazlı artış kader tetikleyicisidir.
+
+Takımın VAR/penaltı/iptal gol gibi karar tetikleyicilerine psikolojik tepkisi nedir? Bu soru, hakem kararlarının takım davranışını nasıl kaydırdığını ölçer. Bazı takımlar bu tetikleyicilerde çözülür.
+Takımın risk alma profili nedir (öndeyken kapanma, gerideyken panik hücum, beraberlikte tutma)? Bu soru, skor bağlamındaki davranış stratejisini sabitler. Aynı skor durumunda tekrar eden davranış DNA’dır.
+Takımın sakatlık ve kadro eksikliği altında performans stabilitesi nedir? Bu soru, kadro derinliğini ölçer. Stabilite yoksa sapma ihtimali artar.
+
+Takımın teknik direktör değişimi sonrası DNA kırılması var mı? Bu soru, takım kartının hangi tarihte değiştiğini sabitler. Teknik direktör değişimi kart revizyonu gerektirebilir.
+Takımın kupa/Avrupa paralel yükü altında lig davranışı kayıyor mu? Bu soru, organizasyon yükünün lig performansına etkisini ölçer. Paralel yük varsa segment davranışları kayabilir.
+Takımın “normal bant” profili beş yıl içinde stabil mi, yoksa dönemsel karakter değişimi var mı? Bu soru, takım DNA’sının sabit mi evrimli mi olduğunu ölçer. Dönemsel değişim varsa kart revizyonu yapılır.
+
+FUTBOL ETİKET KATALOĞU (KÜTÜPHANE SÖZLÜĞÜ) — ÇEKİRDEK DUVAR + MAÇ + TAKIM DNA
+Bu katalog, soru cümlelerinin etiket olarak yapıştırılması için değil; soruların cevaplarını deterministik biçimde raflara yazdırmak için vardır. Bu katalog dışı etiket üretilemez. Etiketler serbest metin değildir; sabit ad ve sabit değer bantlarıyla çalışır.
+
+KONTEKST / DUVAR ETİKETLERİ (ZORUNLU)
+timestamp\\\_utc ,country\\\_ref ,league\\\_ref ,season\\\_id ,season\\\_phase ,competition\\\_type ,cup\\\_flag ,team\\\_ref ,season\\\_phase yalnız şu değerleri alır: pre\\\_season, season\\\_start, season\\\_mid, season\\\_end, off\\\_season ,competition\\\_type yalnız şu değerleri alır: league, cup, continental, national\\\_team ,cup\\\_flag yalnız şu değerleri alır: true, false
+
+MAÇ ADRESİ VE MAÇ BAĞLAM ETİKETLERİ (ZORUNLU)
+match\\\_ref ,kickoff\\\_time\\\_utc ,home\\\_team\\\_ref ,away\\\_team\\\_ref ,venue\\\_type ,is\\\_home\\\_team\\\_context ,referee\\\_ref ,venue\\\_type yalnız şu değerleri alır: home, away, neutral ,is\\\_home\\\_team\\\_context yalnız şu değerleri alır: true, false
+
+MAÇ SEGMENT ETİKETLERİ (ZORUNLU)
+segment\\\_first\\\_15 ,segment\\\_16\\\_30 ,segment\\\_31\\\_45 ,segment\\\_half\\\_time\\\_transition ,segment\\\_46\\\_60 ,segment\\\_61\\\_75 ,segment\\\_last\\\_15 ,segment\\\_last\\\_5\\\_plus\\\_added
+Her segment alanı yalnız şu değerleri alır: normal\\\_band, tempo\\\_up, tempo\\\_down, control\\\_lost, control\\\_gained, risk\\\_up, risk\\\_down
+ 
+TEMPO / KONTROL / DİSİPLİN BANT ETİKETLERİ (ZORUNLU)
+tempo\\\_band\\\_overall ,tempo\\\_breakpoint\\\_minute\\\_bucket ,discipline\\\_band\\\_overall ,discipline\\\_cluster\\\_bucket ,control\\\_band\\\_overall ,tempo\\\_band\\\_overall yalnız şu değerleri alır: low, medium, high ,tempo\\\_breakpoint\\\_minute\\\_bucket yalnız şu değerleri alır: none, 0\\\_15, 16\\\_30, 31\\\_45, 46\\\_60, 61\\\_75, 76\\\_90 ,discipline\\\_band\\\_overall yalnız şu değerleri alır: calm, normal, aggressive ,discipline\\\_cluster\\\_bucket yalnız şu değerleri alır: none, 0\\\_15, 16\\\_30, 31\\\_45, 46\\\_60, 61\\\_75, 76\\\_90 ,control\\\_band\\\_overall yalnız şu değerleri alır: stable, unstable
+
+KADER TETİKLEYİCİ ETİKETLERİ (ZORUNLU)
+trigger\\\_first\\\_yellow ,trigger\\\_red\\\_card ,trigger\\\_var\\\_review ,trigger\\\_penalty\\\_event ,trigger\\\_disallowed\\\_goal ,trigger\\\_major\\\_injury ,trigger\\\_long\\\_stoppage ,trigger\\\_time\\\_waste Bu alanlar yalnız şu değerleri alır: none, occurred ,occurred ise ayrıca trigger\\\_minute\\\_bucket zorunludur.trigger\\\_minute\\\_bucket yalnız şu değerleri alır: 0\\\_15, 16\\\_30, 31\\\_45, 46\\\_60, 61\\\_75, 76\\\_90, added\\\_time
+
+KRİTİK OYUNCU / BEL KEMİĞİ ETKİSİ (ZORUNLU)
+critical\\\_player\\\_incident ,critical\\\_player\\\_role\\\_weight ,critical\\\_player\\\_loss\\\_reaction ,critical\\\_player\\\_incident yalnız şu değerleri alır: none, yellow\\\_risk, red\\\_sent\\\_off, injury\\\_out, substituted ,critical\\\_player\\\_role\\\_weight yalnız şu değerleri alır: normal, high ,critical\\\_player\\\_loss\\\_reaction yalnız şu değerleri alır: no\\\_shift, fight\\\_harder, collapse, deep\\\_defend, chaos
+
+KONDİSYON / TEMPO TAŞIMA ETİKETLERİ (ZORUNLU)
+stamina\\\_profile ,stamina\\\_breakdown\\\_bucket ,ten\\\_men\\\_resilience
+
+stamina\\\_profile yalnız şu değerleri alır: strong, normal, weak ,stamina\\\_breakdown\\\_bucket yalnız şu değerleri alır: none, 46\\\_60, 61\\\_75, 76\\\_90 ,ten\\\_men\\\_resilience yalnız şu değerleri alır: unknown, stable, unstable, strong\\\_resist
+
+İÇ SAHA / DEPLASMAN / TRİBÜN BASINCI (ZORUNLU)
+home\\\_away\\\_behavior\\\_shift ,crowd\\\_pressure\\\_band ,crowd\\\_pressure\\\_response
+
+home\\\_away\\\_behavior\\\_shift yalnız şu değerleri alır: none, home\\\_stronger, away\\\_stronger, unstable ,crowd\\\_pressure\\\_band yalnız şu değerleri alır: low, medium, high ,crowd\\\_pressure\\\_response yalnız şu değerleri alır: no\\\_effect, discipline\\\_drop, tempo\\\_spike, panic, fight\\\_harder
+
+FORM / SERİ DAVRANIŞI (ZORUNLU)
+previous\\\_match\\\_result ,streak\\\_type ,streak\\\_length\\\_bucket ,*next\\\_week\\\_effect\\\_band
+
+previous\\\_match\\\_result yalnız şu değerleri alır: win, draw, loss, unknown ,streak\\\_type yalnız şu değerleri alır: none, win\\\_streak, draw\\\_streak, loss\\\_streak, mixed ,streak\\\_length\\\_bucket yalnız şu değerleri alır: 0, 1\\\_2, 3\\\_4, 5\\\_plus ,next\\\_week\\\_effect\\\_band yalnız şu değerleri alır: none, positive, negative, unstable--
+
+FUTBOL HAKEM KARTI — ANALİZ EĞİTİM SORU KATALOĞU
+Bu kartın amacı hakemi “iyi/kötü” diye sınıflamak değildir. Amaç, hakemin maçın disiplin eşiğini, VAR/penaltı kritik karar davranışını ve maçın kırılma anlarındaki rolünü tekrar eden bantlarla okumaktır. Suçlama dili yoktur; yalnız davranış izi çıkarılır.
+
+Hakemin ilk kart eşiği erken mi oluşuyor, geç mi oluşuyor? Bu soru, maçın disiplin bandını erken sabitler. Erken eşik maçın tüm ritmini değiştirir.
+Hakem kart dağıtımında dengeli mi yoksa tek taraflı kümelenme görüyor muyuz? Bu soru hüküm üretmez; yalnız dağılım bandını çıkarır. Tekrarlı bir yığılma varsa işaretlenir.
+
+Hakem kritik faul kararlarını hangi bölgelerde daha sık veriyor? Bu soru, tehlikeli bölge faul bantlarını ve duran top riskini okumayı kolaylaştırır.
+Hakem VAR müdahalesi gerektiren pozisyonlarda çizgiyi nasıl yönetiyor? Bu soru, maçın kader tetikleyicilerinden biri olan VAR bandını çıkarır.
+Penaltı pozisyonlarında hakemin karar bandı nedir? Bu soru, penaltı kararlarının maç akışı üzerindeki kırılma etkisini okumayı sağlar.
+İptal edilen gol kararları maçın momentumunu nasıl kırıyor? Bu soru, iptal gol kırığı etkisini ve takım reaksiyon profilini bağlamlar.
+
+Hakem kırmızı kart eşiğinde erken mi, geç mi düdük çalıyor? Bu soru, maçın sertlik bandı ve kırmızı kart tetikleyici ihtimalini sabitler.
+Hakem teknik alan olaylarında toleransı düşük mü yüksek mi? Bu soru, teknik direktör kartı ve disiplin sapması bandıyla kesişir.
+Hakem maçın son 15 dakikasında düdük yoğunluğunu artırıyor mu azaltıyor mu? Bu soru, kapanış bandının “oyuncu davranışı mı yoksa hakem ritmi mi” olduğunu ayırır.
+Hakem kararlarıyla maçın control\\\_lost bandı tetikleniyor mu? Bu soru, hakem davranışıyla ritim kırılması arasındaki tekrar ilişkisini yakalar.
+
+FUTBOL HAKEM KARTI — ETİKET KATALOĞU
+timestamp\\\_utc ,referee\\\_ref ,country\\\_ref ,league\\\_ref ,season\\\_id ,competition\\\_type ,season\\\_phase
+
+referee\\\_first\\\_card\\\_threshold\\\_band ,referee\\\_card\\\_distribution\\\_balance\\\_band ,referee\\\_danger\\\_zone\\\_foul\\\_band ,referee\\\_var\\\_intervention\\\_band ,referee\\\_penalty\\\_decision\\\_band ,referee\\\_disallowed\\\_goal\\\_band ,referee\\\_red\\\_card\\\_threshold\\\_band ,referee\\\_technical\\\_area\\\_tolerance\\\_band ,referee\\\_closing\\\_whistle\\\_band ,referee\\\_control\\\_risk\\\_band
+
+referee\\\_first\\\_card\\\_threshold\\\_band yalnız şu değerleri alır: early, normal, late ,referee\\\_card\\\_distribution\\\_balance\\\_band yalnız şu değerleri alır: balanced, mild\\\_skew, heavy\\\_skew ,referee\\\_danger\\\_zone\\\_foul\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_var\\\_intervention\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_penalty\\\_decision\\\_band yalnız şu değerleri alır: stable, volatile ,referee\\\_disallowed\\\_goal\\\_band yalnız şu değerleri alır: rare, normal, frequent ,referee\\\_red\\\_card\\\_threshold\\\_band yalnız şu değerleri alır: early, normal, late ,referee\\\_technical\\\_area\\\_tolerance\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_closing\\\_whistle\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_control\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high ,data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
+
+FUTBOL TEKNİK DİREKTÖR (KOÇ) KARTI — ANALİZ EĞİTİM SORU KATALOĞU
+Bu kartın amacı teknik direktörü “iyi/kötü” diye sınıflamak değildir. Amaç, maç içi kriz yönetimini, tempo/ritim müdahalesini, kart ve hakem bandında verdiği refleksleri ve son 15 dakika karar profilini tekrar eden örüntülerle kartlaştırmaktır.
+
+Teknik direktör tempo yükselince oyunu sakinleştiriyor mu, yoksa tempo sapmasına izin mi veriyor? Bu soru, kontrol bandı yönetimini ölçer. Kontrol kaybı tekrar ediyorsa risk artar.
+Teknik direktör ilk sarı kart sonrası disiplin bandını toparlıyor mu? Bu soru, kart sonrası refleksi ölçer. Kart görünce disiplin düşüyorsa tekrarlayan zaaf olur.
+Teknik direktör kırmızı kart veya kritik karar sonrası plan değiştiriyor mu? Bu soru, kriz adaptasyonunu ölçer. Plan değişimi stabil ise takım kurtulur.
+Teknik direktör VAR/penaltı gibi kırılmalarda panik mi yoksa kontrollü mü? Bu soru, mental yönetim bandını ölçer. Panikleşme kartla büyür.
+
+Teknik direktör devre arası geçişinde oyuna yeni bir bant getiriyor mu? Bu soru, ikinci yarı refleksini ölçer. Devre arası etkisi tekrar ediyorsa kartlaşır.
+Teknik direktör son 15 dakikada skoru koruma mı yoksa ikinci gol arama mı seçiyor? Bu soru, kapanış stratejisinin istikrarını ölçer.
+Teknik direktör seyirci baskısı yükselince riskli hamle yapıyor mu? Bu soru, crowd\\\_pressure\\\_response ile koç davranışının bağını kurar.
+
+Teknik direktör kritik oyuncu kaybında (kırmızı/sakatlık) takımı ayakta tutabiliyor mu? Bu soru, kritik oyuncu replacement\\\_gap ile doğrudan bağlıdır.
+Teknik direktör hakem çizgisi sertleşince takımını disipline çekiyor mu? Bu soru, hakem profiline adaptasyon becerisini ölçer.
+Teknik direktör seri halinde kötü gidişatı kırabiliyor mu? Bu soru, streak\\\_type etkisini ve müdahale gücünü ölçer.
+
+FUTBOL TEKNİK DİREKTÖR (KOÇ) KARTI — ETİKET KATALOĞU
+timestamp\\\_utc,coach\\\_ref,team\\\_ref,country\\\_ref,league\\\_ref,season\\\_id,competition\\\_type,season\\\_phase
+coach\\\_tempo\\\_control\\\_band,coach\\\_post\\\_card\\\_management\\\_band,coach\\\_crisis\\\_adaptation\\\_band,coach\\\_key\\\_decision\\\_mental\\\_band,coach\\\_halftime\\\_adjustment\\\_band,coach\\\_closing\\\_strategy\\\_band,coach\\\_crowd\\\_pressure\\\_risk\\\_band,coach\\\_critical\\\_player\\\_loss\\\_management\\\_band,coach\\\_referee\\\_adaptation\\\_band,coach\\\_streak\\\_breaking\\\_band,coach\\\_tempo\\\_control\\\_band yalnız şu değerleri alır:
+stable, unstable,coach\\\_post\\\_card\\\_management\\\_band yalnız şu değerleri alır: 
+stable, unstable,coach\\\_crisis\\\_adaptation\\\_band yalnız şu değerleri alır:
+strong, normal, weak,coach\\\_key\\\_decision\\\_mental\\\_band yalnız şu değerleri alır:
+ 
+controlled, chaotic,coach\\\_halftime\\\_adjustment\\\_band yalnız şu değerleri alır: 
+strong, normal, weak,coach\\\_closing\\\_strategy\\\_band yalnız şu değerleri alır: 
+stable, unstable,coach\\\_crowd\\\_pressure\\\_risk\\\_band yalnız şu değerleri alır: 
+
+low, medium, high,coach\\\_critical\\\_player\\\_loss\\\_management\\\_band yalnız şu değerleri alır: 
+stable, unstable,coach\\\_referee\\\_adaptation\\\_band yalnız şu değerleri alır: 
+strong, normal, weak,coach\\\_streak\\\_breaking\\\_band yalnız şu değerleri alır: 
+strong, normal, weak,data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: 
+normal, incomplete, low, inactive
+
+FUTBOLCU KARTI — ANALİZ EĞİTİM SORU KATALOĞU
+Bu kartın amacı futbolcuyu “iyi/kötü” diye sınıflamak değildir. Amaç, futbolcunun disiplin eğilimini, kritik an davranışını, kart riskini ve maçın kırılma anlarındaki rolünü tekrar eden bantlarla kartlaştırmaktır. Futbolcu kartı takım değişse bile kimliği taşır.
+
+Futbolcu erken kart görme eğilimi taşıyor mu? Bu soru, takımın disiplin bandını bireysel seviyede etkileyen risk profilini çıkarır.
+Futbolcu baskı yükselince hata ve faul eğilimi artıyor mu? Bu soru, crowd\\\_pressure\\\_response ile bireysel kırılmayı bağlar.
+
+Futbolcu kırmızı kart riski taşıyor mu ve bu risk hangi segmentte artıyor? Bu soru, segment bazlı disiplin sapmasını ölçer.
+Futbolcu kritik gol pozisyonlarında veya kritik faullerde tekrar eden rol taşıyor mu? Bu soru, maç kaderi tetikleyicilerinin bireysel izini yakalar.
+Futbolcu VAR/penaltı kararlarından sonra mental düşüş yaşıyor mu? Bu soru, karar sonrası kırılma bandını bireysel düzeye indirir.
+Futbolcu son 15 dakikada tempo taşıyabiliyor mu yoksa düşüyor mu? Bu soru, stamina\\\_profile ve kapanış dayanıklılığını bireysel kartta sabitler.
+
+Futbolcu kritik oyuncu sınıfında mı ve kaybı replacement\\\_gap yaratıyor mu? Bu soru, takımın bel kemiği davranışını çıkarır.
+Futbolcu hakem çizgisi sertleşince adaptasyon gösteriyor mu? Bu soru, referee\\\_profile ile bireysel disiplin davranışını bağlar.
+Futbolcu maç içinde kontrol kaybı tetikleyen olaylarda sık görülüyor mu? Bu soru, control\\\_lost bandını bireysel düzeye taşır.
+Futbolcu sakatlık sonrası performans düşüş bandı taşıyor mu? Bu soru, major\\\_injury tetikleyicisinin bireysel etkisini okur.
+
+FUTBOLCU KARTI — ETİKET KATALOĞU
+timestamp\\\_utc,player\\\_ref,team\\\_ref,country\\\_ref,league\\\_ref,season\\\_id,competition\\\_type,season\\\_phase,player\\\_early\\\_card\\\_risk\\\_band,player\\\_pressure\\\_error\\\_band,player\\\_red\\\_card\\\_risk\\\_band,player\\\_critical\\\_event\\\_involvement\\\_band,player\\\_post\\\_decision\\\_mental\\\_band,player\\\_closing\\\_stamina\\\_band,player\\\_critical\\\_weight\\\_band,player\\\_referee\\\_adaptation\\\_band,player\\\_control\\\_loss\\\_risk\\\_band,player\\\_injury\\\_recovery\\\_band,player\\\_early\\\_card\\\_risk\\\_band yalnız şu değerleri alır:
+
+low, medium, high,player\\\_pressure\\\_error\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_red\\\_card\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_critical\\\_event\\\_involvement\\\_band yalnız şu değerleri alır:
+ 
+low, medium, high,player\\\_post\\\_decision\\\_mental\\\_band yalnız şu değerleri alır: stable, unstable,player\\\_closing\\\_stamina\\\_band yalnız şu değerleri alır: strong, normal, weak,player\\\_critical\\\_weight\\\_band yalnız şu değerleri alır: normal, high,player\\\_referee\\\_adaptation\\\_band yalnız şu değerleri alır.
+
+strong, normal, weak,player\\\_control\\\_loss\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_injury\\\_recovery\\\_band yalnız şu değerleri alır: strong, normal, weak,data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
+
+
 FAZ-8-
 TEKNİK DİREKTÖR KARTI — FAZ-1 TESLİMİ 
 
@@ -4858,11 +5281,6 @@ Sakatlık ve Yük Etiketleri
 
 load_collapse_band: unknown | low | medium | high
 rotation_resilience_band: unknown | low | medium | high
-
-Koç Etiketi
-
-coach_dependence_band: unknown | low | medium | high
-new_coach_bounce_band: unknown | low | medium | high
 
 Basın Etiketleri
 
@@ -6754,14 +7172,12 @@ unknown:veri\\\_yok/doğrulanmadı | none:alan\\\_geçerli\\\_içerik\\\_yok | i
 
 | spike\\\_anomaly\\\_tendency\\\_band:unknown|low|medium|high | sharp\\\_following\\\_band:unknown|low|medium|high | contrarian\\\_band:unknown|low|medium|high | void\\\_cancel\\\_policy\\\_band:unknown|strict|balanced|lenient | limit\\\_restriction\\\_band:unknown|low|medium|high | market\\\_freeze\\\_pattern\\\_band:unknown|low|medium|high | outage\\\_incident\\\_band:unknown|low|medium|high | feed\\\_gap\\\_band:unknown|low|medium|high | BOOKMAKER SORU KÜTÜPHANESİ (FAZ-1) | | Kapanış: Bookmaker Kütüphanesi tamamlandı.
 
-
-FAZ-28
 BASKETBOL — ARŞİV PAKETİ (NİHAİ) | Tamamlandı / dosyalanabilir tek çıktı | Bitti.
 
 KİLİT BEYANI | 
 Bu metin “BASKETBOL — ARŞİV PAKETİ (NİHAİ / KODCUYA VERİLECEK /)” olarak kilitlenmiştir. 
 
-
+FAZ-28
 GANYAN — KİLİTLİ RAF SÖZLEŞMESİ + ANALİST EĞİTİM KİTAPÇIĞI + NAVİGASYON + ORTAK ETİKET SÖZLÜĞÜ + PROFİL/ÖRÜNTÜ OMURGA + ÖRÜNTÜ DUVARI + ŞART PAKETİ + DENETİM AKIŞI + TAKVİM RAFI + KOŞU GÜNÜ KOMPOZİSYON KÜTÜĞÜ + KÜTÜPHANECİ KARTI + KİMLİK STANDARTLARI (NİHAİ KİLİTLİ BİRLEŞİK METİN v1.2) | 
 Bu ganyan bölümü yalnız at yarışı ganyan içindir, futbol doğasıyla karıştırılamaz, basketbol doğasıyla karıştırılamaz, bu blok kupon üretmez, tahmin üretmez, banko üretmez, yönlendirme yapmaz, bu blok raf-kütüphane sisteminin veri standardını ve deterministik navigasyonunu kilitler, bu blok değiştirilemez, yorumlanamaz, parça parça bölünemez, aynı anlamı taşıyan ikinci bir blok açılamaz, isimleri değiştirilemez, etiketler yeniden adlandırılamaz, amaç Analist’in kanıt zincirini kırmadan veri raflarını eksiksiz büyütmek ve şehir kütüphanesi mantığında arama/filtreleme yapılabilir yapı kurmaktır, sistem deterministiktir, etiket uydurulmaz, eşleşmeyen veri zorla map edilmez, eksik veri otomatik tamamlanmaz, data\\\_quality\\\_badge incomplete veya low zorunludur, kütüphaneci analiz yapmaz değer notu vermez klasman notu vermez hüküm cümlesi kurmaz yalnız ham kaydı tekilleştirir sözlüğe map eder eksikleri boş bırakır, Analist kesinlik dili kullanamaz “kesin kazanır, banko, tek” yazamaz, yalnız ölçüm dili üretir ve “uyumsuz” kelimesini kullanmaz, yalnız “pist uyumu düşük, mesafe uyumu düşük, binici uyumu düşük” gibi yumuşak ölçüm diliyle konuşur, “hüküm” tanımı sabittir: kesin sonuç iddiası, kazanç iddiası, banko/tek/favori kesinliği üreten dildir, “etiket/ölçüm” tanımı sabittir: bant, risk seviyesi, profil seviyesi, eksik veri işareti ve ölçümsel tespit bilgisidir, olumsuz dil kaçakları serbest değildir; “olmaz, tutmaz, çöp, sil, berbat” yerine yalnız ölçüm dili kullanılır ve risk/uyum bandına çevrilir, sistem “tezgâh/manipülasyon/şike/mafya/dış el” gibi suçlayıcı hüküm üretmez; yalnız geçmiş tekrar ve şart bağımlılığı üzerinden “olağan bant sapması” işaretler, tek olayla hüküm kurmaz, tekrar ve şart bağımlılığı arar
 
@@ -7471,6 +7887,311 @@ star\\\_dependency\\\_band,bench\\\_impact\\\_band,critical\\\_player\\\_foul\\\
 DATA QUALITY (ZORUNLU)
 data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
 
+
+FAZ-31
+DOSYA-1: BASKETBALL\\\_MODULE\\\_IMPLEMENTATION\\\_PROMPT\\\_FINAL.txt\
+
+BASKETBOL MODÜLÜ — 5 YIL DAYANIKLILIK REVİZESİ + 3 PROBLEM DÜZELTİLMİŞ NİHAİ UYGULAMA PROMPTU\*\*
+Aşağıdaki metin yoruma kapalı, bağlayıcı ve birebir uygulanması zorunlu “uygulama promptu”dur. Bu metinde yazan her adım, her sıra, her rol, her yapı, her isimlendirme ve her kural değiştirilemez. Kod yazarı “daha iyisi olur”, “şöyle yapalım”, “şunu çıkaralım”, “bunu ekleyelim” gibi hiçbir yorum, öneri ve alternatif üretmez. Metinde olmayan hiçbir özellik eklenmez. Metinde olan hiçbir özellik çıkarılmaz. Yalnızca teknik olarak imkânsızlık varsa sadece “şu madde teknik olarak uygulanamıyor” cümlesiyle bildirir ve uygulama durdurulur. Çözüm önerisi getirilmez, soru sorulmaz, fikir üretilmez. Bu prompt bir taslak değildir. Tamamlanmış ve kilitlenmiş sistem mimarisidir. Bu proje “bahis sitesi” kurmaz. Bu proje “bahse yönlendirme” yapmaz. Bu proje kupon oluşturmaz. Bu proje ödeme almaz. Bu proje yalnız istatistiksel ölçüm, zaman hizası ve bant sapması üretir. “Kesin kazanır, banko, tek” gibi dil yasaktır.\*\*
+
+Sistemin adı:
+Spor Anomali \\\& Örüntü Motoru (n8n tabanlı). Bu modül basketbol içindir ve ana omurgadan ayrı değildir; aynı sistemin basketbol dalıdır. Sistemin amacı: basketbol için haber + piyasa/oran + maç içi olay verilerini tek hiyerarşide toplamak, örüntü üretmek ve olağan akışa aykırı sapmaları “anomali” olarak işaretlemektir. Sistem çıktıları tahmin değildir; yalnız kütüphanelere işlenmiş ham veri, kütüphanelere işlenmiş etiketli veri, örüntü kütüphanesine yazılmış örüntü haritaları, anomali skoru + geçmiş etki oranı ve yönetici alarm kayıtlarıdır. Bu modülde sosyal medya dağıtımı yoktur. Telegram/Instagram/TikTok/YouTube Shorts yoktur. Çıktılar yalnız kütüphane dosyalarına ve index dosyalarına yazılır.
+
+Bu projede veri deposu teknolojisi zorunlu mimari kuraldır. Veri deposu teknoloji olarak JSON dosya tabanlı kütüphane deposudur. Kullanılacak formatlar JSON (kalıcı dosyalar) ve JSONL (büyük zaman serileri ve event/log akışları) olacaktır. Kod yazarı SQL / NoSQL / Postgres / MongoDB / Redis kullanmaz. Kod yazarı yalnız dosya sistemi üzerinde JSON/JSONL üretir, okur ve günceller. Tüm dosyalar n8n proje dizininde ./library/ altında tutulur. Absolute path kullanılmaz. Sadece relative path kullanılır. JSON dosyalarının sınırsız büyümesine izin verilmez. Ham veri dosyaları günlük dosyalara yazılır ve dosya adı YYYY-MM-DD.json formatındadır. Eski ham veri dosyaları ./library/archive altına taşınır. Index dosyaları her çalıştırma sonunda tekrar üretilir ve güncel özet tutulur; tüm tarihçe tek dosyada biriktirilmez.her dosya spor branşının kendi adıyla balaşar.
+
+Ana kural: 
+
+tüm kütüphaneler aynı hiyerarşiyi kullanır ve bu sıra hiçbir yerde bozulmaz. Sıra her zaman şu şekildedir: spor türü → ülke → lig → takım → sezon → dönem → maç → zaman bağlamı. Dönem tanımı zorunludur ve her kütüphanede aynıdır. Her sezon üç döneme ayrılır: sezon başı, sezon ortası, sezon sonu. Sezon ortası zamansal sabiti devre arası son 3 hafta + ikinci devre başı ilk 3 haftadır ve “sezon ortası kritik pencere” etiketi olarak ortak uygulanır.
+
+Sistem evreleri iki evredir ve net olarak ayrılacaktır. Evre-1 bootstrap (faaliyet öncesi) amacı geçmiş veriyi çekmek, kütüphanelere yerleştirmek, etiketlemek, örüntü haritalarını üretmek ve kalibrasyonu sabitlemektir. Evre-2 live (faaliyet sonrası) amacı yeni maçları aynı sistemle işlemek, kütüphaneyi büyütmek, örüntü duvarını güncellemek ve anomali çıktıları üretmektir. Bootstrap kapsamı sabit kuraldır: sistem zorunlu olarak son 3 tamamlanmış sezonu indirir ve basketbol kütüphanelerine işler. API daha fazla sezon destekliyorsa sistem daha fazlasını çekebilecek şekilde tasarlanır; ancak zorunlu minimum son 3 tamamlanmış sezondur.
+
+Veri giriş katmanı bu sistemde üç ana veri kaynağı kullanır: haber verisi kaynağı (newsapi.org), piyasa/oran verisi kaynağı (oddsapi.io), canlı maç olay verisi kaynağı (basketbol live scores + match events destekleyen ayrı bir API). Live event kaynağı newsapi ve oddsapi ile sağlanmaz, mutlaka ayrı kaynaktır. Bu kaynaklara erişim için gereken tüm gizli bilgiler (api key, token, webhook url, kanal id) otomasyon kurulumunda manuel olarak girilir. Kod yazarı bu bilgileri talep etmez, beklemez, içerik üretmez; sadece bu gizli bilgilerin girileceği alanları hazırlar.
+
+Zorunlu manuel konfigürasyon dosyası 
+
+./library/config.json olacaktır ve şu alanları zorunlu taşır: 
+newsapi\\\_key, oddsapi\\\_key, live\\\_event\\\_api\\\_key, live\\\_event\\\_provider\\\_name, live\\\_event\\\_endpoint\\\_base, odds\\\_snapshot\\\_interval\\\_minutes, odds\\\_required\\\_markets, listed\\\_sports, basketbol\\\_league\\\_allowlist, cup\\\_allowlist, reference\\\_dictionary\\\_source, mode (public\\\_only / vip\\\_enabled). Kod yazarı bu dosyayı uydurma değerlerle doldurmaz, sadece alanları açar. Bu dosya boşsa sistem pasif modda çalışır ve kırılmaz.
+
+Kimlik / registry standardı zorunludur. 
+
+API’lerde takım isimleri, lig isimleri ve maç id’leri farklı gelebilir. Bu problem nedeniyle ./library/index.json içinde reference\\\_dictionary bloğu zorunlu olarak bulunur ve tüm etiketleme sadece bu sözlükten yapılır. Eşleşemeyen haberler ve eşleşemeyen kayıtlar unmapped durumuyla ayrı raf’a yazılır. Yakın eşleştirmeyle zorla atama yapılmaz. Sistem maçları “sistem match\\\_id” ile sabitler ve tüm modüller sadece bu match\\\_id üzerinden bağlanır. reference\\\_dictionary kapsama oranı sistem sağlığı göstergesidir; kapsama düşüşü ayrı alarm kaydı olarak saklanır.
+
+Bu basketbol modülü içinde toplam kütüphane seti sabittir ve branşlar karıştırılamaz. Basketbol kapsamındaki mantıksal raflar şunlardır: basketbol kütüphanesi, haber kütüphanesi, oran/piyasa kütüphanesi, örüntü kütüphanesi, kupa kütüphanesi. Bu modülde soru üreten motor yoktur; runtime sözleşmesine dahil edilmez ve çalışma sırasında soru motoru çalıştırılmaz. Bu modülde sayısal soru adedi hedefi bulunmaz; kapsama prensip ile kilitlenir. Bu modülde branş dışı etiket üretimi yoktur; ganyan dili basketbola taşınamaz.
+
+Haber kütüphanesi ham sinyalin kaynağıdır. Haber kütüphanesinde yorum yoktur. Haberler sadece raf düzeniyle saklanır. Haber rafı şu sırayı taşır: spor → ülke → lig → takım → sezon → dönem → zaman bağlamı → haber kaynağı → haber türü → haber tonu → haber metni. Haber tonu zorunludur ve pozitif / nötr / negatif olarak tutulur. Zaman bağlamı zorunludur: maç öncesi, maç günü/maç anı, maç sonrası, maçtan sonraki günler. Haber türü zorunludur: ajans / köşe / röportaj / yorum / sızıntı. Gazeteci/yazar varsa saklanır. 
+
+Oran/piyasa kütüphanesi kolektif beklenti kaydıdır ve tahmin değildir. Bookmaker seti sabittir: bet365, pinnacle, william hill, betfair, unibet, bwin, 888sport. Oran/piyasa kütüphanesinde maç bazlı oranlar şu raf sırasıyla dizilir: spor → ülke → lig → takım → sezon → dönem → maç → timestamp → bookmaker → market → line → odds\\\_set. Odds zaman serisi snapshot standardı zorunludur. Snapshot aralığı odds\\\_snapshot\\\_interval\\\_minutes ile belirlenir ve boş bırakılamaz. odds\\\_required\\\_markets boş bırakılamaz ve en az 1 market içermelidir. Snapshot sayısı iki adetten azsa oran sapması hesabı yapılmaz ve sapma skoru “hesaplanamadı/veri yetersiz” bandında kalır; “anomali yok” yazılamaz.
+
+Basketbol maç/saha kütüphanesi maç içi olayları kaydeder. Basketbol maç rafı şu ana olayları taşır: periyot skorları, faul sayıları, teknik faul, diskalifiye, top kaybı kümeleri, seri koşular (run), molalar (timeout), momentum kırılımları, son periyot kırılma noktaları. Basketbol hakem rafı faul standardı, düdük yoğunluğu, bonus giriş zamanlaması, teknik faul eğilimi ve maç sonu düdük profili gibi ölçümler taşır; yorum ve suçlama dili taşımaz.
+
+Örüntü kütüphanesi üç ana girdiyi birleştirir: 
+
+basın/haber örüntüsü, oran/piyasa örüntüsü, maç içi olay örüntüsü. Örüntü çıktıları örüntü kodu, tekrar sayısı, geçmiş etki oranı ve anomali skorunu taşır. Bu kütüphane iki raf taşır: ana örüntü rafı ve bayraklı/anomali örüntü rafı. Bu raf “şike” olarak adlandırılamaz; yalnız “olağan dışı sapma” olarak adlandırılır.
+
+Örüntü üretimi iki aşamalı çalışır ve sıra değiştirilemez. Aşama-1 sadece veri toplar, ayrıştırır, hiyerarşiye yerleştirir ve index dosyalarını üretir. Aşama-2 sadece geriye dönük tarama ile örüntüleri çıkarır, normal davranış referanslarını üretir ve anomaly\\\_score kalibrasyonunu hesaplar. Aşama-2 kalibrasyonu son 3 sezon bootstrap verisi üzerinden yapılır. Kod yazarı elle formül uydurmaz ve puanlama tahmin etmez. Anomali skor formülü sabittir: anomaly\\\_score = (basın tonu sapması puanı) + (oran sapması puanı) + (maç içi kritik olay puanı). Bu üç puanın 0–100 normalizasyonu ve ağırlıklandırılması Aşama-2 tarafından üretilir ve sabitlenir. Aşama-2 tamamlanmadan anomalies çıktısı boş veya “henüz hesaplanmadı” durumunda kalabilir ve bu hata değildir.
+
+Canlı maç olayları veri gerçekliği şu şekildedir: bu sistemde insan canlı izleyici kadrosu yoktur. Canlı maç olayları API üzerinden gelen canlı event verileriyle beslenir. Canlı event aktif değilse maç içi kritik olay puanı 0 olarak kalır ve sistem kırılmaz. Canlı event feed aktif olduğunda event kayıtları match\\\_id, sport\\\_type, event\\\_type, event\\\_minute, team\\\_ref, timestamp alanlarıyla JSONL olarak yazılır. Event akışında olağan dışı yoğunluk veya olağan dışı sessizlik ayrı bir teknik durumdur ve event\\\_stream\\\_health\\\_band altında saklanır; bu bant maç verisinden bağımsızdır ve sessizce yok sayılmaz.
+
+Zorunlu index dosyaların tümü her spor branşı adıyla başlar,örnek,football\\\_anomaly.json,football\\\_library.json,football\\\_public.json
+
+basket\\\_anomaly.json,basket\\\_library.json,ganyan\\\_anomaly.json
+
+ganyan\\\_library.json
+
+Zorunlu index dosyaları her çalıştırmada üretilir: ./library/index.json, ./library/summary.json, ./library/today\\\_matches.json, ./library/anomalies\\\_public.json, ./library/anomalies\\\_vip.json. Bu dosyalar boş olabilir ancak dosyanın kendisi üretilmek zorundadır. Index üretimi atomik çalışır; yeni index doğrulama kontrollerinden geçmeden mevcut index üzerine yazılmaz. Hatalı üretimde önceki index korunur ve yönetici alarmına yazılır. “Anomali yok” ifadesi yalnız sapma skoru hesaplanmış ve eşik altında kalmış durumda kullanılabilir; veri eksikliği durumları “anomali yok” olarak yazılamaz.
+
+Bu sistemde uzun vadeli sessiz çürüme engellenir. Her reference\\\_dictionary coverage düşüşü, unmapped oranı artışı, data\\\_quality\\\_badge sürekli low kalması ve event\\\_stream\\\_health\\\_band bozulması rolling sağlık göstergesi olarak saklanır. Sistem çalışmaya devam eder; ancak bu durumlar sessizce geçiştirilemez ve yönetici alarm kayıtlarına yazılır. Bu alarm kayıtları karar üretmez, tahmin üretmez; yalnız sistem sağlığı kaydıdır.
+
+Log ve denetim zorunludur. Her adım loglanır: hangi veri çekildi, hangi kütüphaneye yazıldı, hangi örüntü eşleşti, hangi anomali bayrağı yandı, hangi kayıt unmapped kaldı, hangi data\\\_quality\\\_badge uygulandı, hangi index üretimi başarılı/başarısız oldu, hangi event\\\_stream\\\_health\\\_band oluştu.
+
+Bu promptta tanımlanan yapı tamamlanmış ve kilitlenmiş bir basketbol sistem mimarisidir. Kod yazarı bu metni yorumlamaz. Metinde olmayan hiçbir şeyi eklemez. Metinde olan hiçbir şeyi çıkarmaz. Metindeki sırayı bozmaz. Metindeki isimlendirmeleri değiştirmez. Branş dışı etiket üretmez. Veri yoksa uydurmaz. Bu modül ana omurganın basketbol dalıdır ve ondan bağımsız sistem olarak ele alınamaz.
+
+
+FAZ-36
+BASKETBOL ANALİZ EĞİTİM KATALOĞU (SORU KATALOĞU) — FUTBOL BENZERİ DİSİPLİN, SPORA ÖZEL
+Bu katalog, basketbol branşında analistin neyi, hangi sırayla ve hangi kanıt penceresinde okuyacağını standardize eder. Bu sorular etiket değildir; soru katalogları değerlendirme çerçevesidir. Değer notu sorunun varlığına göre değil, sorunun kanıt zinciriyle doğrulanmış cevabına göre üretilir.
+
+KONTEKST DUVARI VE ADRESLEME SORULARI
+Bu maç hangi ülke, lig, sezon, sezon fazı ve organizasyon tipinde oynanıyor? Bu soru, yanlış raf adreslemesini engeller ve periyot davranışlarının sezon fazına göre değişip değişmediğini okumayı mümkün kılar.
+Bu maç normal lig maçı mı, kupa benzeri eleme mi, yoksa play-off/klasman maçı mı? Bu soru, maçın “baskı bandını” sabitler. Aynı takım normal sezonda farklı, elemede farklı refleks gösterebilir.
+Bu maçın saat dilimi ve timestamp standardı UTC ile hizalı mı? Bu soru, fiş, event ve odds akışını aynı zaman çizgisine oturtur. Zaman hizası bozuksa analiz bozulur.
+Bu maçın veri türü fiş katmanı mı, event katmanı mı, yoksa ikisi birlikte mi? Bu soru, veri kalitesini ve yorum bandını kilitler. Event yoksa “tam analiz” yapılmış gibi davranılamaz.
+Bu maç için data\\\_quality\\\_badge nedir ve “anomali yok” ile karışıyor mu? Bu soru, eksik veri ile normal bantı ayırır. Eksik veri varsa hüküm kurulmaz.
+
+PERİYOT / SEGMENT OKUMA SORULARI
+Bu takım maçın ilk periyotunda nasıl başlıyor ve bu başlangıç profili tekrar ediyor mu? Bu soru, erken tempo ve erken ritim kırılmalarını yakalar. Basketbolda ilk periyot refleksi güçlü DNA sinyalidir.
+İkinci periyot geçişlerinde bench etkisi var mı ve skor dengesi kayıyor mu? Bu soru, rotasyon farkını ölçer. Basketbolda periyot değişimi çoğu zaman yedek katkısıyla belirlenir.
+Üçüncü periyot dönüş refleksi nedir ve devre arası ayarlama etkisi görülüyor mu? Bu soru, koç etkisini ve yarı arası uyarlama gücünü ölçer. Üçüncü periyot DNA’sı kritik banddır.
+Dördüncü periyot kapanış refleksi nedir ve clutch bandı stabil mi? Bu soru, maçın final karar anlarını ölçer. Kapanış DNA’sı tekrar ediyorsa değer notu motorunu besler.
+Periyot bazında tempo değişimi var mı, yoksa tempo maç boyu sabit mi? Bu soru, pace swing’i yakalar. Tempo salınımı varsa turnover, faul ve run davranışları buna bağlanır.
+
+RUN / SKOR KIRILMA SORULARI
+Maçta run oluştu mu ve run’lar hangi periyotlarda kümelendi? Bu soru, momentum kırılma bantlarını çıkarır. Run’lar rastgele değilse takım karakteridir.
+Run başladığında tetikleyici neydi (turnover, hızlı hücum, üçlük serisi, foul-trouble)? Bu soru, run motorunu anlamak içindir. Run tetikleyicisi sabitse takım DNA’sı belirgindir.
+Run bitişi nasıl oluyor (timeout, savunma sertleşmesi, tempo düşüşü, serbest atış)? Bu soru, rakibin run kesme refleksini ölçer. Timeout kullanımı ve savunma adaptasyonu burada okunur.
+Skor kopuşu hangi eşikte gerçekleşiyor ve tekrar eden bir eşik var mı? Bu soru, “kırılma barajını” çıkarır. Aynı takımın kopuş eşiği tekrar ediyorsa karar hızlanır.
+Hakem çizgisi sertleştiğinde run sıklığı artıyor mu? Bu soru, faul bandının run üretimine etkisini ölçer. Faul bandı run’ı büyütebilir veya boğabilir.
+
+FAUL / HAKEM / FOUL-TROUBLE SORULARI
+İlk periyotta faul eşiği erken mi oluştu yoksa geç mi oluştu? Bu soru, maçın hakem bandını erken işaretler. Erken faul eşiği maçın bütün ritmini değiştirir.
+Takım faul sayıları periyotlara nasıl dağılıyor ve kümelenme var mı? Bu soru, disiplin ve kontrol bandını ölçer. Kümelenme varsa kırılma noktası yakalanır.
+Teknik faul veya unsportsmanlike faul geldi mi ve neyi tetikledi? Bu soru, psikolojik kırılma izini çıkarır. Teknik faul çoğu zaman momentum flip yaratır.  
+Foul-trouble yaşayan kritik oyuncu var mı ve bu durum rotasyonu bozdu mu? Bu soru, kadro planının kırılıp kırılmadığını gösterir. Kritik oyuncu faul problemine girince maç DNA’sı değişir.
+Hakem çizgisi maç içinde değişti mi (ilk yarı serbest, ikinci yarı sert)? Bu soru, “aynı oyun, farklı düdük” etkisini ölçer. Bu değişim tekrar ediyorsa lig/hakem profili çıkar.
+
+SERBEST ATIŞ / FT SWING SORULARI
+Serbest atış hacmi normal bantta mı yoksa sapma var mı? Bu soru, maçın serbest atış üzerinden mi yürüdüğünü ölçer. FT hacmi oyunun doğasını değiştirir.
+Kritik anlarda serbest atış kaçırmaları skor kaderine etki etti mi? Bu soru, clutch hassasiyeti ölçer. FT swing, basketbolun en deterministik kırılma yeridir.
+Son 2 dakikada bonus durumu oyunu yavaşlattı mı ve tempo bandı düştü mü? Bu soru, oyun akışının dur-kalk’a dönmesini ölçer. Bu dönüş clutch kararları etkiler.
+
+TURNOVER / TOP KAYBI SORULARI
+Turnover run ile eşleşiyor mu? Bu soru, top kaybının direkt skor kırılmasına dönüşüp dönüşmediğini ölçer.
+Top kaybı periyot bazında artıyor mu yoksa maç boyunca dengeli mi? Bu soru, yorgunluk ve baskı altında karar kalitesini ölçer.
+Arka arkaya turnover zinciri var mı ve momentum flip yarattı mı? Bu soru, “geri dönüş” veya “kopuş” anlarını çıkarır.
+Tempo spike dönemlerinde turnover artıyor mu? Bu soru, hızlı oyunun maliyetini ölçer. Takım hızlı oynarken hata yapıyorsa karakter bandı oluşur.
+
+PICK-AND-ROLL / SET OYUN / HÜCUM KARARLARI (KANIT BANDI)
+Takım set hücumda mı daha stabil, yoksa transition’da mı? Bu soru, takımın hangi oyun tipinde daha güvenli olduğunu belirler.
+Kritik anlarda aynı hücum setine tekrar tekrar dönüyor mu? Bu soru, koçun ve oyuncunun “güvenli şablonunu” ölçer.
+Rakip savunma adaptasyonundan sonra takım planı çözüldü mü? Bu soru, ayarlama savaşını ölçer. Plan çözülüyorsa ikinci yarı DNA’sı zayıf kabul edilir.
+
+SAVUNMA / RİM KORUMA / ÜÇLÜK SAVUNMA (ÖLÇÜM DİLİ)
+Takımın savunma sertliği periyot bazında dalgalanıyor mu? Bu soru, savunma stabilitesini ölçer. Stabil değilse run’lara kapı açılır.
+Üçlük serilerine izin veriliyor mu ve bu seri aynı oyunculardan mı geliyor? Bu soru, savunma zaafı haritası çıkarır.
+Rim koruma zayıflığı veya faul problemine dönüşen bir iç savunma kırılması var mı? Bu soru, boyalı alanın çöktüğü senaryoyu yakalar.
+
+KRİTİK OYUNCU / YILDIZ BAĞIMLILIĞI / BENCH FARKI
+Takımın skor üretimi bir-iki oyuncuya mı bağımlı yoksa dağılıyor mu? Bu soru, yıldız bağımlılığını ölçer. Bağımlılık varsa kritik oyuncu kartı ana anahtardır.
+Kritik oyuncu kenardayken takımın net tempo ve skor bandı düşüyor mu? Bu soru, “on/off etkisini” ölçer. Bench ile kapanmıyorsa bağımlılık serttir.
+Bench katkısı run başlatıyor mu yoksa yalnız kapatma mı yapıyor? Bu soru, bench’in rolünü belirler. Bazı takımlar bench ile maçı kazanır, bazıları bench ile maçı kaybetmez.
+Kritik oyuncu faul problemine girince koç paniğe mi gidiyor yoksa yönetebiliyor mu? Bu soru, koçun kriz yönetimini ölçer.
+
+TIMEOUT / CHALLENGE / OYUN DURMASI
+Timeout kullanımı run kesiyor mu yoksa geç mi kalıyor? Bu soru, koçun müdahale zamanlamasını ölçer. Geç timeout tekrar ediyorsa DNA’dır.
+Challenge/itiraz zinciri oyunu dur-kalk ritmine sokuyor mu? Bu soru, late-game disruption bandını ölçer. Dur-kalk ritmi, tempo ve mental kırılma üretir.
+Son 2 dakikada mola trafiği aşırı mı ve oyun akışı parçalanıyor mu? Bu soru, kapanışın “basketbol değil hakem/serbest atış maçına” dönüp dönmediğini ölçer.
+
+CLUTCH BANDI (SON 5 DAKİKA)
+Son 5 dakikada takımın hücum kararı stabil mi yoksa panik mi? Bu soru, clutch DNA’sını ölçer. Panik tekrar ediyorsa düşük güven bandı oluşur.
+Son 5 dakikada top kaybı artıyor mu? Bu soru, baskı altında karar kalitesini ölçer.
+Son 5 dakikada faul ve teknik faul artışı var mı? Bu soru, mental stabiliteyi ölçer. Artış varsa disiplin kırılması kartlaşır.
+Son 5 dakikada serbest atış çizgisi kader belirliyor mu? Bu soru, FT swing’in clutch’a etkisini ölçer.
+
+VERİ UYUŞMAZLIĞI / DOĞRULAMA (SESSİZ BOZULMA KİLİDİ)
+ İzleyici raporları ile event akışı çelişiyor mu? Bu soru, yedek/doğrulama rolünün tetikleme sebebidir. Çelişki varsa data\\\_quality düşürülür.
+Fiş verisi ile play-by-play temel olay türleri uyuşuyor mu? Bu soru, veri sağlayıcı hatasını yakalar. Uyuşmazlık varsa hüküm yoktur.
+Event akışı eksikse hangi periyotlar boş kaldı? Bu soru, analiz bandını sınırlar. Eksik periyot varsa “tam okuma” yapılamaz.
+
+BASKETBOL ETİKET KATALOĞU (KÜTÜPHANE SÖZLÜĞÜ) — ÇEKİRDEK + PERİYOT + RUN + FAUL + CLUTCH
+Bu katalog dışı etiket üretilemez. Etiketler serbest metin değildir; sabit ad ve sabit değer bantlarıyla çalışır.
+
+KONTEKST / DUVAR ETİKETLERİ (ZORUNLU)
+timestamp\\\_utc,country\\\_ref,league\\\_ref,season\\\_id,season\\\_phase,competition\\\_type,cup\\\_flag,team\\\_ref,context\\\_scope,context\\\_window\\\_type
+season\\\_phase yalnız şu değerleri alır: pre\\\_season, season\\\_start, season\\\_mid, season\\\_end, off\\\_season,competition\\\_type yalnız şu değerleri alır: league, cup, continental, national\\\_team
+cup\\\_flag yalnız şu değerleri alır: true, false,context\\\_scope yalnız şu değerleri alır: team, match, league
+context\\\_window\\\_type yalnız şu değerleri alır: pre\\\_match\\\_window, in\\\_match\\\_window, post\\\_match\\\_window, off\\\_season\\\_weekly
+
+MAÇ ADRESİ (ZORUNLU)
+match\\\_ref,kickoff\\\_time\\\_utc,home\\\_team\\\_ref,away\\\_team\\\_ref,venue\\\_type,is\\\_home\\\_team\\\_context,referee\\\_ref,data\\\_layer\\\_status,venue\\\_type yalnız şu değerleri alır: home, away, neutral,is\\\_home\\\_team\\\_context yalnız şu değerleri alır: true, false,data\\\_layer\\\_status yalnız şu değerleri alır: slip\\\_only, events\\\_only, slip\\\_plus\\\_events
+
+PERİYOT SEGMENT ETİKETLERİ (ZORUNLU)
+period\\\_1\\\_band,period\\\_2\\\_band,period\\\_3\\\_band,period\\\_4\\\_band,overtime\\\_band
+Her periyot alanı yalnız şu değerleri alır: normal\\\_band, tempo\\\_up, tempo\\\_down, run\\\_against, run\\\_for, control\\\_lost, control\\\_gained, foul\\\_spike, turnover\\\_spike
+
+TEMPO / RİTİM (ZORUNLU)
+pace\\\_band\\\_overall,pace\\\_profile\\\_shape,rhythm\\\_disruption\\\_band,pace\\\_band\\\_overall yalnız şu değerleri alır: low, medium, high,pace\\\_profile\\\_shape yalnız şu değerleri alır: flat, rising, falling, volatile,rhythm\\\_disruption\\\_band yalnız şu değerleri alır: none, minor, major
+
+RUN / MOMENTUM (ZORUNLU)
+run\\\_presence,run\\\_major\\\_count\\\_band,run\\\_trigger\\\_primary,run\\\_stop\\\_method\\\_primary,run\\\_presence yalnız şu değerleri alır: none, present,run\\\_major\\\_count\\\_band yalnız şu değerleri alır: none, 1, 2, 3\\\_plus,run\\\_trigger\\\_primary yalnız şu değerleri alır: none, turnover\\\_run, three\\\_point\\\_run, fastbreak\\\_run, foul\\\_trouble\\\_run, defensive\\\_stop\\\_run,run\\\_stop\\\_method\\\_primary yalnız şu değerleri alır: none, timeout, defensive\\\_adjustment, free\\\_throws, pace\\\_drop
+
+FAUL / HAKEM (ZORUNLU)
+foul\\\_threshold\\\_early\\\_flag,foul\\\_band\\\_overall,technical\\\_foul\\\_flag,unsportsmanlike\\\_flag,foul\\\_trouble\\\_flag,foul\\\_threshold\\\_early\\\_flag yalnız şu değerleri alır: none, present,foul\\\_band\\\_overall yalnız şu değerleri alır: low, medium, high,technical\\\_foul\\\_flag yalnız şu değerleri alır: none, present,unsportsmanlike\\\_flag yalnız şu değerleri alır: none, present,foul\\\_trouble\\\_flag yalnız şu değerleri alır: none, present
+
+SERBEST ATIŞ / FT SWING (ZORUNLU)
+ft\\\_volume\\\_band,ft\\\_swing\\\_flag,bonus\\\_late\\\_game\\\_flag,ft\\\_volume\\\_band yalnız şu değerleri alır: low, medium, high,ft\\\_swing\\\_flag yalnız şu değerleri alır: none, present,bonus\\\_late\\\_game\\\_flag yalnız şu değerleri alır: none, present
+
+TURNOVER (ZORUNLU)
+turnover\\\_band\\\_overall,turnover\\\_cluster\\\_period,turnover\\\_run\\\_link\\\_flag,turnover\\\_band\\\_overall yalnız şu değerleri alır: low, medium, high,turnover\\\_cluster\\\_period yalnız şu değerleri alır: none, period\\\_1, period\\\_2, period\\\_3, period\\\_4, overtime,turnover\\\_run\\\_link\\\_flag yalnız şu değerleri alır: none, present
+
+CLUTCH / SON 5 DAKİKA (ZORUNLU)
+clutch\\\_band,late\\\_game\\\_disruption\\\_flag,late\\\_game\\\_panic\\\_flag,clutch\\\_band yalnız şu değerleri alır: stable, unstable,late\\\_game\\\_disruption\\\_flag yalnız şu değerleri alır: none, present,late\\\_game\\\_panic\\\_flag yalnız şu değerleri alır: none, present
+
+BENCH / YILDIZ BAĞIMLILIĞI (ZORUNLU)
+star\\\_dependency\\\_band,bench\\\_impact\\\_band,critical\\\_player\\\_foul\\\_trouble\\\_flag,star\\\_dependency\\\_band yalnız şu değerleri alır: low, medium, high,bench\\\_impact\\\_band yalnız şu değerleri alır: low, medium, high,critical\\\_player\\\_foul\\\_trouble\\\_flag yalnız şu değerleri alır: none, present
+
+DATA QUALITY (ZORUNLU)
+data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
+
+FAZ-26
+BASKETBOL — KÜTÜPHANE + ETİKETLİ KARTLAR + MARKET/BOOKMAKER + RAPOR ŞABLONLARI | ARŞİV PAKETİ (NİHAİ / KODCUYA VERİLECEK / TEK DOSYA)
+Aşağıdaki metin yoruma kapalı, bağlayıcı ve birebir uygulanması zorunlu uygulama promptudur. Bu metinde yazan her adım, her sıra, her rol, her yapı ve her isimlendirme değiştirilemez. Kod yazarı “daha iyisi olur”, “şöyle yapalım”, “şunu çıkaralım”, “bunu ekleyelim” gibi hiçbir yorum, öneri ve alternatif üretmez. Metinde olmayan hiçbir özellik eklenmez. Metinde olan hiçbir özellik çıkarılmaz. Yalnızca teknik olarak imkânsızlık varsa “şu madde teknik olarak imkânsız” cümlesiyle bildirir ve uygulama durdurulur. Çözüm önerisi getirilmez, soru sorulmaz, fikir üretilmez. Bu paket bir taslak değildir. Tamamlanmış ve kilitlenmiş sistem mimarisidir. Bu proje “bahis sitesi” kurmaz. Bu proje “bahse yönlendirme” yapmaz. Bu proje sadece istatistiksel analiz üretir ve gösterir. Her çıktı “istatistiksel değerlendirme” olarak kalacaktır. Bu sistemin tüm çıktıları “tahmin”, “öneri”, “yönlendirme”, “kesin sonuç” değildir. “Kesin kazanır, banko, tek” gibi dil yasaktır. Sistemin adı: Spor Anomali \\\& Örüntü Motoru (n8n tabanlı). Sistemin amacı: basketbol için haber + piyasa/oran + maç içi olay verilerini tek hiyerarşide toplamak, örüntü üretmek ve olağan akışa aykırı sapmaları “anomali” olarak işaretlemektir. Sistemin ürettiği şeyler: kütüphanelere işlenmiş ham veri, kütüphanelere işlenmiş etiketli veri, örüntü kütüphanesine yazılmış örüntü haritaları, anomali skoru + geçmiş etki oranı ve opsiyonel yönetici alarm kayıtlarıdır. Veri deposu teknolojisi JSON dosya tabanlı kütüphane deposudur. Kullanılacak formatlar JSON (kalıcı dosyalar) ve JSONL (büyük zaman serileri ve event/log akışları) olacaktır. Kod yazarı SQL/NoSQL/Postgres/MongoDB/Redis kullanmaz; yalnız dosya sistemi üzerinde JSON/JSONL üretir, okur ve günceller. Dosya yolu zorunludur: tüm dosyalar n8n proje dizininde ./library/ altında tutulur; absolute path yoktur, sadece relative path vardır. JSON dosyaları sınırsız büyütülmez; ham veri günlük dosyalara yazılır (YYYY-MM-DD.json), eskiler ./library/archive altına taşınır; index dosyaları her çalıştırma sonunda yeniden üretilir. Kütüphane hiyerarşisi sabittir ve bozulmaz: spor türü → ülke → lig → takım → sezon → dönem → maç → zaman bağlamı. Dönem tanımı sabittir: sezon başı / sezon ortası / sezon sonu; sezon ortası sabiti: devre arası son 3 hafta + ikinci devre başı ilk 3 hafta (“sezon ortası kritik pencere” etiketi). Sistem evreleri iki evredir: Evre-1 bootstrap (geçmiş veri çek, yerleştir, etiketle, örüntü haritaları üret, kalibrasyonu sabitle) + Evre-2 live (yeni maçları işle, kütüphaneyi büyüt, örüntü duvarını güncelle, anomali çıktıları üret). Veri giriş katmanı 3 ana kaynaktır: haber (newsapi.org) + piyasa/oran (oddsapi.io) + canlı event (basketbol live scores + match events ayrı API). Live event kaynağı newsapi/oddsapi değildir, ayrı kaynaktır. Gizli bilgiler manuel girilir; kod yazarı anahtar istemez, değer uydurmaz, sadece alan açar. 
+
+ZORUNLU KONFİGÜRASYON DOSYASI: 
+./library/config.json | alanlar: newsapi\\\_key, oddsapi\\\_key, live\\\_event\\\_api\\\_key, live\\\_event\\\_provider\\\_name, live\\\_event\\\_endpoint\\\_base, odds\\\_snapshot\\\_interval\\\_minutes, odds\\\_required\\\_markets, listed\\\_sports, basketbol\\\_league\\\_allowlist, cup\\\_allowlist, reference\\\_dictionary\\\_source, mode(public\\\_only/vip\\\_enabled). config.json boşsa sistem pasif modda kırılmadan çalışır. Kimlik/registry standardı zorunludur: ./library/basketball\\\_index.json içinde reference\\\_dictionary bloğu bulunur, tüm etiketleme sadece bu sözlükten yapılır. Eşleşmeyen kayıtlar unmapped rafına yazılır; yakın eşleştirme ile zorla atama yapılmaz. Maçlar sistem match\\\_id ile sabitlenir; modüller yalnız match\\\_id üzerinden bağlanır. Bootstrap kapsamı: zorunlu minimum son 3 tamamlanmış sezon indirilir ve kütüphanelere işlenir; API destekliyorsa daha fazlası çekilebilir ama minimum 3 sezondur. Basketbol modülü raf seti sabittir: basketbol kütüphanesi + haber kütüphanesi + oran/piyasa kütüphanesi + örüntü kütüphanesi + kupa kütüphanesi. Sosyal medya yoktur, dış yayın kanalı yoktur; çıktılar yalnız kütüphane dosyalarına ve index dosyalarına yazılır. Haber kütüphanesi ham sinyaldir, yorum yoktur: raf sırası = spor → ülke → lig → takım → sezon → dönem → zaman bağlamı → haber kaynağı → haber türü → haber tonu → haber metni. Haber tonu zorunlu: pozitif/nötr/negatif. Zaman bağlamı zorunlu: maç öncesi/maç günü-maç anı/maç sonrası/maçtan sonraki günler. Haber türü zorunlu: ajans/köşe/röportaj/yorum/sızıntı. Oran/piyasa kütüphanesi kolektif beklenti kaydıdır, tahmin değildir. Bookmaker seti sabittir: bet365, pinnacle, william hill, betfair, unibet, bwin, 888sport. Raf sırası = spor → ülke → lig → takım → sezon → dönem → maç → timestamp → bookmaker → market → line → odds\\\_set. Snapshot aralığı odds\\\_snapshot\\\_interval\\\_minutes ile zorunludur; odds\\\_required\\\_markets boş bırakılamaz (en az 1 market). Snapshot < 2 ise oran sapması hesaplanmaz; sapma skoru “hesaplanamadı/veri yetersiz” bandında kalır ve “anomali yok” yazılamaz. Maç/saha kütüphanesi maç içi olayları kaydeder: periyot skorları, faul sayıları, teknik faul, diskalifiye, top kaybı kümeleri, run, timeout, momentum kırılımları, son periyot kırılma noktaları. Hakem rafı ölçüm taşır (faul standardı/düdük yoğunluğu/bonus giriş/teknik faul eğilimi/maç sonu düdük profili), yorum ve suçlama dili taşımaz. Örüntü kütüphanesi 3 girdiyi birleştirir: basın/haber + oran/piyasa + maç içi olay. Çıktı: örüntü kodu + tekrar sayısı + geçmiş etki oranı + anomaly\\\_score. Raflar: ana örüntü rafı + bayraklı/anomali örüntü rafı. Bu raf “şike” olarak adlandırılamaz; yalnız “olağan dışı sapma”dır. Örüntü üretimi 2 aşamalıdır, sıra değişmez: Aşama-1 (topla/ayrıştır/yerleştir/index üret) + Aşama-2 (geriye dönük tarama/örüntü çıkar/normal davranış referansı/anomaly\\\_score kalibrasyonu). Aşama-2 kalibrasyonu bootstrap son 5 sezon verisi üzerinden sabitlenir; kod yazarı elle formül uydurmaz. Anomali skor formülü sabittir: anomaly\\\_score = (basın tonu sapması puanı) + (oran sapması puanı) + (maç içi kritik olay puanı). Bu 3 puanın 0–100 normalizasyonu ve ağırlıkları Aşama-2 tarafından üretilir ve sabitlenir. Aşama-2 tamamlanmadan anomalies boş veya “henüz hesaplanmadı” olabilir, bu hata değildir. Canlı event: bu sistemde insan canlı izleyici yoktur; event verisi API’den gelir. Live event yoksa maç içi kritik olay puanı 0 kalır ve sistem kırılmaz. Live event aktifse JSONL event alanları: match\\\_id, sport\\\_type, event\\\_type, event\\\_minute, team\\\_ref, timestamp. Bu modülde runtime “soru üreten motor” yoktur; arşivden import edilse bile runtime sözleşmesine dahil edilmez. Soru adedi hedefi yoktur; kapsama prensiple kilitlenir. low/medium/high bantları sadece basketbol bağlamında kullanılır; ganyan dili basketbola taşınmaz; “pist/mesafe/binici” etiketleri basket modülünde kullanılmaz. 
+
+Zorunlu index dosyaları her çalıştırmada üretilir: 
+./library/basketball\\\_index.json, ./library/basketball\\\_summary.json, ./library/basketball\\\_today\\\_matches.json, ./library/basketball\\\_anomalies\\\_public.json, ./library/basketball\\\_anomalies\\\_vip.json. Dosyalar boş olabilir ama üretimi zorunludur. 
+
+“Anomali yok” yalnız sapma skoru hesaplanmış ve eşik altında kalmış durumda kullanılabilir; veri eksikliği “anomali yok” yazılamaz. Log/denetim zorunludur: hangi veri çekildi, hangi kütüphaneye yazıldı, hangi örüntü eşleşti, hangi anomali bayrağı yandı, hangi kayıt unmapped kaldı, hangi data\\\_quality\\\_badge uygulandı. Bu promptta tanımlanan yapı tamamlanmış ve kilitlenmiş bir basketbol sistem mimarisidir. Kod yazarı metni yorumlamaz; ekleme/çıkarma yapmaz; sırayı bozmaz; isimleri değiştirmez; branş dışı etiket üretmez; veri yoksa uydurmaz.\*\*
+
+FAZ-27
+BASKETBOL/FUTBOL — KİMLİK KARTI ÖZEL KİMLİK ÜRETİM STANDARDI (KİLİT / PROVIDER ID DRIFT KORUMASI) |
+provider ID değişebilir; bu nedenle tüm varlık kartları provider ID ile tek başına yaşamaz; her kartta ayrıca sabit canonical\\\_identity\\\_key zorunludur; canonical\\\_identity\\\_key deterministik bileşenlerden üretilir, veri yoksa unknown yazılır, uydurma yapılmaz; takım kartı takım rafında kalır, kadro takımda snapshot olabilir ama oyuncu kimliği oyuncu kartında yaşar; oyuncu kartı oyuncunun peşinde taşınır ve geçmişten geleceğe oyunculuk hayatı boyunca tek kartta birikir; koç kartı koçun peşinde taşınır ve kariyeri boyunca tek kartta birikir; hakem kartı hakemin peşinde taşınır ve kariyeri boyunca tek kartta birikir; bu kimlik drift kontrolü içindir, tahmin/öneri üretmez. 
+
+Takım Kartı Kimliği 
+(TEAM\\\_CANON\\\_ID) | ülke + lig + takım adı + şehir + renk + varsa stat ismi + kuruluş tarihi(GGAAYY) + cinsiyet(male/female/mixed/unknown) + sayaç(00001–10000, auto) birleşimidir; sayaç elle yazılmaz. 
+
+Oyuncu Kartı Kimliği 
+(PLAYER\\\_CANON\\\_ID) | ad soyad + doğum tarihi + pozisyon + ilk lisans aldığı takım + başladığı yıl + uyruk + cinsiyet(male/female/unknown) + en son oynadığı takım + sayaç(000001–100000, auto) birleşimidir; sayaç elle yazılmaz. 
+
+Hoca Kartı Kimliği 
+(COACH\\\_CANON\\\_ID) | ad soyad + doğum tarihi + uyruk + cinsiyet(male/female/unknown) + başladığı kulüp + başladığı yıl + sayaç(00001–10000, auto) birleşimidir; sayaç elle yazılmaz. 
+
+Hakem Kartı Kimliği 
+(REFEREE\\\_CANON\\\_ID) | ad soyad + doğum tarihi + uyruk + cinsiyet(male/female/unknown) + başladığı yıl + statüsü + sayaç(000001–100000, auto) birleşimidir; sayaç elle yazılmaz; statü veri yoksa unknown yazılır. Kimlik Drift Tespiti (Kilit Davranış) | yeni provider ID geldiğinde canonical\\\_identity\\\_key eşleşiyorsa sistem same\\\_entity\\\_id\\\_drift\\\_detected işaretler, provider\\\_id günceller, canonical kimliği değiştirmez; canonical\\\_identity\\\_key üretilemeyecek kadar eksik veri varsa kayıt data\\\_quality\\\_badge ile güvenli saklanır, zorla eşleştirme yapılmaz.\*\*
+
+
+BASKETBOL — CANLI İZLEME / RAPORLAMA / KÜTÜPHANEYE YAZIM | OTOMASYON EKİBİ ÇALIŞMA TALİMATI (GENİŞ SÜRÜM / ROL TABLOSU GÖMÜLÜ / KODCUYA VERİLECEK)
+Bu sistemde canlı insan yoktur. Watcher/Reporter/Analyst/Librarian/Decision Engine rollerinin tamamı otomasyon ajanlarıdır. Tek insan operatör kullanıcıdır; operatör yalnız manuel tetikleme yapar. Sistem bahis sistemi değildir; maç sonucu veya bahis önerisi üretmez; çıktılar yalnız istatistiksel ölçüm, zaman hizası ve bant sapması işaretidir. ROL TABLOSU | Watcher Agents: 14 | Reporter Agents: 4 | Analyst Agents: 1 | Librarian: 1 | Decision Engine: 1 | Toplam: 21 | Tek Operatör: 1 | Not: “14 izleyici + 4 raportör + 1 analist + 1 kütüphaneci” sabittir; Decision Engine bağımsız modüldür ve bahis önerisi üretmeden yalnız skor/tempo/şema sapmasını karar etiketi olarak işaretler.
+ 
+SİSTEMİN YAPTIĞI İŞ |
+canlı olay izlerini toplar, tekilleştirir, çelişkiyi çözmeden işaretler, deterministik şemada kütüphaneye işler; veri eksikse “anomali yok” denmez, data\\\_quality\\\_badge düşürülür; basın rafı bağlamdır, maç içi eksik event basınla tamamlanamaz.
+
+KİMLİK/REFERENCE POLİTİKASI | 
+serbest metin kimlik yoktur; team\\\_ref/league\\\_ref/country\\\_ref/person\\\_ref yalnız reference\\\_dictionary’den gelir; unmapped zorla eşlenmez; reference\\\_dictionary dışında benzer isim eşlemesi yapılmaz; unmapped kayıtlar güvenlik bandıdır ve korunur.
+ 
+BOŞ BIRAKMA / UYDURMA YASAĞI |
+veri yokken alan boş bırakılmaz; unknown/none/inactive/unmapped bantları deterministik kullanılır; “anomali yok” hükmü veri eksikliğiyle yazılamaz.
+ 
+ROL SETİ | 
+Watcher: ham iz toplar, yorum yazmaz, paket dışı kayıt girmez, karar motoruna yazmaz | Reporter: tekilleştirir, çelişkiyi işaretler, yorum yazmaz | Analyst: paketleri birleştirir, informed\\\_by kurar, ölçüm bandı üretir, tahmin/bahis önerisi üretmez | Librarian: tek yazıcıdır, şema dışına çıkamaz, serbest metin kimlik kullanamaz, unmapped zorlamaz, eksikleri örtmez, append\\\_only çalışır | Decision Engine: yalnız Analyst raporundan beslenir, ham veri değiştiremez, bahis önerisi vermez, karar etiketleri üretir, kütüphaneye yazmaz. 
+
+ZAMANLAMA / KAYIT MODELİ |
+olay-anı bazlıdır; otomatik timestamp\\\_utc alınır; 30 saniyelik indeks bandı otomatik atanır; manuel band seçimi/düzeltmesi yoktur; olay yoksa no\\\_event ile veri doldurulmaz, olay yokluğu yalnız kapsama haritasında gösterilir. 30s indeks bandı | Q1\\\_00:00-00:29, Q1\\\_00:30-00:59 … Q4\\\_39:30-39:59 | ek bantlar: clutch\\\_02:00, clutch\\\_01:00, clutch\\\_00:30. 
+
+PAKETLEME | 4 paket | Watcher dağılımı 4+4+3+3 | her paket 1 Reporter | Analyst üst birleştirici | Librarian nihai yazıcı. PAKET-1(BP1)
+
+SKOR/RUN/MOMENTUM | 
+score\\\_run\\\_start, score\\\_run\\\_end, lead\\\_change, tie\\\_game, momentum\\\_shift, quarter\\\_close\\\_behavior, clutch\\\_run.
+ 
+PAKET-2(BP2) FAUL/HAKEM/FT |
+team\\\_foul\\\_cluster, star\\\_foul\\\_trouble, bonus\\\_entered, technical\\\_foul, flagrant\\\_foul, free\\\_throw\\\_swing, referee\\\_line\\\_shift\\\_soft, referee\\\_line\\\_shift\\\_hard. 
+
+PAKET-3(BP3) ROTASYON/5’Lİ/KOÇ |
+timeout\\\_called, timeout\\\_run\\\_break, lineup\\\_change, closing\\\_lineup\\\_set, early\\\_bench\\\_injection, coach\\\_adjustment\\\_visible.
+ 
+PAKET-4(BP4) ŞUT/3PT/TOP KAYBI | 
+three\\\_point\\\_streak\\\_hit, three\\\_point\\\_streak\\\_miss, shot\\\_quality\\\_drop, paint\\\_attack\\\_shift, turnover\\\_cluster, live\\\_ball\\\_turnover\\\_fastbreak, pace\\\_spike, pace\\\_drop.
+ 
+WATCHER HAM İZ (ZORUNLU ŞEMA) |
+watch\\\_trace\\\_ref:AUTO | match\\\_ref:REQUIRED | timestamp\\\_utc:REQUIRED | index\\\_band\\\_auto\\\_30s:REQUIRED | package\\\_id:REQUIRED(BP1/BP2/BP3/BP4) | watcher\\\_id:REQUIRED | event\\\_type:REQUIRED | event\\\_subtype:OPTIONAL | team\\\_side:home/away/none | team\\\_ref:OPTIONAL | person\\\_ref:OPTIONAL(none) | league\\\_ref:OPTIONAL | country\\\_ref:OPTIONAL | confidence\\\_band:low/medium/high | evidence\\\_level:low/medium/high | source\\\_type:live\\\_feed/stats\\\_feed/odds\\\_feed | data\\\_quality\\\_badge:low/medium/high | note:kısa deterministik açıklama(yorum yok).
+ 
+REPORTER PAKET RAPORU (ZORUNLU ŞEMA) |
+package\\\_report\\\_ref:AUTO | match\\\_ref:REQUIRED | package\\\_id:REQUIRED | reporter\\\_id:REQUIRED | event\\\_sequence:REQUIRED | deduplication\\\_map:REQUIRED | conflict\\\_list:REQUIRED | unknown\\\_fields\\\_map:REQUIRED | package\\\_data\\\_quality\\\_badge:low/medium/high.
+
+ANALYST TEK MAÇ RAPORU (ZORUNLU ŞEMA) |
+match\\\_report\\\_ref:AUTO | match\\\_ref:REQUIRED | merged\\\_packages:REQUIRED(BP1..BP4) | final\\\_conflict\\\_resolution:mark\\\_only | overall\\\_data\\\_quality\\\_badge:low/medium/high | anomaly\\\_flags:none/weak\\\_signal/strong\\\_signal | informed\\\_by:match\\\_card\\\_ref|match\\\_events\\\_ref|odds\\\_timeline\\\_ref | delivery\\\_policy:no\\\_prediction|no\\\_betting\\\_advice | kural:evidence\\\_level/confidence\\\_band yüksek olsa bile data\\\_quality\\\_badge düşükse çözüm yapılmaz, yalnız mark\\\_only. 
+
+LIBRARIAN YAZIM KURALLARI (SERT) |
+deterministik raflara yazar | serbest metin kimlik yok | reference\\\_dictionary dışı eşleme yok | unmapped zorla map yok | basın rafı maç içi rafları doldurmaz | veri yoksa boş bırakmaz unknown/none/inactive | eksik örtmez data\\\_quality\\\_badge düşürür | silmez append\\\_only | aynı match\\\_ref güncellenirse sürümleme yapar. 
+
+DECISION ENGINE |
+yalnız Analyst raporundan beslenir | ham veriyi üretemez/değiştiremez | tahmin/bahis önerisi vermez | deterministik karar etiketleri üretir | kütüphaneye yazmaz karar\\\_motoru rafında saklar | decision\\\_tags: run\\\_instability\\\_high, foul\\\_risk\\\_high, clutch\\\_control\\\_low, turnover\\\_spike\\\_high, three\\\_point\\\_variance\\\_high, rotation\\\_disruption\\\_high, referee\\\_line\\\_shift\\\_detected, tempo\\\_control\\\_shifted. Kapanış Notu | Basketbol Canlı İzleme + Kütüphane Yazım Talimatı — geniş sürüm + rol tablosu + 30s indeksleme tamamlandı / tek dosya olarak kullanılacak.
+
+BASKETBOL — MARKET KÜTÜPHANESİ (ANA TAHTA + YAN TAHTA) | FAZ-1 TESLİMİ (Kart + Etiket Duvarı + Soru Kütüphanesi / TEK PARÇA BİRLEŞİK)
+library\\\_ref:BASKETBALL\\\_MARKET\\\_LIBRARY\\\_V1 | kart\\\_durumu:FAZ-1\\\_SKELETON\\\_ACTIVE | politika: market listesi deterministik/sabit; market\\\_ref ile yaşar; isim serbest metin değildir; provider map ile bağlanır; unmapped korunur; eksik veri inactive/unknown bantlarıyla taşınır; bahis önerisi yok; zaman hizası ve bant sapması ölçer | not: ana tahta + yan tahta market rafı kurulur; odds akışı ve BOOKMAKER\\\_ALLOWLIST Faz-2’de marketlere bağlanır.
+
+BASKETBOL — ANA TAHTA MARKETLER (30 ANA MARKET / DETERMINİSTİK LİSTE)
+BB\\\_MKT\\\_001 | Moneyline(Match Winner) | group:core\\\_result | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_002 | Point Spread(Handicap) | group:spread | required:line,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_003 | Total Points(O/U) | group:totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_004 | 1st Half Winner | group:halftime | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_005 | 1st Half Spread | group:halftime\\\_spread | required:line,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_006 | 1st Half Total Points | group:halftime\\\_totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_007 | 1st Quarter Winner | group:quarter | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_008 | 1st Quarter Spread | group:quarter\\\_spread 
+
+| required:line,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_009 | 1st Quarter Total Points | group:quarter\\\_totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_010 | 2nd Quarter Winner | group:quarter | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_011 | 2nd Quarter Spread | group:quarter\\\_spread | required:line,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_012 | 2nd Quarter Total Points | group:quarter\\\_totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_013 | 3rd Quarter Winner | group:quarter | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_014 | 3rd Quarter Spread | group:quarter\\\_spread | required:line,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_015 | 3rd Quarter Total Points | group:quarter\\\_totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_016 | 4th Quarter Winner | group:quarter | required:home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_017 | 4th Quarter Spread | group:quarter\\\_spread | required:line,home\\\_price,away\\\_price | status:active 
+
+| BB\\\_MKT\\\_018 | 4th Quarter Total Points | group:quarter\\\_totals | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_019 | Team Total Points | group:team\\\_totals | required:team\\\_side,line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_020 | Race To X Points | group:race | required:target\\\_points,home\\\_price,away\\\_price | status:active | BB\\\_MKT\\\_021 | Winning Margin | group:margin | required:margin\\\_price\\\_map | status:active | BB\\\_MKT\\\_022 | Highest Scoring Quarter | group:quarter\\\_meta | required:q1\\\_price,q2\\\_price,q3\\\_price,q4\\\_price | status:active | BB\\\_MKT\\\_023 | Lowest Scoring Quarter | group:quarter\\\_meta | required:q1\\\_price,q2\\\_price,q3\\\_price,q4\\\_price | status:active | BB\\\_MKT\\\_024 | Team To Score First(First Points) | group:first\\\_event | required:home\\\_price,away\\\_price | status:active 
+
+| BB\\\_MKT\\\_025 | Total Points Odd/Even | group:totals\\\_parity | required:odd\\\_price,even\\\_price | status:active | BB\\\_MKT\\\_026 | Both Teams Over X(Alt Combo) | group:combo | required:line\\\_a,line\\\_b,yes\\\_price,no\\\_price | status:active | BB\\\_MKT\\\_027 | Total 3PT Made(O/U) | group:three\\\_point | required:line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_028 | Team Total 3PT Made | group:team\\\_three\\\_point | required:team\\\_side,line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_029 | Player Points(O/U) | group:player\\\_points | required:player\\\_ref,line,over\\\_price,under\\\_price | status:active | BB\\\_MKT\\\_030 | Player Rebounds(O/U) | group:player\\\_rebounds | required:player\\\_ref,line,over\\\_price,under\\\_price | status:active
+
+BASKETBOL — YAN TAHTA MARKETLER (30 EXTENDED / NİŞ RAF)
+BB\\\_XMKT\\\_001 | Player Assists(O/U) | group:player\\\_assists | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_002 | Player Steals(O/U) | group:player\\\_steals | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_003 | Player Blocks(O/U) | group:player\\\_blocks | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_004 
+
+| Player Turnovers(O/U) | group:player\\\_turnovers | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_005 | Player 3PT Made(O/U) | group:player\\\_three\\\_point | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_006 | Player Double-Double | group:player\\\_milestones | required:player\\\_ref,yes\\\_price,no\\\_price | status:inactive | BB\\\_XMKT\\\_007 | Player Triple-Double | group:player\\\_milestones | required:player\\\_ref,yes\\\_price,no\\\_price | status:inactive | BB\\\_XMKT\\\_008 | Team Total Rebounds | group:team\\\_rebounds | required:team\\\_side,line,over\\\_price,under\\\_price 
+
+| status:inactive | BB\\\_XMKT\\\_009 | Team Total Assists | group:team\\\_assists | required:team\\\_side,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_010 | Team Total Turnovers | group:team\\\_turnovers | required:team\\\_side,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_011 | Player PRA(P+R+A) | group:player\\\_combo | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_012 | Player PA(P+A) | group:player\\\_combo | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_013 | Player PR(P+R) | group:player\\\_combo | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_014 | Player RA(R+A) | group:player\\\_combo | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_015 | Player Points 1st Half | group:player\\\_points\\\_split 
+
+| required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_016 | Player Points 1st Quarter | group:player\\\_points\\\_split | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_017 | Player Rebounds 1st Half | group:player\\\_rebounds\\\_split | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_018 | Player Assists 1st Half | group:player\\\_assists\\\_split | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_019 | Player To Score 20+ | group:player\\\_milestones | required:player\\\_ref,yes\\\_price,no\\\_price | status:inactive 
+
+| BB\\\_XMKT\\\_020 | Player To Score 25+ | group:player\\\_milestones | required:player\\\_ref,yes\\\_price,no\\\_price | status:inactive | BB\\\_XMKT\\\_021 | Player To Score 30+ | group:player\\\_milestones | required:player\\\_ref,yes\\\_price,no\\\_price | status:inactive | BB\\\_XMKT\\\_022 | First Basket Scorer | group:first\\\_event | required:player\\\_ref,yes\\\_price | status:inactive | BB\\\_XMKT\\\_023 | Last Basket Scorer | group:last\\\_event | required:player\\\_ref,yes\\\_price | status:inactive | BB\\\_XMKT\\\_024 | First Team To Make 5 Threes | group:team\\\_race | required:home\\\_price,away\\\_price | status:inactive | BB\\\_XMKT\\\_025 | Total Free Throws Made(O/U) 
+
+| group:free\\\_throws | required:line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_026 | Team Total Free Throws Made | group:team\\\_free\\\_throws | required:team\\\_side,line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_027 | Total Turnovers(Match) | group:turnovers | required:line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_028 | Alternative Spread(Alt Handicap) | group:alt\\\_spread | required:line,home\\\_price,away\\\_price | status:inactive | BB\\\_XMKT\\\_029 | Alternative Totals(Alt O/U) | group:alt\\\_totals | required:line,over\\\_price,under\\\_price | status:inactive | BB\\\_XMKT\\\_030 | Player Points+3PT Combo | group:player\\\_combo | required:player\\\_ref,line,over\\\_price,under\\\_price | status:inactive
+
+
+BASKETBOL — MARKET ETİKET DUVARI (FAZ-1 DETERMINİSTİK) | unknown:veri\\\_yok/doğrulanmadı | none:alan\\\_geçerli\\\_içerik\\\_yok | inactive:provider\\\_yok/market\\\_kapalı | unmapped:provider\\\_eşleşmesi\\\_yok | active:takipte | inactive\\\_market:market\\\_verisi\\\_yok/pasif | market\\\_group: core\\\_result|spread|totals|halftime|halftime\\\_spread|halftime\\\_totals|quarter|quarter\\\_spread|quarter\\\_totals|team\\\_totals|race|margin|quarter\\\_meta|first\\\_event|totals\\\_parity|combo|three\\\_point|team\\\_three\\\_point|player\\\_points|player\\\_rebounds|player\\\_assists|player\\\_steals|player\\\_blocks|player\\\_turnovers|player\\\_milestones|team\\\_rebounds
+
+|team\\\_assists|team\\\_turnovers|player\\\_combo|player\\\_points\\\_split|player\\\_rebounds\\\_split|player\\\_assists\\\_split|team\\\_race|free\\\_throws|team\\\_free\\\_throws|alt\\\_spread|alt\\\_totals|turnovers | market\\\_status:active|inactive|inactive\\\_market | required\\\_fields\\\_completeness:low|medium|high | provider\\\_mapping\\\_status:unmapped|mapped | odds\\\_update\\\_speed\\\_band:unknown|slow|medium|fast | market\\\_latency\\\_band:unknown|low|medium|high | inplay\\\_availability\\\_band:unknown|low|medium|high | suspension\\\_tendency\\\_band:unknown|low|medium|high | closing\\\_line\\\_integrity\\\_band:unknown|low|medium|high | Kapanış: Market Kütüphanesi tamamlandı.
+
+BOOKMAKER KÜTÜPHANESİ — FAZ-1 TESLİMİ
+(Kart + Etiket Duvarı + Soru Kütüphanesi) 
+library\\\_ref:BOOKMAKER\\\_LIBRARY\\\_V1 | kart\\\_durumu:FAZ-1\\\_SKELETON\\\_ACTIVE | politika: bahis önerisi yok; bookmaker\\\_ref reference\\\_dictionary’den gelir; unmapped zorla eşlenmez; eksik veri unknown/none/inactive ile korunur. 
+
+BOOKMAKER KARTI (FAZ-1 İSKELET) 
+bookmaker\\\_ref:UNKNOWN\\\_BOOKMAKER\\\_REF | bookmaker\\\_name:unknown | brand\\\_variants:none | license\\\_country\\\_ref:unknown | service\\\_regions:unknown | feed\\\_provider\\\_ref:unknown | supported\\\_sports:unknown | supported\\\_leagues\\\_scope:unknown | tier\\\_support\\\_band:unknown | odds\\\_feed\\\_status:inactive | data\\\_quality\\\_badge:low 
+| Coverage(core\\\_markets\\\_supported:unknown,extended\\\_markets\\\_supported:unknown,player\\\_props\\\_supported:unknown,inplay\\\_supported:unknown,market\\\_depth\\\_band:unknown,alt\\\_lines\\\_supported:unknown) 
+| UpdateLatency(odds\\\_update\\\_speed\\\_band:unknown,market\\\_latency\\\_band:unknown,timestamp\\\_integrity\\\_band:unknown,suspension\\\_tendency\\\_band:unknown,reopen\\\_behavior\\\_band:unknown) | PricingLine(line\\\_shift\\\_frequency\\\_band:unknown,price\\\_shift\\\_frequency\\\_band:unknown,line\\\_vs\\\_price\\\_preference:unknown,opening\\\_line\\\_style\\\_band:unknown,closing\\\_line\\\_style\\\_band:unknown,risk\\\_rebalance\\\_style\\\_band:unknown) | Drift(divergence\\\_vs\\\_pack\\\_band:unknown,persistent\\\_drift\\\_band:unknown,spike\\\_anomaly\\\_tendency\\\_band:unknown,sharp\\\_following\\\_band:unknown,contrarian\\\_band:unknown) 
+| Integrity(void\\\_cancel\\\_policy\\\_band:unknown,limit\\\_restriction\\\_band:unknown,market\\\_freeze\\\_pattern\\\_band:unknown,outage\\\_incident\\\_band:unknown,feed\\\_gap\\\_band:unknown) | InformedBy(odds\\\_market\\\_timeline:none,market\\\_library\\\_ref:none,match\\\_ref:none,league\\\_ref:none). 
+
+BOOKMAKER ETİKET DUVARI (FAZ-1) |
+unknown:veri\\\_yok/doğrulanmadı | none:alan\\\_geçerli\\\_içerik\\\_yok | inactive:feed\\\_yok/pasif | unmapped:reference\\\_dictionary\\\_eşleşmesi\\\_yok | weak\\\_signal:tekil\\\_zayıf\\\_kaynak | strong\\\_signal:çoklu\\\_kaynak\\\_teyidi | odds\\\_feed\\\_status:inactive|active | tier\\\_support\\\_band:unknown|tier1\\\_only|tier1\\\_tier2 | market\\\_depth\\\_band:unknown|shallow|medium|deep | player\\\_props\\\_supported:unknown|low|medium|high | inplay\\\_supported:unknown|low|medium|high | alt\\\_lines\\\_supported:unknown|low|medium|high | odds\\\_update\\\_speed\\\_band:unknown|slow|medium|fast | market\\\_latency\\\_band:unknown|low|medium|high 
+
+| timestamp\\\_integrity\\\_band:unknown|low|medium|high | suspension\\\_tendency\\\_band:unknown|low|medium|high | reopen\\\_behavior\\\_band:unknown|stable|jumpy | line\\\_shift\\\_frequency\\\_band:unknown|low|medium|high | price\\\_shift\\\_frequency\\\_band:unknown|low|medium|high | line\\\_vs\\\_price\\\_preference:unknown|line\\\_first|price\\\_first|mixed | opening\\\_line\\\_style\\\_band:unknown|conservative|balanced|aggressive | closing\\\_line\\\_style\\\_band:unknown|tight|loose | risk\\\_rebalance\\\_style\\\_band:unknown|smooth|stepwise|abrupt | divergence\\\_vs\\\_pack\\\_band:unknown|low|medium|high | persistent\\\_drift\\\_band:unknown|low|medium|high 
+
+| spike\\\_anomaly\\\_tendency\\\_band:unknown|low|medium|high | sharp\\\_following\\\_band:unknown|low|medium|high | contrarian\\\_band:unknown|low|medium|high | void\\\_cancel\\\_policy\\\_band:unknown|strict|balanced|lenient | limit\\\_restriction\\\_band:unknown|low|medium|high | market\\\_freeze\\\_pattern\\\_band:unknown|low|medium|high | outage\\\_incident\\\_band:unknown|low|medium|high | feed\\\_gap\\\_band:unknown|low|medium|high | BOOKMAKER SORU KÜTÜPHANESİ (FAZ-1) | | Kapanış: Bookmaker Kütüphanesi tamamlandı.
+
+BASKETBOL — ARŞİV PAKETİ (NİHAİ) | Tamamlandı / dosyalanabilir tek çıktı | Bitti.
+
+KİLİT BEYANI | 
+Bu metin “BASKETBOL — ARŞİV PAKETİ (NİHAİ / KODCUYA VERİLECEK /)” olarak kilitlenmiştir.
+
+
+
 FAZ-37
 BASKETBOL HAKEM KARTI — ANALİZ EĞİTİM SORU KATALOĞU
 Bu kartın amacı hakemi “iyi/kötü” diye etiketlemek değildir. Amaç, hakemin maç ritmini, faul eşiğini ve son periyot yönetimini tekrar eden bantlarla okumaktır. Hüküm kurulmaz, suçlama dili yoktur. Sadece davranış bandı çıkarılır.
@@ -7546,6 +8267,159 @@ player\\\_ft\\\_clutch\\\_band yalnız şu değerleri alır: stable, unstable,pl
 player\\\_defensive\\\_target\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_on\\\_off\\\_dependency\\\_band yalnız şu değerleri alır: low, medium, high
 player\\\_clutch\\\_decision\\\_band yalnız şu değerleri alır: controlled, chaotic,player\\\_referee\\\_adaptation\\\_band yalnız şu değerleri alır: strong, normal, weak
 data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive text
+
+
+
+
+
+
+
+
+GANYAN — KİLİTLİ RAF SÖZLEŞMESİ + ANALİST EĞİTİM KİTAPÇIĞI + NAVİGASYON + ORTAK ETİKET SÖZLÜĞÜ + PROFİL/ÖRÜNTÜ OMURGA + ÖRÜNTÜ DUVARI + ŞART PAKETİ + DENETİM AKIŞI + TAKVİM RAFI + KOŞU GÜNÜ KOMPOZİSYON KÜTÜĞÜ + KÜTÜPHANECİ KARTI + KİMLİK STANDARTLARI (NİHAİ KİLİTLİ BİRLEŞİK METİN v1.2) | 
+Bu ganyan bölümü yalnız at yarışı ganyan içindir, futbol doğasıyla karıştırılamaz, basketbol doğasıyla karıştırılamaz, bu blok kupon üretmez, tahmin üretmez, banko üretmez, yönlendirme yapmaz, bu blok raf-kütüphane sisteminin veri standardını ve deterministik navigasyonunu kilitler, bu blok değiştirilemez, yorumlanamaz, parça parça bölünemez, aynı anlamı taşıyan ikinci bir blok açılamaz, isimleri değiştirilemez, etiketler yeniden adlandırılamaz, amaç Analist’in kanıt zincirini kırmadan veri raflarını eksiksiz büyütmek ve şehir kütüphanesi mantığında arama/filtreleme yapılabilir yapı kurmaktır, sistem deterministiktir, etiket uydurulmaz, eşleşmeyen veri zorla map edilmez, eksik veri otomatik tamamlanmaz, data\\\_quality\\\_badge incomplete veya low zorunludur, kütüphaneci analiz yapmaz değer notu vermez klasman notu vermez hüküm cümlesi kurmaz yalnız ham kaydı tekilleştirir sözlüğe map eder eksikleri boş bırakır, Analist kesinlik dili kullanamaz “kesin kazanır, banko, tek” yazamaz, yalnız ölçüm dili üretir ve “uyumsuz” kelimesini kullanmaz, yalnız “pist uyumu düşük, mesafe uyumu düşük, binici uyumu düşük” gibi yumuşak ölçüm diliyle konuşur, “hüküm” tanımı sabittir: kesin sonuç iddiası, kazanç iddiası, banko/tek/favori kesinliği üreten dildir, “etiket/ölçüm” tanımı sabittir: bant, risk seviyesi, profil seviyesi, eksik veri işareti ve ölçümsel tespit bilgisidir, olumsuz dil kaçakları serbest değildir; “olmaz, tutmaz, çöp, sil, berbat” yerine yalnız ölçüm dili kullanılır ve risk/uyum bandına çevrilir, sistem “tezgâh/manipülasyon/şike/mafya/dış el” gibi suçlayıcı hüküm üretmez; yalnız geçmiş tekrar ve şart bağımlılığı üzerinden “olağan bant sapması” işaretler, tek olayla hüküm kurmaz, tekrar ve şart bağımlılığı arar
+
+ÇALIŞMA AKIŞI (KİLİT SIRA) | 
+Sıra sabittir ve değiştirilemez: bülten → kimlik bağlama → karttan temel not → şart paketi → koşuya uyumlu not + etiket kırılımı → iç sıralama → örüntü duvarıyla tutarlılık kontrolü, bu akışın hiçbir yerinde “tahmin” yoktur, önce ölçüm vardır sonra koşula göre uyarlama vardır en sonda tutarlılık denetimi vardır, bülten çıktısı korunur bülten sıralaması bozulmadan yanına sistem çıktısı yazılabilir, sistem ayrıca kendi iç denetimi için “iç sıralama” üretir ve bu iç sıralama uygulama içinde saklanır, halka açık dil olarak kullanılmaz, kupon dili değildir,
+
+ŞART PAKETİ (KİLİT) | 
+“Şart paketi oturdu, karar verdik” yaklaşımı yasaktır, şart paketi tek başına karar değildir, tek katmana yaslanan sistem yanlış güven üretir, bu sistemde tek bir şart paketi yoktur; şart paketi hem katmanlı hem bileşenli olarak okunur, ŞART PAKETİ 3 KATMAN KİLİDİ (MAKRO-MİKRO AYRIMI): At şart paketi (atın kartından gelen yatkınlıklar ve kırılganlıklar: pist, mesafe, kilo, jokey, kalabalık, kulvar, ekipman, bitiriş gücü, istikrar, mücadele mührü), Ayak şart paketi (o gün koşunun somut şartları: hipodrom, zemin, pist durumu, mesafe, sınıf/handikap, at sayısı, ödül bandı, beklenen tempo), Kupon günü şart paketi (altılı gününün toplam dokusu: gün stabil mi dalgalı mı, sürpriz riski yüksek mi, ödül bandı dağılımı, favori yoğunluğu, ilk 4 kesit profili), sistem karar vermez bu üç paketi çarpıştırır; at paketi ayağa oturuyor ama gün dokusu dalgalıysa güven bandı düşer, at paketi zayıf ama ayak paketi tam uyumluysa koşuya uyumlu değer notu yükselir, gün paketi sürpriz ağırlıklıysa Analist etiket kırılımlarına daha sert bakar tek sebeple kimseyi yukarı çekmez, ŞART PAKETİ 4 BİLEŞEN KİLİDİ (VARLIK PAKETLERİ + ORTAM PAKETİ): At şart paketi + Jokey şart paketi + Patron şart paketi + Ayak/Ortam şart paketi (hipodrom + zemin + pist durumu + mesafe + sınıf + kalabalık + ödül bandı + beklenen tempo), Patron paketi tek başına hüküm değildir ancak masadan kalkmaz; diğer paketlerle birlikte tutarlıysa ağırlık kazanır tutarlı değilse alarm üretir.
+
+DEĞER NOTU (KİLİT) | 
+Bu sistemin tek sayısal çıktısı “Değer Notu (10x)”dur, bu not bir öneri değildir bir ölçümdür, değer notu yanında kırılım etiketi zorunludur ve etiket dili yumuşak ölçüm dilinde kalır, “uyumsuz” kelimesi yasaktır, örnek etiket dili: pist uyumu düşük, mesafe uyumu düşük, jokey uyumu düşük, kilo uyumu düşük, kalabalık uyumu düşük, kulvar uyumu düşük, ekipman uyumu düşük, start stabilitesi düşük, finiş stabilitesi düşük, bu değer notları geçmiş koşu örgüsünden türetilmiş profil ölçümüdür; bugünkü ve sonraki koşular için sonuç taahhüdü değildir, bugünü anlatmaz geçmişin kayıtlı davranış izini gösterir, DEĞER NOTU (10-1) — NİHAİ ÖNCELİK SIRASI (KİLİT): Pist uyumu, Mesafe uyumu, Kilo uyumu, Jokey uyumu, Ekipman/Aksesuar uyumu, Kalabalık uyumu, Kulvar uyumu, Bitiriş süresi/rakibe göre normalize performans, İstikrar bandı, Mücadeleci karakter mührü; mücadeleci karakter mührü yalnız 10/10 için zorunludur, her at 9’a kadar çıkabilir 10 için karakter mührü gerekir.
+
+KLASMAN NOTU ÜRETİMİ (KİLİT) | 
+Klasman Notu resmi yarış sınıfı içinde 10–1 bandında uzun vadeli profil seviyesidir, değer notu değildir kupon dili değildir tek koşu sonucu üretmez, çoklu kanıt birleşimiyle verilir tek veriyle karar verilmez, rakip sınıfı dayanımı mesafe esnekliği pist tipi/pist durumu esnekliği kilo dayanımı/hassasiyeti kalabalık dayanımı start stabilitesi enerji dağılımı/sprint profili finiş stabilitesi/tekrar edebilirlik jokey bağımlılığı/esnekliği mücadele iştahı/y yarış bırakmama disiplinine göre okunur, format sabittir “Grup 2/8”, değer notu formatına çevrilemez.
+
+KOŞU GÜNÜ DEĞER NOTU (KİLİT) | 
+Yalnız o günkü koşu şartlarında atın ayağa oturuş uygunluğunu 10 üzerinden ölçer, klasman notundan ayrıdır, tek veriyle yükselmez, kanıt zinciri tamamlanmadan yükseltilmez, çıktı dili sabittir “Değer Notu: 10 üzerinden X”, kupon dili değildir banko dili değildir kesinlik iddiası değildir, veri yoksa incomplete/low ile güvenli kalır.
+
+JOKEY PUAN AYRIMI (KİLİT) | 
+Jokey Klasman Notu J-1…J-10 uzun vadeli sürüş disiplinidir değer notu değildir, Jokey Koşu Günü Uygunluk Notu yalnız o günkü eşleşmenin 10 üzerinden uygunluğudur, tek veriyle yükseltilmez, jokey değerlendirmesi atla eşleşme ve atın jokeye bağımlılığıyla birlikte okunur.
+
+PATRON/SAHİP PUAN AYRIMI (KİLİT) | 
+Patron Profil Notu P-1…P-10 uzun vadeli katılım ve dağılım karakteridir güç/otorite notu değildir, Patron Koşu Günü Dağılım Etkisi yalnız o günün koşusunda 10 üzerinden dağılım ağırlığıdır suçlama değildir dış el/şike/mafya dili yasaktır, Patron etkisi atın koşu günü değer notunu override edemez yalnız eşitlik kırıcı ikinci katmandır.
+
+ÖRÜNTÜ DUVARI (KİLİT) | 
+Örüntü duvarı ham kayıt değildir, ham rafların üzerinde çalışan tekrar eden imzaları tekilleştiren ve geçmişten geleceğe okunur hale getiren üst katmandır, kupon dili konuşmaz tahmin üretmez yalnız bant ve imza taşır, Analist’in mikro kararlarını devirmez mikro kararların üstüne “kapsama genişliği” ve “sapma alarmı” bindirir, append-only çalışır revizyon eklenir eski silinmez geriye dönük iz kaybolmaz.
+
+MAKRO DENETİM — MİKRO KARAR (KİLİT) | 
+Ayak ayak yapılan okuma mikro karardır: at+jokey+patron ve koşu şartında kim doğal avantaj topluyor kim nereden kırılıyor okunur, altılı bütününe bakmak makro denetimdir: gün stabil mi dalgalı mı sürpriz riski yükseliyor mu favori yoğunluğu nasıl ödül bandı dağılımı nasıl geçmişte benzer günlerde sapma olmuş mu okunur, makro denetim ayak kararını sıfırdan yazmaz ayak kararının güven bandını ayarlar sapma günlerinde kapsama genişliğini belirler.
+
+SAPMA GÜNLERİNDE ANALİSTİN ÜST GÖREVİ (KİLİT) | 
+Makro örüntü “bu at gelir” dedirtmez, “bu ayakta kapsama dar mı normal mi geniş mi olmalı”yı belirler, sistem ayak başına “Kapsama Önerisi Bandı” üretir: dar/normal/geniş, dayanak takvim örüntüsü ödül bandı patron döngüsü imzalarıdır, rastgele genişleme yapılmaz, sapma günlerinde gelen kesitlerin dağılımı izlenir sapma 1–2’de mi 3–4’te mi görülüyor bilgisi kapsama bandının sınırını belirler.
+
+KESİT STANDARDI (KİLİT) | 
+Örüntü duvarında kesit standardı “ilk 4” üzerinden kilitlenmiştir, kesit örüntüleri duvara asılırken bağlam alanları sabittir: zaman/takvim, hipodrom, jokey havuzu, patron havuzu, ödül bandı; eksik bırakılamaz, bazıları var bazıları yok karışıklığına izin verilmez.
+
+TAKVİM RAFI (KİLİT) | 
+Örüntü yakalamak için takvim rafı zorunludur, üç seviyede kırılır: yıl+ay, haftanın günü, ayın haftası; dönemsel/haftalık/periyodik döngüler aynı anda yakalanır, kart çoğaltmak için değil aynı kartı farklı raf adreslerinden referanslamak için kullanılır.
+
+KOŞU GÜNÜ KOMPOZİSYON ÖRÜNTÜ KARTI (KİLİT) | 
+Aynı gün koşulan tüm ayakların gün dokusunu tek bakışta gösteren ölçüm kartıdır, tahmin üretmez kupon dili konuşmaz hüküm kurmaz, zorunlu alanlar: günün güç düzeyi bandı, saha kalitesi bandı, favori yoğunluğu bandı, tempo baskısı bandı, sürpriz riski bandı, gün içi dalgalanma bandı, tekilleştirilir append-only revizyonla güncellenir, aynı gün kimliği üzerinden takvim rafına dağıtılır: yıl/ay, haftanın günü, ayın haftası zorunludur.
+
+JOKEY ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | İstikrar bandı, Taşıma bandı (1–2–3–4 kesit taşıma), Kalabalık yönetim bandı (çok atlı/normal), Tempo bandı (yüksek/normal/düşük), Uyum bandı (bu koşul örgüsüne uyum yüksek/normal/düşük), tempo ve uyum aynı banda sıkıştırılmaz tempo ayrı eksen uyum ayrı eksendir.
+
+PATRON ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | 
+Katılım bandı, Hedef bandı, Taşıma bandı (1–2–3–4), Jokey tercih imzası, İstikrar bandı, Kesit eğilimi bandı (1’e mi 2–3’e mi 4’e mi yığılır), iddia üretmez yalnız dağılım haritası taşır.
+
+PİYASA/ORAN ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | 
+Oran görünürlük bandı, Kapanış oranı bandı, Sabitlenen oran bandı, Oran–kesit eşleşmesi bandı, suçlama dili üretmez yalnız ölçüm bandı taşır.
+
+ANTRENÖR/TRAINER ÖRÜNTÜ KARTI (OPSİYONEL BEST-EFFORT) | 
+Çekirdek 6 karta dahil değildir, best-effort ek karttır, veri gelirse işlenir veri gelmezse boş kalır ve karar akışını etkilemez sistemi kilitlemez.
+
+ÖDÜL BANDI (KİLİT / ZAMANDAN BAĞIMSIZ / KIYAFET ÖLÇEĞİ) | 
+0–50.000: XS, 50.001–100.000: S, 100.001–150.000: M, 150.001–200.000: L, 200.001–300.000: XL, 300.001–500.000: XXL, 500.001–1.000.000: 3XL, 1.000.001+: 4XL, veri yoksa band boş kalır.
+
+MİKRO SEGMENT STANDARDI (KİLİT) | 
+Sistem son 600/400/200 ana bandlarını taşır, ayrıca 150/100/50 bandı da tutulur, finişte “pota bandı” kırılması ayrıca işaretlenir.
+
+FAZ-29
+GANYAN ANALİST EĞİTİM KİTAPÇIĞI (SORU OMURGA) — KİLİTLİ | 
+Bu kitapçık Analist’in ezbersiz doğru soruyu sormasını ve kanıt zinciri kurmasını zorunlu kılar, her soru geçmiş veriyle doğrulanır, hiçbir soru tek başına hüküm kurdurmaz, hiçbir cevap tek başına karar vermez, kupon dili değildir tahmin dili değildir yalnız ölçüm ve kanıt toplama disiplinidir, üretilen tüm çıktılar etiketlenebilir alanlara bağlanır, kütüphaneci alan dışına çıkamaz veri yoksa alan boş kalır, at kartı bağlam zorunluları: race\\\_date\\\_utc track\\\_name surface\\\_type surface\\\_condition distance\\\_m race\\\_class\\\_official race\\\_no horse\\\_id (eksikse data\\\_quality\\\_badge incomplete), resmi sınıf+klasman notu formatı “Grup 2/8” (değer notu değildir), koşu günü değer notu formatı “Değer Notu: 10 üzerinden X” (kupon dili değildir), zemin-mesafe-kilo üçlüsü ayrılmaz, aynı mesafe+benzer zeminde farklı kilo ile bitiriş süresi taşıma kapasitesini gösterir, zemin bandı çim/kum/sentetik ve pist durumu hızlı/normal/ağır/çamur, mesafe bantları kısa/orta/uzun ve 1200–1400 ile 2000–2400 ayrı profildir, enerji dağılımı start-çıkış ilk bölüm orta bölüm viraj son600 son400 son200 finiş segmentleriyle okunur, start refleksi hızlı/normal/geç/oyalanma ve hızlı çıkış her zaman iyi değildir, kalabalık toleransı grup içinde rahat/sıkışma/grup dışına kaçış/içe kapanma/dışa açılma, kulvar iç/orta/dış tek başına hüküm değildir kalabalık+trafikle okunur, stil önde kaçan/pres yapan/bekleyen/sprintçi/tempo kırıcı, tempo uyumu yüksek tempoda stabil/erken biten düşük tempoda patlayan/etkisiz, viraj davranışı akışkan/balans bozan/yol arayan/sıkışan, finiş stabilitesi finişte diri/düşen/tekrar açılan, mücadele karakteri yarış iştahı yüksek/düşük mücadeleyi bırakmayan/kolay vazgeçen, stabilite bandı stabil/dalgalı/kırılgan, ekipman gözlük/dilbağı/kulaklık ayrı kaydedilir ekipman değişimi tek başına sebep ilan edilmez, rakip normalize aynı sınıf/üst sınıf/alt sınıf, form düşüşü aynı mesafe+benzer zemin+benzer sınıfta süre kötüleşmesi ana kanıt tek yarışla hüküm olmaz tekrar aranır, jokey etkisi jokey-at uyumu ve jokeyin genel formu ile ayrıştırılır, trafik kırığı bayrakları zorunludur (yol buldu/yol bulamadı/sıkıştı/açıldı/erken çıkış/geç çıkış) trafik varsa süre bozulması doğrudan form düşüşü sayılmaz, sprint tetikleme son600/son400/son200 açamayan bantları, erken yüklenme riski erken yaktı/kontrollü yaktı/geç yaktı, beklenen-çıkan sapma beklenen bant içinde/üstü/altı, öngörülebilirlik riski düşük/normal/yüksek, hassasiyet iç kulvar toleransı düşük/dış kulvar toleransı düşük/grup toleransı düşük/ekipman toleransı düşük, hipodrom uyumu yüksek/normal/düşük, koşu sıklığı toleransı kısa aralıkta tolerans yüksek/düşük, kapanış hızlanması son200 güçlü/zayıf, baskı altında reaksiyon toparlıyor/dağılıyor/kaçıyor, rakip geçtiğinde cevap veriyor/veremiyor/geç tepki, düzlüğe çıkış ön grupta/orta grupta/geride, baş-boy farkı tek başına kalite sayılmaz sınıf+zeminle normalize edilir, saha dışı veri yoksa padok/yürüyüş boş bırakılır data\\\_quality\\\_badge incomplete olur hüküm üretilmez, hedef koşu varsayımı hüküm değildir yalnız tekrar eden kasıtlı tutma izleri varsa “olası hazırlık davranışı” etiketi, tek potansiyeli yalnız tam kanıt zinciri sonrası yazılır, yorum yasağı kesindir “kesin kazanır banko tek” yazılamaz veri eksikse “anomali yok” denemez yalnız eksik yazılır.
+
+GANYAN KÜTÜPHANE NAVİGASYONU (RAF SİSTEMİ) — KİLİTLİ | 
+Bu sistem şehir kütüphanesi mantığıyla çalışır, her veri raflara ayrılır raflar arası veri karışmaz, her kayıt deterministik şekilde aynı raflara iner, etiketler tekilleştirilir isim değiştirilmez yeni etiket uydurulmaz aynı anlama gelen ikinci etiket açılmaz, veri yoksa boş bırakılır tahminle doldurulmaz, RAF alanları ham kayıt raflarıdır, Kimlik Kartları türetilmiş raflardır, Analist çıktısı çalışma rafıdır, bu üçü birbirine karıştırılamaz, RAF NAVİGASYONU (RAF-0…RAF-13): RAF-0 bağlayıcılık kilidi ve veri eksikse güvenli kalma, RAF-1 koşu kimliği ve bağlam, RAF-2 varlık kimlikleri (at-jokey-patron), RAF-3 koşu içi metrikler ve splitler, RAF-4 trafik ve trip olayları, RAF-5 start ve yerleşim, RAF-6 kalabalık ve kulvar davranışı, RAF-7 pist ve mesafe tercihleri, RAF-8 form döngüsü ve fitness, RAF-9 jokey sürüş karakteri ve eşleşme, RAF-10 patron dağılım ve katılım haritası, RAF-11 koşu günü kompozisyonu, RAF-12 piyasa ve oran hareketi, RAF-13 veri kalitesi ve mapleme.
+
+RAF-0 SİSTEM BAĞLAYICILIĞI | Kurallar değiştirilemez, veri eksikse sistem güvenli kalır, eksik veri normal sayılmaz otomatik tamamlanmaz, karar üretimi yalnız kanıt birikimiyle yapılır, kesin kazanır banko tek dili üretilmez, ölçüm dili kullanılır, “uyumsuz” kelimesi kullanılmaz yumuşak ölçüm dili zorunludur.
+
+RAF-1 KOŞU KİMLİĞİ VE BAĞLAMI | 
+race\\\_id ana anahtardır, race\\\_date\\\_utc track\\\_name race\\\_no distance\\\_m surface\\\_type surface\\\_condition field\\\_size race\\\_class\\\_official zorunludur, bunlardan biri eksikse data\\\_quality\\\_badge incomplete olur ve kayıt karar üretimine uygun sayılmaz.
+
+RAF-2 VARLIK KİMLİKLERİ | 
+horse\\\_id jockey\\\_id owner\\\_id tekilleştirilmiş ana anahtarlardır, aynı varlık farklı yazımlarla tekrar açılmaz, alias varsa alias alanına eklenir ana kimlik değiştirilmez, external id varsa ilgili external\\\_ids alanına eklenir yoksa boş bırakılır, eşleşmeyen entity unmapped kalır zorla map edilmez.
+
+RAF-3 KOŞU İÇİ METRİKLER | 
+split süreleri ve pozisyonları taşır, segmentler sabittir start-çıkış ilk bölüm orta bölüm viraj son600 son400 son200 finiş, segment süresi yoksa segment notu üretilmez yalnız gelen splitler işlenir gelmeyen veri tahmin edilmez.
+
+RAF-4 TRAFİK VE TRİP OLAYLARI | 
+yalnız olay bayraklarını işler neden-sonuç açıklaması eklemez, trafik kırığı varsa süre bozulması doğrudan form düşüşü sayılmaz bu yalnız veri notudur.
+
+RAF-5 START VE YERLEŞİM | 
+start reaksiyonu ve ilk yerleşim disiplinini taşır, hızlı çıkış her zaman iyi değildir uzun mesafede erken bitme riskidir, lead alınması/pres/bekleme bayrakları burada tutulur.
+
+RAF-6 KALABALIK VE KULVAR DAVRANIŞI | 
+grup içinde rahatlık/sıkışma/grup dışına kaçış/içe kapanma/dışa açılma bantları, kulvar tek başına hüküm değildir kalabalık toleransı ve trafik kırığı ile birlikte okunur.
+
+RAF-7 PİST VE MESAFE TERCİHLERİ | 
+çim/kum/sentetik ve pist durumu bandı, zemin yorumu tek yarışla yapılmaz, mesafe bantları kısa-orta-uzun, 1200–1400 ile 2000–2400 ayrı profildir.
+
+RAF-8 FORM DÖNGÜSÜ VE FİTNES | 
+form\\\_cycle\\\_stage ve form\\\_trend alanları, form düşüşü tek cümleyle yazılmaz yalnız tekrar ve şart bağımlılığıyla işaretlenir, layoff\\\_days ve fitness\\\_band burada tutulur.
+
+RAF-9 JOKEY SÜRÜŞ KARAKTERİ VE EŞLEŞME | 
+jokeyin stilini tempo yönetimini finiş zamanlamasını kalabalık içinde yol bulmasını taşır, jokey iyi ifadesi tek başına hüküm değildir atla eşleşme ve atın jokeye bağımlılığı ile birlikte okunur.
+
+RAF-10 PATRON DAĞILIM VE KATILIM HARİTASI | 
+ödül bandı katılım sıklığı kazanım periyot dağılımı uzun süre kazanmama kırılması strateji yayılımı jokey tercih korelasyonu gibi örüntüler, suçlama üretmez dış el şike mafya yasaktır yalnız istatistiksel dağılım haritası üretir.
+
+RAF-11 KOŞU GÜNÜ KOMPOZİSYONU | 
+ayak içi alan gücü/alan kalitesi/favori yoğunluğu/tempo baskısı/sürpriz riski/yarış varyansı bantları, tek başına karar değildir kanıt zincirini destekleyen ikinci katmandır.
+
+RAF-12 PİYASA VE ORAN HAREKETİ | 
+public\\\_rank odds\\\_open odds\\\_close odds\\\_movement bandları, oran hareketi tek başına hüküm değildir yalnız kanıt hattına eklenir.
+
+RAF-13 VERİ KALİTESİ VE MAPLEME | 
+source\\\_name source\\\_timestamp\\\_utc mapping\\\_status unmapped\\\_entities validation\\\_errors missing\\\_fields data\\\_quality\\\_badge, veri eksikse badge incomplete veya low olur, veri eksikliği normal sayılmaz sistem güvenli kalır.
+
+FAZ-30
+ORTAK ETİKET SÖZLÜĞÜ (KİLİTLİ) | 
+Kütüphaneci bu sözlük dışına çıkamaz, isim değiştiremez yeni etiket açamaz aynı anlama gelen ikinci etiket açamaz, eksik veri standardı sabittir: boolean null, numeric null, string null, list boş liste \\\[], missing\\\_fields her zaman liste, tahminle doldurma yasaktır, sözlük alan seti: race\\\_id, race\\\_date\\\_local, race\\\_date\\\_utc, track\\\_name, city, country, season\\\_id, meeting\\\_id, race\\\_no, race\\\_class\\\_official, race\\\_type, distance\\\_m, surface\\\_type, surface\\\_condition, rail\\\_position, weather, temperature\\\_c, humidity\\\_pct, wind\\\_kmh, wind\\\_dir, start\\\_time\\\_local, start\\\_time\\\_utc, starting\\\_method, field\\\_size, scratchings\\\_count, race\\\_purse\\\_total, race\\\_purse\\\_breakdown, handicap\\\_type, weight\\\_handicap\\\_rule, pace\\\_projection, race\\\_shape\\\_projection, draw\\\_bias\\\_note, horse\\\_id, horse\\\_name, horse\\\_age, horse\\\_sex, horse\\\_color, sire\\\_name, dam\\\_name, owner\\\_id, owner\\\_name, trainer\\\_id, trainer\\\_name, jockey\\\_id, jockey\\\_name, stable\\\_id, stable\\\_name, breeder\\\_name, horse\\\_external\\\_ids, horse\\\_aliases, jockey\\\_external\\\_ids, jockey\\\_aliases, owner\\\_external\\\_ids, owner\\\_aliases, gate\\\_no, draw\\\_position, assigned\\\_weight\\\_kg, carried\\\_weight\\\_kg, weight\\\_change\\\_from\\\_last\\\_kg, jockey\\\_change\\\_flag, equipment\\\_blinkers, equipment\\\_visors, equipment\\\_tongue\\\_tie, equipment\\\_shadow\\\_roll, equipment\\\_hood, equipment\\\_earplugs, equipment\\\_bar\\\_shoes, equipment\\\_special\\\_notes, shoeing\\\_notes, finish\\\_pos, finish\\\_time, finish\\\_time\\\_sec, win\\\_margin\\\_len, beaten\\\_margin\\\_len, last\\\_600m\\\_sec, last\\\_400m\\\_sec, last\\\_200m\\\_sec, first\\\_200m\\\_sec, first\\\_400m\\\_sec, first\\\_600m\\\_sec, mid\\\_race\\\_position, early\\\_position, final\\\_turn\\\_position, late\\\_run\\\_strength, stride\\\_quality\\\_note, kick\\\_timing\\\_note, pace\\\_band, early\\\_speed\\\_band, mid\\\_speed\\\_band, late\\\_speed\\\_band, energy\\\_distribution\\\_profile, closing\\\_section\\\_profile, acceleration\\\_profile, deceleration\\\_profile, sustained\\\_speed\\\_profile, trip\\\_in\\\_running, traffic\\\_events, wide\\\_run\\\_meters, boxed\\\_in\\\_flag, checked\\\_flag, bumped\\\_flag, forced\\\_wide\\\_flag, held\\\_up\\\_flag, clear\\\_run\\\_flag, rail\\\_run\\\_flag, start\\\_reaction\\\_band, break\\\_quality, gate\\\_behavior\\\_note, early\\\_settling\\\_band, lead\\\_taken\\\_flag, stalking\\\_flag, midpack\\\_flag, backmarker\\\_flag, crowd\\\_tolerance\\\_band, pack\\\_running\\\_preference, inside\\\_running\\\_preference, outside\\\_running\\\_preference, overtaking\\\_behavior\\\_band, pressure\\\_response\\\_band, head\\\_to\\\_head\\\_behavior\\\_band, surface\\\_preference\\\_band, distance\\\_preference\\\_band, track\\\_preference\\\_band, condition\\\_preference\\\_band, slope\\\_preference\\\_band, form\\\_cycle\\\_stage, form\\\_trend\\\_3, form\\\_trend\\\_5, peak\\\_form\\\_flag, decline\\\_form\\\_flag, rebound\\\_form\\\_flag, layoff\\\_days, fitness\\\_band, trial\\\_result\\\_note, jockey\\\_horse\\\_synergy\\\_band, horse\\\_jockey\\\_dependency\\\_band, jockey\\\_style\\\_band, jockey\\\_aggression\\\_band, jockey\\\_patience\\\_band, jockey\\\_closing\\\_skill\\\_band, jockey\\\_pace\\\_judgement\\\_band, jockey\\\_pressure\\\_management\\\_band, owner\\\_purse\\\_appetite\\\_band, owner\\\_frequency\\\_band, owner\\\_rotation\\\_band, owner\\\_targeting\\\_band, owner\\\_distribution\\\_pattern, owner\\\_repeat\\\_win\\\_pattern, owner\\\_long\\\_dry\\\_spell\\\_flag, composition\\\_strength\\\_band, field\\\_quality\\\_band, favorite\\\_density\\\_band, pace\\\_pressure\\\_density\\\_band, upset\\\_risk\\\_band, race\\\_variance\\\_band, public\\\_rank, public\\\_odds\\\_open, public\\\_odds\\\_close, public\\\_odds\\\_low, public\\\_odds\\\_high, odds\\\_movement\\\_band, late\\\_support\\\_flag, drifting\\\_flag, data\\\_quality\\\_badge, missing\\\_fields, source\\\_name, source\\\_timestamp\\\_utc, mapping\\\_status, unmapped\\\_entities, validation\\\_errors
+
+KÜTÜPHANECİ KARTI (UYGULAMA TALİMATI) — KİLİTLİ | 
+Kütüphaneci arşivleme terminalidir analiz yapmaz yorum yapmaz değer notu üretmez klasman notu üretmez hüküm kurmaz, her kayıt için önce koşu kimliğini kurar sonra varlık kimliklerini bağlar sonra koşu içi metrikleri işler sonra veri kalitesini işaretler, race\\\_id race\\\_date\\\_utc country track\\\_name race\\\_no distance\\\_m surface\\\_type surface\\\_condition field\\\_size race\\\_class\\\_official zorunludur eksikse data\\\_quality\\\_badge incomplete, horse\\\_id jockey\\\_id owner\\\_id tekilleştirilir external\\\_ids varsa eklenir yoksa boş bırakılır alias varsa eklenir ana kimlik değişmez, koşu içi metrikler yalnız kaynaktan geldiyse işlenir gelmeyen üretilmez, padok/yürüyüş yoksa boş bırakılır, trafik olaylarında yalnız bayrak işlenir açıklama eklenmez, missing\\\_fields source\\\_name source\\\_timestamp\\\_utc mapping\\\_status validation\\\_errors zorunludur, eksik alanlar doldurulmaz yalnız null/\\\[] standardıyla bırakılır tahmin yasaktır.
+
+KİMLİK STANDARDI (KİLİT) | 
+Tüm varlıklar benzersiz referans kimlikle tutulur, dış kaynak ID’leri bu kimliğin yerine geçmez yalnız external\\\_ids alanında saklanır, isimle arama yalnız alias üzerinden kimliğe bağlanır, alias sözlüğü yoksa eşleşmeyen isimler unmapped\\\_candidates rafına düşer sistem kırılmaz, kimlik kartı varlık peşinde taşınır ve profil geçmişten geleceğe varlık hayatı boyunca bu kartta birikir.
+
+AT KİMLİK STANDARDI (KİLİT) | 
+At kimliği sırası kilitlidir: Orijin → At Adı → Sahip → Yaş → Renk → Kayıt Tarihi (YYYY/MM/DD) → Otomatik Sayaç, otomatik sayaç 10.000’den başlar otomatik artar elle yazılmaz, dış kaynak ID’ler yerine geçmez yalnız external\\\_ids alanında tutulur.
+
+AT KİMLİK KARTI (HORSE IDENTITY CARD) — KİLİTLİ ŞEMA | 
+Horse kimlik kartı profil varlığıdır tek yarış sonucu değildir yorum değildir kupon değildir, horse\\\_id tek anahtar horse\\\_name görünen ad aliaslar ayrı tutulur aynı at farklı yazımla tekrar açılmaz, zorunlu alanlar: horse\\\_id horse\\\_name horse\\\_age horse\\\_sex horse\\\_color sire\\\_name dam\\\_name breeder\\\_name stable\\\_id stable\\\_name owner\\\_id\\\_current trainer\\\_id\\\_current horse\\\_external\\\_ids horse\\\_aliases, resmi sınıf+klasman notu alanı: race\\\_class\\\_official\\\_current ve class\\\_note\\\_current formatı “Grup 2/8” sabittir değer notu değildir, koşu günü değer notu kimlik kartında tutulmaz, profil çekirdeği: distance\\\_preference\\\_band surface\\\_preference\\\_band condition\\\_preference\\\_band weight\\\_sensitivity\\\_band start\\\_stability\\\_band crowd\\\_tolerance\\\_band traffic\\\_tolerance\\\_band energy\\\_distribution\\\_profile sprint\\\_trigger\\\_band finish\\\_stability\\\_band pace\\\_band style\\\_band volatility\\\_band, segment profilleri banttır first\\\_600m\\\_profile last\\\_600m\\\_profile last\\\_400m\\\_profile last\\\_200m\\\_profile tek yarışla sabitlenmez örüntüyle güncellenir, ekipman profilleri equipment\\\_blinkers\\\_profile equipment\\\_visors\\\_profile equipment\\\_tongue\\\_tie\\\_profile equipment\\\_hood\\\_profile equipment\\\_earplugs\\\_profile equipment\\\_bar\\\_shoes\\\_profile, jokey bağımlılığı horse\\\_jockey\\\_dependency\\\_band, jokey değişimi reaksiyonu jockey\\\_change\\\_reaction\\\_band, mücadele iştahı fight\\\_willingness\\\_band, tek potansiyeli yalnız tek\\\_potential\\\_band ve yalnız tam kanıt zinciri sonrası, kart her güncellemede profile\\\_version last\\\_update\\\_utc data\\\_quality\\\_badge taşır veri eksikse low/incomplete
+
+JOKEY KİMLİK KARTI (JOCKEY IDENTITY CARD) — KİLİTLİ ŞEMA | 
+Jokey kimlik kartı sürüş karakteri varlığıdır tek koşu sonucu değildir yorum değildir kupon değildir, zorunlu alanlar: 
+jockey\\\_id jockey\\\_name jockey\\\_age\\\_band jockey\\\_weight\\\_band jockey\\\_external\\\_ids jockey\\\_aliases jockey\\\_agent\\\_or\\\_stable\\\_link, profil alanı jockey\\\_class\\\_note\\\_current “J-1…J-10” bandıdır değer notu değildir, çekirdek alanlar: jockey\\\_style\\\_band jockey\\\_aggression\\\_band jockey\\\_patience\\\_band jockey\\\_pace\\\_judgement\\\_band jockey\\\_closing\\\_skill\\\_band jockey\\\_pressure\\\_management\\\_band jockey\\\_lane\\\_choice\\\_band jockey\\\_inside\\\_skill\\\_band jockey\\\_outside\\\_skill\\\_band jockey\\\_pack\\\_navigation\\\_band jockey\\\_finish\\\_timing\\\_band, overdrive örüntüsü jockey\\\_overdrive\\\_band suçlama değildir, ödül davranışı jockey\\\_purse\\\_appetite\\\_band yargı değildir yalnız strateji/risk yoğunluğu profilidir, at eşleşmesi jockey\\\_horse\\\_synergy\\\_band ve synergy\\\_matrix\\\_by\\\_horse\\\_type, kısa dönem form jockey\\\_recent\\\_form\\\_band tek koşuyla hüküm olmaz, kart her güncellemede profile\\\_version last\\\_update\\\_utc data\\\_quality\\\_badge taşır veri eksikse low/incomplete
+
+PATRON/SAHİP KİMLİK KARTI (OWNER IDENTITY CARD) — KİLİTLİ ŞEMA | 
+Patron kimlik kartı katılım ve dağılım profili varlığıdır tek koşu sonucu değildir yorum değildir kupon değildir, suçlama üretmek için kullanılmaz yalnız ödül dağılım haritası ve katılım karakterini ölçer, zorunlu alanlar: 
+owner\\\_id owner\\\_name owner\\\_external\\\_ids owner\\\_aliases stable\\\_id\\\_links trainer\\\_id\\\_links, profil alanı owner\\\_profile\\\_note\\\_current “P-1…P-10” bandıdır değer notu değildir, çekirdek alanlar: owner\\\_frequency\\\_band owner\\\_rotation\\\_band owner\\\_targeting\\\_band owner\\\_distribution\\\_pattern owner\\\_repeat\\\_win\\\_pattern owner\\\_long\\\_dry\\\_spell\\\_flag owner\\\_surface\\\_distance\\\_bias owner\\\_jockey\\\_preference\\\_map owner\\\_trainer\\\_preference\\\_map owner\\\_multi\\\_runner\\\_strategy\\\_band, owner\\\_purse\\\_appetite\\\_band ahlaki yargı değildir strateji yoğunluğudur, patron kartı dış el/şike/mafya dili üretmez sapma yalnız istatistiksel tekrar ve şart bağımlılığıyla işaretlenir hüküm üretilmez, koşu gününde patron etkisi gerekiyorsa yalnız koşu kartında “Patron Koşu Günü Dağılım Etkisi: 10 üzerinden X” olarak üretilir kimlik kartına yazılmaz, kart her güncellemede profile\\\_version last\\\_update\\\_utc data\\\_quality\\\_badge taşır veri eksikse low/incomplete
+
+GANYAN — KÜTÜPHANE TEMELLİ PROFİL/ÖRÜNTÜ SİSTEMİ 
+(İŞ PROMPTU / BAŞTAN SONA KİLİTLİ OMURGA) | 
+Sen bir “Ganyan Profil ve Örüntü Motoru”sun, görev kupon önerisi yapmak değildir, sistem at yarışı ekosisteminde yalnız geçmiş veriden türetilen profil-kayıt-kütüphane düzeniyle çalışır, yeni yarış geldiğinde atın jokeyin patronun geçmiş performans örgüsüne göre değer üretir, çıktı yönlendirici dil içermez yalnız ölçüm diliyle Değer Notu (10x) ve kırılım etiketi üretir, ham veri eksik gelebilir isimler değişebilir sistem kırılmaz eşleşmeyen veri unmapped kalır zorla uydurulmaz, fuzzy-match/LLM isim uydurma yasaktır, kütüphaneler kilitlidir ve karıştırılamaz: Ham Veri Kütüphanesi, At Performans Kütüphanesi, Jokey Kütüphanesi, Patron Kütüphanesi, Ham Veri tek giriş kapısıdır tüm veri önce buraya iner standardize edilir etiketlenir sonra diğer kütüphanelere dağıtılır, diğer kütüphaneler ham veri tutmaz yalnız işlenmiş profil ve örüntü agregeleri tutar, her yarış günü aynı akış yeniden çalışır yeni yarış ham veri olarak iner aynı standartlarla etiketlenir profillere eklenir, hedef tek yarış tahmini değil geçmişten geleceğe büyüyen kalıcı profil duvarıdır geriye dönük tutarlılık korunur.
+
+KOŞU GÜNÜ KOMPOZİSYON KÜTÜPHANESİ VE ALTILI KÜTÜĞÜ 
+(KİLİTLİ ÇALIŞMA BLOĞU) | 
+At/jokey/patron kütüphaneleri tek başına yeterli değildir, ganyan örüntüsü koşu gününde varlıkların nasıl bir araya geldiği ayakların nasıl dizildiği ve altılı bütününün nasıl bittiği ile görünür olur, bu nedenle sistem “koşu günü kompozisyonunu” ayrı bir varlık olarak kaydeder ve bu kayıt at/jokey/patron kartlarının içine karıştırılmaz, iki bülten kavramı kilitlenir: Koşu Öncesi Bülten (planlanan dizilim) ve Koşu Sonrası Doğal Bülten (bitmiş gerçeklik), sistem bu iki belgeyi tek kayıtta ezmez her ikisi ayrı kayıt olarak saklanır ve yalnız internal\\\_meeting\\\_id/internal\\\_race\\\_day\\\_id ile bağlanır, sistem günün tüm atlarını tek liste yapmaz her at kaydı zorunlu olarak bir ayak kimliğine bağlıdır ve bağlantı kaybolmaz, her koşu günü için ayak haritası deterministik üretilir ayakların iç yapısı ayrı alt kayıt alanıdır, altılı/ikili/üçlü sistem tarafından tahmin olarak değil yalnız gerçekleşmiş kombinasyon sonuç kaydı olarak ele alınır, sistem kupon üretmez kupon önermez bahis tavsiyesi vermez ancak resmi sonuçlardan altılı bütününün nasıl bittiğini ve ayak sıralamalarının altılı sonucuna nasıl yansıdığını kütüğe geçirir, tarih bilgisi omurgadır koşu günleri kronolojik taşınır farklı kütüphane çizgileri aynı tarih ekseninde buluşur, bu blok sadeleştirilemez ayak bağlantıları kaldırılamaz altılı sonuçları “gereksiz” diye çıkarılamaz ve bu kütük at/jokey/patron kartlarına karıştırılamaz.
+
+UYGULAMA AÇILIŞ BİLGİLENDİRME METNİ (KİLİT) | 
+Bu uygulama at yarışı ekosistemindeki geçmiş koşu verilerinden türetilen kayıtlar etiketler ve örüntü frekansları üzerinden çalışır, üretilen çıktılar at jokey hipodrom koşu şartları ve ödül bandı gibi bileşenlerin geçmişte nasıl tekrar ettiğini görünür kılar, bu veriler geçmişin haritasıdır bugün için garanti kesinlik veya sonuç iddiası üretmez, uygulama kupon dili kullanmaz ve herhangi bir sonuç yönlendirmesi yapmaz, sunulan değer notları yalnız belirli koşu şartlarında geçmiş performans örgüsünün ölçümsel karşılığını ifade eder, at yarışı canlı bir dinamiktir atın/jokeyin anlık fiziksel durumu psikolojisi yarış içi trafik ve koşu akışı sonucu belirgin şekilde değiştirebilir, burada görülen ölçümler nihai karar değildir karar sürecini daha bilinçli ve veri temelli kurmaya yardımcı çerçevedir, bu değer notları geçmiş koşu örgüsünden türetilmiş profil ölçümüdür bugünkü ve sonraki koşular için sonuç taahhüdü değildir bugünü anlatmaz geçmişin kayıtlı davranış izini gösterir.
+KİLİT BEYANI | Bu metin “GANYAN — Nihai Kilitli Birleşik Metin v1.2” olarak kilitlenmiştir, yeniden yazılmaz parçalanmaz sadeleştirilmez anlamı bozulmaz.
+
+
+
 
 FAZ-38
 GANYAN — KİLİTLİ RAF SÖZLEŞMESİ + ANALİST EĞİTİM KİTAPÇIĞI + NAVİGASYON + ORTAK ETİKET SÖZLÜĞÜ + PROFİL/ÖRÜNTÜ OMURGA + ÖRÜNTÜ DUVARI + ŞART PAKETİ + DENETİM AKIŞI + TAKVİM RAFI + KOŞU GÜNÜ KOMPOZİSYON KÜTÜĞÜ + KÜTÜPHANECİ KARTI + KİMLİK STANDARTLARI (NİHAİ KİLİTLİ BİRLEŞİK METİN v1.2) |

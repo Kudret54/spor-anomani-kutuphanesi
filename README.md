@@ -187,6 +187,16 @@ FAZ-6 — TESLİM VE KABUL KRİTERLERİ
 Teslim aşağıdaki dosyalar olmadan tamamlanmış sayılmaz: import_manifest.json ,import_report.json ,coverage_report.json ,validation_errors.json
 Teslim kabulü için: arşivler runtime’da yüklenebilir olmalı, kilitli şemalar korunmuş olmalı, branş karışması olmamalı, tahmin dili bulunmamalı, uydurma veri olmamalıdır. Bu koşullardan biri eksikse teslim reddedilir. 
 
+ANALİZ EĞİTİM KATALOĞU + ETİKET KATALOĞU — FUTBOL (BAĞLAYICI GİRİŞ TALİMATI)
+
+Aşağıdaki bölüm, ana uygulama promptunun bir devamıdır ve ondan bağımsız okunamaz. Bu bölüm yeni özellik eklemez, akış değiştirmez, yalnız futbol branşı için “analistin nasıl okuyacağı” ve “kütüphanecinin hangi sözlükle etiketleyeceği” disiplinini bağlayıcı biçimde kilitler. Kod yazarı bu metni yorumlayamaz, sadeleştiremez, kısaltamaz, kendi mantığıyla yeniden yazamaz; burada geçen tüm soru katalogları ve etiket katalogları birebir uygulanır.
+Bu bölüm iki parçadan oluşur ve sırası değiştirilemez. Birinci parça “Futbol Analiz Eğitim Kataloğu (Soru Katalogları)”dır; analist, örüntü uzmanı ve ilgili kontrol rolleri bu soru setlerini ezberlemez, bu soru setlerine göre bakış açısını standardize eder ve hiçbir değerlendirme bu soruların dışında keyfi biçimde yapılamaz. İkinci parça “Futbol Etiket Kataloğu (Kütüphane Sözlüğü)”dür; kütüphaneci, maç izleme hattı ve örüntü hattı yalnız bu sözlükte tanımlı etiket adlarını ve bu etiketlerin izinli değer bantlarını kullanarak kayıt üretir, bu sözlük dışı tek bir etiket uydurulamaz.
+
+Soru katalogları “etiket değildir” ve doğrudan raflara yazılmaz; soru katalogları, hangi verinin hangi kartlarda aranacağını ve hangi bağlamların okunacağını tanımlar. Etiket kataloğu ise soru kataloglarının cevabını deterministik alanlara döken tek geçerli sözlüktür. Bir soruya karşılık gelen etiket alanı boş kalıyorsa bu “bilinmiyor” veya “unknown” bantlarıyla işaretlenir, asla varsayımla doldurulmaz. Hiçbir birim soru kataloglarını okuyup yalnız bu metin üzerinden hüküm kuramaz; tüm değerlendirmeler kanıt zinciri tamamlandıktan sonra yapılır.
+Bu kataloglar, futbol branşı için üç ana kart sınıfına bağlanır: maç kartı, takım DNA kartı ve ilgili kişi kartları (teknik direktör, hakem, futbolcu). Maç kartı tekil maçın olay izini taşır. Takım DNA kartı, tekil maçlardan türetilen tekrar eden refleksleri ve davranış bantlarını taşır. Kişi kartları ise bireysel davranış profillerini taşır ve kulüp değişse bile kimlik sürekliliğini korur. Bu ayrım korunur; takım kartı ile maç kartı karıştırılamaz.
+Durum etiketleri karar vermez. Etiketler yalnız sınıflandırma ve raf adreslemesi içindir. Analist dahil hiçbir rol, yalnız etiketlere bakarak “kolaycılık” ile sonuca gidemez. Etiketler yalnızca araştırmayı hızlandıran işaretlerdir; hüküm, yalnızca kaynak tutarlılığı, tekrar, şart bağımlılığı ve kanıt zinciri tamamlandıktan sonra üretilir. Bu bölümün amacı hız değil; yanlış hızla oluşan sessiz bozulmayı engelleyen deterministik bir analiz disiplini kurmaktır.
+
+
 FAZ-7
 FOOTBALL ANOMANİ TAM SÜRÜM V-0-
 
@@ -449,21 +459,16 @@ Bu maçta forvet iptal gol sonrası sonraki 15 dakikada mental olarak unstable�
 
 Forvetin iptal gol sonrası mental kırılma anı hangi dakikada oldu?
 Forvet iptal gol sonrası sonraki 5 dakikada net pozisyon üretimi düştü mü?
-
 Bu maçta forvet VAR sonrası ilk 5 dakikada mental olarak unstable’a döndü mü?
 Bu maçta forvet VAR sonrası sonraki 15 dakikada mental olarak unstable’a döndü mü?
-
 Forvetin VAR sonrası mental kırılma anı hangi dakikada oldu?
 Forvet VAR sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi?
-
 Bu maçta forvet penaltı kaçırdı mı?
 
 Forvet penaltıyı hangi dakikada kaçırdı?
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada takım tempo bandı düştü mü?
-
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi?
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi?
-
 Bu maçta forvet oyundan ilk yarıda çıktı mı?
 Bu maçta forvet oyundan ikinci yarıda çıktı mı?
 
@@ -484,14 +489,12 @@ Orta saha top kaybı hangi dakikada başladı?
 Orta saha top kaybı hangi dakikada bitti?
 
 Orta saha top kaybı sonrası sonraki 5 dakikada momentum flip yaşandı mı?
-Orta saha top kaybı sonrası sonraki 5 dakikada rakip net pozisyon üretti mi?
-      
+Orta saha top kaybı sonrası sonraki 5 dakikada rakip net pozisyon üretti mi?     
 Orta sahada pas isabeti düşüşü ilk yarıda oldu mu?
 Orta sahada pas isabeti düşüşü ikinci yarıda oldu mu?
 Orta sahada pas isabeti düşüşü hangi segmentte belirginleşti?
 
 Orta sahada pas isabeti düşüşü sonrası sonraki 5 dakikada kontrol bandı kaybedildi mi?
-
 Orta sahada kart birikimi ilk yarıda pas kalitesini düşürdü mü?
 Orta sahada kart birikimi ikinci yarıda pas kalitesini düşürdü mü?
 Orta sahada kart birikimi hangi dakikada kritik seviyeye çıktı?
@@ -500,7 +503,6 @@ Orta sahada kart birikimi sonrası sonraki 5 dakikada top kaybı arttı mı?
 Rakip presi artınca orta saha ilk 15 dakikada kontrol bandını kaybetti mi?
 Rakip presi artınca orta saha 15–30 aralığında kontrol bandını kaybetti mi?
 Rakip presi artınca orta saha 60–75 aralığında kontrol bandını kaybetti mi?
-
 Orta saha kontrol kaybı hangi dakikada başladı?
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada savunma hattı geriye yaslandı mı?
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada takım uzun topa döndü mü?
@@ -508,7 +510,6 @@ Orta saha kontrol kaybı sonrası sonraki 5 dakikada takım uzun topa döndü m�
 Bu maçta orta saha değişikliği ilk yarıda oldu mu?
 Bu maçta orta saha değişikliği ikinci yarıda oldu mu?
 Orta saha değişikliği hangi dakikada oldu?
-
 Orta saha değişikliği sonrası sonraki 5 dakikada tempo bandı değişti mi?
 Orta saha değişikliği sonrası sonraki 5 dakikada kontrol bandı değişti mi?
 Orta saha değişikliği sonrası sonraki 5 dakikada topa sahip olma yönü değişti mi?
@@ -523,7 +524,6 @@ Bu maçta savunma hattı 75–90 aralığında bir anda geriye yaslandı mı?
 Savunma hattı geriye yaslanma hangi dakikada başladı?
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada risk bandı yükseldi mi?
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada rakip ceza sahası girişleri arttı mı?
-
 Bu maçta savunma hattı ilk 15 dakikada öne çıktı mı?
 Bu maçta savunma hattı 15–30 aralığında öne çıktı mı?
 Bu maçta savunma hattı 60–75 aralığında öne çıktı mı?
@@ -531,28 +531,22 @@ Bu maçta savunma hattı 60–75 aralığında öne çıktı mı?
 Savunma hattı öne çıkış hangi dakikada oldu?
 Savunma hattı öne çıktıktan sonraki 5 dakikada arka koşularla kırıldı mı?
 Savunma hattı öne çıktıktan sonraki 5 dakikada ofsayta düşürme arttı mı?
-
 Bu maçta savunma hattı ofsayt çizgisi ile ilk yarıda ofsayt yoğunluğu üretti mi?
 Bu maçta savunma hattı ofsayt çizgisi ile ikinci yarıda ofsayt yoğunluğu üretti mi?
 
 Savunma hattı ofsayt yoğunluğu hangi dakikalarda arttı?
 Savunma hattı ofsayt yoğunluğu sonrası sonraki 5 dakikada rakip koşu denemeleri azaldı mı?
-
 Bu maçta savunmada bireysel hata zinciri ilk yarıda oluştu mu?
 Bu maçta savunmada bireysel hata zinciri ikinci yarıda oluştu mu?
-
 Savunmada bireysel hata zinciri hangi dakikalarda oluştu?
 Savunmada bireysel hata zinciri sonrası sonraki 5 dakikada risk bandı yükseldi mi?
-
 Bu maçta savunma hatası sonrası gol yendi mi? Savunma hatası sonrası gol hangi dakikada yenildi? Savunma hatası sonrası sonraki 5 dakikada takım kontrol bandı düştü mü?
 Bu maçta savunma hattı kart riski nedeniyle ilk yarıda geri çekildi mi? Bu maçta savunma hattı kart riski nedeniyle ikinci yarıda geri çekildi mi?
-
 Savunma hattı kart riski nedeniyle hangi dakikada geri çekildi? Savunma hattı kart riski nedeniyle geri çekildikten sonraki 5 dakikada rakip baskı bandı yükseldi mi?
 
 FAZ-7-18   
 Bu maçta teknik direktör ilk müdahaleyi yaptı mı? Bu maçta teknik direktör ilk müdahaleyi hangi zaman penceresinde yaptı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+)
 Bu maçta teknik direktör ilk müdahaleyi ilk yarıda mı yaptı ikinci yarıda mı? Bu maçta teknik direktör ilk müdahaleyi devre arasına kadar yaptı mı?
-
 Bu maçta teknik direktör ilk müdahaleyi devre arasında mı yaptı?
 Bu maçta teknik direktör ilk müdahaleyi devre arası sonrasında ilk 5 dakikada mı yaptı?
 Bu maçta teknik direktör ilk müdahaleyi golden sonraki 5 dakika içinde mi yaptı?
@@ -565,7 +559,6 @@ Bu maçta teknik direktör ilk müdahaleyi sakatlık / tedavi duraklamasından h
 Bu maçta teknik direktör ilk müdahalesi oyuncu değişikliği oldu mu?
 Bu maçta teknik direktör ilk müdahalesi oyuncu değişikliği ise hangi dakikada yaptı?
 Bu maçta teknik direktör ilk müdahalesi oyuncu değişikliği ise hangi zaman penceresinde yaptı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+)
-
 Bu maçta teknik direktör ilk müdahalesi rol değişimi oldu mu?
 Bu maçta teknik direktör ilk müdahalesi rol değişimi ise hangi dakikada yaptı?
 Bu maçta teknik direktör ilk müdahalesi rol değişimi ise hangi zaman penceresinde yaptı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+)
@@ -573,7 +566,6 @@ Bu maçta teknik direktör ilk müdahalesi rol değişimi ise hangi zaman pencer
 Bu maçta teknik direktör ilk müdahalesi diziliş değişimi oldu mu?
 Bu maçta teknik direktör ilk müdahalesi diziliş değişimi ise hangi dakikada yaptı?
 Bu maçta teknik direktör ilk müdahalesi diziliş değişimi ise hangi zaman penceresinde yaptı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+)
-
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncuyu içerdi?
 Bu maçta teknik direktör ilk müdahalesi hangi pozisyona yönelikti?
 Bu maçta teknik direktör ilk müdahalesi hangi hattı etkiledi? (defans / orta saha / hücum)
@@ -587,7 +579,6 @@ Bu maçta teknik direktör ilk müdahalesi sarı kartlı bir oyuncuyu çıkarmak
 
 Teknik direktör müdahalesi tempo bandını değiştirdi mi?
 Teknik direktör müdahalesi tempo bandını hangi dakikadan itibaren değiştirdi?
-
 Teknik direktör müdahalesi kontrol bandını değiştirdi mi?
 Teknik direktör müdahalesi kontrol bandını hangi dakikadan itibaren değiştirdi?
 
@@ -614,7 +605,6 @@ Devre arası sonrası çıkış refleksi hangi tetikleyiciyle değişti?(gol / k
 
 Devre arası sonrası tempo bandı yükseldi mi?
 Devre arası sonrası tempo bandı ilk 5 dakikada yükseldi mi?
-
 Devre arası sonrası tempo bandı ilk 10 dakikada yükseldi mi?
 Devre arası sonrası tempo bandı yükselişi kaç segment sürdü?
 Devre arası sonrası tempo bandı yükselişi şut üretimine döndü mü?
@@ -640,7 +630,6 @@ Maçta korner yoğunluğu olan blok var mı?→set_pieces.corners.high_intensity
 Korner yoğunluğu 0–5 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_0_5 → boolean → unknown,Korner yoğunluğu 6–10 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_6_10 → boolean → unknown
 Korner yoğunluğu 11–15 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_11_15 → boolean → unknown,Korner yoğunluğu 16–20 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_16_20 → boolean → unknown
 Korner yoğunluğu 21–25 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_21_25 → boolean → unknown,Korner yoğunluğu 26–30 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_26_30 → boolean → unknown
-
 Korner yoğunluğu 31–35 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_31_35 → boolean → unknown,Korner yoğunluğu 36–40 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_36_40 → boolean → unknown
 Korner yoğunluğu 41–45 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_41_45 → boolean → unknown,Korner yoğunluğu 46–50 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_46_50 → boolean → unknown
 Korner yoğunluğu 51–55 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_51_55 → boolean → unknown,Korner yoğunluğu 56–60 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_56_60 → boolean → unknown
@@ -648,7 +637,6 @@ Korner yoğunluğu 51–55 segmentinde mi oluştu? → set_pieces.corners.high_i
 Korner yoğunluğu 61–65 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_61_65 → boolean → unknown,Korner yoğunluğu 66–70 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_66_70 → boolean → unknown
 Korner yoğunluğu 71–75 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_71_75 → boolean → unknown,Korner yoğunluğu 76–80 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_76_80 → boolean → unknown
 Korner yoğunluğu 81–85 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_81_85 → boolean → unknown,Korner yoğunluğu 86–90 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_86_90 → boolean → unknown
-
 Korner yoğunluğu sonrası 1 dakikada net pozisyon oluştu mu? → set_pieces.corners.after_high_intensity.big_chance_window_1m → boolean → unknown
 Korner yoğunluğu sonrası 3 dakikada net pozisyon oluştu mu?→ set_pieces.corners.after_high_intensity.big_chance_window_3m → boolean → unknown
 Korner yoğunluğu sonrası 5 dakikada net pozisyon oluştu mu? → set_pieces.corners.after_high_intensity.big_chance_window_5m → boolean → unknown
@@ -657,7 +645,6 @@ Korner yoğunluğu sonrası skor değişti mi? → set_pieces.corners.after_high
 Korner yoğunluğu sonrası ilk 5 dakikada skor değişti mi? → set_pieces.corners.after_high_intensity.score_changed_window_5m → boolean → unknown
 Korner yoğunluğu sonrası duran top savunması tekrar eden risk üretti mi? → set_pieces.corners.after_high_intensity.defending_repeated_risk → boolean → unknown
 Korner yoğunluğu sonrası ikinci top kazanımı arttı mı? → set_pieces.corners.after_high_intensity.second_ball_wins_up → boolean → unknown
-
 Korner yoğunluğu sonrası ceza sahası içi şut sayısı arttı mı? → set_pieces.corners.after_high_intensity.box_shots_up → boolean → unknown
 Korner yoğunluğu sonrası kornerden dönen toplar tekrar korner üretti mi? → set_pieces.corners.after_high_intensity.rebound_created_more_corners → boolean → unknown
 Korner yoğunluğu sonrası kaleci müdahaleleri arttı mı? → set_pieces.corners.after_high_intensity.goalkeeper_interventions_up → boolean → unknown
@@ -666,14 +653,12 @@ Korner yoğunluğu sonrası savunma uzaklaştırmaları arttı mı? → set_piec
 Duran toplar takımın tek skor yolu gibi mi çalıştı? → set_pieces.overall.primary_scoring_route → boolean → unknown
 Duran toplar son 10 dakikada takımın tek skor yolu gibi mi çalıştı? → set_pieces.overall.primary_scoring_route_window_last10m → boolean → unknown
 Duran toplar ilk 10 dakikada takımın tek skor yolu gibi mi çalıştı? → set_pieces.overall.primary_scoring_route_window_first10m → boolean → unknown
-
 Duran top savunması tekrar eden risk üretti mi? → set_pieces.defending.repeated_risk → boolean → unknown
 Duran top savunması aynı bölgeden tekrar eden faul üretti mi? → set_pieces.defending.repeated_fouls_same_zone → boolean → unknown
 Duran top savunması aynı bölgeden tekrar eden korner verdi mi? → set_pieces.defending.repeated_corners_conceded_same_zone → boolean → unknown
 
 Maçta serbest vuruş bandı için serbest vuruş yoğunluğu arttı mı? → set_pieces.free_kicks.high_intensity_increased → boolean → unknown
 Serbest vuruş yoğunluğu hangi 5 dakikalık pencerede arttı? → set_pieces.free_kicks.high_intensity_window_5m → string → unknown
-
 Maçta serbest vuruş bandı için tehlikeli bölge faulleri oluştu mu? → set_pieces.free_kicks.danger_zone_fouls_occurred → boolean → unknown
 Tehlikeli bölge faulleri hangi 5 dakikalık pencerede oluştu? → set_pieces.free_kicks.danger_zone_fouls_window_5m → string → unknown
 Maçta serbest vuruş bandı için duran top sonrası şut geldi mi? → set_pieces.free_kicks.after_set_piece.shot_taken → boolean → unknown
@@ -682,7 +667,6 @@ Duran top sonrası şut hangi dakikada geldi? → set_pieces.free_kicks.after_se
 Duran top sonrası şut geldikten sonraki 5 dakikada korner oluştu mu? → set_pieces.free_kicks.after_set_piece.corners_occurred_window_5m → boolean → unknown
 Duran top sonrası şut geldikten sonraki 5 dakikada net pozisyon oluştu mu? → set_pieces.free_kicks.after_set_piece.big_chance_occurred_window_5m → boolean → unknown
 Duran top sonrası şut geldikten sonraki 5 dakikada tempo bandı değişti mi? → set_pieces.free_kicks.after_set_piece.tempo_band_changed_window_5m → boolean → unknown
-
 Maçta aut/taç bandı için oyun sık sık taça gitti mi? → match.flow.throwin.frequency_high → boolean → unknown
 Oyun sık sık taça gittiği blok hangi 5 dakikalık penceredeydi? → match.flow.throwin.cluster_window_5m → enum(0_5,5_10,10_15,15_20,20_25,25_30,30_35,35_40,40_45,45_50,50_55,55_60,60_65,65_70,70_75,75_80,80_85,85_90,unknown) → unknown
 Maçta aut/taç bandı için tempo düşüşü oluşturdu mu? → match.flow.throwin.caused_tempo_drop → boolean → unknown
@@ -693,14 +677,12 @@ Taç yoğunluğu sonrası 5 dakikada tempo bandı düştü mü? → match.flow.t
 
 Taç yoğunluğu sonrası baskı yönü değişti mi? → match.flow.throwin.after_cluster.pressure_direction_changed → boolean → unknown
 Taç yoğunluğu sonrası topa sahip olma taraf değiştirdi mi? → match.flow.throwin.after_cluster.possession_side_changed → boolean → unknown
-
 Bu maçta kaleci ilk 5 dakikada büyük hata yaptı mı? → match.gk.error.major.first_5m → boolean → unknown
 Bu maçta kaleci ilk 10 dakikada büyük hata yaptı mı? → match.gk.error.major.first_10m → boolean → unknown
 Bu maçta kaleci 15–30 aralığında büyük hata yaptı mı? → match.gk.error.major.min15_30 → boolean → unknown
 
 Bu maçta kaleci 30–45 aralığında büyük hata yaptı mı? → match.gk.error.major.min30_45 → boolean → unknown
 Bu maçta kaleci 45–60 aralığında büyük hata yaptı mı? → match.gk.error.major.min45_60 → boolean → unknown
-
 Bu maçta kaleci 60–75 aralığında büyük hata yaptı mı? → match.gk.error.major.min60_75 → boolean → unknown
 Bu maçta kaleci 75–90 aralığında büyük hata yaptı mı? → match.gk.error.major.min75_90 → boolean → unknown
 
@@ -708,53 +690,43 @@ Kalecinin büyük hatası hangi dakikada oldu? → match.gk.error.major.minute �
 Kalecinin büyük hatası sonrası sonraki 5 dakikada rakip baskı bandı yükseldi mi? → match.gk.error.major.after_5m.opponent_pressure_band_up → boolean → unknown
 Kalecinin büyük hatası sonrası sonraki 5 dakikada takım panik bandına girdi mi? → match.gk.error.major.after_5m.team_panic_band_on → boolean → unknown
 Kalecinin büyük hatası sonrası sonraki 5 dakikada takım tempo bandı düştü mü? → match.gk.error.major.after_5m.team_tempo_band_down → boolean → unknown
-
 Bu maçta kaleci ilk 5 dakikada kritik kurtarış yaptı mı? → match.gk.save.critical.first_5m → boolean → unknown
 Bu maçta kaleci ilk 10 dakikada kritik kurtarış yaptı mı? → match.gk.save.critical.first_10m → boolean → unknown
 Bu maçta kaleci 15–30 aralığında kritik kurtarış yaptı mı? → match.gk.save.critical.min15_30 → boolean → unknown
 
 Bu maçta kaleci 30–45 aralında kritik kurtarış yaptı mı? → match.gk.save.critical.min30_45 → boolean → unknown
 Bu maçta kaleci 45–60 aralığında kritik kurtarış yaptı mı? → match.gk.save.critical.min45_60 → boolean → unknown
-
 Bu maçta kaleci 60–75 aralığında kritik kurtarış yaptı mı? → match.gk.save.critical.min60_75 → boolean → unknown
 Bu maçta kaleci 75–90 aralığında kritik kurtarış yaptı mı? → match.gk.save.critical.min75_90 → boolean → unknown
-
 Kalecinin kritik kurtarışı hangi dakikada oldu? → match.gk.save.critical.minute → integer → unknown
 Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım tempo bandı yükseldi mi? → match.gk.save.critical.after_5m.team_tempo_band_up → boolean → unknown
 Kalecinin kritik kurtarışı sonrası sonraki 5 dakikada takım moral bandı yükseldi mi? → match.gk.save.critical.after_5m.team_morale_band_up → boolean → unknown
 
 Bu maçta kaleci kurtarış serisi ilk 15 dakikada oluştu mu? → match.gk.save_streak.present.first_15m → boolean → unknown
 Bu maçta kaleci kurtarış serisi 15–30 aralığında oluştu mu? → match.gk.save_streak.present.min15_30 → boolean → unknown
-
 Bu maçta kaleci kurtarış serisi 30–45 aralığında oluştu mu? → match.gk.save_streak.present.min30_45 → boolean → unknown
 Bu maçta kaleci kurtarış serisi 45–60 aralığında oluştu mu? → match.gk.save_streak.present.min45_60 → boolean → unknown
-
 Bu maçta kaleci kurtarış serisi 60–75 aralığında oluştu mu? → match.gk.save_streak.present.min60_75 → boolean → unknown
 Bu maçta kaleci kurtarış serisi 75–90 aralığında oluştu mu? → match.gk.save_streak.present.min75_90 → boolean → unknown
 
 Kalecinin kurtarış serisi hangi dakikalar arasında gerçekleşti? → match.gk.save_streak.window_minutes → string → unknown
 Kaleci kurtarış serisi sonrası sonraki 5 dakikada takım kontrol bandı yükseldi mi? → match.gk.save_streak.after_5m.team_control_band_up → boolean → unknown
 Kaleci kurtarış serisi sonrası sonraki 5 dakikada rakip tempo bandı düştü mü? → match.gk.save_streak.after_5m.opponent_tempo_band_down → boolean → unknown
-
 Bu maçta kaleci zaman geçirme davranışına ilk 15 dakikada girdi mi? → match.gk.time_waste.present.first_15m → boolean → unknown
 Bu maçta kaleci zaman geçirme davranışına 30–45 aralığında girdi mi? → match.gk.time_waste.present.min30_45 → boolean → unknown
-
 Bu maçta kaleci zaman geçirme davranışına 60–75 aralığında girdi mi? → match.gk.time_waste.present.min60_75 → boolean → unknown
 Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi? → match.gk.time_waste.present.min75_90 → boolean → unknown
 
 Kalecinin zaman geçirme davranışı hangi dakikada başladı? → match.gk.time_waste.start_minute → integer → unknown
 Kalecinin zaman geçirme davranışı hangi dakikada bitti? → match.gk.time_waste.end_minute → integer → unknown
-
 Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü? → match.gk.time_waste.after_5m.match_tempo_band_down → boolean → unknown
 Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi? → match.gk.time_waste.after_5m.crowd_reaction_band_up → boolean → unknown
-
 Bu maçta kaleci sakatlık/duraklama ile ritmi ilk yarıda bozdu mu? → match.gk.stoppage.rhythm_break.first_half → boolean → unknown
 Bu maçta kaleci sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu? → match.gk.stoppage.rhythm_break.second_half → boolean → unknown
 
 Kalecinin sakatlık/duraklaması hangi dakikada oldu? → match.gk.stoppage.minute → integer → unknown
 Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü? → match.gk.stoppage.after_5m.team_pressure_band_down → boolean → unknown
 Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü? → match.gk.stoppage.after_5m.opponent_pressure_band_down → boolean → unknown
-
 Bu maçta kalecinin uzun oyun kurma tercihi ilk 15 dakikada belirginleşti mi? → match.gk.build_up.long_distribution.first_15m → boolean → unknown
 Bu maçta kalecinin uzun oyun kurma tercihi 15–30 aralığında belirginleşti mi? → match.gk.build_up.long_distribution.min15_30 → boolean → unknown
 Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti mi? → match.gk.build_up.long_distribution.min60_75 → boolean → unknown
@@ -762,7 +734,6 @@ Bu maçta kalecinin uzun oyun kurma tercihi 60–75 aralığında belirginleşti
 Kalecinin uzun oyun kurma tercihi hangi dakikada belirginleşti? → match.gk.build_up.long_distribution.minute → integer → unknown
 Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi? → match.gk.build_up.long_distribution.after_5m.turnover_band_up → boolean → unknown
 Kalecinin uzun oyun kurma tercihi sonrası sonraki 5 dakikada ikinci top kazanımı arttı mı? → match.gk.build_up.long_distribution.after_5m.second_ball_wins_up → boolean → unknown
-
 Bu maçta kalecinin kısa oyun kurma tercihi ilk 15 dakikada belirginleşti mi? → match.gk.build_up.short_distribution.first_15m → boolean → unknown
 Bu maçta kalecinin kısa oyun kurma tercihi 15–30 aralığında belirginleşti mi? → match.gk.build_up.short_distribution.min15_30 → boolean → unknown
 Bu maçta kalecinin kısa oyun kurma tercihi 60–75 aralığında belirginleşti mi? → match.gk.build_up.short_distribution.min60_75 → boolean → unknown
@@ -770,67 +741,53 @@ Bu maçta kalecinin kısa oyun kurma tercihi 60–75 aralığında belirginleşt
 Kalecinin kısa oyun kurma tercihi hangi dakikada belirginleşti? → match.gk.build_up.short_distribution.minute → integer → unknown
 Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada baskı altında top kaybı arttı mı? → match.gk.build_up.short_distribution.after_5m.pressure_turnover_up → boolean → unknown
 Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada rakip pres bandı yükseldi mi? → match.gk.build_up.short_distribution.after_5m.opponent_press_band_up → boolean → unknown
-
 Bu maçta forvet ilk 10 dakikada net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min0_10 → boolean → unknown
 Bu maçta forvet 10–20 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min10_20 → boolean → unknown
 Bu maçta forvet 20–30 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min20_30 → boolean → unknown
 
 Bu maçta forvet 30–45 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min30_45 → boolean → unknown
 Bu maçta forvet 45–60 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min45_60 → boolean → unknown
-
 Bu maçta forvet 60–75 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min60_75 → boolean → unknown
 Bu maçta forvet 75–90 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min75_90 → boolean → unknown
-
 Forvetin net pozisyon kaçırması hangi dakikada oldu? → match.fwd.miss.big_chance.minute → integer → unknown
 Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım panik bandı yükseldi mi? → match.fwd.miss.big_chance.after_5m.team_panic_band_up → boolean → unknown
 Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım tempo bandı düştü mü? → match.fwd.miss.big_chance.after_5m.team_tempo_band_down → boolean → unknown
 
 Bu maçta forvet art arda net pozisyon kaçırması ilk yarıda oldu mu? → match.fwd.miss.big_chance_streak.present.first_half → boolean → unknown
 Bu maçta forvet art arda net pozisyon kaçırması ikinci yarıda oldu mu? → match.fwd.miss.big_chance_streak.present.second_half → boolean → unknown
-
 Forvetin art arda net pozisyon kaçırması hangi dakikalar arasında oldu? → match.fwd.miss.big_chance_streak.window_minutes → string → unknown
 Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi? → match.fwd.miss.big_chance_streak.after_5m.crowd_reaction_band_up → boolean → unknown
 Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi? → match.fwd.miss.big_chance_streak.after_5m.team_risk_up_mode_on → boolean → unknown
-
 Bu maçta forvet baskı yükselince ilk yarıda kart/faul eğilimi arttı mı? → match.fwd.pressure_response.foul_card_tendency_up.first_half → boolean → unknown
 Bu maçta forvet baskı yükselince ikinci yarıda kart/faul eğilimi arttı mı? → match.fwd.pressure_response.foul_card_tendency_up.second_half → boolean → unknown
 
 Forvet baskı yükselince kart/faul eğilimi hangi dakikada belirginleşti? → match.fwd.pressure_response.foul_card_tendency_up.minute → integer → unknown
 Forvetin kart/faul eğilimi sonrası sonraki 5 dakikada takım oyun akışı kesildi mi? → match.fwd.pressure_response.foul_card_tendency_up.after_5m.team_flow_disrupted → boolean → unknown
-
 Bu maçta forvet baskı yükselince ilk yarıda itiraz dili sertleşti mi? → match.fwd.pressure_response.protest_language_harsh.first_half → boolean → unknown
 Bu maçta forvet baskı yükselince ikinci yarıda itiraz dili sertleşti mi? → match.fwd.pressure_response.protest_language_harsh.second_half → boolean → unknown
-
 Forvetin itiraz dili hangi dakikada sertleşti? → match.fwd.pressure_response.protest_language_harsh.minute → integer → unknown
 Forvetin itiraz dili sertleşince sonraki 5 dakikada kart riski yükseldi mi? → match.fwd.pressure_response.protest_language_harsh.after_5m.card_risk_up → boolean → unknown
 
 Bu maçta forvet iptal gol sonrası ilk 5 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_disallowed_goal.unstable.first_5m → boolean → unknown
 Bu maçta forvet iptal gol sonrası sonraki 15 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_disallowed_goal.unstable.next_15m → boolean → unknown
-
 Forvetin iptal gol sonrası mental kırılma anı hangi dakikada oldu? → match.fwd.mental.after_disallowed_goal.break_minute → integer → unknown
 Forvet iptal gol sonrası sonraki 5 dakikada net pozisyon üretimi düştü mü? → match.fwd.mental.after_disallowed_goal.after_5m.big_chance_creation_down → boolean → unknown
-
 Bu maçta forvet VAR sonrası ilk 5 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_var_event.unstable.first_5m → boolean → unknown
 Bu maçta forvet VAR sonrası sonraki 15 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_var_event.unstable.next_15m → boolean → unknown
-
 Forvetin VAR sonrası mental kırılma anı hangi dakikada oldu? → match.fwd.mental.after_var_event.break_minute → integer → unknown
 Forvet VAR sonrası sonraki 5 dakikada top kaybı bandı yükseldi mi? → match.fwd.mental.after_var_event.after_5m.turnover_band_up → boolean → unknown
 
 Bu maçta forvet penaltı kaçırdı mı? → match.fwd.penalty.missed → boolean → unknown
-
 Forvet penaltıyı hangi dakikada kaçırdı? → match.fwd.penalty.missed_minute → integer → unknown
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada takım tempo bandı düştü mü? → match.fwd.penalty.after_miss_5m.team_tempo_band_down → boolean → unknown
-
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi? → match.fwd.penalty.after_miss_5m.team_risk_up_mode_on → boolean → unknown
 Forvetin penaltı kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi? → match.fwd.penalty.after_miss_5m.crowd_reaction_band_up → boolean → unknown
-
 Bu maçta forvet oyundan ilk yarıda çıktı mı? → match.fwd.substituted.off.first_half → boolean → unknown
 Bu maçta forvet oyundan ikinci yarıda çıktı mı? → match.fwd.substituted.off.second_half → boolean → unknown
 
 Forvet hangi dakikada oyundan çıktı? → match.fwd.substituted.off_minute → integer → unknown
 Forvet oyundan çıkış nedeni taktik mi? → match.fwd.substituted.off_reason.tactical → boolean → unknown
 Forvet oyundan çıkış nedeni sakatlık mı? → match.fwd.substituted.off_reason.injury → boolean → unknown
-
 Forvet oyundan çıkınca sonraki 5 dakikada takım net pozisyon üretimi düştü mü? → match.fwd.substituted.after_5m.big_chance_creation_down → boolean → unknown
 Forvet oyundan çıkınca sonraki 5 dakikada takım pres bandı düştü mü? → match.fwd.substituted.after_5m.team_press_band_down → boolean → unknown
 
@@ -844,33 +801,27 @@ Bu maçta orta sahada top kaybı 75–90 aralığında kümelendi mi? → match.
 
 Orta saha top kaybı hangi dakikada başladı? → match.mid.turnover.cluster.start_minute → integer → unknown
 Orta saha top kaybı hangi dakikada bitti? → match.mid.turnover.cluster.end_minute → integer → unknown
-
 Orta saha top kaybı sonrası sonraki 5 dakikada momentum flip yaşandı mı? → match.mid.turnover.after_5m.momentum_flip → boolean → unknown
 Orta saha top kaybı sonrası sonraki 5 dakikada rakip net pozisyon üretti mi? → match.mid.turnover.after_5m.opponent_big_chance_created → boolean → unknown
-
 Orta sahada pas isabeti düşüşü ilk yarıda oldu mu? → match.midfield.pass_accuracy.drop.first_half → boolean → unknown
 Orta sahada pas isabeti düşüşü ikinci yarıda oldu mu? → match.midfield.pass_accuracy.drop.second_half → boolean → unknown
 
 Orta sahada pas isabeti düşüşü hangi segmentte belirginleşti? → match.midfield.pass_accuracy.drop.segment → enum (0_15,16_30,31_45,46_60,61_75,76_90_plus) → unknown
 Orta sahada pas isabeti düşüşü sonrası sonraki 5 dakikada kontrol bandı kaybedildi mi? → match.midfield.pass_accuracy.drop.next5m.control_lost → boolean → unknown
-
 Orta sahada kart birikimi ilk yarıda pas kalitesini düşürdü mü? → match.midfield.cards.accumulation.first_half.pass_quality_down → boolean → unknown
 Orta sahada kart birikimi ikinci yarıda pas kalitesini düşürdü mü? → match.midfield.cards.accumulation.second_half.pass_quality_down → boolean → unknown
-
 Orta sahada kart birikimi hangi dakikada kritik seviyeye çıktı? → match.midfield.cards.accumulation.critical_minute → integer → unknown
 Orta sahada kart birikimi sonrası sonraki 5 dakikada top kaybı arttı mı? → match.midfield.cards.accumulation.next5m.turnover_up → boolean → unknown
 
 Rakip presi artınca orta saha ilk 15 dakikada kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.0_15 → boolean → unknown
 Rakip presi artınca orta saha 15–30 aralığında kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.15_30 → boolean → unknown
 Rakip presi artınca orta saha 60–75 aralığında kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.60_75 → boolean → unknown
-
 Orta saha kontrol kaybı hangi dakikada başladı? → match.midfield.control_loss.start_minute → integer → unknown
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada savunma hattı geriye yaslandı mı? → match.midfield.control_loss.next5m.defensive_line.dropped → boolean → unknown
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada takım uzun topa döndü mü? → match.midfield.control_loss.next5m.team.switched_to_long_ball → boolean → unknown
 
 Bu maçta orta saha değişikliği ilk yarıda oldu mu? → match.midfield.substitution.first_half → boolean → unknown
 Bu maçta orta saha değişikliği ikinci yarıda oldu mu? → match.midfield.substitution.second_half → boolean → unknown
-
 Orta saha değişikliği hangi dakikada oldu? → match.midfield.substitution.minute → integer → unknown
 Orta saha değişikliği sonrası sonraki 5 dakikada tempo bandı değişti mi? → match.midfield.substitution.next5m.tempo_band.changed → boolean → unknown
 Orta saha değişikliği sonrası sonraki 5 dakikada kontrol bandı değişti mi? → match.midfield.substitution.next5m.control_band.changed → boolean → unknown
@@ -878,7 +829,6 @@ Orta saha değişikliği sonrası sonraki 5 dakikada topa sahip olma yönü değ
 
 Bu maçta savunma hattı ilk 15 dakikada bir anda geriye yaslandı mı? → match.defensive_line.sudden_drop.0_15 → boolean → unknown
 Bu maçta savunma hattı 15–30 aralığında bir anda geriye yaslandı mı? → match.defensive_line.sudden_drop.15_30 → boolean → unknown
-
 Bu maçta savunma hattı 30–45 aralığında bir anda geriye yaslandı mı? → match.defensive_line.sudden_drop.30_45 → boolean → unknown
 Bu maçta savunma hattı 60–75 aralığında bir anda geriye yaslandı mı? → match.defensive_line.sudden_drop.60_75 → boolean → unknown
 Bu maçta savunma hattı 75–90 aralığında bir anda geriye yaslandı mı? → match.defensive_line.sudden_drop.75_90 → boolean → unknown
@@ -886,7 +836,6 @@ Bu maçta savunma hattı 75–90 aralığında bir anda geriye yaslandı mı? �
 Savunma hattı geriye yaslanma hangi dakikada başladı? → match.defensive_line.drop.start_minute → integer → unknown
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada risk bandı yükseldi mi? → match.defensive_line.drop.next5m.risk_band.up → boolean → unknown
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada rakip ceza sahası girişleri arttı mı? → match.defensive_line.drop.next5m.opponent.box_entries.up → boolean → unknown
-
 Bu maçta savunma hattı ilk 15 dakikada öne çıktı mı? → match.defensive_line.step_up.0_15 → boolean → unknown
 Bu maçta savunma hattı 15–30 aralığında öne çıktı mı? → match.defensive_line.step_up.15_30 → boolean → unknown
 Bu maçta savunma hattı 60–75 aralığında öne çıktı mı? → match.defensive_line.step_up.60_75 → boolean → unknown
@@ -894,31 +843,25 @@ Bu maçta savunma hattı 60–75 aralığında öne çıktı mı? → match.defe
 Savunma hattı öne çıkış hangi dakikada oldu? → match.defensive_line.step_up.minute → integer → unknown
 Savunma hattı öne çıktıktan sonraki 5 dakikada arka koşularla kırıldı mı? → match.defensive_line.step_up.next5m.broken_by_runs → boolean → unknown
 Savunma hattı öne çıktıktan sonraki 5 dakikada ofsayta düşürme arttı mı? → match.defensive_line.step_up.next5m.offside_traps.up → boolean → unknown
-
 Bu maçta savunma hattı ofsayt çizgisi ile ilk yarıda ofsayt yoğunluğu üretti mi? → match.defensive_line.offside_trap.first_half.high_volume → boolean → unknown
 Bu maçta savunma hattı ofsayt çizgisi ile ikinci yarıda ofsayt yoğunluğu üretti mi? → match.defensive_line.offside_trap.second_half.high_volume → boolean → unknown
 
 Savunma hattı ofsayt yoğunluğu hangi dakikalarda arttı? → match.defensive_line.offside_trap.high_volume.minutes → list → unknown
 Savunma hattı ofsayt yoğunluğu sonrası sonraki 5 dakikada rakip koşu denemeleri azaldı mı? →match.defensive_line.offside_trap.high_volume.next5m.opponent.run_atte   mpts.down → boolean → unknown
-
 Bu maçta savunmada bireysel hata zinciri ilk yarıda oluştu mu?→ match.defense.individual_error_chain.first_half → boolean → unknow
 Bu maçta savunmada bireysel hata zinciri ikinci yarıda oluştu mu?→ match.defense.individual_error_chain.second_half → boolean → unknown
-
 Savunmada bireysel hata zinciri hangi dakikalarda oluştu? → match.defense.individual_error_chain.minutes → list → unknown
 Savunmada bireysel hata zinciri sonrası sonraki 5 dakikada risk bandı yükseldi mi? → match.defense.individual_error_chain.next5m.risk_band.up → boolean → unknown
 
 Bu maçta savunma hatası sonrası gol yendi mi? → match.defense.error.conceded_goal → boolean → unknown
-
 Savunma hatası sonrası gol hangi dakikada yenildi? → match.defense.error.conceded_goal.minute → integer → unknown
 Savunma hatası sonrası sonraki 5 dakikada takım kontrol bandı düştü mü? → match.defense.error.conceded_goal.next5m.team.control_band.down → boolean → unknown
-
 Bu maçta savunma hatası sonrası VAR incelemesi oldu mu? → match.defense.error.var_review.present → boolean → unknown
 Savunma hatası sonrası VAR incelemesi hangi dakikada oldu? → match.defense.error.var_review.minute → integer → unknown
 VAR incelemesi sonrası sonraki 5 dakikada takım tempo bandı değişti mi? → match.defense.error.var_review.next5m.team.tempo_band.changed → boolean → unknown
 
 Bu maçta savunma hattı kart riski nedeniyle ilk yarıda geri çekildi mi? → match.defensive_line.card_risk.drop.first_half → boolean → unknown
 Bu maçta savunma hattı kart riski nedeniyle ikinci yarıda geri çekildi mi? → match.defensive_line.card_risk.drop.second_half → boolean → unknown
-
 Savunma hattı kart riski nedeniyle hangi dakikada geri çekildi? → match.defensive_line.card_risk.drop.minute → integer → unknown
 Savunma hattı kart riski nedeniyle geri çekildikten sonraki 5 dakikada rakip baskı bandı yükseldi mi? → match.defensive_line.card_risk.drop.next5m.opponent.pressure_band.up → boolean → unknown
 
@@ -1100,7 +1043,6 @@ Maç içinde tribün protestosu kırmızı karttan sonra mı başladı? → matc
 Tribün protestosu dalga dalga tekrar etti mi? → match.crowd.protest.waves_repeated → boolean → unknown
 Tribün protestosu dalgaları arasında kaç dakika vardı? → match.crowd.protest.wave_gap_minutes → integer → unknown
 Tribün protestosu dalgaları her seferinde daha mı yükseldi daha mı düştü? → match.crowd.protest.wave_trend → enum (increasing,decreasing) → unknown
-
 Tribün baskısı ilk kez hangi segmentte yükseldi? → match.crowd.pressure.first_rise_segment → enum (segment_0_15,segment_16_30,segment_31_45,segment_46_60,segment_61_75,segment_76_90_plus) → unknown
 Tribün baskısı yükselişi hangi dakikada başladı? → match.crowd.pressure.rise_start_minute → integer → unknown
 Tribün baskısı yükselişi hangi zaman penceresinde başladı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+) → match.crowd.pressure.rise_start_window → enum (0_15,16_30,31_45,46_60,61_75,76_90_plus) → unknown
@@ -1113,6 +1055,7 @@ Tribün baskısı yükselince takımın ilk tepkisi hangi oyuncu grubundan geldi
 Tribün baskısı yükselince takım panik hücum dalgasına girdi mi? → match.crowd.pressure.panic_attack_wave.entered → boolean → unknown
 Tribün baskısı yükselince takım panik hücum dalgası hangi dakikada başladı? → match.crowd.pressure.panic_attack_wave.start_minute → integer → unknown
 Tribün baskısı yükselince takım panik hücum dalgası kaç dakika sürdü? → match.crowd.pressure.panic_attack_wave.duration_minutes → integer → unknown
+
 Tribün baskısı yükselince takım panik hücum dalgası sonrası ilk 5 dakikada top kaybı arttı mı? → match.crowd.pressure.panic_attack_wave.turnover_increase_next5m → boolean → unknown
 Tribün baskısı yükselince takım kontrol bandı unstable’a kaydı mı? → match.crowd.pressure.control_to_unstable → boolean → unknown
 Tribün baskısı yükselince takım kontrol bandı unstable’a hangi dakikada kaydı? → match.crowd.pressure.control_to_unstable_minute → integer → unknown
@@ -1120,12 +1063,14 @@ Tribün baskısı yükselince takım kontrol bandı unstable’a kaydıktan sonr
 Tribün baskısı yükselince takım kart/faul yoğunluğunu artırdı mı? → match.crowd.pressure.foul_card_intensity_increase → boolean → unknown
 Tribün baskısı yükselince takım faul yoğunluğu ilk 5 dakikada arttı mı? → match.crowd.pressure.foul_intensity_increase_next5m → boolean → unknown
 Tribün baskısı yükselince takım kart faul yoğunluğu artışı hangi oyuncu grubunda oldu? → match.crowd.pressure.foul_card_increase_actor_group → enum (defense,midfield,attack) → unknown
+
 Tribün baskısı yükselince takım kart faul yoğunluğu artışı hangi bölgeye kaydı? → match.crowd.pressure.foul_card_increase_zone → enum (defensive_third,middle_third,attacking_third) → unknown
 Tribün baskısı yükselince teknik direktör daha erken müdahale yaptı mı? → match.crowd.pressure.coach_intervention.earlier_than_normal → boolean → unknown
 Tribün baskısı yükselince teknik direktör müdahalesi kaç dakika içinde geldi? → match.crowd.pressure.coach_intervention.response_minutes → integer → unknown
 Tribün baskısı yükselince teknik direktör müdahalesi tribün yükselişinden sonraki ilk 5 dakikada mı geldi? → match.crowd.pressure.coach_intervention.within_first5m → boolean → unknown
 Tribün baskısı yükselince teknik direktör müdahalesi hangi müdahale tipiydi? (değişiklik / rol / diziliş) → match.crowd.pressure.coach_intervention.type → enum (substitution,role_change,formation_change) → unknown
 Tribün baskısı yükselince hakem düdük sıklığını artırdı mı? → match.crowd.pressure.referee_whistle_frequency_increase → boolean → unknown
+
 Tribün baskısı yükselince hakem düdük sıklığı hangi dakikadan itibaren arttı? → match.crowd.pressure.referee_whistle_increase_minute → integer → unknown
 Tribün baskısı yükselince hakem düdük sıklığı ilk 5 dakikada arttı mı? → match.crowd.pressure.referee_whistle_increase_next5m → boolean → unknown
 Tribün baskısı yükselince hakem kart standardı sertleşti mi? → match.crowd.pressure.referee_card_standard_hardened → boolean → unknown
@@ -1153,6 +1098,7 @@ Tribün baskısı sonrası güvenlik anonsu kaç kez tekrar etti? → match.crow
 Tribün baskısı sonrası maçın kontrolü kayboldu mu? → match.crowd.pressure.after_effect.match_control_lost → boolean → unknown
 Tribün baskısı sonrası maçın kontrolü hangi dakikada kayboldu? → match.crowd.pressure.after_effect.match_control_lost_minute → integer → unknown
 Tribün baskısı sonrası maçın kontrolü kaybolduktan sonra ilk 5 dakikada kart/faul arttı mı? → match.crowd.pressure.after_effect.card_foul_increase_next5m → boolean → unknown
+
 Tribün baskısı hangi takım aleyhine yoğunlaştı? → match.crowd.pressure.target_team_side → enum (home,away) → unknown
 Tribün baskısı hangi dakikada belirli bir takıma yöneldi? → match.crowd.pressure.target_team_start_minute → integer → unknown
 Tribün baskısı hangi zaman penceresinde belirli bir takıma yöneldi? (31-45 / 46-60 / 61-75 / 76-90+) → match.crowd.pressure.target_team_start_window → enum (31_45,46_60,61_75,76_90_plus) → unknown
@@ -1160,6 +1106,7 @@ Tribün baskısı “hakem hedef” mi “oyuncu hedef” mi “yönetim hedef�
 Tribün baskısı hakem hedefli ise hangi karar tetikledi? → match.crowd.pressure.referee_target.trigger_decision → enum (foul_decision,card_decision,penalty_decision,var_decision,offside_decision,unknown) → unknown
 Tribün baskısı oyuncu hedefli ise hangi oyuncu hedef oldu? → match.crowd.pressure.player_target.player_reference → string → unknown
 Tribün baskısı yönetim hedefli ise hangi olay tetikledi? → match.crowd.pressure.management_target.trigger_event → enum (transfer_policy,coach_decision,club_statement,board_action,unknown) → unknown
+
 Tribün baskısı belirli bir oyuncuya yöneldi mi? → match.crowd.pressure.player_target.occurred → boolean → unknown
 Tribün baskısı belirli bir oyuncuya hangi dakikada yöneldi? → match.crowd.pressure.player_target.start_minute → integer → unknown
 Tribün baskısı belirli bir oyuncuya yönelme kaç dakika sürdü? → match.crowd.pressure.player_target.duration_minutes → integer → unknown
@@ -1170,7 +1117,6 @@ Tribün baskısı sonrası takımın pas hatası arttı mı? → match.crowd.pre
 
 Tribün baskısı sonrası pas hatası artışı hangi dakikada başladı? → match.crowd.pressure.after_effect.pass_error_increase_start_minute → integer → unknown
 Tribün baskısı sonrası pas hatası artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.pass_error_increase_duration_minutes → integer → unknown
-
 Tribün baskısı sonrası top kaybı arttı mı? → match.crowd.pressure.after_effect.turnover_increase → boolean → unknown
 Tribün baskısı sonrası top kaybı artışı hangi dakikada başladı? → match.crowd.pressure.after_effect.turnover_increase_start_minute → integer → unknown
 Tribün baskısı sonrası top kaybı artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.turnover_increase_duration_minutes → integer → unknown
@@ -1179,14 +1125,12 @@ Tribün baskısı sonrası takımın disiplin bandı aggressive’e kaydı mı? 
 Tribün baskısı sonrası disiplin bandı aggressive’e kayma hangi dakikada oldu? → match.crowd.pressure.after_effect.discipline_to_aggressive_minute → integer → unknown
 Tribün baskısı sonrası disiplin bandı aggressive’e kayma sonrası ilk 5 dakikada kart sayısı arttı mı? → match.crowd.pressure.after_effect.aggressive_effect.card_count_increase_next5m → boolean → unknown
 Tribün baskısı sonrası takımın tempo taşıma gücü düştü mü? → match.crowd.pressure.after_effect.tempo_carrying_power_drop → boolean → unknown
-
 Tribün baskısı sonrası tempo taşıma gücü düşüşü hangi dakikada başladı? → match.crowd.pressure.after_effect.tempo_carrying_power_drop_start_minute → integer → unknown
 Tribün baskısı sonrası tempo taşıma gücü düşüşü kaç segment sürdü? → match.crowd.pressure.after_effect.tempo_carrying_power_drop_duration_segments → integer → unknown
 
 Tribün baskısı sonrası deplasman takımı panic bandına girdi mi? → match.crowd.pressure.after_effect.away_team_to_panic → boolean → unknown
 Tribün baskısı sonrası deplasman takımı panic bandına girişi hangi dakikada oldu? → match.crowd.pressure.after_effect.away_team_to_panic_minute → integer → unknown
 Tribün baskısı sonrası deplasman takımı panic bandına girdikten sonra ilk 5 dakikada top kaybı arttı mı? → match.crowd.pressure.after_effect.away_panic_effect.turnover_increase_next5m → boolean → unknown
-
 Tribün baskısı sonrası iç saha takımı kontrolü kilitledi mi? → match.crowd.pressure.after_effect.home_team_control_locked → boolean → unknown
 Tribün baskısı sonrası iç saha takımı kontrolü kilitlemesi hangi dakikada başladı? → match.crowd.pressure.after_effect.home_team_control_locked_start_minute → integer → unknown
 Tribün baskısı sonrası iç saha takımı kontrolü kilitledikten sonra tempo bandı düştü mü? → match.crowd.pressure.after_effect.home_control_lock_effect.tempo_down → boolean → unknown
@@ -1194,7 +1138,6 @@ Tribün baskısı sonrası iç saha takımı kontrolü kilitledikten sonra tempo
 Tribün baskısı sonrası hakemle tartışma görüntüleri arttı mı? → match.crowd.pressure.after_effect.referee_arguments_increase → boolean → unknown
 Tribün baskısı sonrası hakemle tartışma artışı hangi dakikada başladı?→ match.crowd.pressure.after_effect.referee_arguments_increase_start_minute → integer → unknown
 Tribün baskısı sonrası hakemle tartışma artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.referee_arguments_increase_duration_minutes → integer → unknown
-
 Tribün baskısı maç sonunda taşkınlık riskine döndü mü? → match.crowd.pressure.endgame.misconduct_risk → boolean → unknown
 Tribün baskısı maç sonunda taşkınlık riski hangi dakikada yükseldi? → match.crowd.pressure.endgame.misconduct_risk_rise_minute → integer → unknown
 Tribün baskısı maç sonunda taşkınlık riski güvenlik müdahalesine döndü mü? → match.crowd.pressure.endgame.security_intervention_triggered → boolean → unknown
@@ -1202,7 +1145,6 @@ Tribün baskısı maç sonunda taşkınlık riski güvenlik müdahalesine dönd�
 FAZ-7-23
 Maçın toplam koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.total.availability.first_half → boolean → unknown
 Maçın toplam koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.total.availability.second_half → boolean → unknown
-
 Maçın toplam koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.total.availability.m00_15 → boolean → unknown
 Maçın toplam koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.total.availability.m16_30 → boolean → unknown
 Maçın toplam koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.total.availability.m31_45p → boolean → unknown
@@ -1212,7 +1154,6 @@ Maçın toplam koşu mesafesi verisi 76–90+ aralığı için mevcut mu? → ma
 
 Maçın takım bazlı toplam koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.team_total.availability.first_half → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.team_total.availability.second_half → boolean → unknown
-
 Maçın takım bazlı toplam koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m00_15 → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m16_30 → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m31_45p → boolean → unknown
@@ -1222,7 +1163,6 @@ Maçın takım bazlı toplam koşu mesafesi verisi 76–90+ aralığı için mev
 
 Maçın oyuncu bazlı koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.player.availability.first_half → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.player.availability.second_half → boolean → unknown
-
 Maçın oyuncu bazlı koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.player.availability.m00_15 → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.player.availability.m16_30 → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.player.availability.m31_45p → boolean → unknown
@@ -1232,7 +1172,6 @@ Maçın oyuncu bazlı koşu mesafesi verisi 76–90+ aralığı için mevcut mu?
 
 Maç içinde en çok koşan ilk 3 oyuncu ilk yarı özelinde kimdi? → match.physical.run_distance.leaders.top3.players.first_half → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu ikinci yarı özelinde kimdi? → match.physical.run_distance.leaders.top3.players.second_half → list(object) → unknown
-
 Maç içinde en çok koşan ilk 3 oyuncu 0–15 aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m00_15 → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu 16–30 aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m16_30 → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu 31–45+ aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m31_45p → list(object) → unknown
@@ -1251,7 +1190,6 @@ Maç içinde en çok koşan ilk 5 oyuncu 76–90+ aralığında kimdi? → match
 
 Maç içinde en çok koşan oyuncu ilk yarıda hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.first_half → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu ikinci yarıda hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.second_half → enum(home,away) → unknown
-
 Maç içinde en çok koşan oyuncu 0–15 aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m00_15 → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu 16–30 aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m16_30 → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu 31–45+ aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m31_45p → enum(home,away) → unknown
@@ -1261,7 +1199,6 @@ Maç içinde en çok koşan oyuncu 76–90+ aralığında hangi takımdaydı? �
 
 Maç içinde en çok koşan oyuncu ilk yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.first_half → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu ikinci yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.second_half → enum(goalkeeper,defender,midfielder,forward) → unknown
-
 Maç içinde en çok koşan oyuncu 0–15 aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m00_15 → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu 16–30 aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m16_30 → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu 31–45+ aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m31_45p → enum(goalkeeper,defender,midfielder,forward) → unknown
@@ -1271,7 +1208,6 @@ Maç içinde en çok koşan oyuncu 76–90+ aralığında hangi pozisyonda oynad
 
 Maç içinde en çok koşan oyuncu için ilk yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.first_half → string → unknown
 Maç içinde en çok koşan oyuncu için ikinci yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.second_half → string → unknown
-
 Maç içinde en çok koşan oyuncu için 0–15 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m00_15 → string → unknown
 Maç içinde en çok koşan oyuncu için 16–30 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m16_30 → string → unknown
 Maç içinde en çok koşan oyuncu için 31–45+ aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m31_45p → string → unknown
@@ -1282,7 +1218,6 @@ Maç içinde en çok koşan oyuncu için 76–90+ aralığında koşu mesafesi k
 
 Maç içinde iki takımın toplam koşu mesafesi farkı ilk yarıda var mı? → match.physical.run_distance.team_total.diff.exists.first_half → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı ikinci yarıda var mı? → match.physical.run_distance.team_total.diff.exists.second_half → boolean → unknown
-
 Maç içinde iki takımın toplam koşu mesafesi farkı 0–15 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m00_15 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 16–30 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m16_30 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 31–45+ aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m31_45p → boolean → unknown
@@ -1293,7 +1228,6 @@ Maç içinde iki takımın toplam koşu mesafesi farkı 76–90+ aralığında v
 FAZ-7-24
 Maçta korner yoğunluğu olan blok var mı? → set_pieces.corners.high_intensity_block_exists → boolean → unknown
 Korner yoğunluğu hangi 5 dakikalık pencerede oluştu? → set_pieces.corners.high_intensity_block_window_5m → string → unknown
-
 Korner yoğunluğu 0–5 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_0_5 → boolean → unknown
 Korner yoğunluğu 6–10 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_6_10 → boolean → unknown
 Korner yoğunluğu 11–15 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_11_15 → boolean → unknown
@@ -1301,7 +1235,6 @@ Korner yoğunluğu 11–15 segmentinde mi oluştu? → set_pieces.corners.high_i
 Korner yoğunluğu 16–20 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_16_20 → boolean → unknown
 Korner yoğunluğu 21–25 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_21_25 → boolean → unknown
 Korner yoğunluğu 26–30 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_26_30 → boolean → unknown
-
 Korner yoğunluğu 31–35 segmentinde mi oluştu? →set_pieces.corners.high_intensity_segment_31_35 → boolean → unknown
 Korner yoğunluğu 36–40 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_36_40 → boolean → unknown
 Korner yoğunluğu 41–45 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_41_45 → boolean → unknown
@@ -1309,7 +1242,6 @@ Korner yoğunluğu 41–45 segmentinde mi oluştu? → set_pieces.corners.high_i
 Korner yoğunluğu 46–50 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_46_50 → boolean → unknown
 Korner yoğunluğu 51–55 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_51_55 → boolean → unknown
 Korner yoğunluğu 56–60 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_56_60 → boolean → unknown
-
 Korner yoğunluğu 61–65 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_61_65 → boolean → unknown
 Korner yoğunluğu 66–70 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_66_70 → boolean → unknown
 Korner yoğunluğu 71–75 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_71_75 → boolean → unknown
@@ -1317,14 +1249,12 @@ Korner yoğunluğu 71–75 segmentinde mi oluştu? → set_pieces.corners.high_i
 Korner yoğunluğu 76–80 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_76_80 → boolean → unknown
 Korner yoğunluğu 81–85 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_81_85 → boolean → unknown
 Korner yoğunluğu 86–90 segmentinde mi oluştu? → set_pieces.corners.high_intensity_segment_86_90 → boolean → unknown
-
 Korner yoğunluğu sonrası 1 dakikada net pozisyon oluştu mu? → set_pieces.corners.after_high_intensity.big_chance_window_1m → boolean → unknown
 Korner yoğunluğu sonrası 3 dakikada net pozisyon oluştu mu? → set_pieces.corners.after_high_intensity.big_chance_window_3m → boolean → unknown
 Korner yoğunluğu sonrası 5 dakikada net pozisyon oluştu mu? → set_pieces.corners.after_high_intensity.big_chance_window_5m → boolean → unknown
 
 Korner yoğunluğu sonrası skor değişti mi? → set_pieces.corners.after_high_intensity.score_changed → boolean → unknown
 Korner yoğunluğu sonrası ilk 5 dakikada skor değişti mi? → set_pieces.corners.after_high_intensity.score_changed_window_5m → boolean → unknown
-
 Korner yoğunluğu sonrası duran top savunması tekrar eden risk üretti mi? → set_pieces.corners.after_high_intensity.defending_repeated_risk → boolean → unknown
 Korner yoğunluğu sonrası ikinci top kazanımı arttı mı? → set_pieces.corners.after_high_intensity.second_ball_wins_up → boolean → unknown
 Korner yoğunluğu sonrası ceza sahası içi şut sayısı arttı mı? → set_pieces.corners.after_high_intensity.box_shots_up → boolean → unknown
@@ -1405,13 +1335,11 @@ Bu maçta kaleci zaman geçirme davranışına 75–90 aralığında girdi mi? �
 
 Kalecinin zaman geçirme davranışı hangi dakikada başladı? → match.gk.time_waste.start_minute → integer → unknown
 Kalecinin zaman geçirme davranışı hangi dakikada bitti? → match.gk.time_waste.end_minute → integer → unknown
-
 Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada maç temposu düştü mü? → match.gk.time_waste.after_5m.match_tempo_band_down → boolean → unknown
 Kalecinin zaman geçirme davranışı sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi? → match.gk.time_waste.after_5m.crowd_reaction_band_up → boolean → unknown
 
 Bu maçta kaleci sakatlık/duraklama ile ritmi ilk yarıda bozdu mu? → match.gk.stoppage.rhythm_break.first_half → boolean → unknown
 Bu maçta kaleci sakatlık/duraklama ile ritmi ikinci yarıda bozdu mu? → match.gk.stoppage.rhythm_break.second_half → boolean → unknown
-
 Kalecinin sakatlık/duraklaması hangi dakikada oldu? → match.gk.stoppage.minute → integer → unknown
 Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada takım baskı bandı düştü mü? → match.gk.stoppage.after_5m.team_pressure_band_down → boolean → unknown
 Kalecinin sakatlık/duraklaması sonrası sonraki 5 dakikada rakip baskı bandı düştü mü? → match.gk.stoppage.after_5m.opponent_pressure_band_down → boolean → unknown
@@ -1434,7 +1362,6 @@ Kalecinin kısa oyun kurma tercihi sonrası sonraki 5 dakikada rakip pres bandı
 
 Bu maçta forvet ilk 10 dakikada net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min0_10 → boolean → unknown
 Bu maçta forvet 10–20 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min10_20 → boolean → unknown
-
 Bu maçta forvet 20–30 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min20_30 → boolean → unknown
 Bu maçta forvet 30–45 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min30_45 → boolean → unknown
 Bu maçta forvet 45–60 aralığında net pozisyon kaçırdı mı? → match.fwd.miss.big_chance.min45_60 → boolean → unknown
@@ -1447,23 +1374,19 @@ Forvetin net pozisyon kaçırması sonrası sonraki 5 dakikada takım tempo band
 
 Bu maçta forvet art arda net pozisyon kaçırması ilk yarıda oldu mu? → match.fwd.miss.big_chance_streak.present.first_half → boolean → unknown
 Bu maçta forvet art arda net pozisyon kaçırması ikinci yarıda oldu mu? → match.fwd.miss.big_chance_streak.present.second_half → boolean → unknown
-
 Forvetin art arda net pozisyon kaçırması hangi dakikalar arasında oldu? → match.fwd.miss.big_chance_streak.window_minutes → string → unknown
 Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada tribün tepki bandı yükseldi mi? → match.fwd.miss.big_chance_streak.after_5m.crowd_reaction_band_up → boolean → unknown
 Forvetin art arda net pozisyon kaçırması sonrası sonraki 5 dakikada takım risk_up moduna geçti mi? → match.fwd.miss.big_chance_streak.after_5m.team_risk_up_mode_on → boolean → unknown
 
 Bu maçta forvet baskı yükselince ilk yarıda kart/faul eğilimi arttı mı? → match.fwd.pressure_response.foul_card_tendency_up.first_half → boolean → unknown
 Bu maçta forvet baskı yükselince ikinci yarıda kart/faul eğilimi arttı mı? → match.fwd.pressure_response.foul_card_tendency_up.second_half → boolean → unknown
-
 Forvet baskı yükselince kart/faul eğilimi hangi dakikada belirginleşti? → match.fwd.pressure_response.foul_card_tendency_up.minute → integer → unknown
 Forvetin kart/faul eğilimi sonrası sonraki 5 dakikada takım oyun akışı kesildi mi? → match.fwd.pressure_response.foul_card_tendency_up.after_5m.team_flow_disrupted → boolean → unknown
-
 Bu maçta forvet baskı yükselince ilk yarıda itiraz dili sertleşti mi? → match.fwd.pressure_response.protest_language_harsh.first_half → boolean → unknown
 Bu maçta forvet baskı yükselince ikinci yarıda itiraz dili sertleşti mi? → match.fwd.pressure_response.protest_language_harsh.second_half → boolean → unknown
 
 Forvetin itiraz dili hangi dakikada sertleşti? → match.fwd.pressure_response.protest_language_harsh.minute → integer → unknown
 Forvetin itiraz dili sertleşince sonraki 5 dakikada kart riski yükseldi mi? → match.fwd.pressure_response.protest_language_harsh.after_5m.card_risk_up → boolean → unknown
-
 Bu maçta forvet iptal gol sonrası ilk 5 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_disallowed_goal.unstable.first_5m → boolean → unknown
 Bu maçta forvet iptal gol sonrası sonraki 15 dakikada mental olarak unstable’a döndü mü? → match.fwd.mental.after_disallowed_goal.unstable.next_15m → boolean → unknown
 Forvetin iptal gol sonrası mental kırılma anı hangi dakikada oldu? → match.fwd.mental.after_disallowed_goal.break_minute → integer → unknown
@@ -1486,7 +1409,6 @@ Bu maçta forvet oyundan ikinci yarıda çıktı mı? → match.fwd.substituted.
 Forvet hangi dakikada oyundan çıktı? → match.fwd.substituted.off_minute → integer → unknown
 Forvet oyundan çıkış nedeni taktik mi? → match.fwd.substituted.off_reason.tactical → boolean → unknown
 Forvet oyundan çıkış nedeni sakatlık mı? → match.fwd.substituted.off_reason.injury → boolean → unknown
-
 Forvet oyundan çıkınca sonraki 5 dakikada takım net pozisyon üretimi düştü mü? → match.fwd.substituted.after_5m.big_chance_creation_down → boolean → unknown
 Forvet oyundan çıkınca sonraki 5 dakikada takım pres bandı düştü mü?→ match.fwd.substituted.after_5m.team_press_band_down → boolean → unknown
 
@@ -1499,10 +1421,8 @@ Bu maçta orta sahada top kaybı 75–90 aralığında kümelendi mi? → match.
 
 Orta saha top kaybı hangi dakikada başladı? → match.mid.turnover.cluster.start_minute → integer → unknown
 Orta saha top kaybı hangi dakikada bitti? → match.mid.turnover.cluster.end_minute → integer → unknown
-
 Orta saha top kaybı sonrası sonraki 5 dakikada momentum flip yaşandı mı? → match.mid.turnover.after_5m.momentum_flip → boolean → unknown
 Orta saha top kaybı sonrası sonraki 5 dakikada rakip net pozisyon üretti mi? → match.mid.turnover.after_5m.opponent_big_chance_created → boolean → unknown
-
 Orta sahada pas isabeti düşüşü ilk yarıda oldu mu? → match.midfield.pass_accuracy.drop.first_half → boolean → unknown
 Orta sahada pas isabeti düşüşü ikinci yarıda oldu mu? → match.midfield.pass_accuracy.drop.second_half → boolean → unknown
 Orta sahada pas isabeti düşüşü hangi segmentte belirginleşti? → match.midfield.pass_accuracy.drop.segment → enum (0_15,16_30,31_45,46_60,61_75,76_90_plus) → unknown
@@ -1510,10 +1430,8 @@ Orta sahada pas isabeti düşüşü sonrası sonraki 5 dakikada kontrol bandı k
 
 Orta sahada kart birikimi ilk yarıda pas kalitesini düşürdü mü? → match.midfield.cards.accumulation.first_half.pass_quality_down → boolean → unknown
 Orta sahada kart birikimi ikinci yarıda pas kalitesini düşürdü mü? → match.midfield.cards.accumulation.second_half.pass_quality_down → boolean → unknown
-
 Orta sahada kart birikimi hangi dakikada kritik seviyeye çıktı? → match.midfield.cards.accumulation.critical_minute → integer → unknown
 Orta sahada kart birikimi sonrası sonraki 5 dakikada top kaybı arttı mı? → match.midfield.cards.accumulation.next5m.turnover_up → boolean → unknown
-
 Rakip presi artınca orta saha ilk 15 dakikada kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.0_15 → boolean → unknown
 Rakip presi artınca orta saha 15–30 aralığında kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.15_30 → boolean → unknown
 Rakip presi artınca orta saha 60–75 aralığında kontrol bandını kaybetti mi? → match.midfield.opponent_press_up.control_lost.60_75 → boolean → unknown
@@ -1521,7 +1439,6 @@ Rakip presi artınca orta saha 60–75 aralığında kontrol bandını kaybetti 
 Orta saha kontrol kaybı hangi dakikada başladı? → match.midfield.control_loss.start_minute → integer → unknown
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada savunma hattı geriye yaslandı mı? → match.midfield.control_loss.next5m.defensive_line.dropped → boolean → unknown
 Orta saha kontrol kaybı sonrası sonraki 5 dakikada takım uzun topa döndü mü? → match.midfield.control_loss.next5m.team.switched_to_long_ball → boolean → unknown
-
 Bu maçta orta saha değişikliği ilk yarıda oldu mu? → match.midfield.substitution.first_half → boolean → unknown
 Bu maçta orta saha değişikliği ikinci yarıda oldu mu? → match.midfield.substitution.second_half → boolean → unknown
 
@@ -1539,7 +1456,6 @@ Bu maçta savunma hattı 75–90 aralığında bir anda geriye yaslandı mı? �
 Savunma hattı geriye yaslanma hangi dakikada başladı? → match.defensive_line.drop.start_minute → integer → unknown
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada risk bandı yükseldi mi? → match.defensive_line.drop.next5m.risk_band.up → boolean → unknown
 Savunma hattı geriye yaslanma sonrası sonraki 5 dakikada rakip ceza sahası girişleri arttı mı? → match.defensive_line.drop.next5m.opponent.box_entries.up → boolean → unknown
-
 Bu maçta savunma hattı ilk 15 dakikada öne çıktı mı? → match.defensive_line.step_up.0_15 → boolean → unknown
 Bu maçta savunma hattı 15–30 aralığında öne çıktı mı? → match.defensive_line.step_up.15_30 → boolean → unknown
 Bu maçta savunma hattı 60–75 aralığında öne çıktı mı? → match.defensive_line.step_up.60_75 → boolean → unknown
@@ -1547,31 +1463,25 @@ Bu maçta savunma hattı 60–75 aralığında öne çıktı mı? → match.defe
 Savunma hattı öne çıkış hangi dakikada oldu? → match.defensive_line.step_up.minute → integer → unknown
 Savunma hattı öne çıktıktan sonraki 5 dakikada arka koşularla kırıldı mı? → match.defensive_line.step_up.next5m.broken_by_runs → boolean → unknown
 Savunma hattı öne çıktıktan sonraki 5 dakikada ofsayta düşürme arttı mı? → match.defensive_line.step_up.next5m.offside_traps.up → boolean → unknown
-
 Bu maçta savunma hattı ofsayt çizgisi ile ilk yarıda ofsayt yoğunluğu üretti mi? → match.defensive_line.offside_trap.first_half.high_volume → boolean → unknown
 Bu maçta savunma hattı ofsayt çizgisi ile ikinci yarıda ofsayt yoğunluğu üretti mi? → match.defensive_line.offside_trap.second_half.high_volume → boolean → unknown
 
 Savunma hattı ofsayt yoğunluğu hangi dakikalarda arttı? → match.defensive_line.offside_trap.high_volume.minutes → list → unknown
 Savunma hattı ofsayt yoğunluğu sonrası sonraki 5 dakikada rakip koşu denemeleri azaldı mı? → match.defensive_line.offside_trap.high_volume.next5m.opponent.run_attempts.down → boolean → unknown
-
 Bu maçta savunmada bireysel hata zinciri ilk yarıda oluştu mu? → match.defense.individual_error_chain.first_half → boolean → unknown
 Bu maçta savunmada bireysel hata zinciri ikinci yarıda oluştu mu? → match.defense.individual_error_chain.second_half → boolean → unknown
-
 Savunmada bireysel hata zinciri hangi dakikalarda oluştu? → match.defense.individual_error_chain.minutes → list → unknown
 Savunmada bireysel hata zinciri sonrası sonraki 5 dakikada risk bandı yükseldi mi? → match.defense.individual_error_chain.next5m.risk_band.up → boolean → unknown
 
 Bu maçta savunma hatası sonrası gol yendi mi? → match.defense.error.conceded_goal → boolean → unknown
-
 Savunma hatası sonrası gol hangi dakikada yenildi? → match.defense.error.conceded_goal.minute → integer → unknown
 Savunma hatası sonrası sonraki 5 dakikada takım kontrol bandı düştü mü? → match.defense.error.conceded_goal.next5m.team.control_band.down → boolean → unknown
-
 Bu maçta savunma hatası sonrası VAR incelemesi oldu mu? → match.defense.error.var_review.present → boolean → unknown
 Savunma hatası sonrası VAR incelemesi hangi dakikada oldu? → match.defense.error.var_review.minute → integer → unknown
 VAR incelemesi sonrası sonraki 5 dakikada takım tempo bandı değişti mi? → match.defense.error.var_review.next5m.team.tempo_band.changed → boolean → unknown
 
 Bu maçta savunma hattı kart riski nedeniyle ilk yarıda geri çekildi mi? → match.defensive_line.card_risk.drop.first_half → boolean → unknown
 Bu maçta savunma hattı kart riski nedeniyle ikinci yarıda geri çekildi mi? → match.defensive_line.card_risk.drop.second_half → boolean → unknown
-
 Savunma hattı kart riski nedeniyle hangi dakikada geri çekildi? → match.defensive_line.card_risk.drop.minute → integer → unknown
 Savunma hattı kart riski nedeniyle geri çekildikten sonraki 5 dakikada rakip baskı bandı yükseldi mi? → match.defensive_line.card_risk.drop.next5m.opponent.pressure_band.up → boolean → unknown
 
@@ -1606,23 +1516,19 @@ Bu maçta teknik direktör ilk müdahalesi hangi kanadı etkiledi? (sol / sağ /
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncunun rolünü değiştirdi? → match.coach.first_intervention.role_change.player → string → unknown
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncuyu farklı hatta taşıdı? → match.coach.first_intervention.role_change.moved_player → string → unknown
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncuya “kilit görev” verdi? → match.coach.first_intervention.key_task.player → string → unknown
-
 Bu maçta teknik direktör ilk müdahalesi takım kaptanını içerdi mi? → match.coach.first_intervention.involves_captain → boolean → unknown
 Bu maçta teknik direktör ilk müdahalesi sarı kartlı bir oyuncuyu çıkarmak için mi yapıldı? → match.coach.first_intervention.substitution.for_booked_player → boolean → unknown
 
 Teknik direktör müdahalesi tempo bandını değiştirdi mi? → match.coach.intervention.tempo_band.changed → boolean → unknown
 Teknik direktör müdahalesi tempo bandını hangi dakikadan itibaren değiştirdi? → match.coach.intervention.tempo_band.change_start_minute → integer → unknown
-
 Teknik direktör müdahalesi sonrası ilk 5 dakikada tempo bandı değişti mi? → match.coach.intervention.tempo_band.next5m.changed → boolean → unknown
 Teknik direktör müdahalesi sonrası ilk 10 dakikada tempo bandı değişti mi? → match.coach.intervention.tempo_band.next10m.changed → boolean → unknown
-
 Teknik direktör müdahalesi sonrası tempo bandı tempo_up mı tempo_down mı oldu? → match.coach.intervention.tempo_band.direction → enum (tempo_up,tempo_down) → unknown
 Teknik direktör müdahalesi sonrası tempo bandı kaç segment boyunca yeni seviyede kaldı? → match.coach.intervention.tempo_band.duration_segments → integer → unknown
 Teknik direktör müdahalesi sonrası tempo bandı kısa bir pik yapıp geri mi döndü? → match.coach.intervention.tempo_band.short_spike_then_revert → boolean → unknown
 
 Teknik direktör müdahalesi kontrol bandını değiştirdi mi? → match.coach.intervention.control_band.changed → boolean → unknown
 Teknik direktör müdahalesi kontrol bandını hangi dakikadan itibaren değiştirdi? → match.coach.intervention.control_band.change_start_minute → integer → unknown
-
 Teknik direktör müdahalesi sonrası ilk 5 dakikada kontrol bandı değişti mi? → match.coach.intervention.control_band.next5m.changed → boolean → unknown
 Teknik direktör müdahalesi sonrası ilk 10 dakikada kontrol bandı değişti mi? → match.coach.intervention.control_band.next10m.changed → boolean → unknown
 
@@ -1640,26 +1546,21 @@ Bu maçta teknik direktör ilk müdahalesi hangi kanadı etkiledi? (sol / sağ /
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncunun rolünü değiştirdi? → match.coach.first_intervention.role_change.player → string → unknown
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncuyu farklı hatta taşıdı? → match.coach.first_intervention.role_change.moved_player → string → unknown
 Bu maçta teknik direktör ilk müdahalesi hangi oyuncuya “kilit görev” verdi? → match.coach.first_intervention.key_task.player → string → unknown
-
 Bu maçta teknik direktör ilk müdahalesi takım kaptanını içerdi mi? → match.coach.first_intervention.involves_captain → boolean → unknown
 Bu maçta teknik direktör ilk müdahalesi sarı kartlı bir oyuncuyu çıkarmak için mi yapıldı? → match.coach.first_intervention.substitution.for_booked_player → boolean → unknown
 
 Teknik direktör müdahalesi tempo bandını değiştirdi mi? → match.coach.intervention.tempo_band.changed → boolean → unknown
 Teknik direktör müdahalesi tempo bandını hangi dakikadan itibaren değiştirdi? → match.coach.intervention.tempo_band.change_start_minute → integer → unknown
-
 Teknik direktör müdahalesi sonrası ilk 5 dakikada tempo bandı değişti mi? → match.coach.intervention.tempo_band.next5m.changed → boolean → unknown
 Teknik direktör müdahalesi sonrası ilk 10 dakikada tempo bandı değişti mi? → match.coach.intervention.tempo_band.next10m.changed → boolean → unknown
-
 Teknik direktör müdahalesi sonrası tempo bandı tempo_up mı tempo_down mı oldu? → match.coach.intervention.tempo_band.direction → enum (tempo_up,tempo_down) → unknown
 Teknik direktör müdahalesi sonrası tempo bandı kaç segment boyunca yeni seviyede kaldı? → match.coach.intervention.tempo_band.duration_segments → integer → unknown
 Teknik direktör müdahalesi sonrası tempo bandı kısa bir pik yapıp geri mi döndü? → match.coach.intervention.tempo_band.short_spike_then_revert → boolean → unknown
 
 Teknik direktör müdahalesi kontrol bandını değiştirdi mi? → match.coach.intervention.control_band.changed → boolean → unknown
 Teknik direktör müdahalesi kontrol bandını hangi dakikadan itibaren değiştirdi? → match.coach.intervention.control_band.change_start_minute → integer → unknown
-
 Teknik direktör müdahalesi sonrası ilk 5 dakikada kontrol bandı değişti mi? → match.coach.intervention.control_band.next5m.changed → boolean → unknown
 Teknik direktör müdahalesi sonrası ilk 10 dakikada kontrol bandı değişti mi? → match.coach.intervention.control_band.next10m.changed → boolean → unknown
-
 Teknik direktör müdahalesi sonrası kontrol bandı stable’a mı unstable’a mı kaydı? → match.coach.intervention.control_band.direction → enum (stable,unstable) → unknown
 Teknik direktör müdahalesi sonrası topa sahip olma yönü değişti mi? → match.coach.intervention.possession_direction.changed → boolean → unknown
 Teknik direktör müdahalesi sonrası pas hatası oranı düştü mü? → match.coach.intervention.pass_error_rate.down → boolean → unknown
@@ -1670,7 +1571,6 @@ Kırmızı kart sonrası plan deterministik değişti mi? → match.inplay.red_c
 Kırmızı kart sonrası plan değişimi ilk 5 dakikada mı oldu? → match.inplay.red_card.after.plan_change.first_5m.is_occurred → boolean → unknown
 Kırmızı kart sonrası plan değişimi ilk 10 dakikada mı oldu? → match.inplay.red_card.after.plan_change.first_10m.is_occurred → boolean → unknown
 Kırmızı kart sonrası plan değişimi hangi müdahale ile oldu? (oyuncu değişikliği / rol değişimi / diziliş değişimi) → match.inplay.red_card.after.plan_change.intervention_type → enum(substitution, role_change, formation_change) → unknown
-
 Kırmızı kart sonrası plan değişimi hangi oyuncuyu etkiledi? → match.inplay.red_card.after.plan_change.affected_player → string → unknown
 Kırmızı kart sonrası diziliş değişti mi? → match.inplay.red_card.after.formation_change.is_occurred → boolean → unknown
 Kırmızı kart sonrası diziliş hangi dakikada değişti? → match.inplay.red_card.after.formation_change.minute → integer → unknown
@@ -1681,10 +1581,8 @@ Kırmızı kart sonrası diziliş değişimi hücum gücünü düşürdü mü? �
 Kırmızı kart sonrası diziliş değişimi ceza sahası savunmasını güçlendirdi mi? → match.inplay.red_card.after.formation_change.strengthens_box_defense → boolean → unknown
 
 Takım öndeyken kapanmayı mı seçti yoksa ikinci gol mü aradı? → match.inplay.leading.team_plan.choice → enum(close_down, push_second_goal) → unknown
-
 Takım öndeyken plan tercihi hangi dakikada netleşti? → match.inplay.leading.team_plan.choice_minute → integer → unknown
 Takım öndeyken plan tercihi gol sonrası ilk 5 dakikada netleşti mi? → match.inplay.leading.team_plan.choice_settled.first_5m_after_goal → boolean → unknown
-
 Takım öndeyken kapanmayı seçtiyse hangi hat derinleşti? → match.inplay.leading.close_down.deepened_line → enum(defense_line, midfield_line, forward_line) → unknown
 Takım öndeyken kapanmayı seçtiyse tempo bandı düştü mü? → match.inplay.leading.close_down.tempo_band.down.is_started → boolean → unknown
 Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? → match.inplay.leading.close_down.control_band.locks_stable → boolean → unknown
@@ -1692,7 +1590,6 @@ Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? 
 Takım öndeyken ikinci golü aradıysa hangi kanattan yükledi? → match.inplay.leading.push_second_goal.attack_wing → enum(left, right) → unknown
 Takım öndeyken ikinci golü aradıysa şut frekansı arttı mı? → match.inplay.leading.push_second_goal.shot_frequency.increases → boolean → unknown
 Takım öndeyken ikinci golü aradıysa risk_up kaç segment sürdü? → match.inplay.leading.push_second_goal.risk_up.duration_segments → integer → unknown
-
 Takım öndeyken time-waste davranışına izin verdi mi? → match.inplay.leading.time_waste.is_allowed → boolean → unknown
 Takım öndeyken time-waste davranışı hangi dakikada başladı? → match.inplay.leading.time_waste.start_minute → integer → unknown
 Takım öndeyken time-waste davranışı hangi zaman penceresinde arttı? (61-75 / 76-90+) → match.inplay.leading.time_waste.increase_window → enum(min61_75, min76_90plus) → unknown
@@ -1709,15 +1606,12 @@ Kırmızı kart sonrası diziliş değişti mi? → match.inplay.red_card.after.
 Kırmızı kart sonrası diziliş hangi dakikada değişti? → match.inplay.red_card.after.formation_change.minute → integer → unknown
 Kırmızı kart sonrası diziliş değişimi kaç dakika içinde yapıldı? → match.inplay.red_card.after.formation_change.within_minutes → integer → unknown
 Kırmızı kart sonrası diziliş değişimi hangi forma dönüşüyle oldu? (4’lüden 5’liye / 3’lüye / çift forvete) → match.inplay.red_card.after.formation_change.to_shape → enum(back4_to_back5, back4_to_back3, to_two_strikers) → unknown
-
 Kırmızı kart sonrası diziliş değişimi hücum gücünü düşürdü mü? → match.inplay.red_card.after.formation_change.reduces_attacking_power → boolean → unknown
 Kırmızı kart sonrası diziliş değişimi ceza sahası savunmasını güçlendirdi mi? → match.inplay.red_card.after.formation_change.strengthens_box_defense → boolean → unknown
 
 Takım öndeyken kapanmayı mı seçti yoksa ikinci gol mü aradı? → match.inplay.leading.team_plan.choice → enum(close_down, push_second_goal) → unknown
-
 Takım öndeyken plan tercihi hangi dakikada netleşti? → match.inplay.leading.team_plan.choice_minute → integer → unknown
 Takım öndeyken plan tercihi gol sonrası ilk 5 dakikada netleşti mi? → match.inplay.leading.team_plan.choice_settled.first_5m_after_goal → boolean → unknown
-
 Takım öndeyken kapanmayı seçtiyse hangi hat derinleşti? → match.inplay.leading.close_down.deepened_line → enum(defense_line, midfield_line, forward_line) → unknown
 Takım öndeyken kapanmayı seçtiyse tempo bandı düştü mü? → match.inplay.leading.close_down.tempo_band.down.is_started → boolean → unknown
 Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? → match.inplay.leading.close_down.control_band.locks_stable → boolean → unknown
@@ -1725,7 +1619,6 @@ Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? 
 Takım öndeyken ikinci golü aradıysa hangi kanattan yükledi? → match.inplay.leading.push_second_goal.attack_wing → enum(left, right) → unknown
 Takım öndeyken ikinci golü aradıysa şut frekansı arttı mı? → match.inplay.leading.push_second_goal.shot_frequency.increases → boolean → unknown
 Takım öndeyken ikinci golü aradıysa risk_up kaç segment sürdü? → match.inplay.leading.push_second_goal.risk_up.duration_segments → integer → unknown
-
 Takım öndeyken time-waste davranışına izin verdi mi? → match.inplay.leading.time_waste.is_allowed → boolean → unknown
 
 Takım öndeyken time-waste davranışı hangi dakikada başladı? → match.inplay.leading.time_waste.start_minute → integer → unknown
@@ -1741,7 +1634,6 @@ Kırmızı kart sonrası plan değişimi hangi oyuncuyu etkiledi? → match.inpl
 
 Kırmızı kart sonrası diziliş değişti mi? → match.inplay.red_card.after.formation_change.is_occurred → boolean → unknown
 Kırmızı kart sonrası diziliş hangi dakikada değişti? → match.inplay.red_card.after.formation_change.minute → integer → unknown
-
 Kırmızı kart sonrası diziliş değişimi kaç dakika içinde yapıldı? → match.inplay.red_card.after.formation_change.within_minutes → integer → unknown
 Kırmızı kart sonrası diziliş değişimi hangi forma dönüşüyle oldu? (4’lüden 5’liye / 3’lüye / çift forvete) → match.inplay.red_card.after.formation_change.to_shape → enum(back4_to_back5, back4_to_back3, to_two_strikers) → unknown
 Kırmızı kart sonrası diziliş değişimi hücum gücünü düşürdü mü? → match.inplay.red_card.after.formation_change.reduces_attacking_power → boolean → unknown
@@ -1749,9 +1641,7 @@ Kırmızı kart sonrası diziliş değişimi ceza sahası savunmasını güçlen
 
 Takım öndeyken kapanmayı mı seçti yoksa ikinci gol mü aradı? → match.inplay.leading.team_plan.choice → enum(close_down, push_second_goal) → unknown
 Takım öndeyken plan tercihi hangi dakikada netleşti? → match.inplay.leading.team_plan.choice_minute → integer → unknown
-
 Takım öndeyken plan tercihi gol sonrası ilk 5 dakikada netleşti mi? → match.inplay.leading.team_plan.choice_settled.first_5m_after_goal → boolean → unknown
-
 Takım öndeyken kapanmayı seçtiyse hangi hat derinleşti? → match.inplay.leading.close_down.deepened_line → enum(defense_line, midfield_line, forward_line) → unknown
 Takım öndeyken kapanmayı seçtiyse tempo bandı düştü mü? → match.inplay.leading.close_down.tempo_band.down.is_started → boolean → unknown
 Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? → match.inplay.leading.close_down.control_band.locks_stable → boolean → unknown
@@ -1759,7 +1649,6 @@ Takım öndeyken kapanmayı seçtiyse kontrol bandı stable’a mı kilitlendi? 
 Takım öndeyken ikinci golü aradıysa hangi kanattan yükledi? → match.inplay.leading.push_second_goal.attack_wing → enum(left, right) → unknown
 Takım öndeyken ikinci golü aradıysa şut frekansı arttı mı? → match.inplay.leading.push_second_goal.shot_frequency.increases → boolean → unknown
 Takım öndeyken ikinci golü aradıysa risk_up kaç segment sürdü? → match.inplay.leading.push_second_goal.risk_up.duration_segments → integer → unknown
-
 Takım öndeyken time-waste davranışına izin verdi mi? → match.inplay.leading.time_waste.is_allowed → boolean → unknown
 Takım öndeyken time-waste davranışı hangi dakikada başladı? → match.inplay.leading.time_waste.start_minute → integer → unknown
 Takım öndeyken time-waste davranışı hangi zaman penceresinde arttı? (61-75 / 76-90+) → match.inplay.leading.time_waste.increase_window → enum(min61_75, min76_90plus) → unknown
@@ -1769,7 +1658,6 @@ Takım öndeyken time-waste davranışı sonrası hakem uyarıları arttı mı? 
 Maç içinde tribün protestosu oldu mu? → match.crowd.protest.occurred → boolean → unknown
 Maç içinde tribün protestosu kaç kez tekrar etti? → match.crowd.protest.repeat_count → integer → unknown
 Maç içinde tribün protestosu tek dalga mıydı çoklu dalga mıydı? → match.crowd.protest.wave_type → enum (single_wave,multi_wave) → unknown
-
 Maç içinde tribün protestosu ilk kez hangi dakikada başladı? → match.crowd.protest.first_start_minute → integer → unknown
 Maç içinde tribün protestosu ilk kez hangi zaman penceresinde başladı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+) → match.crowd.protest.first_start_window → enum (0_15,16_30,31_45,46_60,61_75,76_90_plus) → unknown
 Maç içinde tribün protestosu devre arası öncesi mi başladı devre arası sonrası mı? → match.crowd.protest.first_start_halftime_side → enum (before_halftime,after_halftime) → unknown
@@ -1777,14 +1665,12 @@ Maç içinde tribün protestosu devre arası öncesi mi başladı devre arası s
 Maç içinde tribün protestosu golden sonra mı başladı? → match.crowd.protest.trigger_after_goal_scored → boolean → unknown
 Maç içinde tribün protestosu yenen golden sonra mı başladı? → match.crowd.protest.trigger_after_goal_conceded → boolean → unknown
 Maç içinde tribün protestosu hakem kararından sonra mı başladı? → match.crowd.protest.trigger_after_referee_decision → boolean → unknown
-
 Maç içinde tribün protestosu VAR incelemesinden sonra mı başladı? → match.crowd.protest.trigger_after_var_review → boolean → unknown
 Maç içinde tribün protestosu kırmızı karttan sonra mı başladı? → match.crowd.protest.trigger_after_red_card → boolean → unknown
 
 Tribün protestosu dalga dalga tekrar etti mi? → match.crowd.protest.waves_repeated → boolean → unknown
 Tribün protestosu dalgaları arasında kaç dakika vardı? → match.crowd.protest.wave_gap_minutes → integer → unknown
 Tribün protestosu dalgaları her seferinde daha mı yükseldi daha mı düştü?→ match.crowd.protest.wave_trend → enum (increasing,decreasing) → unknown
-
 Tribün baskısı ilk kez hangi segmentte yükseldi? → match.crowd.pressure.first_rise_segment → enum (segment_0_15,segment_16_30,segment_31_45,segment_46_60,segment_61_75,segment_76_90_plus) → unknown
 Tribün baskısı yükselişi hangi dakikada başladı? → match.crowd.pressure.rise_start_minute → integer → unknown
 Tribün baskısı yükselişi hangi zaman penceresinde başladı? (0-15 / 16-30 / 31-45 / 46-60 / 61-75 / 76-90+) → match.crowd.pressure.rise_start_window → enum (0_15,16_30,31_45,46_60,61_75,76_90_plus) → unknown
@@ -1800,7 +1686,6 @@ Tribün baskısı yükselince takım panik hücum dalgasına girdi mi? → match
 Tribün baskısı yükselince takım panik hücum dalgası hangi dakikada başladı? → match.crowd.pressure.panic_attack_wave.start_minute → integer → unknown
 Tribün baskısı yükselince takım panik hücum dalgası kaç dakika sürdü? → match.crowd.pressure.panic_attack_wave.duration_minutes → integer → unknown
 Tribün baskısı yükselince takım panik hücum dalgası sonrası ilk 5 dakikada top kaybı arttı mı? → match.crowd.pressure.panic_attack_wave.turnover_increase_next5m → boolean → unknown
-
 Tribün baskısı yükselince takım kontrol bandı unstable’a kaydı mı? → match.crowd.pressure.control_to_unstable → boolean → unknown
 Tribün baskısı yükselince takım kontrol bandı unstable’a hangi dakikada kaydı? → match.crowd.pressure.control_to_unstable_minute → integer → unknown
 Tribün baskısı yükselince takım kontrol bandı unstable’a kaydıktan sonra ilk 5 dakikada pas hatası arttı mı? → match.crowd.pressure.unstable_after_effect.pass_error_increase_next5m → boolean → unknown
@@ -1815,7 +1700,6 @@ Tribün baskısı yükselince teknik direktör daha erken müdahale yaptı mı? 
 Tribün baskısı yükselince teknik direktör müdahalesi kaç dakika içinde geldi? → match.crowd.pressure.coach_intervention.response_minutes → integer → unknown
 Tribün baskısı yükselince teknik direktör müdahalesi tribün yükselişinden sonraki ilk 5 dakikada mı geldi? → match.crowd.pressure.coach_intervention.within_first5m → boolean → unknown
 Tribün baskısı yükselince teknik direktör müdahalesi hangi müdahale tipiydi? (değişiklik / rol / diziliş) → match.crowd.pressure.coach_intervention.type → enum (substitution,role_change,formation_change) → unknown
-
 Tribün baskısı yükselince hakem düdük sıklığını artırdı mı? → match.crowd.pressure.referee_whistle_frequency_increase → boolean → unknown
 Tribün baskısı yükselince hakem düdük sıklığı hangi dakikadan itibaren arttı? → match.crowd.pressure.referee_whistle_increase_minute → integer → unknown
 Tribün baskısı yükselince hakem düdük sıklığı ilk 5 dakikada arttı mı? → match.crowd.pressure.referee_whistle_increase_next5m → boolean → unknown
@@ -1823,7 +1707,6 @@ Tribün baskısı yükselince hakem düdük sıklığı ilk 5 dakikada arttı m�
 Tribün baskısı yükselince hakem kart standardı sertleşti mi? → match.crowd.pressure.referee_card_standard_hardened → boolean → unknown
 Tribün baskısı yükselince hakem kart standardı sertleşmesi hangi dakikada başladı? → match.crowd.pressure.referee_card_standard_harden_start_minute → integer → unknown
 Tribün baskısı yükselince hakem kart standardı sertleşmesi sonrası ilk 5 dakikada kart sayısı arttı mı? → match.crowd.pressure.referee_card_harden_effect.card_count_increase_next5m → boolean → unknown
-
 Tribün baskısı yükselince oyuncu itirazları kümelendi mi? → match.crowd.pressure.player_complaints.clustered → boolean → unknown
 Tribün baskısı yükselince oyuncu itirazları hangi dakikada kümelendi? → match.crowd.pressure.player_complaints.cluster_start_minute → integer → unknown
 Tribün baskısı yükselince oyuncu itirazları hangi takımda arttı? → match.crowd.pressure.player_complaints.team_side → enum (home,away) → unknown
@@ -1834,7 +1717,6 @@ Tribün baskısı sonrası maç içinde sahaya madde atma oldu mu? → match.cro
 Tribün baskısı sonrası sahaya madde atma hangi dakikada oldu? → match.crowd.incident.throwing_objects.first_minute → integer → unknown
 Tribün baskısı sonrası sahaya madde atma kaç kez tekrar etti? → match.crowd.incident.throwing_objects.repeat_count → integer → unknown
 Tribün baskısı sonrası sahaya madde atma hangi tribünden geldi? → match.crowd.incident.throwing_objects.stand_side → enum (home_stand,away_stand,unknown) → unknown
-
 Sahaya madde atma olayı oyunu 2 dakikadan uzun durdurdu mu? → match.crowd.incident.throwing_objects.stoppage_over_2m → boolean → unknown
 Sahaya madde atma olayı oyunu kaç dakika durdurdu? → match.crowd.incident.throwing_objects.stoppage_minutes → integer → unknown
 Sahaya madde atma olayı sonrası tempo bandı düştü mü? → match.crowd.incident.throwing_objects.effect.tempo_down → boolean → unknown
@@ -1843,7 +1725,6 @@ Sahaya madde atma olayı sonrası kontrol bandı kayboldu mu? → match.crowd.in
 Tribün baskısı sonrası güvenlik uyarısı veya anons yapıldı mı? → match.crowd.security_announcement.occurred → boolean → unknown
 Tribün baskısı sonrası güvenlik anonsu hangi dakikada yapıldı? → match.crowd.security_announcement.first_minute → integer → unknown
 Tribün baskısı sonrası güvenlik anonsu kaç kez tekrar etti? → match.crowd.security_announcement.repeat_count → integer → unknown
-
 Tribün baskısı sonrası maçın kontrolü kayboldu mu? → match.crowd.pressure.after_effect.match_control_lost → boolean → unknown
 Tribün baskısı sonrası maçın kontrolü hangi dakikada kayboldu? → match.crowd.pressure.after_effect.match_control_lost_minute → integer → unknown
 Tribün baskısı sonrası maçın kontrolü kaybolduktan sonra ilk 5 dakikada kart/faul arttı mı? → match.crowd.pressure.after_effect.card_foul_increase_next5m → boolean → unknown
@@ -1851,13 +1732,11 @@ Tribün baskısı sonrası maçın kontrolü kaybolduktan sonra ilk 5 dakikada k
 Tribün baskısı hangi takım aleyhine yoğunlaştı? → match.crowd.pressure.target_team_side → enum (home,away) → unknown
 Tribün baskısı hangi dakikada belirli bir takıma yöneldi? → match.crowd.pressure.target_team_start_minute → integer → unknown
 Tribün baskısı hangi zaman penceresinde belirli bir takıma yöneldi? (31-45 / 46-60 / 61-75 / 76-90+) → match.crowd.pressure.target_team_start_window → enum (31_45,46_60,61_75,76_90_plus) → unknown
-
 Tribün baskısı “hakem hedef” mi “oyuncu hedef” mi “yönetim hedef” mi taşıdı? → match.crowd.pressure.target_type → enum (referee_target,player_target,management_target) → unknown
 Tribün baskısı hakem hedefli ise hangi karar tetikledi? → match.crowd.pressure.referee_target.trigger_decision → enum (foul_decision,card_decision,penalty_decision,var_decision,offside_decision,unknown) → unknown
 
 Tribün baskısı oyuncu hedefli ise hangi oyuncu hedef oldu? → match.crowd.pressure.player_target.player_reference → string → unknown
 Tribün baskısı yönetim hedefli ise hangi olay tetikledi? → match.crowd.pressure.management_target.trigger_event → enum (transfer_policy,coach_decision,club_statement,board_action,unknown) → unknown
-
 Tribün baskısı belirli bir oyuncuya yöneldi mi?→ match.crowd.pressure.player_target.occurred → boolean → unknown
 Tribün baskısı belirli bir oyuncuya hangi dakikada yöneldi? → match.crowd.pressure.player_target.start_minute → integer → unknown
 Tribün baskısı belirli bir oyuncuya yönelme kaç dakika sürdü? → match.crowd.pressure.player_target.duration_minutes → integer → unknown
@@ -1865,7 +1744,6 @@ Tribün baskısı belirli bir oyuncuya yönelme kaç dakika sürdü? → match.c
 Tribün baskısı belirli bir oyuncuyu oyundan düşürdü mü? → match.crowd.pressure.player_target.effect.player_performance_drop → boolean → unknown
 Tribün baskısı belirli bir oyuncuyu oyundan düşürdüyse hangi dakikadan itibaren performans düştü? → match.crowd.pressure.player_target.effect.performance_drop_start_minute → integer → unknown
 Tribün baskısı belirli bir oyuncuyu oyundan düşürdükten sonra ilk 5 dakikada top kaybı arttı mı? → match.crowd.pressure.player_target.effect.turnover_increase_next5m → boolean → unknown
-
 Tribün baskısı sonrası takımın pas hatası arttı mı? → match.crowd.pressure.after_effect.pass_error_increase → boolean → unknow
 Tribün baskısı sonrası pas hatası artışı hangi dakikada başladı? → match.crowd.pressure.after_effect.pass_error_increase_start_minute → integer → unknown
 Tribün baskısı sonrası pas hatası artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.pass_error_increase_duration_minutes → integer → unknown
@@ -1873,17 +1751,13 @@ Tribün baskısı sonrası pas hatası artışı kaç dakika sürdü? → match.
 Tribün baskısı sonrası top kaybı arttı mı? → match.crowd.pressure.after_effect.turnover_increase → boolean → unknown
 Tribün baskısı sonrası top kaybı artışı hangi dakikada başladı? → match.crowd.pressure.after_effect.turnover_increase_start_minute → integer → unknown
 Tribün baskısı sonrası top kaybı artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.turnover_increase_duration_minutes → integer → unknown
-
 Tribün baskısı sonrası takımın disiplin bandı aggressive’e kaydı mı?  → match.crowd.pressure.after_effect.discipline_to_aggressive → boolean → unknown
-
 Tribün baskısı sonrası disiplin bandı aggressive’e kayma hangi dakikada oldu? → match.crowd.pressure.after_effect.discipline_to_aggressive_minute → integer → unknown
 Tribün baskısı sonrası disiplin bandı aggressive’e kayma sonrası ilk 5 dakikada kart sayısı arttı mı? → match.crowd.pressure.after_effect.aggressive_effect.card_count_increase_next5m → boolean → unknown
 
 Tribün baskısı sonrası takımın tempo taşıma gücü düştü mü? → match.crowd.pressure.after_effect.tempo_carrying_power_drop → boolean → unknown
-
 Tribün baskısı sonrası tempo taşıma gücü düşüşü hangi dakikada başladı? → match.crowd.pressure.after_effect.tempo_carrying_power_drop_start_minute → integer → unknown
 Tribün baskısı sonrası tempo taşıma gücü düşüşü kaç segment sürdü? → match.crowd.pressure.after_effect.tempo_carrying_power_drop_duration_segments → integer → unknown
-
 Tribün baskısı sonrası deplasman takımı panic bandına girdi mi? → match.crowd.pressure.after_effect.away_team_to_panic → boolean → unknown
 Tribün baskısı sonrası deplasman takımı panic bandına girişi hangi dakikada oldu? → match.crowd.pressure.after_effect.away_team_to_panic_minute → integer → unknown
 Tribün baskısı sonrası deplasman takımı panic bandına girdikten sonra ilk 5 dakikada top kaybı arttı mı? → match.crowd.pressure.after_effect.away_panic_effect.turnover_increase_next5m → boolean → unknown
@@ -1891,7 +1765,6 @@ Tribün baskısı sonrası deplasman takımı panic bandına girdikten sonra ilk
 Tribün baskısı sonrası iç saha takımı kontrolü kilitledi mi? → match.crowd.pressure.after_effect.home_team_control_locked → boolean → unknown
 Tribün baskısı sonrası iç saha takımı kontrolü kilitlemesi hangi dakikada başladı? → match.crowd.pressure.after_effect.home_team_control_locked_start_minute → integer → unknown
 Tribün baskısı sonrası iç saha takımı kontrolü kilitledikten sonra tempo bandı düştü mü? → match.crowd.pressure.after_effect.home_control_lock_effect.tempo_down → boolean → unknown
-
 Tribün baskısı sonrası hakemle tartışma görüntüleri arttı mı? → match.crowd.pressure.after_effect.referee_arguments_increase → boolean → unknown
 Tribün baskısı sonrası hakemle tartışma artışı hangi dakikada başladı? → match.crowd.pressure.after_effect.referee_arguments_increase_start_minute → integer → unknown
 Tribün baskısı sonrası hakemle tartışma artışı kaç dakika sürdü? → match.crowd.pressure.after_effect.referee_arguments_increase_duration_minutes → integer → unknown
@@ -1902,7 +1775,6 @@ Tribün baskısı maç sonunda taşkınlık riski güvenlik müdahalesine dönd�
 
 Maçın toplam koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.total.availability.first_half → boolean → unknown
 Maçın toplam koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.total.availability.second_half → boolean → unknown
-
 Maçın toplam koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.total.availability.m00_15 → boolean → unknown
 Maçın toplam koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.total.availability.m16_30 → boolean → unknown
 Maçın toplam koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.total.availability.m31_45p → boolean → unknown
@@ -1912,7 +1784,6 @@ Maçın toplam koşu mesafesi verisi 76–90+ aralığı için mevcut mu? → ma
 
 Maçın takım bazlı toplam koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.team_total.availability.first_half → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.team_total.availability.second_half → boolean → unknown
-
 Maçın takım bazlı toplam koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m00_15 → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m16_30 → boolean → unknown
 Maçın takım bazlı toplam koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.team_total.availability.m31_45p → boolean → unknown
@@ -1922,7 +1793,6 @@ Maçın takım bazlı toplam koşu mesafesi verisi 76–90+ aralığı için mev
 
 Maçın oyuncu bazlı koşu mesafesi verisi ilk yarı için mevcut mu? → match.physical.run_distance.player.availability.first_half → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi ikinci yarı için mevcut mu? → match.physical.run_distance.player.availability.second_half → boolean → unknown
-
 Maçın oyuncu bazlı koşu mesafesi verisi 0–15 aralığı için mevcut mu? → match.physical.run_distance.player.availability.m00_15 → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi 16–30 aralığı için mevcut mu? → match.physical.run_distance.player.availability.m16_30 → boolean → unknown
 Maçın oyuncu bazlı koşu mesafesi verisi 31–45+ aralığı için mevcut mu? → match.physical.run_distance.player.availability.m31_45p → boolean → unknown
@@ -1932,7 +1802,6 @@ Maçın oyuncu bazlı koşu mesafesi verisi 76–90+ aralığı için mevcut mu?
 
 Maç içinde en çok koşan ilk 3 oyuncu ilk yarı özelinde kimdi? → match.physical.run_distance.leaders.top3.players.first_half → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu ikinci yarı özelinde kimdi? → match.physical.run_distance.leaders.top3.players.second_half → list(object) → unknown
-
 Maç içinde en çok koşan ilk 3 oyuncu 0–15 aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m00_15 → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu 16–30 aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m16_30 → list(object) → unknown
 Maç içinde en çok koşan ilk 3 oyuncu 31–45+ aralığında kimdi? → match.physical.run_distance.leaders.top3.players.m31_45p → list(object) → unknown
@@ -1942,7 +1811,6 @@ Maç içinde en çok koşan ilk 3 oyuncu 76–90+ aralığında kimdi? → match
 
 Maç içinde en çok koşan ilk 5 oyuncu ilk yarı özelinde kimdi? → match.physical.run_distance.leaders.top5.players.first_half → list(object) → unknown
 Maç içinde en çok koşan ilk 5 oyuncu ikinci yarı özelinde kimdi? → match.physical.run_distance.leaders.top5.players.second_half → list(object) → unknown
-
 Maç içinde en çok koşan ilk 5 oyuncu 0–15 aralığında kimdi? → match.physical.run_distance.leaders.top5.players.m00_15 → list(object) → unknown
 Maç içinde en çok koşan ilk 5 oyuncu 16–30 aralığında kimdi? → match.physical.run_distance.leaders.top5.players.m16_30 → list(object) → unknown
 Maç içinde en çok koşan ilk 5 oyuncu 31–45+ aralığında kimdi? → match.physical.run_distance.leaders.top5.players.m31_45p → list(object) → unknown
@@ -1952,7 +1820,6 @@ Maç içinde en çok koşan ilk 5 oyuncu 76–90+ aralığında kimdi? → match
 
 Maç içinde en çok koşan oyuncu ilk yarıda hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.first_half → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu ikinci yarıda hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.second_half → enum(home,away) → unknown
-
 Maç içinde en çok koşan oyuncu 0–15 aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m00_15 → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu 16–30 aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m16_30 → enum(home,away) → unknown
 Maç içinde en çok koşan oyuncu 31–45+ aralığında hangi takımdaydı? → match.physical.run_distance.leaders.top1.team.m31_45p → enum(home,away) → unknown
@@ -1962,7 +1829,6 @@ Maç içinde en çok koşan oyuncu 76–90+ aralığında hangi takımdaydı? �
 
 Maç içinde en çok koşan oyuncu ilk yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.first_half → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu ikinci yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.second_half → enum(goalkeeper,defender,midfielder,forward) → unknown
-
 Maç içinde en çok koşan oyuncu 0–15 aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m00_15 → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu 16–30 aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m16_30 → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu 31–45+ aralığında hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.m31_45p → enum(goalkeeper,defender,midfielder,forward) → unknown
@@ -1972,7 +1838,6 @@ Maç içinde en çok koşan oyuncu 76–90+ aralığında hangi pozisyonda oynad
 
 Maç içinde en çok koşan oyuncu için ilk yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.first_half → string → unknown
 Maç içinde en çok koşan oyuncu için ikinci yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.second_half → string → unknown
-
 Maç içinde en çok koşan oyuncu için 0–15 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m00_15 → string → unknown
 Maç içinde en çok koşan oyuncu için 16–30 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m16_30 → string → unknown
 Maç içinde en çok koşan oyuncu için 31–45+ aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m31_45p → string → unknown
@@ -1982,7 +1847,6 @@ Maç içinde en çok koşan oyuncu için 76–90+ aralığında koşu mesafesi k
 
 Maç içinde iki takımın toplam koşu mesafesi farkı ilk yarıda var mı? → match.physical.run_distance.team_total.diff.exists.first_half → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı ikinci yarıda var mı? → match.physical.run_distance.team_total.diff.exists.second_half → boolean → unknown
-
 Maç içinde iki takımın toplam koşu mesafesi farkı 0–15 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m00_15 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 16–30 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m16_30 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 31–45+ aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m31_45p → boolean → unknown
@@ -1992,7 +1856,6 @@ Maç içinde iki takımın toplam koşu mesafesi farkı 76–90+ aralığında v
 
 İlk yarı toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.first_half → enum(high,mid,low) → unknown
 İkinci yarı toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.second_half → enum(high,mid,low) → unknown
-
 0–15 aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m00_15 → enum(high,mid,low) → unknown
 16–30 aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m16_30 → enum(high,mid,low) → unknown
 31–45+ aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m31_45p → enum(high,mid,low) → unknown
@@ -2002,29 +1865,24 @@ Maç içinde iki takımın toplam koşu mesafesi farkı 76–90+ aralığında v
 
 Takımın ilk yarı toplam koşu mesafesi olağan dışı yüksek mi? → match.physical.run_distance.team_total.anomaly.is_unusually_high.first_half → boolean → unknown
 Takımın ilk yarı toplam koşu mesafesi olağan dışı düşük mü? → match.physical.run_distance.team_total.anomaly.is_unusually_low.first_half → boolean → unknown
-
 Takımın ikinci yarı toplam koşu mesafesi olağan dışı yüksek mi? → match.physical.run_distance.team_total.anomaly.is_unusually_high.second_half → boolean → unknown
 Takımın ikinci yarı toplam koşu mesafesi olağan dışı düşük mü? → match.physical.run_distance.team_total.anomaly.is_unusually_low.second_half → boolean → unknown
 
 İlk yarıda koşu mesafesi ile ikinci yarıda koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.first_half_vs_second_half → boolean → unknown
-
 0–30 ile 31–60 koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.m00_30_vs_m31_60 → boolean → unknown
 31–60 ile 61–90+ koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.m31_60_vs_m61_90p → boolean → unknown
-
 İkinci yarıda koşu mesafesi düşüşü başladı mı? → match.physical.run_distance.drop.started.second_half → boolean → unknown
 Koşu mesafesi düşüşü hangi dakikada başladı? → match.physical.run_distance.drop.start_minute → integer → unknown
 
 Koşu mesafesi düşüşünden sonraki 5 dakikada pres şiddeti azaldı mı? → match.physical.run_distance.drop.after5m.did_press_intensity_decrease → boolean → unknown
 Koşu mesafesi düşüşünden sonraki 5 dakikada top kaybı arttı mı? → match.physical.run_distance.drop.after5m.did_turnovers_increase → boolean → unknown
 Koşu mesafesi düşüşünden sonraki 5 dakikada geri koşu zafiyeti oluştu mu? → match.physical.run_distance.drop.after5m.did_recovery_run_weakness_occur → boolean → unknown
-
 İkinci yarıda koşu mesafesi artışı başladı mı? → match.physical.run_distance.rise.started.second_half → boolean → unknown
 Koşu mesafesi artışı hangi dakikada başladı? → match.physical.run_distance.rise.start_minute → integer → unknown
 
 Koşu mesafesi artışından sonraki 5 dakikada baskı hattı öne çıktı mı? → match.physical.run_distance.rise.after5m.did_press_line_push_up → boolean → unknown
 Koşu mesafesi artışından sonraki 5 dakikada şut sayısı arttı mı? → match.physical.run_distance.rise.after5m.did_shots_increase → boolean → unknown
 Koşu mesafesi artışından sonraki 5 dakikada ceza sahası aksiyonu arttı mı? → match.physical.run_distance.rise.after5m.did_box_actions_increase → boolean → unknown
-
 Maç içinde en çok koşan oyuncu ilk yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.first_half → enum(goalkeeper,defender,midfielder,forward) → unknown
 Maç içinde en çok koşan oyuncu ikinci yarıda hangi pozisyonda oynadı? → match.physical.run_distance.leaders.top1.position.second_half → enum(goalkeeper,defender,midfielder,forward) → unknown
 
@@ -2037,7 +1895,6 @@ Maç içinde en çok koşan oyuncu 76–90+ aralığında hangi pozisyonda oynad
 
 Maç içinde en çok koşan oyuncu için ilk yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.first_half → string → unknown
 Maç içinde en çok koşan oyuncu için ikinci yarı koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.second_half → string → unknown
-
 Maç içinde en çok koşan oyuncu için 0–15 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m00_15 → string → unknown
 Maç içinde en çok koşan oyuncu için 16–30 aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m16_30 → string → unknown
 Maç içinde en çok koşan oyuncu için 31–45+ aralığında koşu mesafesi kaç kilometreydi? → match.physical.run_distance.leaders.top1.distance_km.m31_45p → string → unknown
@@ -2047,7 +1904,6 @@ Maç içinde en çok koşan oyuncu için 76–90+ aralığında koşu mesafesi k
 
 Maç içinde iki takımın toplam koşu mesafesi farkı ilk yarıda var mı? → match.physical.run_distance.team_total.diff.exists.first_half → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı ikinci yarıda var mı? → match.physical.run_distance.team_total.diff.exists.second_half → boolean → unknown
-
 Maç içinde iki takımın toplam koşu mesafesi farkı 0–15 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m00_15 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 16–30 aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m16_30 → boolean → unknown
 Maç içinde iki takımın toplam koşu mesafesi farkı 31–45+ aralığında var mı? → match.physical.run_distance.team_total.diff.exists.m31_45p → boolean → unknown
@@ -2057,7 +1913,6 @@ Maç içinde iki takımın toplam koşu mesafesi farkı 76–90+ aralığında v
 
 İlk yarı toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.first_half → enum(high,mid,low) → unknown
 İkinci yarı toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.second_half → enum(high,mid,low) → unknown
-
 0–15 aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m00_15 → enum(high,mid,low) → unknown
 16–30 aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m16_30 → enum(high,mid,low) → unknown
 31–45+ aralığında toplam koşu mesafesi farkı “yüksek” mi “orta” mı “düşük” müydü? → match.physical.run_distance.team_total.diff.band.m31_45p → enum(high,mid,low) → unknown
@@ -2068,16 +1923,13 @@ Maç içinde iki takımın toplam koşu mesafesi farkı 76–90+ aralığında v
 Takımın ilk yarı toplam koşu mesafesi olağan dışı yüksek mi? → match.physical.run_distance.team_total.anomaly.is_unusually_high.first_half → boolean → unknown
 Takımın ilk yarı toplam koşu mesafesi olağan dışı düşük mü? → match.physical.run_distance.team_total.anomaly.is_unusually_low.first_half → boolean → unknown
 Takımın ikinci yarı toplam koşu mesafesi olağan dışı yüksek mi? → match.physical.run_distance.team_total.anomaly.is_unusually_high.second_half → boolean → unknown
-
 Takımın ikinci yarı toplam koşu mesafesi olağan dışı düşük mü? → match.physical.run_distance.team_total.anomaly.is_unusually_low.second_half → boolean → unknown
 İlk yarıda koşu mesafesi ile ikinci yarıda koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.first_half_vs_second_half → boolean → unknown
 
 0–30 ile 31–60 koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.m00_30_vs_m31_60 → boolean → unknown
 31–60 ile 61–90+ koşu mesafesi arasında kırılma var mı? → match.physical.run_distance.break.exists.m31_60_vs_m61_90p → boolean → unknown
-
 İkinci yarıda koşu mesafesi düşüşü başladı mı? → match.physical.run_distance.drop.started.second_half → boolean → unknown
 Koşu mesafesi düşüşü hangi dakikada başladı? → match.physical.run_distance.drop.start_minute → integer → unknown
-
 Koşu mesafesi düşüşünden sonraki 5 dakikada pres şiddeti azaldı mı? → match.physical.run_distance.drop.after5m.did_press_intensity_decrease → boolean → unknown
 Koşu mesafesi düşüşünden sonraki 5 dakikada top kaybı arttı mı? → match.physical.run_distance.drop.after5m.did_turnovers_increase → boolean → unknown
 Koşu mesafesi düşüşünden sonraki 5 dakikada geri koşu zafiyeti oluştu mu? → match.physical.run_distance.drop.after5m.did_recovery_run_weakness_occur → boolean → unknown
@@ -2085,7 +1937,6 @@ Koşu mesafesi düşüşünden sonraki 5 dakikada geri koşu zafiyeti oluştu mu
 FAZ-7-26
 İkinci yarıda koşu mesafesi artışı başladı mı? → match.physical.run_distance.rise.started.second_half → boolean → unknown
 Koşu mesafesi artışı hangi dakikada başladı? → match.physical.run_distance.rise.start_minute → integer → unknown
-
 Koşu mesafesi artışından sonraki 5 dakikada baskı hattı öne çıktı mı? → match.physical.run_distance.rise.after5m.did_press_line_push_up → boolean → unknown
 Koşu mesafesi artışından sonraki 5 dakikada şut sayısı arttı mı? → match.physical.run_distance.rise.after5m.did_shots_increase → boolean → unknown
 Koşu mesafesi artışından sonraki 5 dakikada ceza sahası aksiyonu arttı mı? → match.physical.run_distance.rise.after5m.did_box_actions_increase → boolean → unknown
@@ -2100,59 +1951,47 @@ Koşu mesafesi yüksek olan takım 76–90+ aralığında tempo bandını taşı
 
 Koşu mesafesi yüksek olan takımda tempo_down başladı mı? → match.physical.run_distance.high_team.tempo_down.started → boolean → unknown
 Koşu mesafesi yüksek olan takımda tempo_down hangi dakikada başladı? → match.physical.run_distance.high_team.tempo_down.start_minute → integer → unknown
-
 Koşu mesafesi yüksek olan takımda tempo_down sonrası 5 dakikada pas hatası arttı mı? → match.physical.run_distance.high_team.tempo_down.after5m.did_pass_errors_increase → boolean → unknown
 Koşu mesafesi yüksek olan takımda tempo_down sonrası 5 dakikada topu tutma süresi azaldı mı? → match.physical.run_distance.high_team.tempo_down.after5m.did_possession_duration_decrease → boolean → unknown
 Koşu mesafesi yüksek olan takımda tempo_down sonrası 5 dakikada rakip geçişleri arttı mı? → match.physical.run_distance.high_team.tempo_down.after5m.did_opponent_transitions_increase → boolean → unknown
-
 Koşu mesafesi yüksek olan takımda maç sonunda sakatlık riski sinyali oluştu mu? → match.physical.run_distance.high_team.injury_risk_signal.occurred.end_of_match → boolean → unknown
 Koşu mesafesi yüksek olan takımda sakatlık riski sinyali hangi dakikada belirginleşti? → match.physical.run_distance.high_team.injury_risk_signal.prominent_minute → integer → unknown
-
 Koşu mesafesi yüksek olan takımda sakatlık riski sinyali sonrası 5 dakikada oyuncu değişikliği geldi mi? → match.physical.run_distance.high_team.injury_risk_signal.after5m.did_substitution_occur → boolean → unknown
 Koşu mesafesi yüksek olan takımda sakatlık riski sinyali sonrası 5 dakikada faul sayısı arttı mı? → match.physical.run_distance.high_team.injury_risk_signal.after5m.did_fouls_increase → boolean → unknown
 
 Koşu mesafesi yüksek olan takımda maç sonunda kart eğilimi arttı mı? → match.physical.run_distance.high_team.card_trend.increased.end_of_match → boolean → unknown
 Koşu mesafesi yüksek olan takımda kart eğilimi hangi dakikada yükseldi? → match.physical.run_distance.high_team.card_trend.increase_minute → integer → unknown
-
 Koşu mesafesi yüksek olan takımda kart eğilimi yükseldikten sonraki 5 dakikada faul-temas arttı mı? → match.physical.run_distance.high_team.card_trend.after5m.did_foul_contact_increase → boolean → unknown
 Koşu mesafesi yüksek olan takımda kart eğilimi yükseldikten sonraki 5 dakikada savunma çizgisi geriye düştü mü? → match.physical.run_distance.high_team.card_trend.after5m.did_defensive_line_drop → boolean → unknown
-
 Koşu mesafesi yüksek olan takımda maç sonunda faul eğilimi arttı mı? → match.physical.run_distance.high_team.foul_trend.increased.end_of_match → boolean → unknown
 Koşu mesafesi yüksek olan takımda faul eğilimi hangi dakikada yükseldi? → match.physical.run_distance.high_team.foul_trend.increase_minute → integer → unknown
-
 Koşu mesafesi yüksek olan takımda faul eğilimi yükseldikten sonraki 5 dakikada duran top sayısı arttı mı? → match.physical.run_distance.high_team.foul_trend.after5m.did_set_pieces_increase → boolean → unknown
 Koşu mesafesi yüksek olan takımda faul eğilimi yükseldikten sonraki 5 dakikada rakip ceza sahası girişleri arttı mı? → match.physical.run_distance.high_team.foul_trend.after5m.did_opponent_box_entries_increase → boolean → unknown
 
 Maç sonunda en çok koşan ilk 3 oyuncu bir sonraki maç için yorgunluk riski taşıyor mu? → match.physical.run_distance.next_match_risk.top3.fatigue_risk → boolean → unknow
 Maç sonunda en çok koşan ilk 5 oyuncu bir sonraki maç için yorgunluk riski taşıyor mu? → match.physical.run_distance.next_match_risk.top5.fatigue_risk → boolean → unknown
-
 Maç sonunda en çok koşan ilk 3 oyuncu bir sonraki maç için sakatlık riski taşıyor mu? → match.physical.run_distance.next_match_risk.top3.injury_risk → boolean → unknown
 Maç sonunda en çok koşan ilk 5 oyuncu bir sonraki maç için sakatlık riski taşıyor mu? → match.physical.run_distance.next_match_risk.top5.injury_risk → boolean → unknown
 
 Bu maçta olağan dışı koşu yükü “haftaya performans düşüşü” sinyali üretti mi? → match.physical.run_distance.anomaly.next_week.performance_drop_signal.occurred → boolean → unknown
 Bu maçta olağan dışı koşu yükü “haftaya performans düşüşü” sinyali hangi dakikadan sonra belirginleşti? → match.physical.run_distance.anomaly.next_week.performance_drop_signal.prominent_minute → integer → unknown
-
 Bu maçta olağan dışı koşu yükü sonrası 5 dakikada takım boyu uzadı mı? → match.physical.run_distance.anomaly.next_week.performance_drop_signal.after5m.did_team_lengthen → boolean → unknown
 Bu maçta olağan dışı koşu yükü sonrası 5 dakikada savunma geri koşuları aksadı mı? → match.physical.run_distance.anomaly.next_week.performance_drop_signal.after5m.did_defensive_recovery_fail → boolean → unknown
 
 Bu maçta olağan dışı koşu yükü “haftaya sakatlık artışı” sinyali üretti mi? → match.physical.run_distance.anomaly.next_week.injury_increase_signal.occurred → boolean → unknown
 Bu maçta olağan dışı koşu yükü “haftaya sakatlık artışı” sinyali hangi dakikadan sonra belirginleşti? → match.physical.run_distance.anomaly.next_week.injury_increase_signal.prominent_minute → integer → unknown
-
 Bu maçta olağan dışı koşu yükü sinyali sonrası 5 dakikada kas tutulması benzeri görüntüler arttı mı? → match.physical.run_distance.anomaly.next_week.injury_increase_signal.after5m.did_muscle_tightness_signs_increase → boolean → unknown
 Bu maçta olağan dışı koşu yükü sinyali sonrası 5 dakikada oyuncu temposu düştü mü? → match.physical.run_distance.anomaly.next_week.injury_increase_signal.after5m.did_player_tempo_drop → boolean → unknown
 
 Maçın sonucu 1X2 bandında maç boyunca baskın favori değişti mi → market.1x2.dominant_favorite.changed_flag → boolean → unknown
 Maçın sonucu 1X2 bandında ilk baskın favori hangi takımdı? → market.1x2.dominant_favorite.first_team → enum (home, away) → unknown
-
 Maçın sonucu 1X2 bandında baskın favori değişimi hangi dakikada oldu? → market.1x2.dominant_favorite.change_minute → integer → unknown
 Maçın sonucu 1X2 bandında baskın favori değişimi hangi segmentte oldu? → market.1x2.dominant_favorite.change_segment → enum (m0_15, m16_30, m31_45, m46_60, m61_75, m76_90, m90_plus) → unknown
-
 Maçın sonucu 1X2 bandında favori değişimi gol öncesi mi gol sonrası mı oldu? → market.1x2.dominant_favorite.change_relative_to_goal → enum (pre_goal, post_goal) → unknown
 Maçın sonucu 1X2 bandında favori değişimi kırmızı kart öncesi mi kırmızı kart sonrası mı oldu? → market.1x2.dominant_favorite.change_relative_to_red_card → enum (pre_red_card, post_red_card) → unknown
 
 Maçın sonucu 1X2 bandında favori değişimi penaltı kararı öncesi mi sonrası mı oldu? → market.1x2.dominant_favorite.change_relative_to_penalty_decision → enum (pre_penalty, post_penalty) → unknown
 Maçın sonucu 1X2 bandında favori değişimi VAR incelemesi öncesi mi sonrası mı oldu? → market.1x2.dominant_favorite.change_relative_to_var_review → enum (pre_var_review, post_var_review) → unknown
-
 Maçın sonucu 1X2 bandında favori değişimi sakatlık / oyuncu değişikliği öncesi mi sonrası mı oldu? → market.1x2.dominant_favorite.change_relative_to_injury_substitution → enum (pre_injury_sub, post_injury_sub) → unknown
 Maçın sonucu 1X2 bandında favori değişimi kontrol kaybı başlangıcından sonra mı oluştu? → market.1x2.dominant_favorite.change_after_control_loss_flag → boolean → unknown
 
@@ -2163,16 +2002,13 @@ Maçın sonucu 1X2 bandında favori değişimi sonrası ilk 5 dakikada gol ihtim
 
 Maçın sonucu 1X2 bandında ilk kırılma hangi dakikada oldu? → market.1x2.breakpoint.first_minute → integer → unknown
 Maçın sonucu 1X2 bandında ilk kırılma hangi segmentte oldu? → market.1x2.breakpoint.first_segment → enum (m0_15, m16_30, m31_45, m46_60, m61_75, m76_90, m90_plus) → unknown
-
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi gol müydü? → market.1x2.breakpoint.trigger.goal_flag → boolean → unknown
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi kırmızı kart mıydı? → market.1x2.breakpoint.trigger.red_card_flag → boolean → unknown
 
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi penaltı mıydı? → market.1x2.breakpoint.trigger.penalty_flag → boolean → unknown
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi VAR kararı mıydı? → market.1x2.breakpoint.trigger.var_decision_flag → boolean → unknown
-
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi sakatlık mıydı? → market.1x2.breakpoint.trigger.injury_flag → boolean → unknown
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi kontrol kaybı mıydı? → market.1x2.breakpoint.trigger.control_loss_flag → boolean → unknown
-
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi ev sahibi lehine mi oldu? → market.1x2.breakpoint.trigger.favored_side → enum (home, away) → unknown
 Maçın sonucu 1X2 bandında kırılma tetikleyicisi deplasman lehine mi oldu? → market.1x2.breakpoint.trigger.favored_side → enum (home, away) → unknown
 
@@ -2191,7 +2027,6 @@ Maçta toplam gol bandı (alt/üst) için ilk kırılma sonrası ilk 5 dakikada 
 Toplam gol bandı (alt/üst) kırılması erken gol ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.early_goal_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması erken gol dakikası kaçtı? → market.goals_ou.breakpoint.trigger.early_goal_minute → integer → unknown
 Toplam gol bandı (alt/üst) kırılması erken gol sonrası ilk 5 dakikada ikinci gol sinyali verdi mi? → market.goals_ou.breakpoint.trigger.early_goal.post_5m.second_goal_signal_flag → boolean → unknown
-
 Toplam gol bandı (alt/üst) kırılması ilk 15 baskı ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.first15_pressure_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması ilk 15 baskıyı hangi takım kurdu? → market.goals_ou.breakpoint.trigger.first15_pressure_team → enum (home, away) → unknown
 Toplam gol bandı (alt/üst) kırılması ilk 15 baskı sonrası ilk 5 dakikada tempo korundu mu? → market.goals_ou.breakpoint.trigger.first15_pressure.post_5m.tempo_maintained_flag → boolean → unknown
@@ -2199,7 +2034,6 @@ Toplam gol bandı (alt/üst) kırılması ilk 15 baskı sonrası ilk 5 dakikada 
 Toplam gol bandı (alt/üst) kırılması tempo_up ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.tempo_up_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması tempo_up hangi dakikada başladı? → market.goals_ou.breakpoint.trigger.tempo_up_start_minute → integer → unknown
 Toplam gol bandı (alt/üst) kırılması tempo_up sonrası ilk 5 dakikada pozisyon sıklığı arttı mı? → market.goals_ou.breakpoint.trigger.tempo_up.post_5m.chance_frequency_up_flag → boolean → unknown
-
 Toplam gol bandı (alt/üst) kırılması kırmızı kart ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.red_card_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması kırmızı kart hangi dakikada oldu? → market.goals_ou.breakpoint.trigger.red_card_minute → integer → unknown
 Toplam gol bandı (alt/üst) kırılması kırmızı kart sonrası ilk 5 dakikada oyun tek kaleye döndü mü? → market.goals_ou.breakpoint.trigger.red_card.post_5m.one_way_pressure_flag → boolean → unknown
@@ -2207,7 +2041,6 @@ Toplam gol bandı (alt/üst) kırılması kırmızı kart sonrası ilk 5 dakikad
 Toplam gol bandı (alt/üst) kırılması penaltı ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.penalty_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması penaltı kararı hangi dakikada geldi? → market.goals_ou.breakpoint.trigger.penalty_decision_minute → integer → unknown
 Toplam gol bandı (alt/üst) kırılması penaltı sonrası ilk 5 dakikada tempo düştü mü yükseldi mi? → market.goals_ou.breakpoint.trigger.penalty.post_5m.tempo_direction → enum (tempo_up, tempo_down, stable) → unknown
-
 Toplam gol bandı (alt/üst) kırılması iptal gol ile mi tetiklendi? → market.goals_ou.breakpoint.trigger.disallowed_goal_flag → boolean → unknown
 Toplam gol bandı (alt/üst) kırılması iptal gol hangi dakikada oldu? → market.goals_ou.breakpoint.trigger.disallowed_goal_minute → integer → unknown
 Toplam gol bandı (alt/üst) kırılması iptal gol sonrası ilk 5 dakikada baskı arttı mı? → market.goals_ou.breakpoint.trigger.disallowed_goal.post_5m.pressure_up_flag → boolean → unknown
@@ -2218,7 +2051,6 @@ Toplam gol bandı (alt/üst) kırılması time_waste sonrası ilk 5 dakikada oyu
 
 Maçta iki takım da gol atar (BTTS) bandı için ilk sinyal hangi segmentte oluştu? → market.btts.signal.first_segment → enum (m0_15, m16_30, m31_45, m46_60, m61_75, m76_90, m90_plus) → unknown
 Maçta BTTS bandı için ilk sinyal hangi dakikada oluştu? → market.btts.signal.first_minute → integer → unknown
-
 BTTS bandı için iki takım da net pozisyon üretti mi? → market.btts.signal.big_chance.both_teams_flag → boolean → unknown
 BTTS bandı için ev sahibi net pozisyon üretti mi? → market.btts.signal.big_chance.home_flag → boolean → unknown
 BTTS bandı için deplasman net pozisyon üretti mi? → market.btts.signal.big_chance.away_flag → boolean → unknown
@@ -2228,26 +2060,22 @@ BTTS bandı için iki takım da xThreat benzeri tehlike üretti mi? → market.b
 BTTS bandı için ev sahibi xThreat benzeri tehlike üretti mi? → market.btts.signal.threat.home_flag → boolean → unknown
 BTTS bandı için deplasman xThreat benzeri tehlike üretti mi? → market.btts.signal.threat.away_flag → boolean → unknown
 BTTS bandı için iki takım da korner baskısı üretti mi? → market.btts.signal.corners_pressure.both_teams_flag → boolean → unknown
-
 BTTS bandı için ev sahibi korner baskısı üretti mi? → market.btts.signal.corners_pressure.home_flag → boolean → unknown
 BTTS bandı için deplasman korner baskısı üretti mi? → market.btts.signal.corners_pressure.away_flag → boolean → unknown
 
 BTTS bandı için savunma hatası zinciri oluştu mu? → market.btts.signal.defensive_error.chain_flag → boolean → unknown
 BTTS bandı için savunma hatası zinciri hangi dakikada başladı? → market.btts.signal.defensive_error.chain_start_minute → integer → unknown
 BTTS bandı için savunma hatası zinciri sonrası ilk 5 dakikada net pozisyon geldi mi? → market.btts.signal.defensive_error.post_5m.big_chance_flag → boolean → unknown
-
 BTTS bandı için kaleci kurtarış serisi oluştu mu? → market.btts.signal.goalkeeper_saves.series_flag → boolean → unknown
 BTTS bandı için kaleci kurtarış serisi hangi dakikada başladı? → market.btts.signal.goalkeeper_saves.series_start_minute → integer → unknown
 
 BTTS bandı için kurtarış serisi sonrası ilk 5 dakikada baskı devam etti mi? → market.btts.signal.goalkeeper_saves.post_5m.pressure_continued_flag → boolean → unknown
-
 BTTS bandı için kaleci hatası sinyali oluştu mu? → market.btts.signal.goalkeeper_error.flag → boolean → unknown
 BTTS bandı için kaleci hatası sinyali hangi dakikada oldu? → market.btts.signal.goalkeeper_error.minute → integer → unknown
 BTTS bandı için kaleci hatası sonrası ilk 5 dakikada gol geldi mi? → market.btts.signal.goalkeeper_error.post_5m.goal_scored_flag → boolean → unknown
 
 Maçta ilk yarı sonucu bandı için kırılma hangi dakikada oluştu? → market.ht_result.breakpoint.minute → integer → unknown
 Maçta ilk yarı sonucu bandı için kırılma hangi segmentte oluştu? → market.ht_result.breakpoint.segment → enum (m0_15, m16_30, m31_45, m45_plus) → unknown
-
 Maçta ilk yarı sonucu bandı kırılması gol ile mi tetiklendi? → market.ht_result.breakpoint.trigger.goal_flag → boolean → unknown
 Maçta ilk yarı sonucu bandı kırılması kırmızı kart ile mi tetiklendi? → market.ht_result.breakpoint.trigger.red_card_flag → boolean → unknown
 Maçta ilk yarı sonucu bandı kırılması penaltı ile mi tetiklendi? → market.ht_result.breakpoint.trigger.penalty_flag → boolean → unknown
@@ -2256,7 +2084,6 @@ Maçta ilk yarı sonucu bandı kırılması sonrası ilk 5 dakikada denge geri g
 
 Maçta ilk yarı alt/üst bandı için kırılma hangi segmentte oluştu? → market.ht_goals_ou.breakpoint.segment → enum (m0_15, m16_30, m31_45, m45_plus) → unknown
 Maçta ilk yarı alt/üst bandı için kırılma hangi dakikada oluştu? → market.ht_goals_ou.breakpoint.minute → integer → unknown
-
 Maçta ilk yarı alt/üst bandı kırılması tempo_up ile mi tetiklendi? → market.ht_goals_ou.breakpoint.trigger.tempo_up_flag → boolean → unknown
 Maçta ilk yarı alt/üst bandı kırılması erken gol ile mi tetiklendi? → market.ht_goals_ou.breakpoint.trigger.early_goal_flag → boolean → unknown
 Maçta ilk yarı alt/üst bandı kırılması sonrası ilk 5 dakikada ikinci gol sinyali oluştu mu? → market.ht_goals_ou.breakpoint.post_5m.second_goal_signal_flag → boolean → unknown
@@ -2279,20 +2106,17 @@ Maçta ikinci yarı tempo bandı değişimi sonrası ilk 5 dakikada pozisyon say
 
 Maçta bir sonraki golü kim atar bandı için baskın taraf değişti mi? → market.next_goal.dominant_side.changed_flag → boolean → unknown
 Maçta bir sonraki golü kim atar bandında ilk baskın taraf kimdi? → market.next_goal.dominant_side.first_team → enum (home, away) → unknown
-
 Maçta bir sonraki golü kim atar bandı için baskın taraf değişimi hangi dakikada oldu? → market.next_goal.dominant_side.change_minute → integer → unknown
 Maçta bir sonraki golü kim atar bandı için baskın taraf değişimi hangi segmentte oldu? → market.next_goal.dominant_side.change_segment → enum (m0_15, m16_30, m31_45, m46_60, m61_75, m76_90, m90_plus) → unknown
 
 Bir sonraki gol bandı için net pozisyon kümelenmesi oldu mu? → market.next_goal.big_chance.cluster_flag → boolean → unknown
 Bir sonraki gol bandı için net pozisyon kümelenmesi hangi dakikada başladı? → market.next_goal.big_chance.cluster_start_minute → integer → unknown
 Bir sonraki gol bandı için net pozisyon kümelenmesi hangi takım lehineydi? → market.next_goal.big_chance.cluster_team → enum (home, away) → unknown
-
 Bir sonraki gol bandı için kümelenme sonrası ilk 5 dakikada gol geldi mi? → market.next_goal.big_chance.post_5m.goal_scored_flag → boolean → unknown
 
 Bir sonraki gol bandı için korner yoğunluğu taraf değiştirdi mi? → market.next_goal.corners_pressure.side_shift_flag → boolean → unknown
 Bir sonraki gol bandı için korner yoğunluğu değişimi hangi dakikada oldu? → market.next_goal.corners_pressure.side_shift_minute → integer → unknown
 Bir sonraki gol bandı için korner yoğunluğu değişimi sonrası ilk 5 dakikada şut geldi mi? → market.next_goal.corners_pressure.post_shift_5m.shot_occurred_flag → boolean → unknown
-
 Bir sonraki gol bandı için penaltı sinyali oluştu mu? → market.next_goal.penalty_signal.flag → boolean → unknown
 Bir sonraki gol bandı için penaltı sinyali hangi dakikada oluştu? → market.next_goal.penalty_signal.minute → integer → unknown
 Bir sonraki gol bandı için penaltı sinyali sonrası ilk 5 dakikada VAR incelemesi oldu mu? → market.next_goal.penalty_signal.post_5m.var_review_flag → boolean → unknown
@@ -2300,7 +2124,6 @@ Bir sonraki gol bandı için penaltı sinyali sonrası ilk 5 dakikada VAR incele
 Bir sonraki gol bandı için VAR incelemesi gerginliği oluştu mu? → market.next_goal.var_tension.flag → boolean → unknown
 Bir sonraki gol bandı için VAR incelemesi gerginliği hangi dakikada oluştu? → market.next_goal.var_tension.minute → integer → unknow
 Bir sonraki gol bandı için VAR gerginliği sonrası ilk 5 dakikada kart çıktı mı? → market.next_goal.var_tension.post_5m.card_given_flag → boolean → unknown
-
 Bir sonraki gol bandı için kırmızı kart riski sinyali oluştu mu? → market.next_goal.red_card_risk.flag → boolean → unknown
 Bir sonraki gol bandı için kırmızı kart riski sinyali hangi dakikada oluştu? → market.next_goal.red_card_risk.minute → integer → unknown
 Bir sonraki gol bandı için kırmızı kart riski sonrası ilk 5 dakikada oyun sertleşti mi? → market.next_goal.red_card_risk.post_5m.game_hardened_flag → boolean → unknown
@@ -2319,13 +2142,11 @@ Maçta toplam korner bandı için 61–90+ aralığında kornerler iki takıma d
 
 Maçta toplam korner bandı için ilk yarıda kornerler tek takımda mı kümelendi? → market.corners_total.cluster.half1.single_team_flag → boolean → unknown
 Maçta toplam korner bandı için ikinci yarıda kornerler tek takımda mı kümelendi? → market.corners_total.cluster.half2.single_team_flag → boolean → unknown
-
 Maçta toplam korner bandı için ev sahibi kornerleri tek başına bandı sürükledi mi? → market.corners_total.pull.home_flag → boolean → unknown
 Maçta toplam korner bandı için deplasman kornerleri tek başına bandı sürükledi mi? → market.corners_total.pull.away_flag → boolean → unknown
 
 Maçta toplam korner bandı için korner baskısı 60–75 arasında arttı mı? → market.corners_total.pressure_window.m60_75.increase_flag → boolean → unknown
 Maçta toplam korner bandı için korner baskısı 75–90+ arasında arttı mı? → market.corners_total.pressure_window.m75_90_plus.increase_flag → boolean → unknown
-
 Maçta toplam korner bandı için kornerlerin çoğu aynı 10 dakikalık dilimde mi çıktı? → market.corners_total.concentration.single_10m_window_flag → boolean → unknown
 Maçta toplam korner bandı için kornerlerin çoğu “gol arayışı” döneminde mi geldi? → market.corners_total.context.majority_in_goal_chase_flag → boolean → unknown
 Maçta toplam korner bandı için kornerlerin çoğu “skoru koruma” döneminde mi geldi? → market.corners_total.context.majority_in_score_protection_flag → boolean → unknown
@@ -2333,7 +2154,6 @@ Maçta toplam korner bandı için bir kornerden sonraki 5 dakikada yeni korner d
 
 Maçta toplam korner bandı için kornerlerin artışı duran top baskısını artırdı mı? → market.corners_total.impact.set_piece_pressure_up_flag → boolean → unknown
 Maçta toplam korner bandı için kornerlerin artışı rakibin savunma dengesini bozdu mu? → market.corners_total.impact.defensive_balance_disrupted_flag → boolean → unknown
-
 Maçta ilk korneri kim alır bandı gerçekleşti mi? → market.first_corner.occurred_flag → boolean → unknown
 Maçta ilk kornerin dakikası nedir? → market.first_corner.minute → integer → unknown
 Maçta ilk korneri hangi takım aldı? → market.first_corner.team → enum (home, away) → unknown
@@ -2341,14 +2161,12 @@ Maçta ilk kornerden sonraki 10 dakikada korner akışı devam etti mi? → mark
 
 Maçta ilk 5 dakikada korner oldu mu? → market.corners.m0_5.occurred_flag → boolean → unknown
 Maçta ilk 10 dakikada korner oldu mu? → market.corners.m0_10.occurred_flag → boolean → unknown
-
 Maçta ilk korner 0–5 dakikada mı geldi? → market.first_corner.window.m0_5.flag → boolean → unknown
 Maçta ilk korner 6–10 dakikada mı geldi? → market.first_corner.window.m6_10.flag → boolean → unknown
 Maçta ilk korner 11–15 dakikada mı geldi? → market.first_corner.window.m11_15.flag → boolean → unknown
 
 Maçta ilk korneri ev sahibi mi aldı? → market.first_corner.by_side.home_flag → boolean → unknown
 Maçta ilk korneri deplasman mı aldı? → market.first_corner.by_side.away_flag → boolean → unknown
-
 Maçta ilk korneri alan takım ilk 5 dakikada baskıyı sürdürdü mü? → market.first_corner.team_post_5m.pressure_maintained_flag → boolean → unknown
 Maçta ilk korneri alan takım ilk 10 dakikada baskıyı sürdürdü mü? → market.first_corner.team_post_10m.pressure_maintained_flag → boolean → unknown
 Maçta ilk korneri alan takım ilk 5 dakikada ikinci korneri de aldı mı? → market.first_corner.post_5m.same_team_second_corner_flag → boolean → unknown
@@ -2363,7 +2181,6 @@ Maçta ilk kornerden sonraki 10 dakikada rakip takım korner alabildi mi? → ma
 
 Maçta ilk korneri alan takımın korneri sonrası rakip takım ilk 5 dakikada topu tuttu mu? → market.first_corner.opponent_post_5m.possession_stabilized_flag → boolean → unknown
 Maçta ilk korneri alan takımın korneri sonrası rakip takım ilk 5 dakikada baskıyı kırdı mı? → market.first_corner.opponent_post_5m.pressure_broken_flag → boolean → unknown
-
 Maçta toplam kart bandı için ilk 15 dakikada kart hızı “high” mı “mid” mi “low” muydu? → market.cards_total.rate.m0_15 → enum (high, mid, low) → unknown
 Maçta toplam kart bandı için 16–30 dakikada kart hızı “high” mı “mid” mi “low” muydu? → market.cards_total.rate.m16_30 → enum (high, mid, low) → unknown
 Maçta toplam kart bandı için 31–45 dakikada kart hızı “high” mı “mid” mi “low” muydu? → market.cards_total.rate.m31_45 → enum (high, mid, low) → unknown
@@ -2373,7 +2190,6 @@ Maçta toplam kart bandı için 76–90+ dakikada kart hızı “high” mı “
 
 Maçta toplam kart bandı için ilk yarıda kartlar tek takımda mı kümelendi? → market.cards_total.cluster.half1.single_team_flag → boolean → unknown
 Maçta toplam kart bandı için ikinci yarıda kartlar tek takımda mı kümelendi? → market.cards_total.cluster.half2.single_team_flag → boolean → unknown
-
 Maçta toplam kart bandı için kartlar ev sahibinde mi kümelendi? → market.cards_total.cluster.by_side.home_flag → boolean → unknown
 Maçta toplam kart bandı için kartlar deplasmanda mı kümelendi? → market.cards_total.cluster.by_side.away_flag → boolean → unknown
 Maçta toplam kart bandı için kartlar iki takıma dengeli mi dağıldı? → market.cards_total.distribution.balanced_flag → boolean → unknown
@@ -2382,7 +2198,6 @@ Maçta toplam kart bandı için kartların çoğu aynı 10 dakikalık dilimde mi
 Maçta toplam kart bandı için kartların çoğu ilk yarının son 10 dakikasında mı çıktı? → market.cards_total.concentration.half1_last10_flag → boolean → unknown
 Maçta toplam kart bandı için kartların çoğu ikinci yarının ilk 10 dakikasında mı çıktı? → market.cards_total.concentration.half2_first10_flag → boolean → unknown
 Maçta toplam kart bandı için kartların çoğu son 15 dakikada mı çıktı? → market.cards_total.concentration.last15_flag → boolean → unknown
-
 Maçta toplam kart bandı için kartlar “itiraz” kaynaklı mıydı? → market.cards_total.cause.appeal_flag → boolean → unknown
 Maçta toplam kart bandı için kartlar “sertlik” kaynaklı mıydı? → market.cards_total.cause.physicality_flag → boolean → unknown
 Maçta toplam kart bandı için kartlar “taktik faul” kaynaklı mıydı? → market.cards_total.cause.tactical_foul_flag → boolean → unknown
@@ -2393,7 +2208,6 @@ Maçta toplam kart bandı için kartların çoğu ev sahibi kaynaklı sertlik mi
 Maçta toplam kart bandı için kartların çoğu deplasman kaynaklı sertlik miydi? → market.cards_total.cause_breakdown.away_physicality_majority_flag → boolean → unknown
 Maçta toplam kart bandı için kartların çoğu ev sahibi kaynaklı taktik faul müydü? → market.cards_total.cause_breakdown.home_tactical_majority_flag → boolean → unknown
 Maçta toplam kart bandı için kartların çoğu deplasman kaynaklı taktik faul müydü? → market.cards_total.cause_breakdown.away_tactical_majority_flag → boolean → unknown
-
 Maçta toplam kart bandı için ilk kart 0–10 dakikada mı çıktı? → market.cards_total.first_card.window.m0_10_flag → boolean → unknown
 Maçta toplam kart bandı için ilk kart 11–20 dakikada mı çıktı? → market.cards_total.first_card.window.m11_20_flag → boolean → unknown
 Maçta toplam kart bandı için ilk kart 21–30 dakikada mı çıktı? → market.cards_total.first_card.window.m21_30_flag → boolean → unknown
@@ -2405,7 +2219,6 @@ Maçta toplam kart bandı için hakem standardı son 15 dakikada sertleşti mi? 
 Maçta toplam kart bandı için hakem standardı ilk yarıda yumuşadı mı? → referee.standard.half1.softened_flag → boolean → unknown
 Maçta toplam kart bandı için hakem standardı ikinci yarıda yumuşadı mı? → referee.standard.half2.softened_flag → boolean → unknown
 Maçta toplam kart bandı için hakem standardı son 15 dakikada yumuşadı mı? → referee.standard.last15.softened_flag → boolean → unknown
-
 Maçta toplam kart bandı için bir karttan sonraki 5 dakikada kart akışı devam etti mi? → market.cards_total.post_card_5m.card_flow_continued_flag → boolean → unknown
 Maçta toplam kart bandı için bir karttan sonraki 5 dakikada sertlik arttı mı? → market.cards_total.post_card_5m.physicality_up_flag → boolean → unknown
 Maçta toplam kart bandı için bir karttan sonraki 5 dakikada oyun daha çok durdu mu? → market.cards_total.post_card_5m.flow_stoppage_up_flag → boolean → unknown
@@ -2418,7 +2231,6 @@ Maçta ilk kart “itiraz” mı “taktik faul” müydü? → market.first_car
 
 Maçta ilk 5 dakikada kart oldu mu? → market.cards.m0_5.occurred_flag → boolean → unknown
 Maçta ilk 10 dakikada kart oldu mu? → market.cards.m0_10.occurred_flag → boolean → unknown
-
 Maçta ilk kart 0–5 dakikada mı çıktı? → market.first_card.window.m0_5.flag → boolean → unknown
 Maçta ilk kart 6–10 dakikada mı çıktı? → market.first_card.window.m6_10.flag → boolean → unknown
 Maçta ilk kart 11–15 dakikada mı çıktı? → market.first_card.window.m11_15.flag → boolean → unknown
@@ -2426,7 +2238,6 @@ Maçta ilk kart 16–20 dakikada mı çıktı? → market.first_card.window.m16_
 
 Maçta ilk kart ev sahibine mi çıktı? → market.first_card.by_side.home_flag → boolean → unknown
 Maçta ilk kart deplasmana mı çıktı? → market.first_card.by_side.away_flag → boolean → unknown
-
 Maçta ilk kartı gören oyuncu savunma oyuncusu muydu? → market.first_card.player_role.defender_flag → boolean → unknown
 Maçta ilk kartı gören oyuncu orta saha oyuncusu muydu? → market.first_card.player_role.midfielder_flag → boolean → unknown
 Maçta ilk kartı gören oyuncu hücum oyuncusu muydu? → market.first_card.player_role.attacker_flag → boolean → unknown
@@ -2446,7 +2257,6 @@ Maçta penaltı iptali sonrası kontrol bandı bozuldu mu? → market.penalty.ov
 
 Maçta ilk yarıda penaltı oldu mu? → market.penalty.half1.occurred_flag → boolean → unknown
 Maçta ikinci yarıda penaltı oldu mu? → market.penalty.half2.occurred_flag → boolean → unknown
-
 Maçta penaltı kararı 0–30 dakikada mı geldi? → market.penalty.window.m0_30.flag → boolean → unknown
 Maçta penaltı kararı 31–60 dakikada mı geldi? → market.penalty.window.m31_60.flag → boolean → unknown
 Maçta penaltı kararı 61–90+ dakikada mı geldi? → market.penalty.window.m61_90_plus.flag → boolean → unknown
@@ -2455,7 +2265,6 @@ Maçta penaltı kararı deplasman lehine mi geldi? → market.penalty.by_side.aw
 
 Maçta VAR incelemesi sonrası penaltı verildi mi? → market.penalty.var_review.result_awarded_flag → boolean → unknown
 Maçta VAR incelemesi sonrası penaltı iptal edildi mi? → market.penalty.var_review.result_overturned_flag → boolean → unknown
-
 Maçta penaltı kararı sonrası ilk 5 dakikada sertlik arttı mı? → market.penalty.post_decision_5m.physicality_up_flag → boolean → unknown
 Maçta penaltı kararı sonrası ilk 5 dakikada kart çıktı mı? → market.penalty.post_decision_5m.card_given_flag → boolean → unknown
 Maçta penaltı kararı sonrası ilk 5 dakikada korner baskısı arttı mı? → market.penalty.post_decision_5m.corner_pressure_up_flag → boolean → unknown
@@ -2482,7 +2291,6 @@ Maçta kırmızı karttan sonraki 5 dakikada korner baskısı arttı mı? → ma
 Maçta kırmızı karttan sonraki 10 dakikada kart hızı arttı mı? → market.red_card.post_10m.card_rate_up_flag → boolean → unknown
 Maçta kırmızı karttan sonraki 5 dakikada oyun tamamen durdu mu? → market.red_card.post_5m.game_stopped_flag → boolean → unknown
 Maçta kırmızı karttan sonraki 10 dakikada oyun kontrolü değişti mi? → market.red_card.post_10m.game_control_changed_flag → boolean → unknown
-
 Maçta kırmızı kart sonrası taktik değişiklik yapıldı mı? → market.red_card.post_event.tactical_change_flag → boolean → unknown
 Maçta kırmızı kart sonrası sonraki 5 dakikada itirazlar arttı mı? → market.red_card.post_5m.appeals_increase_flag → boolean → unknown
 
@@ -2576,7 +2384,6 @@ Maçta sonraki maç için takımın “hakem tepkisi” riski büyümesi sonras�
 Maçta sonraki maç için takımın “tribün baskısı” riski büyüdü mü? → risk.next_match.crowd_pressure.increased_flag → boolean → unknown
 Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi hangi dakikada başladı? → risk.next_match.crowd_pressure.increase_start_minute → integer → unknown
 Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi hangi olayla tetiklendi? → risk.next_match.crowd_pressure.trigger_event → enum (goal, red_card, penalty, var_review, disallowed_goal, referee_decision, time_waste, unknown) → unknown
-
 Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi hangi takım aleyhine yoğunlaştı? → risk.next_match.crowd_pressure.affected_team → enum (home, away) → unknown
 Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi sonrası sonraki 5 dakikada oyuncu itirazları arttı mı? → risk.next_match.crowd_pressure.post_5m.player_appeals_up_flag → boolean → unknown
 Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi sonrası sonraki 5 dakikada tempo bandı tempo_down oldu mu? → risk.next_match.crowd_pressure.post_5m.tempo_down_flag → boolean → unknown
@@ -2584,7 +2391,6 @@ Maçta sonraki maç için takımın “tribün baskısı” riski büyümesi son
 
 Bu maçta bahis odaklı kırılmalar “tempo” yoğunluğu sonrası sonraki 5 dakikada net pozisyon çıktı mı? → betting.breakpoints.focus.tempo.post_5m.big_chance_flag → boolean → unknown
 Bu maçta bahis odaklı kırılmalar “tempo” yoğunluğu sonrası sonraki 5 dakikada korner yoğunluğu arttı mı? → betting.breakpoints.focus.tempo.post_5m.corners_increase_flag → boolean → unknown
-
 Bu maçta bahis odaklı kırılmalar “kart” üzerinden mi yoğunlaştı? → betting.breakpoints.focus.cards_flag → boolean → unknown
 Bu maçta bahis odaklı kırılmalar “kart” yoğunluğu hangi dakikada arttı? → betting.breakpoints.focus.cards.increase_minute → integer → unknown
 Bu maçta bahis odaklı kırılmalar “kart” yoğunluğu hangi takım aleyhine yükseldi? → betting.breakpoints.focus.cards.affected_team → enum (home, away) → unknown
@@ -2592,41 +2398,30 @@ Bu maçta bahis odaklı kırılmalar “kart” yoğunluğu hangi oyuncuda küme
 
 Bu maçta bahis odaklı kırılmalar “kart” yoğunluğu sonrası sonraki 5 dakikada tempo düştü mü? → betting.breakpoints.focus.cards.post_5m.tempo_down_flag → boolean → unknown
 Bu maçta bahis odaklı kırılmalar “kart” yoğunluğu sonrası sonraki 5 dakikada hakem itirazları arttı mı? → betting.breakpoints.focus.cards.post_5m.referee_appeals_up_flag → boolean → unknown
-
 Bu maçta bahis odaklı kırılmalar “korner” üzerinden mi yoğunlaştı? → betting.breakpoints.focus.corners_flag → boolean → unknown
-
 Bu maçta bahis odaklı kırılmalar “korner” yoğunluğu hangi dakikalarda arttı? → betting.breakpoints.focus.corners.increase_minutes → list → unknown
 Bu maçta bahis odaklı kırılmalar “korner” yoğunluğu hangi takım lehineydi? → betting.breakpoints.focus.corners.favored_team → enum (home, away) → unknown
-
 Bu maçta bahis odaklı kırılmalar “korner” yoğunluğu sonrası sonraki 5 dakikada net pozisyon çıktı mı? → betting.breakpoints.focus.corners.post_5m.big_chance_flag → boolean → unknown
 Bu maçta bahis odaklı kırılmalar “korner” yoğunluğu sonrası sonraki 5 dakikada gol riski yükseldi mi? → betting.breakpoints.focus.corners.post_5m.goal_risk_up_flag → boolean → unknown
 
 Bu maçta bahis odaklı kırılmalar “penaltı” üzerinden mi yoğunlaştı? → betting.breakpoints.focus.penalty_flag → boolean → unknown
-
 Bu maçta bahis odaklı kırılmalar “penaltı” yoğunluğu hangi dakikada tetiklendi? → betting.breakpoints.focus.penalty.trigger_minute → integer → unknown
 Bu maçta bahis odaklı kırılmalar “penaltı” yoğunluğu hangi takım lehine oldu? → betting.breakpoints.focus.penalty.favored_team → enum (home, away) → unknown
-
 Bu maçta bahis odaklı kırılmalar “penaltı” yoğunluğu sonrası sonraki 5 dakikada kart/faul bandı arttı mı? → betting.breakpoints.focus.penalty.post_5m.cards_fouls_increase_flag → boolean → unknown
-Bu maçta bahis odaklı kırılmalar “penaltı” yoğunluğu sonrası sonraki 5 dakikada VAR incelemesi geldi mi? → betting.breakpoints.focus.penalty.post_5m.var_review_flag → boolean → unknown
+Bu maçta bahis odaklı kırılmalar “penaltı” yoğunluğu sonrası sonraki 5 dakikada VAR incelemesi geldi mi? → betting.breakpoints.focus.penalty.post_5m.var_review_flag → boolean → unknownB
 
 Bu maçta yardımcı hakem (yan hakem) kritik ofsayt kararı verdi mi? → officials.assistant_referee.critical_offside.decision_flag → boolean → unknown
-
 Bu maçta yardımcı hakem kritik ofsayt kararını hangi dakikada verdi? → officials.assistant_referee.critical_offside.minute → integer → unknown
 Bu maçta yardımcı hakem kritik ofsayt kararını hangi hücumda verdi? → officials.assistant_referee.critical_offside.attack_phase → enum (open_play, counter_attack, set_piece, unknown) → unknown
 Bu maçta yardımcı hakem kritik ofsayt kararını hangi takım aleyhine verdi? → officials.assistant_referee.critical_offside.affected_team → enum (home, away) → unknown
-
 Bu maçta yardımcı hakem kritik ofsayt kararında bayrak gecikmesi oldu mu? → officials.assistant_referee.critical_offside.flag_delay_flag → boolean → unknown
-
 Bu maçta yardımcı hakem kritik ofsayt kararı sonrası sonraki 5 dakikada tribün tepkisi yükseldi mi? → officials.assistant_referee.critical_offside.post_5m.crowd_reaction_up_flag → boolean → unknown
 Bu maçta yardımcı hakem kritik ofsayt kararı sonrası sonraki 5 dakikada oyuncu itirazı arttı mı? → officials.assistant_referee.critical_offside.post_5m.player_appeals_up_flag → boolean → unknown
 
 Bu maçta yardımcı hakem ofsayt kararı maçın skorunu etkiledi mi? → officials.assistant_referee.offside.score_impact_flag → boolean → unknown
 Bu maçta yardımcı hakem ofsayt kararı maçın skorunu hangi yönde etkiledi? → officials.assistant_referee.offside.score_impact_direction → enum (benefited_home, benefited_away) → unknown
-
 Bu maçta yardımcı hakem ofsayt kararı sonrası sonraki 5 dakikada tempo değişti mi? → officials.assistant_referee.offside.post_5m.tempo_changed_flag → boolean → unknown
-
 Bu maçta yardımcı hakem ofsayt kararı iptal gol üretti mi? → officials.assistant_referee.offside.disallowed_goal_flag → boolean → unknown
-
 Bu maçta yardımcı hakem ofsayt kararıyla iptal gol hangi dakikada oldu? → officials.assistant_referee.offside.disallowed_goal_minute → integer → unknown
 Bu maçta yardımcı hakem ofsayt kararıyla iptal gol hangi takımın golüydü? → officials.assistant_referee.offside.disallowed_goal_team → enum (home, away) → unknown
 Bu maçta yardımcı hakem ofsayt kararıyla iptal gol sonrası sonraki 5 dakikada kart/faul yoğunluğu arttı mı? → officials.assistant_referee.offside.disallowed_goal.post_5m.cards_fouls_increase_flag → boolean → unknown
@@ -2635,11 +2430,9 @@ Bu maçta yardımcı hakem ofsayt kararıyla iptal gol sonrası sonraki 5 dakika
 Bu maçta yardımcı hakem ofsayt bayrağı gecikmeli mi kalktı? → officials.assistant_referee.offside.flag_delay.occurred_flag → boolean → unknown
 Bu maçta yardımcı hakem ofsayt bayrağı gecikmesi hangi dakikalarda tekrar etti? → officials.assistant_referee.offside.flag_delay.repeat_minutes → list → unknown
 Bu maçta yardımcı hakem ofsayt bayrağı gecikmesi hangi takım lehine avantaj üretti mi? → officials.assistant_referee.offside.flag_delay.advantaged_team → enum (home, away, none) → unknown
-
 Bu maçta yardımcı hakem ofsayt bayrağı erken mi kalktı? → officials.assistant_referee.offside.flag_early.occurred_flag → boolean → unknown
 Bu maçta yardımcı hakem ofsayt bayrağı erken kalkışı hangi dakikada oldu? → officials.assistant_referee.offside.flag_early.minute → integer → unknown
 Bu maçta yardımcı hakem ofsayt bayrağı erken kalkışı net pozisyonu kesti mi? → officials.assistant_referee.offside.flag_early.cut_big_chance_flag → boolean → unknown
-
 Bu maçta yardımcı hakemin ofsayt standardı iki takım için tutarlı mıydı? → officials.assistant_referee.offside.standard_consistent_flag → boolean → unknown
 Bu maçta yardımcı hakemin ofsayt standardı hangi dakikada tartışma üretti? → officials.assistant_referee.offside.standard_dispute_minute → integer → unknown
 Bu maçta yardımcı hakemin ofsayt standardı hangi takım için daha sert algılandı? → officials.assistant_referee.offside.standard_perceived_harsher_for_team → enum (home, away) → unknown
@@ -2648,7 +2441,6 @@ Bu maçta yardımcı hakem taç kararlarında hataya açık bir bant üretti mi?
 Bu maçta yardımcı hakem taç kararlarında hataya açık bant hangi dakikalarda yoğunlaştı? → officials.assistant_referee.throw_in.error_prone_band.minutes → list → unknown
 Bu maçta yardımcı hakem taç kararlarında hataya açık bant hangi kanatta oluştu? → officials.assistant_referee.throw_in.error_prone_band.side → enum (left, right, mixed) → unknown
 Bu maçta yardımcı hakem taç kararlarındaki hataya açık bant sonrası sonraki 5 dakikada baskı yönü değişti mi? → officials.assistant_referee.throw_in.error_prone_band.post_5m.pressure_direction_changed_flag → boolean → unknown
-
 Bu maçta yardımcı hakem taç kararları baskı yönünü etkiledi mi? → officials.assistant_referee.throw_in.pressure_direction_impact_flag → boolean → unknown
 Bu maçta yardımcı hakem taç kararları baskı yönünü hangi takım lehine çevirdi? → officials.assistant_referee.throw_in.pressure_shifted_to_team → enum (home, away) → unknown
 Bu maçta yardımcı hakem taç kararları baskı yönünü hangi dakikada değiştirdi? → officials.assistant_referee.throw_in.pressure_shift_minute → integer → unknown
@@ -2656,7 +2448,6 @@ Bu maçta yardımcı hakem taç kararları baskı yönünü hangi dakikada deği
 Bu maçta yardımcı hakem aut/köşe kararları tartışma üretti mi? → officials.assistant_referee.goal_kick_corner.debate_flag → boolean → unknown
 Bu maçta yardımcı hakem aut/köşe kararları tartışması hangi dakikada çıktı? → officials.assistant_referee.goal_kick_corner.debate_minute → integer → unknown
 Bu maçta yardımcı hakem aut/köşe kararları tartışması hangi takım aleyhineydi? → officials.assistant_referee.goal_kick_corner.debate_affected_team → enum (home, away) → unknown
-
 Bu maçta yardımcı hakem köşe vuruşu kararları skor riski yarattı mı? → officials.assistant_referee.corner_decisions.score_risk_flag → boolean → unknown
 Bu maçta yardımcı hakem köşe vuruşu kararları skor riskini hangi dakikada artırdı? → officials.assistant_referee.corner_decisions.score_risk_minute → integer → unknown
 Bu maçta yardımcı hakem köşe vuruşu kararları skor riskini hangi takım lehine artırdı? → officials.assistant_referee.corner_decisions.score_risk_favored_team → enum (home, away) → unknown
@@ -2680,14 +2471,12 @@ Bu maçta yardımcı hakem bir kırmızı kart pozisyonunda yönlendirici rol ha
 Bu maçta yardımcı hakem bir kırmızı kart pozisyonunda yönlendirici rol hangi takım aleyhine algılandı? → officials.assistant_referee.red_card.influential_perceived_affected_team → enum (home, away) → unknown
 
 Bu maçta yardımcı hakem saha içi gerginliği artıran bir tetikleyiciye dönüştü mü? → officials.assistant_referee.tension.trigger_flag → boolean → unknown
-
 Bu maçta yardımcı hakem gerginliği artıran tetikleyici rol hangi olay sonrası başladı? → officials.assistant_referee.tension.trigger_after_event → enum (offside, throw_in, corner_decision, foul_advantage, unknown) → unknown
 Bu maçta yardımcı hakem gerginliği artıran tetikleyici rol sonrası sonraki 5 dakikada kart riski yükseldi mi? → officials.assistant_referee.tension.post_5m.card_risk_up_flag → boolean → unknown
 
 Bu maçta yardımcı hakemin kararları tribün baskısını büyüttü mü? → officials.assistant_referee.decisions.crowd_pressure_up_flag → boolean → unknown
 Bu maçta yardımcı hakemin kararları tribün baskısını büyütmesi hangi dakikada zirve yaptı? → officials.assistant_referee.decisions.crowd_pressure_peak_minute → integer → unknown
 Bu maçta yardımcı hakemin kararları tribün baskısını büyütmesi hangi takım aleyhineydi? → officials.assistant_referee.decisions.crowd_pressure_affected_team → enum (home, away) → unknown
-
 Bu maçta yardımcı hakemin kararları oyuncu itirazını artırdı mı? → officials.assistant_referee.decisions.player_appeals_up_flag → boolean → unknown
 Bu maçta yardımcı hakemin kararları oyuncu itirazını artırması hangi dakikada yoğunlaştı? → officials.assistant_referee.decisions.player_appeals_peak_minute → integer → unknown
 Bu maçta yardımcı hakemin kararları oyuncu itirazını artırması sonrası sonraki 5 dakikada kart çıktı mı? → officials.assistant_referee.decisions.post_5m.card_given_flag → boolean → unknown
@@ -2696,16 +2485,13 @@ Bu maçta 4. hakem ile teknik direktör arasında gerilim oldu mu? → officials
 Bu maçta 4. hakem ile teknik direktör gerilimi hangi dakikada başladı? → officials.fourth_official.coach_tension.start_minute → integer → unknown
 Bu maçta 4. hakem ile teknik direktör gerilimi hangi takım kulübesinde çıktı? → officials.fourth_official.coach_tension.team_bench → enum (home, away) → unknown
 Bu maçta 4. hakem ile teknik direktör gerilimi sonrası sonraki 5 dakikada kulübe kartı çıktı mı? → officials.fourth_official.coach_tension.post_5m.bench_card_flag → boolean → unknown
-
 Bu maçta 4. hakem kulübeleri sık uyardı mı? → officials.fourth_official.bench_warnings.frequent_flag → boolean → unknown
 Bu maçta 4. hakem kulübeleri sık uyarması hangi dakikalarda arttı? → officials.fourth_official.bench_warnings.increase_minutes → list → unknown
 Bu maçta 4. hakem kulübeleri sık uyarması hangi takım kulübesinde yoğunlaştı? → officials.fourth_official.bench_warnings.dominant_bench → enum (home, away) → unknown
 
 Bu maçta 4. hakem oyuna giren çıkan oyuncu prosedürünü sıkı tuttu mu? → officials.fourth_official.substitution_procedure.strict_flag → boolean → unknown
-
 Bu maçta 4. hakem oyuncu prosedürü sıkılığı hangi değişiklikte tartışma üretti? → officials.fourth_official.substitution_procedure.disputed_substitution → string → unknown
 Bu maçta 4. hakem oyuncu prosedürü sıkılığı sonrası sonraki 5 dakikada tempo düştü mü? → officials.fourth_official.substitution_procedure.post_5m.tempo_down_flag → boolean → unknown
-
 Bu maçta 4. hakem uzatma süresi tartışması yarattı mı? → officials.fourth_official.added_time.dispute_flag → boolean → unknown
 Bu maçta 4. hakem uzatma süresi tartışması hangi dakikada başladı? → officials.fourth_official.added_time.dispute_start_minute → integer → unknown
 Bu maçta 4. hakem uzatma süresi tartışması hangi takım aleyhine algılandı? → officials.fourth_official.added_time.dispute_affected_team → enum (home, away) → unknown
@@ -2714,40 +2500,33 @@ Bu maçta 4. hakem uzatma süresi tartışması sonrası sonraki 5 dakikada trib
 Bu maçta 4. hakemin gösterdiği uzatma süresi maçın temposunu değiştirdi mi? → officials.fourth_official.added_time.tempo_impact_flag → boolean → unknown
 Bu maçta 4. hakemin gösterdiği uzatma süresi tempo değişimini hangi dakikada üretti? → officials.fourth_official.added_time.tempo_change_minute → integer → unknown
 Bu maçta 4. hakemin gösterdiği uzatma süresi tempo değişimi sonrası sonraki 5 dakikada korner yoğunluğu arttı mı? → officials.fourth_official.added_time.post_5m.corners_increase_flag → boolean → unknown
-
 Bu maçta 4. hakemin uzatma kararı tribün baskısını artırdı mı? → officials.fourth_official.added_time.crowd_pressure_up_flag → boolean → unknown
 Bu maçta 4. hakemin uzatma kararı tribün baskısını artırması hangi dakikada zirve yaptı? → officials.fourth_official.added_time.crowd_pressure_peak_minute → integer → unknown
 Bu maçta 4. hakemin uzatma kararı tribün baskısını artırması hangi takım aleyhineydi? → officials.fourth_official.added_time.crowd_pressure_affected_team → enum (home, away) → unknown
 
 Bu maçta 4. hakem kulübeye kart gösterdi mi? → officials.fourth_official.bench_card.occurred_flag → boolean → unknown
-
 Bu maçta 4. hakem kulübeye kart hangi dakikada çıktı? → officials.fourth_official.bench_card.minute → integer → unknown
 Bu maçta 4. hakem kulübeye kart hangi aktöre çıktı? → officials.fourth_official.bench_card.recipient_role → enum (coach, assistant_coach, staff, substitute_player, unknown) → unknown
-
 Bu maçta 4. hakem teknik ekip davranışını bastırdı mı yoksa büyüttü mü? → officials.fourth_official.technical_area.effect → enum (suppressed, amplified, neutral) → unknown
 Bu maçta 4. hakem teknik ekip davranışını bastırma/büyütme etkisi hangi olaydan sonra oluştu? → officials.fourth_official.technical_area.effect_after_event → enum (bench_warning, bench_card, substitution_dispute, added_time_dispute, unknown) → unknown
-
 Bu maçta 4. hakem teknik ekip davranışını bastırma/büyütme sonrası sonraki 5 dakikada itiraz arttı mı? → officials.fourth_official.technical_area.post_5m.appeals_increase_flag → boolean → unknown
 
 FAZ-7-27
 Bu maçta VAR kararı gol iptaline neden oldu mu? → officials.var.disallowed_goal.occurred_flag → boolean → unknown
 Bu maçta VAR kararı gol iptaline hangi dakikada neden oldu? → officials.var.disallowed_goal.minute → integer → unknown
 Bu maçta VAR kararı gol iptaline hangi takımın lehine neden oldu? → officials.var.disallowed_goal.benefited_team → enum (home, away) → unknown
-
 Bu maçta VAR kararı gol iptali sonrası sonraki 5 dakikada tempo bandı düştü mü? → officials.var.disallowed_goal.post_5m.tempo_down_flag → boolean → unknown
 Bu maçta VAR kararı gol iptali sonrası sonraki 5 dakikada kart/faul yoğunluğu arttı mı? → officials.var.disallowed_goal.post_5m.cards_fouls_increase_flag → boolean → unknown
 
 Bu maçta VAR kararı penaltı kararına neden oldu mu? → officials.var.penalty.occurred_flag → boolean → unknown
 Bu maçta VAR kararı penaltı kararına hangi dakikada neden oldu? → officials.var.penalty.minute → integer → unknown
 Bu maçta VAR kararı penaltı kararına hangi takım lehine neden oldu? → officials.var.penalty.favored_team → enum (home, away) → unknown
-
 Bu maçta VAR kararı penaltı sonrası sonraki 5 dakikada itiraz yoğunluğu arttı mı? → officials.var.penalty.post_5m.appeals_increase_flag → boolean → unknown
 Bu maçta VAR kararı penaltı sonrası sonraki 5 dakikada tempo bandı değişti mi? → officials.var.penalty.post_5m.tempo_changed_flag → boolean → unknown
 
 Bu maçta VAR kararı kırmızı kart kararına neden oldu mu? → officials.var.red_card.occurred_flag → boolean → unknown
 Bu maçta VAR kararı kırmızı kart kararına hangi dakikada neden oldu? → officials.var.red_card.minute → integer → unknown
 Bu maçta VAR kararı kırmızı kart kararına hangi takım aleyhine neden oldu? → officials.var.red_card.affected_team → enum (home, away) → unknown
-
 Bu maçta VAR kararı kırmızı kart sonrası sonraki 5 dakikada tempo düştü mü? → officials.var.red_card.post_5m.tempo_down_flag → boolean → unknown
 Bu maçta VAR kararı kırmızı kart sonrası sonraki 5 dakikada faul yoğunluğu arttı mı? → officials.var.red_card.post_5m.fouls_increase_flag → boolean → unknown
 
@@ -2760,20 +2539,16 @@ Bu maçta VAR incelemesi süresi uzun mu kısa mıydı? → officials.var.review
 Bu maçta VAR incelemesi süresi hangi pozisyonda uzadı? → officials.var.review.long_review_event → enum (goal_disallowed, penalty_check, red_card_check, offside_check, unknown) → unknown
 Bu maçta VAR incelemesi süresi uzaması hangi dakikada tempo kırdı? → officials.var.review.tempo_break_minute → integer → unknown
 Bu maçta VAR incelemesi süresi uzaması sonrası sonraki 5 dakikada tempo bandı tempo_down oldu mu? → officials.var.review.post_5m.tempo_down_flag → boolean → unknown
-
 Bu maçta VAR incelemesi maçın ritmini kırdı mı? → officials.var.review.rhythm_disrupted_flag → boolean → unknown
 Bu maçta VAR incelemesi maçın ritmini kırması hangi dakikada oldu? → officials.var.review.rhythm_disruption_minute → integer → unknown
-
 Bu maçta VAR incelemesi ritim kırması sonrası sonraki 5 dakikada faul yoğunluğu arttı mı? → officials.var.review.post_5m.fouls_increase_flag → boolean → unknown
 
 Bu maçta VAR incelemesi sonrası oyuncu itirazları arttı mı? → officials.var.review.post_review.player_appeals_up_flag → boolean → unknown
 Bu maçta VAR incelemesi sonrası oyuncu itirazları artışı hangi takımda yoğunlaştı? → officials.var.review.post_review.player_appeals_team → enum (home, away) → unknown
 Bu maçta VAR incelemesi sonrası oyuncu itirazları artışı hangi oyunculardan geldi? → officials.var.review.post_review.player_appeals_players → list → unknown
-
 Bu maçta VAR incelemesi sonrası kart/faul yoğunluğu arttı mı? → officials.var.review.post_review.cards_fouls_increase_flag → boolean → unknown
 Bu maçta VAR incelemesi sonrası kart/faul yoğunluğu artışı hangi dakikada başladı? → officials.var.review.post_review.cards_fouls_increase_start_minute → integer → unknown
 Bu maçta VAR incelemesi sonrası kart/faul yoğunluğu artışı hangi takım aleyhine yükseldi? → officials.var.review.post_review.cards_fouls_affected_team → enum (home, away) → unknown
-
 Bu maçta VAR incelemesi sonrası kontrol bandı unstable’a kaydı mı? → officials.var.review.post_review.control_band_unstable_flag → boolean → unknown
 Bu maçta VAR incelemesi sonrası kontrol bandı unstable’a kayması hangi dakikada başladı? → officials.var.review.post_review.control_band_unstable_start_minute → integer → unknown
 Bu maçta VAR incelemesi sonrası kontrol bandı unstable’a kayması sonrası sonraki 5 dakikada kart çıktı mı? → officials.var.review.post_review.post_5m.card_given_flag → boolean → unknown
@@ -2781,7 +2556,6 @@ Bu maçta VAR incelemesi sonrası kontrol bandı unstable’a kayması sonrası 
 Bu maçta VAR incelemesi sonrası tempo bandı tempo_down oldu mu? → officials.var.review.post_review.tempo_down_flag → boolean → unknown
 Bu maçta VAR incelemesi sonrası tempo bandı tempo_down olması hangi dakikada görüldü? → officials.var.review.post_review.tempo_down_minute → integer → unknown
 Bu maçta VAR incelemesi sonrası tempo bandı tempo_down sonrası sonraki 5 dakikada net pozisyon azaldı mı? → officials.var.review.post_review.post_5m.big_chances_down_flag → boolean → unknown
-
 Bu maçta VAR incelemesi sonrası tribün tepkisi yükseldi mi? → officials.var.review.post_review.crowd_reaction_up_flag → boolean → unknown
 Bu maçta VAR incelemesi sonrası tribün tepkisi yükselmesi hangi dakikada zirve yaptı? → officials.var.review.post_review.crowd_reaction_peak_minute → integer → unknown
 Bu maçta VAR incelemesi sonrası tribün tepkisi hangi takım lehine/aleyhine yoğunlaştı? → officials.var.review.post_review.crowd_reaction_affected_team → enum (home, away) → unknown
@@ -2789,7 +2563,6 @@ Bu maçta VAR incelemesi sonrası tribün tepkisi hangi takım lehine/aleyhine y
 Bu maçta VAR kararları iki takım için “standart tutarlı” mıydı? → officials.var.decisions.standard_consistent_flag → boolean → unknown
 Bu maçta VAR kararları iki takım için “standart tutarlı” algısı hangi pozisyonlarda güçlendi? → officials.var.decisions.standard_consistent_events → list → unknown
 Bu maçta VAR kararları iki takım için “standart tutarlı” algısı sonrası itiraz azaldı mı? → officials.var.decisions.standard_consistent.post_5m.appeals_down_flag → boolean → unknown
-
 Bu maçta VAR kararları “standart dengesiz” algısı yarattı mı? → officials.var.decisions.standard_inconsistent_flag → boolean → unknown
 Bu maçta VAR kararları “standart dengesiz” algısı hangi takım aleyhine oluştu? → officials.var.decisions.standard_inconsistent_affected_team → enum (home, away) → unknown
 Bu maçta VAR kararları “standart dengesiz” algısı sonrası sonraki 5 dakikada kart riski yükseldi mi? → officials.var.decisions.standard_inconsistent.post_5m.card_risk_up_flag → boolean → unknown
@@ -2810,32 +2583,18 @@ Bu maçta VAR sonrası orta hakem otorite problemi hangi dakikada başladı? →
 Bu maçta VAR sonrası orta hakem otorite problemi sonrası sonraki 5 dakikada kart/faul yoğunluğu arttı mı? → officials.referee.authority.post_var.post_5m.cards_fouls_increase_flag → boolean → unknown
 
 
-ANALİZ EĞİTİM KATALOĞU + ETİKET KATALOĞU — FUTBOL (BAĞLAYICI GİRİŞ TALİMATI)
-Aşağıdaki bölüm, ana uygulama promptunun bir devamıdır ve ondan bağımsız okunamaz. Bu bölüm yeni özellik eklemez, akış değiştirmez, yalnız futbol branşı için “analistin nasıl okuyacağı” ve “kütüphanecinin hangi sözlükle etiketleyeceği” disiplinini bağlayıcı biçimde kilitler. Kod yazarı bu metni yorumlayamaz, sadeleştiremez, kısaltamaz, kendi mantığıyla yeniden yazamaz; burada geçen tüm soru katalogları ve etiket katalogları birebir uygulanır.
-
-Bu bölüm iki parçadan oluşur ve sırası değiştirilemez. Birinci parça “Futbol Analiz Eğitim Kataloğu (Soru Katalogları)”dır; analist, örüntü uzmanı ve ilgili kontrol rolleri bu soru setlerini ezberlemez, bu soru setlerine göre bakış açısını standardize eder ve hiçbir değerlendirme bu soruların dışında keyfi biçimde yapılamaz. İkinci parça “Futbol Etiket Kataloğu (Kütüphane Sözlüğü)”dür; kütüphaneci, maç izleme hattı ve örüntü hattı yalnız bu sözlükte tanımlı etiket adlarını ve bu etiketlerin izinli değer bantlarını kullanarak kayıt üretir, bu sözlük dışı tek bir etiket uydurulamaz.
-
-Soru katalogları “etiket değildir” ve doğrudan raflara yazılmaz; soru katalogları, hangi verinin hangi kartlarda aranacağını ve hangi bağlamların okunacağını tanımlar. Etiket kataloğu ise soru kataloglarının cevabını deterministik alanlara döken tek geçerli sözlüktür. Bir soruya karşılık gelen etiket alanı boş kalıyorsa bu “bilinmiyor” veya “unknown” bantlarıyla işaretlenir, asla varsayımla doldurulmaz. Hiçbir birim soru kataloglarını okuyup yalnız bu metin üzerinden hüküm kuramaz; tüm değerlendirmeler kanıt zinciri tamamlandıktan sonra yapılır.
-
-Bu kataloglar, futbol branşı için üç ana kart sınıfına bağlanır: maç kartı, takım DNA kartı ve ilgili kişi kartları (teknik direktör, hakem, futbolcu). Maç kartı tekil maçın olay izini taşır. Takım DNA kartı, tekil maçlardan türetilen tekrar eden refleksleri ve davranış bantlarını taşır. Kişi kartları ise bireysel davranış profillerini taşır ve kulüp değişse bile kimlik sürekliliğini korur. Bu ayrım korunur; takım kartı ile maç kartı karıştırılamaz.
-
-Durum etiketleri karar vermez. Etiketler yalnız sınıflandırma ve raf adreslemesi içindir. Analist dahil hiçbir rol, yalnız etiketlere bakarak “kolaycılık” ile sonuca gidemez. Etiketler yalnızca araştırmayı hızlandıran işaretlerdir; hüküm, yalnızca kaynak tutarlılığı, tekrar, şart bağımlılığı ve kanıt zinciri tamamlandıktan sonra üretilir. Bu bölümün amacı hız değil; yanlış hızla oluşan sessiz bozulmayı engelleyen deterministik bir analiz disiplini kurmaktır.
-
 FAZ-32
 BAĞLAM DUVARI VE ADRES SORULARI (FUTBOL)
 Bu kayıt hangi tarih penceresinde ve hangi UTC standardında sabitleniyor? Bu soru, tüm zaman hesaplarının tek standarda bağlanması içindir. Tarih penceresi sabitlenmeden sezon fazı, haber penceresi ve maç segmentleri doğru kurulamaz.
 Bu kayıt hangi ülke, hangi lig, hangi sezon ve hangi tekil takım kimliği içinde okunuyor? Bu soru, raf adresinin yanlış klasöre düşmesini engeller. Ülke/lig/sezon/takım net değilse aynı isimli ligler veya sezon kaymaları sessiz bozulma üretir.
-
 Bu kayıt lig seviyesinde hangi kütüphaneye aittir (Tier-1, Tier-2 veya Cups)? Bu soru, verinin hangi raf disiplininde tutulacağını kilitler. Tier-1, Tier-2 ve Cups verisi aynı raflarda birleştirilemez; birleştirme sessiz karışma üretir.
 
 Bu kayıt hangi organizasyon tipine aittir (lig, ulusal kupa, kıtasal kupa, süper kupa, milli takım turnuvası)? Bu soru, maçın ve haber akışının hangi organizasyon bağlamında okunacağını belirler. Organizasyon tipi net değilse kupa maçları lig performansına yanlış bağlanır.
-
 Bu kayıt kupa bayrağı taşır mı ve kupa bayrağı hangi seviyededir (domestic\\\_cup veya continental\\\_cup)? Bu soru, kupa verisini ayrı bir sistemde tutmak içindir. Kupa bayrağı yoksa kupa haberleri ve kupa maçları lig akışına karışır ve takım DNA’sı yanlış öğrenilir.
 Bu kayıt sezonun hangi fazına denk geliyor (sezon başı, sezon ortası, sezon sonu, sezon arası/off-season)? Bu soru, aynı davranışın sezonun farklı dönemlerinde neden değiştiğini ayırt etmek içindir. Sezon arası dönem, transfer ve kamp etkileri nedeniyle ayrı bağlam olarak tutulur.
 
 Bu kayıt sezon içi mi yoksa sezon arası haftalık paket mi? Bu soru, veri türünü deterministik ayırmak içindir. Sezon arası haber akışı günlük maç akışı gibi işlenmez; haftalık paketlenir ve bağlam rafına yazılır.
 Bu kayıt hangi tekil takım perspektifi için açılıyor? Bu soru DNA kartı okuma girişidir. Takım perspektifinde hedef, tek takımı öğrenmek ve takım kartını büyütmektir; rakip burada bağlamdır, kimlik değildir.
-
 Bu kayıt hangi tekil maç perspektifi için açılıyor? Bu soru maç olayı okuma girişidir. Maç perspektifinde hedef, maç kimliğini ve maçın olay zincirini sabitlemektir; bu kayıt daha sonra iki takımın geçmiş eşleşme okumasında referans olur.
 Bu kayıt takım perspektifinde açılıyorsa o tarihte takımın teknik direktör kimliği kim? Bu soru, takım davranış değişimini kişi kartlarına bağlamak içindir. Teknik direktör doğru sabitlenmezse takım DNA’sı yanlış kişiye bağlanır ve örüntü bozulur.
 Bu kayıt maç perspektifinde açılıyorsa bu maçın hakemi kim? Bu soru, hakemin maç içi disiplin bandını ve karar akışını deterministik bağlamak içindir. Hakem maç nesnesinin parçasıdır ve maç kırılmalarının okunmasında ayrı bir kimliktir.
@@ -2853,7 +2612,6 @@ Takımın ilk 15 dakikadaki davranışı nedir ve bu davranış beş yıl boyunc
 
 Takımın 16–30 dakikadaki davranışı nedir ve ilk 15’e göre tempo veya disiplin yön değiştiriyor mu? Bu soru, ilk dalga geçtikten sonra takımın stabilize olup olmadığını gösterir. Eğer bu dilimde kayma oluyorsa kırılma daha erken başlamış olabilir.
 Takımın 31–45 dakikadaki davranışı nedir ve devreye giderken risk seviyesi artıyor mu azalıyor mu? Bu soru, ilk yarı kapanış davranışını ölçer. Devre öncesi kartlar, VAR kararları ve skor kırılmaları bu dilimde kader değiştirici çalışabilir.
-
 Takımın devre geçişi davranışı nedir ve ikinci yarıya çıkış refleksi hangi bantta? Bu soru, teknik direktör müdahalesinin ve oyuncu psikolojisinin en net okunduğu eşiktir. Devre çıkışı tempo spike veya çöküş tekrar ediyorsa DNA sinyali güçlenir.
 Takımın 46–60 dakikadaki davranışı nedir ve bu dilim takımın tekrar eden “ikinci yarı başlangıç bandı” mı? Bu soru, ikinci yarı başında oluşan sistematik davranışları yakalar. Bazı takımlar bu bantta sürekli baskı yer veya sürekli baskı kurar.
 
@@ -2906,13 +2664,11 @@ Tribün baskısı kırmızı kart sonrası takımı “daha çok hırçınlık�
 Penaltı kararı geldi mi ve bu karar hangi segmentte geldi; karar sonrası psikolojik kırılma izi oluştu mu? Bu soru, penaltının skor dışında davranış değiştirici etkisini ölçer.
 Penaltı verilmedi/verildi/iptal olduysa, takım “hakem yanlı” algısına girip daha fazla kart döngüsüne giriyor mu? Bu soru, senin özellikle vurguladığın “kabullenme mi agresyon mu” mekanizmasını adresler. Bu döngü sapmanın ana kaynağı olabilir.
 Penaltı kararı veya iptali sonrası tribün baskısı oyuncu davranışını bozuyor mu? Bu soru, karar tetikleyicisinin seyirciyle birleştiğinde büyümesini ölçer. İç sahada bu etki genelde daha serttir.
-
 VAR incelemesi oldu mu, hangi karar türüne bağlandı ve VAR müdahalesi maçın ritmini kırarak tempo bandını değiştirdi mi? Bu soru, VAR’ın ritim kırıcı etkisini ölçer.
 VAR sonrası takım “kafa düşmesi” döngüsüne mi giriyor yoksa “öfke yükselişi” döngüsüne mi? Bu soru, VAR tetikleyicisinin davranış yönünü belirler. Aynı olay farklı takımlarda zıt kader üretir.
 
 İptal edilen gol oldu mu ve iptal sonrası ilk 5 dakikada takım davranışı neye döndü? Bu soru, moral kırılması veya agresyon artışı gibi kader değiştirici profilleri yakalar.
 İptal edilen gol sonrası tribün baskısı oyuncu karar kalitesini düşürüyor mu? Bu soru, “küçük tetikleyici + büyük basınç” birleşimini yakalar. Zor maçların çoğu bu birleşimde çözülür.
-
 İlk gol hangi segmentte geldi ve ilk gol takımın davranışını deterministik değiştiriyor mu? Bu soru, skor eşiğinin psikolojik etkisini ölçer.
 İlk gol sonrası takımın iç saha/deplasman davranışı ayrışıyor mu? Bu soru, “iç sahada kapanma”, “deplasmanda panik” gibi ayrımları yakalar.
 Beraberlik golü hangi segmentte geldi ve beraberlikten sonraki ilk 10 dakikada kopma oluşuyor mu? Bu soru, denge kırılmasının tekrar eden yönünü ölçer.
@@ -2927,8 +2683,7 @@ Bu tetikleyiciler odds tarafında hareketle aynı zaman bandında mı çakışt�
 Bu tetikleyiciler basın haber temalarıyla aynı hafta penceresinde mi çakıştı yoksa bağımsız mı? Bu soru, tetikleyicinin “haber kökenli mi” yoksa “saha kökenli mi” olduğuna dair sınıflamayı mümkün kılar.
 
 
-Önemli oyuncu atılınca takımın reaksiyonu soruları
-
+ÖNEMLİ FUTBOLCU MAÇTAN ATILINCA TAKIMIN VERCEĞİ ( REAKSİYON ) SURULARI
 Takımın en kritik oyuncusu kırmızı kartla oyundan atılınca takımın reaksiyonu ne oluyor (mücadeleyi bırakma, sertleşme, skor korumaya gömülme, kontra arama)? Bu soru, kartın “kader etkisini” oyuncu ağırlığıyla bağlar. Aynı kart, sıradan oyuncuda farklı, bel kemiğinde farklı sonuç üretir.
 
 Kritik oyuncu oyundan atıldıktan sonraki ilk 10 dakikada takımın tempo ve disiplin bandı hangi yöne kayıyor? Bu soru, ilk şok tepkisini ölçer. Bazı takımlar bu 10 dakikada dağılır, bazıları tam tersine kitlenip direnç üretir.
@@ -2943,119 +2698,85 @@ Takım 9 kişi kaldığı ekstrem senaryolarda bile mücadele bandını koruyabi
 Takımın kondisyon düşüşü, maç segmentlerinde kart/faul artışıyla birlikte mi geliyor? Bu soru, yorgunluk–disiplin ilişkisini yakalar. Kondisyon düştüğünde kartlar artıyorsa kader tetikleyicisi büyür.
 Takımın sezon hazırlığı (kamp/rotasyon/transfer) sonrası ilk haftalarda kondisyon profili farklı mı? Bu soru, sezon arası bağlam ile saha içi tempo dayanıklılığını birbirine bağlar. Kamp ve kadro değişimi tempo DNA’sını etkiler.
 
-BASIN VE HABER AKIŞI SORULARI (FUTBOL) — MAÇ ÖNCESİ + MAÇ SONRASI + SEZON ARASI
-Bu bölümün amacı “haber var mı yok mu” kontrolü değildir. Amaç, haber akışını deterministik biçimde raflara ayırmak ve haberin maç içi davranışla, odds davranışıyla ve takım DNA’sıyla hangi şartlarda kesiştiğini ölçmektir. Haber, tek başına hüküm kurmaz; yalnız bağlam üretir ve kanıt zincirinin bir parçası olabilir. Bu yüzden haber akışı hem sezon içi hem sezon arası pencerede ayrı disiplinle kaydedilir.
 
-Bu kayıt sezon içi maç haftası haber paketi mi yoksa sezon arası haftalık off-season paketi mi? Bu soru, haberin hangi pencere disipliniyle işlendiğini kilitler. Sezon arası haberleri günlük maç akışı gibi değil, haftalık paket olarak raflara yazılır.
-Bu haber paketi hangi ülke, lig, sezon ve tekil takım adresine bağlanıyor? Bu soru, haberin doğru raf adresine düşmesi içindir. Yanlış bağlanan haber, beş yıl sonra yanlış DNA okuması üretir.
-Bu haber paketi lig (Tier-1/Tier-2) akışına mı yoksa Cups akışına mı aittir? Bu soru, kupa haberlerinin lig haberine karışmasını engeller. Kupa bayrağı, haber seviyesinde de deterministik işlenir.
-Bu haber paketi hangi organizasyon tipine aittir (lig, ulusal kupa, kıtasal kupa, milli takım)? Bu soru, haberin hangi stres sınıfını taşıdığını belirler. Organizasyon tipi belirlenmeden haber etkisi yanlış sınıfa yazılabilir.
-Bu haber penceresi maçtan kaç gün öncesini kapsıyor (örnek: 7 gün) ve pencere sabit mi? Bu soru, haberin “zaman hizasını” kilitler. Pencere kayarsa aynı olay farklı maçlara yanlış bağlanır.
+TAKIM KARTI — FAZ-1 TESLİMİ (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
+team_ref: UNKNOWN_TEAM_REF
+Kart Durumu: FAZ-1_SKELETON_ACTIVE
+Kart Politikası: Tek team_ref / Sıfırlanmaz / Takım kartı takımda kalır / Reference ile bağlanır / Unmapped korunur
+Üretim Notu: Bu teslim yalnız iskelet üretimidir. Reference_dictionary ve maç–basın–odds akışları Faz-2 doğrulama ve doldurma içindir. Veri yokken hiçbir alan boş bırakılmaz; unknown/none/inactive bantları deterministik kullanılır.
 
-Maç öncesi haber akışında hangi temalar öne çıktı ve temalar kaç farklı kaynakta tekrar etti? Bu soru, tek kaynağın gürültüsü ile çoklu kaynağın tekrarını ayırır. Tekrar eden tema daha güçlü sinyal adayıdır.
-Haber temaları daha çok hangi eksende kümelendi (yönetim, teknik direktör, oyuncu, hakem, taraftar, transfer, sakatlık, disiplin)? Bu soru, haberin hangi kart nesnesine bağlanacağını belirler. Tema yanlış karta bağlanırsa analiz yanlış kişiyi suçlar gibi görünür.
+TAKIM KARTI — TAM PROFİL (FAZ-1 İSKELET)
+Kimlik Rafı
+team_ref: UNKNOWN_TEAM_REF,club_name: unknown,short_name_alias: unknown,name_variants: none,founded_year: unknown,city_ref: unknown,country_ref: unknown,league_ref: unknown,stadium_ref: unknown,stadium_capacity_band: unknownclub_model_band: unknown
+identity_status: unknown
+Tarihçe ve Statü Rafı
+era_policy: append_only / eras_are_non_overwriting,era_blocks: none,historical_identity_themes: unknown,rise_fall_turning_points: unknown,dominant_periods: none
+Başarı Rafı (Trophy Shelf)
+trophies: none,records: none,Kural: trophy_type + season_tag + competition_ref ile tutulur; Faz-1’de veri yoksa none.
+Hedef Sapması Rafı (Target Miss)
+season_targets: none,target_miss_records: none,Kural: hedef sapması “övgü/yerme” diliyle yazılmaz; yalnız hedef ve sapma bandı tutulur.
+Kadro ve Transfer DNA Rafı
+academy_output_band: unknown,star_transfer_tendency: unknown,fighter_profile_preference: unknown,sell_to_grow_model_band: unknown,loan_dependency_band: unknown,age_profile_trend_band: unknown,scouting_region_bias: unknown
+Oyun DNA (Takım İmzası)
+press_approach: unknown,block_preference: unknown,transition_priority: unknown,set_play_patience: unknown,wing_central_balance: unknown,defensive_line_risk: unknown,set_piece_strength_band: unknown,set_piece_weakness_band: unknown,tempo_band: unknown
+flexibility_band: unknown,creation_source_band: unknown,press_resistance_band: unknown,sterile_possession_band: unknown,build_up_risk_band: unknown
 
-Haber tonu hangi bantta yoğunlaştı (olumlu, olumsuz, karma) ve ton aniden kırıldı mı? Bu soru, haberin duygusal iklimini adresler. Ton kırılması varsa maç içi davranış değişimiyle eşleşebilir.
-Aynı olay farklı kaynaklarda aynı biçimde mi geçti yoksa kaynaklar arasında ayrışma var mı?
+Maç İçi Davranış DNA Rafı: match_start_behavior_band: unknown,concede_first_response_band: unknown,score_first_behavior_band: unknown,late_game_behavior_band: unknown,comeback_capacity_band: unknown,score_protection_discipline_band: unknown,risk_increase_trigger_band: unknown ,panic_under_pressure_band: unknown
+Seri ve Momentum Rafı: streak_building_ability_band: unknown,win_streak_tendency_band: unknown,loss_streak_risk_band: unknown,draw_streak_tendency_band: unknown,post_loss_response_band: unknown,post_win_complacency_risk_band: unknown,post_draw_response_band: unknown
+Kural: Seri davranışı tek maçla hüküm üretmez; trend/patern yoksa unknown kalır.
+İç Saha / Deplasman Rafı: home_strength_band: unknown,away_resilience_band: unknown,home_crowd_effect_band: unknown,away_crowd_effect_band: unknown,travel_pressure_band: unknown
+Tribün ve Baskı Yönetimi Rafı: crowd_pressure_handling: unknown,derby_pressure_band: unknown,high_target_pressure_band: unknown,late_game_pressure_band: unknown,decision_risk_under_pressure_band: unknown
+Disiplin ve Kart Profili Rafı: discipline_profile: unknown,yellow_card_tendency: unknown,red_card_tendency: unknown,dissent_protest_band: unknown,aggression_band: unknown,foul_type_clusters: unknown
+Sakatlık ve Yük Yönetimi Rafı,injury_cluster_band: unknown,load_collapse_band: unknown,rotation_resilience_band: unknown,return_from_injury_impact_band: unknown
 
-Bu soru, kaynak güven bandını ölçer. Ayrışma varsa “tek doğru” diye hüküm kurulmaz, yalnız işaretlenir.
-Bu takımın haber akışı sezon içinde “rutin” mi yoksa “kriz/çalkantı” mı taşıyor? Bu soru, takımın baskı altında olup olmadığını belirler. Kriz akışı varsa maç içi tetikleyiciler daha sert çalışabilir.
-Bu haber akışında transfer söylentileri var mı ve söylenti-gerçekleşme doğruluk bandı geçmişte nasıldı? Bu soru, haberin güvenilirliğini beş yıllık doğrulamayla ölçer. Transfer gürültüsü ile gerçek transfer ayrılır.
-Sezon arası haftalık paketlerde kamp, kadro dışı kalanlar, rotasyon ve hazırlık maçları konuşuluyor mu? Bu soru, sezon arası bağlamı takım DNA’sına bağlar. Kamp ve kadro değişimleri sezon başlangıcı davranışını belirler.
+Koç Etkisi Haritası Rafı: coach_dependence_band: unknown,new_coach_bounce_band: unknown,coach_change_disruption_band: unknown,dna_persistence_after_coach_band: unknown,Yıldız Oyuncu Bağımlılığı Rafı
+star_dependency_band: unknown,leader_loss_impact_band: unknown,youth_carry_capacity_band: unknown,Hakem Etkileşim Profili Rafı,referee_tension_pattern: unknown,card_risk_under_ref_pressure_band: unknown,penalty_incidence_band: unknown,var_tension_band: unknown
+Basın ve Kamu Algısı Rafı,press_themes: unknown,strong_signal_policy: multi_source_required,signal_strength: weak_signal,crisis_communication_style: unknown,expectation_inflation_band: unknown,fan_protest_pressure_band: unknown,narrative_gap_band: unknown
+Kural: Basın verisi tek başına hüküm kurmaz; eksik event basınla tamamlanmaz.
 
-Haber akışında kritik oyuncu sakatlığı veya dönüşü var mı ve bu bilgi maç segment davranışını etkiliyor mu? Bu soru, haber-temelli bağlamın saha içi gerçekliğe yansıyıp yansımadığını ölçer.
-Haber akışı teknik direktör üzerinde baskı üretiyor mu ve bu baskı maç içinde erken hamle veya panik hamle doğuruyor mu? Bu soru, haberin teknik karar davranışına etkisini test eder.
-Haber akışı taraftar baskısı içeriyor mu ve bu baskı iç saha davranışına yansıyor mu? Bu soru, tribün etkisinin haber üzerinden büyüyüp büyümediğini ölçer. Bazı baskılar saha içinde değil, haberle inşa edilir.
-
-Maç sonrası haber akışı hangi temada devam etti ve maç öncesi anlatıyla uyumlu mu? Bu soru, haberin “sonuçla yeniden yazılma” riskini test eder. Maç sonrası eksen değişiyorsa bu not düşülür.
-Maç sonrası haber akışı, bir sonraki maçın haber penceresinde tekrar eden bir yönlendirme oluşturuyor mu? Bu soru, zincir etkisini ölçer. Bazı haber döngüleri bir maçı değil, bir seri maçı etkiler.
-
-Bu haber akışı ile maç içi kader tetikleyicileri aynı hafta içinde çakıştı mı? Bu soru, “haber etkisi” iddiasını test edilebilir hale getirir. Çakışma yoksa haber yalnız gürültü olabilir.
-Bu haber akışı ile odds kırılmaları aynı zaman bandında mı ortaya çıktı? Bu soru, haber–piyasa davranışı ilişkisinin varlığını yokluğunu ölçer. Eşleşme varsa işaretlenir, hüküm kurulmaz.
-Bu haber akışı ile takımın segment DNA davranışı arasında tekrar eden eşleşme var mı? Bu soru, haberin takımı hangi segmentte etkilediğini yakalar. Bazı takımlar baskı altında ilk 15’te dağılır, bazıları son 15’te.
-Haber kaynakları tekilleştirildi mi ve aynı olayın kopyaları raf şişmesi yapmadan birleştirildi mi? Bu soru, kütüphane şişmesini kontrol eder. Aynı olayın 50 kopyası değil, tekil olayın kaynak referansları tutulur.
-
-Bu haber paketi “kanıt zinciri” için yalnız bağlam mı yoksa doğrulanmış bir veri mi? Bu soru, senin istediğin kilittir: haber karar vermez. Haber yalnız bağlamdır; doğrulama olmadan hüküm üretilemez.
-Bu haber yalnız yayın organı adıyla değil, yazar/editör kimliğiyle de etiketleniyor mu? Bu soru, aynı yayın organı içinde farklı doğruluk bantlarını ayırmak içindir. Kaynak tek başına yetmez; içerik üretici izi raf nesnesi olmalıdır.
-Bu yazar/editör geçmişte hangi tür haberlerde daha yüksek doğruluk bandı gösterdi? Bu soru, “boş haber” ile “erken sinyal” üreten haberi ayırır. Bu bir hüküm değil, istatistiksel güven bandıdır.
-Bu yazar/editörün haberleri hangi temalarda daha çok sapma üretiyor (transfer, sakatlık, yönetim, teknik direktör)? Bu soru, yazarın güçlü/zayıf alanını çıkarır. Analist hangi haberin hangi temada ciddiye alınacağını raf üzerinden görür.
-
-Bu yazar/editör haberleri ile gerçekleşen olaylar arasındaki gerçekleşme oranı dönemsel değişiyor mu? Bu soru, bir yazarın belirli dönemlerde “balon” üretip üretmediğini ölçer. Dönemsel değişim varsa not edilir.
-Bu yayın organının haberleri “sonuçtan sonra yeniden yazma” eğilimi taşıyor mu? Bu soru, maç sonrası anlatının manipülasyon değil ama “hikâye kurma” eğilimini ayırmak içindir. Analist bu riski bilir ve zincire göre tartar.
-Aynı haber farklı kaynaklarda doğrulanıyor mu yoksa tek kaynakta mı kalıyor? Bu soru, tek kaynak gürültüsü ile çoklu kaynak tekrarını ayırır. Tek kaynak varsa kanıt zinciri zayıf kabul edilir.
-Bu haberin dili deterministik mi yoksa abartılı/spekülatif mi ve bu dil profili yazar bazında tekrar ediyor mu? Bu soru, haberin “ton” profilini içerik üretici düzeyinde işler. Ton profili, doğruluk bandına doğrudan bağlanmaz ama risk işaretidir.
-
-FAZ-34
-BAHİS / ODDS DAVRANIŞI SORULARI (FUTBOL) — MAÇ ÖNCESİ + MAÇ SAATİ + MAÇ İÇİ
-Bu bölümün amacı odds verisini “tahmin” için kullanmak değildir. Amaç, piyasa davranışının normal banttan sapıp sapmadığını, sapıyorsa bunun maç içi tetikleyicilerle ve haber penceresiyle hangi şartlarda kesiştiğini deterministik biçimde işaretlemektir. Odds hareketi hüküm değildir; kanıt zincirinin yalnızca bir parçası olabilir.
-
-Bu odds kaydı hangi maç kimliğine ve hangi UTC zaman penceresine bağlanıyor? Bu soru, odds zaman hizasını kilitler. Zaman hizası bozuksa aynı odds hareketi yanlış maça yazılabilir.
-Odds snapshot penceresi nasıl tanımlandı ve pencereler deterministik mi? Bu soru, odds örüntüsünün doğru kıyaslanması içindir. Snapshot aralığı kayarsa bant okuması bozulur.
-Bu odds kaydı hangi bookmaker’lara aittir ve allowlist içinde midir? Bu soru, veri kaynağını kilitler. Allowlist dışı bookmaker verisi rafı kirletmez, dışarıda kalır.
-
-Bu maç için hangi market setleri zorunlu izlendi ve market kapsamı boşluk bırakmadan kaydedildi mi? Bu soru, izlenen alanın deterministik olmasını sağlar. Market kapsamı değişirse iki maç kıyaslanamaz.
-Maç öncesi odds çizgisi sabit mi kaldı yoksa keskin kırılma yaşadı mı? Bu soru, normal bant ile sapma arasını ayırır. Keskin kırılma varsa zaman damgası şarttır.
-Keskin kırılma tek bir bookmaker’da mı yoksa birden fazla bookmaker’da mı oluştu? Bu soru, tek kaynak sapması ile piyasa geneli sapmasını ayırır. Tekil sapma daha düşük güven sınıfıdır.
-Odds hareketi maç saatine yaklaştıkça mı hızlandı yoksa günler önceden mi başladı? Bu soru, hareketin zaman doğasını ölçer. Erken başlayan hareket farklı, son dakika hareketi farklı sınıfa yazılır.
-
-Maç saatinden önce odds hareketi “yumuşak akış” mı yoksa “kademeli sert kayma” mı gösterdi? Bu soru, piyasadaki yön değişiminin hız profilini çıkarır. Hız profili, sapma kalitesini belirler.
-Odds hareketi maçın hangi segmentinde yoğunlaştı (ilk 15, devre, son 15)? Bu soru, odds değişimini segment okumasına bağlar. Segment eşleşmesi yoksa olay-kaynak bağlantısı zayıftır.
-Maç içi odds hareketi, maç içi tetikleyicilerle açıklanabiliyor mu yoksa tetikleyici olmadan mı oluştu? Bu soru, “olay yokken hareket” durumunu işaretler. Bu bir suçlama değildir; sadece anomali sapma adaydır.
-Kart, VAR, penaltı, kırmızı kart gibi kader tetikleyicileri ile odds hareketi aynı zaman bandında mı çakıştı? Bu soru, piyasaya yansıyan maç içi kırılmaları yakalar. Çakışma varsa işaretlenir, hüküm kurulmaz.
-
-Odds hareketi iç saha/deplasman bağlamında tekrar ediyor mu? Bu soru, takımın ev-deplasman DNA’sının piyasa davranışına yansıyıp yansımadığını ölçer.
-Odds hareketi takımın seri davranışıyla ilişkili mi (galibiyet serisi, mağlubiyet serisi) Bu soru, takımın sonuç hafızasının piyasa tarafından nasıl fiyatlandığını ölçer.
-Odds hareketi kritik oyuncu yokluğu, ceza sınırı veya kondisyona dair bağlamla eşleşiyor mu? Bu soru, bağlam duvarıyla odds davranışını birleştirir. Eşleşme varsa sapma adayı güçlenir.
-Bu maçın odds örüntüsü, aynı takımın benzer bağlamlı geçmiş maçlarına göre normal bant içinde mi dışında mı? Bu soru, karşılaştırmayı mümkün kılar. Bant tanımı yoksa sapma işaretlenemez.
-Odds verisi eksik mi, parçalı mı, rate-limit nedeniyle degrade mi ve data\\\_quality\\\_badge ne? Bu soru, “anomali yok” ile “veri eksik” ayrımını korur. Eksik veri varsa hüküm kurulmaz.
-Bu odds kaydı bir sonraki cycle’da aynı şekilde doğrulanabiliyor mu? Bu soru, tek seferlik veri hatasıyla gerçek piyasa hareketini ayırır. Tekrar yoksa düşük güven sınıfıdır
-
-Bu bookmaker’ın sapma/anomali davranışı en çok hangi ülke liglerinde kümeleniyor? Bu soru, tek maç sapmasını “piyasa profiline” bağlar. Bazı bookmaker’lar belirli ülke liglerinde daha sık kırılma üretebilir; bu bir kanıt değildir ama analiz refleksini hızlandıran bir risk haritasıdır.
-Bu bookmaker’ın sapma davranışı organizasyon tipine göre değişiyor mu (lig, ulusal kupa, kıtasal kupa)? Bu soru, sapmanın maç türüne göre sistematikleşip sistematikleşmediğini ayırır. Kupa bağlamında daha sık kırılma görülüyorsa bu ayrı 
-band olarak işlenir.
-
-Bu bookmaker’ın sapma davranışı dönemsel mi, sabit mi, rotasyonlu mu? Bu soru, senin tarif ettiğin “bir ay Asya, bir ay başka bölge” davranışını yakalar. Rastgele görünen sapmaların dönemsel haritası olup olmadığı burada ortaya çıkar.
-Bookmaker sapmaları belirli haftalarda veya sezon fazlarında artıyor mu (sezon başı/sonu, transfer dönemi, yoğun fikstür)? Bu soru, sapmayı sezon fazı bağlamına bağlar. Bazı sapmalar sezon geçişlerinde artabilir.
-Bu bookmaker’ın sapması “maç öncesi”, “maç saatine yakın” veya “maç içi” hangi pencerede daha çok oluşuyor? Bu soru, sapmanın zaman tipini sınıflar. Zaman tipi, sapma yorumunun yönünü değiştiren bir ana anahtardır.
-Bu ligde aynı maç için farklı bookmaker’lar arasında sistematik ayrışma var mı? Bu soru, tek bookmaker sapması ile piyasa geneli ayrışmayı ayırır. Ayrışma tekrar ediyorsa lig bazlı piyasa davranışı işaretlenir.
-
-Bu takımın maçlarında belirli bookmaker sapmaları tekrar ediyor mu? Bu soru, bookmaker profili ile takım profili kesişimini yakalar. Tekrar varsa “takım+bookmaker” eşleşmesi raf nesnesi olur.
-Bu bookmaker için “normal bant” ve “sapma bandı” geçmiş veriden çıkarılabiliyor mu? Bu soru, sapmanın ölçülebilir hale gelmesi içindir. Bant tanımı yoksa sapma yalnız his olur; sistem bunu kabul etmez.
-Bu bookmaker’ın veri bütünlüğü ve veri kalitesi (eksik snapshot, gecikme, tutarsızlık) sapma gibi görünüyor olabilir mi? Bu soru, veri hatasını sapma sanma riskini engeller. Önce veri kalitesi ayrımı yapılır, sonra sapma işaretlenir.
-
-ÇAPRAZ KAYNAK OKUMA SORULARI (FUTBOL) — BASIN + ODDS + MAÇ İÇİ TETİKLEYİCİLER
-Bu bölümün amacı, üç ayrı hattı aynı anda “sonuç çıkarma” için birleştirmek değildir. Amaç, basın akışı, odds hareketi ve maç içi tetikleyiciler arasında tekrar eden zaman hizası ve davranış eşleşmesi olup olmadığını deterministik biçimde test etmektir. Bu bölüm, hüküm vermez; yalnız eşleşme ve eşleşmeme haritasını çıkarır. Kanıt zinciri tamamlanmadan hiçbir birim sonuç dili kuramaz.
-
-Bu maç için basın haber temaları ile odds hareketinin zaman penceresi çakışıyor mu? Bu soru, “haber çıktı → piyasa hareket etti” gibi bir iddiayı test edilebilir hale getirir. Çakışma yoksa ilişki zayıf kabul edilir.
-
-Basın haber temaları ile odds hareketi çakışıyorsa çakışma tek bookmaker’da mı yoksa birden çok bookmaker’da mı görülüyor? Bu soru, tekil kaynak sapmasını piyasa geneli sapmadan ayırır. Tekil sapma düşük güven sınıfıdır.
-Basın haber temaları ile odds hareketi çakışıyorsa çakışma hangi lig/organizasyon sınıfında daha sık görülüyor? Bu soru, çapraz eşleşmenin ülke/lig bazında kümelenip kümelenmediğini ölçer. Kümelenme varsa harita çıkar.
-Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma dönemsel mi sabit mi rotasyonlu mu? Bu soru, rastgele görünen davranışın dönemsel haritası olup olmadığını test eder. Rotasyon varsa not edilir.
-Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma sezon fazına göre artıyor mu (sezon başı/sonu, transfer dönemi)? Bu soru, “geçiş dönemleri” etkisini ölçer. Bazı çapraz eşleşmeler sezon geçişlerinde artabilir.
-
-Odds hareketi maç içi kader tetikleyicilerinden önce mi başladı yoksa tetikleyiciden sonra mı yoğunlaştı? Bu soru, zaman yönünü belirler. Tetikleyici sonrası hareket normal bant olabilir; tetikleyici öncesi hareket sapma adayını güçlendirir.
-Odds hareketi tetikleyici olmadan oluşuyorsa bu hareket maç içi segment davranışında bir değişimle eşleşiyor mu? Bu soru, “olay yok ama davranış kaydı var” senaryosunu yakalar. Segment DNA değişiyorsa bu ayrıca işaretlenir.
-
-Maç içi tetikleyicilerden hangileri odds hareketiyle en sık çakışıyor (kırmızı kart, VAR, penaltı, iptal gol)? Bu soru, piyasanın en hassas olduğu tetikleyici sınıfları çıkarır. Bu bir tahmin aracı değil, örüntü haritasıdır.
-Maç içi tetikleyiciler ile basın temaları aynı hafta penceresinde eşleşiyor mu? Bu soru, basının tetikleyici üretip üretmediğini değil, basın konuştuğu şeyle maç içinin kesişip kesişmediğini test eder.
-
-Basın teması “hakem/adalet” ise maç içi kart ve VAR tetikleyicileriyle eşleşme bandı artıyor mu? Bu soru, tematik eşleşmeyi test eder. Eşleşme varsa yalnız işaretlenir, hüküm kurulmaz.
-Basın teması “sakatlık/eksik” ise maç içi segmentlerde kondisyon düşüşü veya tempo kırılmasıyla eşleşme var mı? Bu soru, haber bağlamının sahaya yansıyıp yansımadığını ölçer.
-Basın teması “transfer/kriz/yönetim” ise maç içi disiplin bandında kart yoğunluğu artıyor mu? Bu soru, haber-temelli baskının disipline yansıma ihtimalini test eder. Tek seferlikte hüküm yoktur, tekrar aranır.
-
-Bu eşleşmeler takım bazında mı kümeleniyor yoksa lig bazında mı kümeleniyor? Bu soru, yapının nerede olduğunu ayırır. Takım bazlıysa takım DNA’sına, lig bazlıysa lig davranışına yazılır.
-Bu eşleşmeler bookmaker bazında mı kümeleniyor yoksa piyasa geneline mi yayılıyor?nBu soru, sapmanın kaynak sınıfını belirler. Bookmaker profili ayrı raf nesnesidir.
-Bu eşleşmeler belirli yazar/editör kaynaklarında mı yoğunlaşıyor? Bu soru, haber kaynağı güven haritasını çapraz hatla birleştirir. Aynı yazarın haberleriyle eşleşme yüksekse işaretlenir.
-
-Bu eşleşmelerde tekrar eden bir “tetikleyici sırası” var mı (haber tonu → odds kayması → kart/VAR → tempo kırılması)? Bu soru, zincir şeması çıkarır. Zincir şeması varsa bu yalnız örüntüdür, hüküm değildir.
-Bu eşleşmelerde “anomali yok” durumunda da normal bant korunuyor mu? *Bu soru, sistemin en kritik ilkesini korur: anomali çıkmaması da bir sonuçtur. Normal bant korunuyorsa bu bilgi raflara yazılır.
-Bu eşleşmelerde veri eksikliği veya kalite düşüşü var mı ve “anomali yok” ile karışıyor mu? Bu soru, data\\\_quality ayrımını çapraz okuma içinde de korur. Eksik veri varsa eşleşme hükmü kurulmaz.
+Etik ve Risk Rafı:,integrity_risk_profile: unknown,financial_crisis_band: unknown,match_fixing_allegation_history: none,disciplinary_case_history: none,allegation_strength: none,investigation_status_band: unknown,Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur.
+Odds / Market Zaman Hizası Rafı:,market_alignment_status: inactive_market,time_alignment_notes: unknown,Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
+Bağlantılar (informed_by),informed_by:,match_cards: none,match_events: none,press_rack: none,player_cards: none,coach_cards: none,referee_cards: none,odds_market_timeline: none,Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
+Data Quality:,data_quality_badge: low,coverage_map:,identity: unknown,history_status: unknowntrophies: none,targets: none,squad_transfer_dna: unknownteam_dna: unknown,in_game_behavior: unknown,streak_momentum: unknown,home_away: unknown,pressure_crowd: unknown,discipline: unknown,injury_load: unknown,coach_effect: unknown,star_dependency: unknown,press: weak_signal,ethics_risk: none,market_alignment: inactive_market,informed_by_links: none
+TAKIM ETİKET DUVARI (FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI)
+Bantlar ve Durum Etiketleri,unknown: veri yok / doğrulanmadı,none: alan geçerli ama içerik yok (kayıt yok),inactive: kaynak var ama şu an aktif değil,inactive_market: market verisi yok veya pasif,unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı
+weak_signal: tekil veya zayıf kaynak sinyali,strong_signal: yalnız çoklu kaynak teyidi ile açılır,active_unknown: segment var ama içeriği doğrulanmadı
+Kimlik Etiketleri: identity_status: unknown | verified club_model_band: unknown | member_owned | private_owned | mixed stadium_capacity_band: unknown | small | medium | large
+Hedef ve Başarı EtiketleriÇ: trophy_band: none | exists trophy_scope: domestic_league | domestic_cup | super_cup | continental | othertarget_type: title | europe_qualification | relegation_avoid | points_target | other ,deviation_band: unknown | low | medium | high
+Kadro ve Transfer Etiketleri: academy_output_band: unknown | low | medium | high ,star_transfer_tendency: unknown | low | medium | high ,fighter_profile_preference: unknown | low | medium | high ,sell_to_grow_model_band: unknown | low | medium | high
+loan_dependency_band: unknown | low | medium | high .age_profile_trend_band: unknown | youth_focus | balanced | veteran_focus | unknown
 
 
-FAZ-35
-TAKIM DNA KARTI SORULARI (FUTBOL) — PROFİL, REFLEKS, BAĞIMLILIK
+FAZ-16
+Takım Oyun DNA Etiketleri:
+press_approach: unknown | high_press | mid_press | low_block,block_preference: unknown | high_line | mid_block | low_block,transition_priority: unknown | transition_first | balanced | possession_first,set_play_patience: unknown | low_patience | balanced | high_patience
+wing_central_balance: unknown | wing_focus | balanced | central_focus,defensive_line_risk: unknown | low_risk | balanced | high_risk,set_piece_strength_band: unknown | low | medium | high,set_piece_weakness_band: unknown | low | medium | high
+tempo_band: unknown | low | medium | high,flexibility_band: unknown | low | medium | high,creation_source_band: unknown | individual_quality | system | mixed | unknown,press_resistance_band: unknown | low | medium | high,sterile_possession_band: unknown | low | medium | high,build_up_risk_band: unknown | low | medium | high
+Maç İçi Davranış Etiketleri:
+match_start_behavior_band: unknown | low | medium | high,concede_first_response_band: unknown | collapse | unstable | stable | comeback,score_first_behavior_band: unknown | protect | control | push_more | unstable,late_game_behavior_band: unknown | stable | volatile | aggressive | passive | unknown,comeback_capacity_band: unknown | low | medium | high,score_protection_discipline_band: unknown | low | medium | high,risk_increase_trigger_band: unknown | early | mid | late | unknown,panic_under_pressure_band: unknown | low | medium | high
+Seri ve Momentum Etiketleri:
+streak_building_ability_band: unknown | low | medium | high,win_streak_tendency_band: unknown | low | medium | high,loss_streak_risk_band: unknown | low | medium | high,draw_streak_tendency_band: unknown | low | medium | high,post_loss_response_band: unknown | collapse | unstable | stable | rebound,post_win_complacency_risk_band: unknown | low | medium | high,post_draw_response_band: unknown | collapse | unstable | stable | rebound
+İç Saha / Deplasman Etiketleri
+home_strength_band: unknown | low | medium | high,away_resilience_band: unknown | low | medium | hightravel_pressure_band: unknown | low | medium | high
+Baskı Etiketleri
+crowd_pressure_band: unknown | low | medium | high,late_game_pressure_band: unknown | low | medium | high,pressure_decision_risk_band: unknown | low | medium | high
+Disiplin Etiketleri
+yellow_card_tendency: unknown | low | medium | high,red_card_tendency: unknown | low | medium | high,aggression_band: unknown | low | medium | high,dissent_protest_band: unknown | low | medium | high
+Sakatlık ve Yük Etiketleri
+load_collapse_band: unknown | low | medium | high,rotation_resilience_band: unknown | low | medium | high
+Basın Etiketleri
+press_theme_status: unknown | tracked,signal_strength: weak_signal | strong_signal
+Etik ve Risk Etiketleri
+allegation_strength: none | weak_signal | strong_signal,investigation_status_band: none | ongoing | closed_no_action | sanctioned | unknown,financial_crisis_band: unknown | low | medium | high
+Market Etiketleri
+market_alignment_status: inactive_market | active_aligned | active_misaligned,market_data_strength: none | weak | strong
+Reference Bağ Etiketleri
+team_ref_status: unmapped | mapped,league_ref_status: unmapped | mapped,country_ref_status: unmapped | mapped
+
+
+FAZ-35  TAKIM DNA KARTI SORULARI (FUTBOL) — PROFİL, REFLEKS, BAĞIMLILIK
+
 Bu bölümün amacı takımın “iyi/kötü” olup olmadığını söylemek değildir. Amaç, takımın tekrar eden reflekslerini, stres altında verdiği tepkileri, seri davranışını, iç saha/deplasman karakterini ve bağımlılıklarını deterministik biçimde kartlaştırmaktır. Bu kart, maç tekilliğini aşan bir raf nesnesidir ve beş yıllık hafızanın ana omurgasıdır.
-
 Takımın temel oyun temposu hangi bantta ve bu tempo sezon fazına göre değişiyor mu? Bu soru, takımın normal hızını sabitler. Tempo değişimi tekrar ediyorsa sezon fazı etkisi kartın parçası olur.
 Takımın maç başlangıç refleksi nedir (ilk 15) ve bu refleks tekrar ediyor mu? Bu soru, “erken baskı/erken çözülme” profilini çıkarır. Tekrar eden refleks DNA sinyalidir.
 Takımın devre geçiş refleksi nedir ve ikinci yarıya çıkış davranışı hangi bantta? Bu soru, teknik direktör etkisinin en net görüldüğü eşiği ölçer. Devre çıkışı tekrar eden bir kimliktir.
@@ -3063,7 +2784,6 @@ Takımın devre geçiş refleksi nedir ve ikinci yarıya çıkış davranışı 
 Takımın maç kapatma refleksi nedir (son 15 ve uzatma) ve skor durumuna göre değişiyor mu? Bu soru, takımın stres altında kapanış stratejisini sabitler. Önde/geride farklı davranışlar ayrı ayrı okunur.
 Takımın seri davranışı var mı (galibiyet/beraberlik/mağlubiyet serileri) ve seri içinde tempo-disiplin değişiyor mu? Bu soru, takımın dalga yapısını ölçer. Seri davranışı varsa kartlar ve risk profili seri içinde farklılaşabilir.
 Takımın bir önceki maç sonucu bir sonraki haftayı etkiliyor mu? Bu soru, takımın sonuç hafızasını ölçer. Bu hafıza varsa maçlar arası okuma güçlenir.
-
 Takımın iç saha davranışı ile deplasman davranışı deterministik ayrışıyor mu? Bu soru, atmosfer etkisini DNA’ya bağlar. Aynı takımın iç/dış saha profili farklı kartlar üretir.
 Takımın tribün baskısına dayanma profili nedir ve baskı altında disiplin bandı bozuluyor mu? Bu soru, seyirci etkisini doğrudan DNA’ya yazar. Baskı altında kart artışı tekrar ediyorsa sinyal güçlenir.
 Takımın kritik oyuncu bağımlılığı var mı ve skor üretimi tekilde mi kümeleniyor? Bu soru, yıldız bağımlılığını ölçer. Bağımlılık varsa takım sapma profili oyuncu kartına kilitlenir.
@@ -3071,7 +2791,6 @@ Takımın kritik oyuncu bağımlılığı var mı ve skor üretimi tekilde mi k�
 Takımın kritik oyuncu kaybı sonrası reaksiyonu nedir (mücadeleyi bırakma, sertleşme, geriye yaslanma)? Bu soru, bel kemiği kırılınca takımın kriz stratejisini sabitler. Bu DNA kritik sınıftır.
 Takımın kart tetikleyicilerine tepkisi nedir (kabullenme döngüsü mü agresyon döngüsü mü)? Bu soru, kartların kader etkisini takım karakterine bağlar. Kartın anlamı takım refleksiyle ölçülür.
 Takımın kırmızı kart sonrası kriz yönetimi profili nedir ve ilk 10 dakikada çöker mi toparlar mı? Bu soru, eksik kalma dayanıklılığını ölçer. Bazı takımlar 10 kişi kalınca bile direnç üretir.
-
 Takımın kondisyon ve tempo taşıma kapasitesi nedir ve kırılma dakikası tekrar ediyor mu? Bu soru, son 20 dakika çöküş riskini ölçer. Kırılma dakikası tekrar ediyorsa kartın etkisi de büyür.
 Takımın yüksek tempolu rakip karşısında tempo koruma süresi nedir? Bu soru, maç başlamadan “tempo yetmez” riskini işaretleyebilir. Bu bir hüküm değil, profil işaretidir.
 Takımın disiplin profili nedir (kart kümelenmesi, faul yoğunluğu) ve hangi segmentlerde artıyor? Bu soru, disiplinin maç geneline değil, segmentlere dağılımını sabitler. Segment bazlı artış kader tetikleyicisidir.
@@ -3079,10 +2798,117 @@ Takımın disiplin profili nedir (kart kümelenmesi, faul yoğunluğu) ve hangi 
 Takımın VAR/penaltı/iptal gol gibi karar tetikleyicilerine psikolojik tepkisi nedir? Bu soru, hakem kararlarının takım davranışını nasıl kaydırdığını ölçer. Bazı takımlar bu tetikleyicilerde çözülür.
 Takımın risk alma profili nedir (öndeyken kapanma, gerideyken panik hücum, beraberlikte tutma)? Bu soru, skor bağlamındaki davranış stratejisini sabitler. Aynı skor durumunda tekrar eden davranış DNA’dır.
 Takımın sakatlık ve kadro eksikliği altında performans stabilitesi nedir? Bu soru, kadro derinliğini ölçer. Stabilite yoksa sapma ihtimali artar.
-
 Takımın teknik direktör değişimi sonrası DNA kırılması var mı? Bu soru, takım kartının hangi tarihte değiştiğini sabitler. Teknik direktör değişimi kart revizyonu gerektirebilir.
 Takımın kupa/Avrupa paralel yükü altında lig davranışı kayıyor mu? Bu soru, organizasyon yükünün lig performansına etkisini ölçer. Paralel yük varsa segment davranışları kayabilir.
 Takımın “normal bant” profili beş yıl içinde stabil mi, yoksa dönemsel karakter değişimi var mı? Bu soru, takım DNA’sının sabit mi evrimli mi olduğunu ölçer. Dönemsel değişim varsa kart revizyonu yapılır.
+
+FAZ-17
+TAKIM SORU KÜTÜPHANESİ (FAZ-1 GENİŞ TARAMA SETİ — GENİŞLETİLMİŞ TAM)
+Bu takımın kimliği “takım_ref” altında tekil mi, isim varyantları ve tarihsel yeniden adlandırmalar var mı?
+Bu takımın şehir ve bölge kimliği oyun tarzı ve taraftar davranışıyla ilişen bir iz taşıyor mu?
+Kulübün kuruluşundan bugüne “kimlik kırılması” yaşadığı dönemler var mı; era_tag nasıl ayrılmalı?
+Kulübün sahiplik modeli değişti mi; değiştiyse takım DNA’sı hangi katmanlarda farklılaştı?
+Yönetim değişimi sonrası sportif hedef bandı nasıl kaydı; hedef yükselmesi mi küçülmesi mi baskın?
+Kulübün mali istikrarı performans dalgalanmasına eşlik ediyor mu; finansal risk bandı açılmalı mı?
+
+Kulübün taraftar profili “yüksek baskı” mı “sakin destek” mi; crowd_pressure_band nasıl atanmalı?
+İç saha atmosferi hakem etkileşimini tetikliyor mu; kart ve penaltı paternlerinde sapma var mı?
+Deplasman performansı yalnız saha içi mi, seyahat ve lojistik gibi dış faktörlerle de kırılıyor mu?
+Derbi türü maçlarda disiplin kırılması artıyor mu; agresyon bandı yükseliyor mu?
+Yüksek hedef baskısında takımın oyun planı daralıyor mu; karar hızı düşürür mü?
+Skor üstünlüğü alınca takım “kapanma” mı “öldürme” mi eğiliminde; son 15 dakika paterni ne?
+
+Geriye düştüğünde takımın reaksiyonu planlı mı panik mi; risk artışı hangi dakikada tetikleniyor?
+İlk golü yiyince oyunun şekli değişiyor mu; erken gol kırılması var mı?
+İlk golü atınca topa sahip olma ve tempo değişiyor mu; kontrol modu devreye giriyor mu?
+0-0 kilit maçlarda takım sabırlı mı, erken risk mi alıyor; set oyun sabrı bandı nasıl?
+Öne geçtiğinde faul ve kart davranışı artıyor mu; zaman geçirme kontrol paterni var mı?
+Hakeme itiraz yoğunluğu belirli senaryolarda mı patlıyor; protest_intensity_band nasıl ölçülmeli?
+
+Oyunun “sertleştiği” maçlarda takım avantaj sağlayabiliyor mu yoksa dağılıyor mu?
+Takımın duran top gücü, oyun içi üretimin düştüğü maçlarda telafi edici rol oynuyor mu?
+Duran top savunması zayıf mı; tekrar eden gol tipleri var mı?
+Takımın gol yeme şekli tekrar ediyor mu; cutback, ters top, arkaya koşu gibi kalıp var mı?
+Takımın gol bulma şekli tekrar ediyor mu; kanat ortası, geçiş, merkez kombinasyon gibi kalıp var mı?
+Takımın pres yaklaşımı maçın hangi bandında yükseliyor; ilk 15 mi, ikinci yarı başı mı?
+
+Pres kırıldığında takım savunma şekli bozuluyor mu; defensive_line_risk artıyor mu?
+Savunma çizgisi riski bazı koçlarda mı artıyor, bazı kadrolarda mı; era_tag ayrımı gerekiyor mu?
+Orta saha yoğunluğu mu, kanat genişliği mi baskın; oyun DNA’nın çekirdeği nedir?
+Topa sahip olma artınca üretim artıyor mu yoksa kısırlaşıyor mu; possession verim bandı açılmalı mı?
+Geçiş oyununda “ilk pas” kalitesi takımın kaderini belirliyor mu; transition_start_quality bandı gerekir mi?
+Kontra yerken yapısal zaaf var mı; counter_stop disiplin bandı açılmalı mı?
+
+Kontra çıkarırken bitiricilik sorunu var mı; final third verim bandı gerekir mi?
+Takımın kaleci oyun kurulum rolü DNA’nın parçası mı; build_up_through_gk bandı açılmalı mı?
+Stoper profili oyunu öne taşıyor mu yoksa geride tutuyor mu; build_up_risk bandı gerekir mi?
+Bek bindirmesi takımın ana silahı mı; bek kullanım paterni sabit mi?
+Kanat oyuncusu profili “çizgiye basan” mı “içe kat eden” mi; rol sürekliliği var mı?
+Santrfor profili “hedef” mi “koşucu” mu; oyun planı buna göre mi şekilleniyor?
+
+Takımın kilit oyuncu bağımlılığı var mı; yokluğunda oyun çöküyor mu?
+Kaptan/leader oyuncu kaybı sonrası disiplin ve oyun düzeni bozuluyor mu?
+Genç oyuncu oynatma cesareti var mı; baskı maçlarında gençleri kesiyor mu?
+Altyapıdan çıkan oyunculara dakikalı yatırım yapılıyor mu; academy_promotion bandı nasıl atanmalı?
+Transfer dönemlerinde takım “yıldız” mı “mücadeleci” mi “sistem oyuncusu” mu arıyor?
+Transfer stratejisi “satın al-parlat-sat” mı “tut ve büyüt” mü; satış kulübü bandı açılmalı mı?
+
+Kiralık oyuncu kullanımı yüksek mi; loan_dependency bandı gerekir mi?
+Kadro yaş ortalaması dönemsel dalgalanıyor mu; gençleşme/yaşlanma trendi var mı?
+Yoğun fikstürde performans çöküşü var mı; load_collapse_band açılmalı mı?
+Sakatlık dalgası takımın oyun DNA’sını bozar mı; rotasyon dayanıklılığı var mı?
+Aynı sezonda çok sakatlık yaşanıyorsa hazırlık ve yük yönetimi sorununa işaret eder mi?
+Takımın deplasman seyahatlerinde performans kırılması var mı; travel_pressure_band gerekir mi?
+
+Hakem profiline göre performans sapması var mı; belirli hakem tiplerinde kart/penaltı artıyor mu?
+VAR kararları takımın oyun disiplinini etkiliyor mu; VAR sonrası gerilim artıyor mu?
+Tartışmalı karar sonrası takımın oyunu dağılıyor mu yoksa daha mı sertleşiyor?
+Basında takım hakkında tekrar eden kriz temaları var mı; yönetim dili tutarlı mı?
+Basın üzerinden “hoca gider mi” döngüleri sık mı; istikrar riski bandı gerekir mi?
+Taraftarın protestosu ve yönetim baskısı sezon içi performansı tetikliyor mu?
+
+Sosyal medya krizleri saha performansını etkiliyor mu; weak_signal olarak bile tutulmalı mı?
+Kulübün etik/uyumluluk risk geçmişi var mı; resmi yaptırım oldu mu?
+Şike/bahis iddiası gibi ağır başlıklar geçmişte geçti mi; allegation_strength nasıl bandlanmalı?
+Rakip takımlara karşı “psikolojik kompleks” izleri var mı; derby_pressure ile ayrıştırılmalı mı?
+Belirli stadyumlarda performans düşüyor mu; venue_specific_band gerekir mi?
+Hakemle gerilim yaşayan maçlarda disiplin kırılması ile puan kaybı ilişkili mi?
+
+Maçın son 10 dakikasında gol atma/yenme oranı sapıyor mu; late_goal_band gerekir mi?
+Kırmızı kart gördüğünde takım toparlıyor mu dağılıyor mu; red_card_response_band gerekir mi?
+Kırmızı kart rakibe çıktığında üstünlüğü doğru kullanabiliyor mu; advantage_use_band gerekir mi?
+Penaltı kullandığında baskıyı yönetebiliyor mu; penalty_execution_band gerekir mi?
+Penaltı aleyhine verildiğinde oyun ve disiplin bozuluyor mu; penalty_concession_reaction_band gerekir mi?
+Avrupa/uluslararası maçlar sonrası lig maçında performans düşüyor mu; schedule_fatigue_band gerekir mi?
+
+Kupa maçlarında rotasyon yapınca lig performansı etkileniyor mu; competition_priority_band gerekir mi?
+Koç değişimleri sonrası takım kısa vadede sıçrıyor mu, düşüyor mu; new_coach_bounce_band gerekir mi?
+Koç gittikten sonra takım DNA çekirdeği devam ediyor mu; coach_dependence_band nasıl atanmalı?
+Aynı koç altında bile kadro değişince oyun DNA’sı bozuluyor mu; squad_dependency_band gerekir mi?
+Takımın “taktik esnekliği” düşük mü; tek plana sıkışıyor mu; flexibility_band gerekir mi?
+Skor üretiminde “bireysel kalite” mi “sistem” mi baskın; creation_source_band gerekir mi?
+
+Gol katkısı birkaç oyuncuda mı toplanıyor; concentration_risk_band açılmalı mı?
+Takımın ceza sahası içine girişleri var ama bitiremiyor mu; finishing_efficiency_band gerekir mi?
+Takımın şut kalitesi düşük mü; shot_quality_band takım seviyesinde tutulmalı mı?
+Takım savunmada basit hatalarla mı gol yiyor; error_prone_band gerekir mi?
+Takımın pas isabeti yüksek ama ilerleme düşük mü; sterile_possession_band gerekir mi?
+Rakip baskısı altında çıkış zorlanıyor mu; press_resistance_band gerekir mi?
+
+Takımın önde baskıya karşı uzun topa kaçma eğilimi var mı; long_ball_escape_band gerekir mi?
+Aynı rakibe karşı farklı sezonlarda aynı senaryo tekrar ediyor mu; opponent_repeat_pattern_band gerekir mi?
+Takımın “maç önü basın dili” ile “maç içi gerçeklik” çelişiyor mu; narrative_gap_band gerekir mi?
+Takımın şampiyonluk yarışında son düzlüğe girince performansı düşüyor mu; title_run_in_pressure_band gerekir mi?
+Düşme hattı baskısında disiplin ve oyun aklı nasıl değişiyor; survival_mode_band gerekir mi?
+Takımın galibiyet serisi yakalama eğilimi var mı; win_streak_tendency_band nasıl ölçülmeli?
+
+Takımın mağlubiyet serisine girme riski var mı; loss_streak_risk_band nasıl bandlanmalı?
+Beraberlik serisi yaşama eğilimi var mı; draw_streak_tendency_band neyi gösterir?
+Üst üste mağlubiyet sonrası toparlanma mı çöküş mü baskın; post_loss_response_band nasıl atanmalı?
+Üst üste galibiyet sonrası rehavet riski var mı; post_win_complacency_risk_band nasıl ölçülmeli?
+Beraberlik sonrası reaksiyon rebound mu collapse mı; post_draw_response_band nasıl işaretlenmeli?
+Genel seri üretme kapasitesi düşük mü yüksek mi; streak_building_ability_band nasıl atanmalı?
+
 
 FUTBOL ETİKET KATALOĞU (KÜTÜPHANE SÖZLÜĞÜ) — ÇEKİRDEK DUVAR + MAÇ + TAKIM DNA
 Bu katalog, soru cümlelerinin etiket olarak yapıştırılması için değil; soruların cevaplarını deterministik biçimde raflara yazdırmak için vardır. Bu katalog dışı etiket üretilemez. Etiketler serbest metin değildir; sabit ad ve sabit değer bantlarıyla çalışır.
@@ -3108,22 +2934,18 @@ critical\\\_player\\\_incident ,critical\\\_player\\\_role\\\_weight ,critical\\
 
 KONDİSYON / TEMPO TAŞIMA ETİKETLERİ (ZORUNLU)
 stamina\\\_profile ,stamina\\\_breakdown\\\_bucket ,ten\\\_men\\\_resilience
-
 stamina\\\_profile yalnız şu değerleri alır: strong, normal, weak ,stamina\\\_breakdown\\\_bucket yalnız şu değerleri alır: none, 46\\\_60, 61\\\_75, 76\\\_90 ,ten\\\_men\\\_resilience yalnız şu değerleri alır: unknown, stable, unstable, strong\\\_resist
 
 İÇ SAHA / DEPLASMAN / TRİBÜN BASINCI (ZORUNLU)
 home\\\_away\\\_behavior\\\_shift ,crowd\\\_pressure\\\_band ,crowd\\\_pressure\\\_response
-
 home\\\_away\\\_behavior\\\_shift yalnız şu değerleri alır: none, home\\\_stronger, away\\\_stronger, unstable ,crowd\\\_pressure\\\_band yalnız şu değerleri alır: low, medium, high ,crowd\\\_pressure\\\_response yalnız şu değerleri alır: no\\\_effect, discipline\\\_drop, tempo\\\_spike, panic, fight\\\_harder
 
 FORM / SERİ DAVRANIŞI (ZORUNLU)
 previous\\\_match\\\_result ,streak\\\_type ,streak\\\_length\\\_bucket ,*next\\\_week\\\_effect\\\_band
-
 previous\\\_match\\\_result yalnız şu değerleri alır: win, draw, loss, unknown ,streak\\\_type yalnız şu değerleri alır: none, win\\\_streak, draw\\\_streak, loss\\\_streak, mixed ,streak\\\_length\\\_bucket yalnız şu değerleri alır: 0, 1\\\_2, 3\\\_4, 5\\\_plus ,next\\\_week\\\_effect\\\_band yalnız şu değerleri alır: none, positive, negative, unstable--
 
 FUTBOL HAKEM KARTI — ANALİZ EĞİTİM SORU KATALOĞU
 Bu kartın amacı hakemi “iyi/kötü” diye sınıflamak değildir. Amaç, hakemin maçın disiplin eşiğini, VAR/penaltı kritik karar davranışını ve maçın kırılma anlarındaki rolünü tekrar eden bantlarla okumaktır. Suçlama dili yoktur; yalnız davranış izi çıkarılır.
-
 Hakemin ilk kart eşiği erken mi oluşuyor, geç mi oluşuyor? Bu soru, maçın disiplin bandını erken sabitler. Erken eşik maçın tüm ritmini değiştirir.
 Hakem kart dağıtımında dengeli mi yoksa tek taraflı kümelenme görüyor muyuz? Bu soru hüküm üretmez; yalnız dağılım bandını çıkarır. Tekrarlı bir yığılma varsa işaretlenir.
 
@@ -3139,14 +2961,12 @@ Hakem kararlarıyla maçın control\\\_lost bandı tetikleniyor mu? Bu soru, hak
 
 FUTBOL HAKEM KARTI — ETİKET KATALOĞU
 timestamp\\\_utc ,referee\\\_ref ,country\\\_ref ,league\\\_ref ,season\\\_id ,competition\\\_type ,season\\\_phase
-
 referee\\\_first\\\_card\\\_threshold\\\_band ,referee\\\_card\\\_distribution\\\_balance\\\_band ,referee\\\_danger\\\_zone\\\_foul\\\_band ,referee\\\_var\\\_intervention\\\_band ,referee\\\_penalty\\\_decision\\\_band ,referee\\\_disallowed\\\_goal\\\_band ,referee\\\_red\\\_card\\\_threshold\\\_band ,referee\\\_technical\\\_area\\\_tolerance\\\_band ,referee\\\_closing\\\_whistle\\\_band ,referee\\\_control\\\_risk\\\_band
 
 referee\\\_first\\\_card\\\_threshold\\\_band yalnız şu değerleri alır: early, normal, late ,referee\\\_card\\\_distribution\\\_balance\\\_band yalnız şu değerleri alır: balanced, mild\\\_skew, heavy\\\_skew ,referee\\\_danger\\\_zone\\\_foul\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_var\\\_intervention\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_penalty\\\_decision\\\_band yalnız şu değerleri alır: stable, volatile ,referee\\\_disallowed\\\_goal\\\_band yalnız şu değerleri alır: rare, normal, frequent ,referee\\\_red\\\_card\\\_threshold\\\_band yalnız şu değerleri alır: early, normal, late ,referee\\\_technical\\\_area\\\_tolerance\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_closing\\\_whistle\\\_band yalnız şu değerleri alır: low, medium, high ,referee\\\_control\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high ,data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
 
 FUTBOL TEKNİK DİREKTÖR (KOÇ) KARTI — ANALİZ EĞİTİM SORU KATALOĞU
 Bu kartın amacı teknik direktörü “iyi/kötü” diye sınıflamak değildir. Amaç, maç içi kriz yönetimini, tempo/ritim müdahalesini, kart ve hakem bandında verdiği refleksleri ve son 15 dakika karar profilini tekrar eden örüntülerle kartlaştırmaktır.
-
 Teknik direktör tempo yükselince oyunu sakinleştiriyor mu, yoksa tempo sapmasına izin mi veriyor? Bu soru, kontrol bandı yönetimini ölçer. Kontrol kaybı tekrar ediyorsa risk artar.
 Teknik direktör ilk sarı kart sonrası disiplin bandını toparlıyor mu? Bu soru, kart sonrası refleksi ölçer. Kart görünce disiplin düşüyorsa tekrarlayan zaaf olur.
 Teknik direktör kırmızı kart veya kritik karar sonrası plan değiştiriyor mu? Bu soru, kriz adaptasyonunu ölçer. Plan değişimi stabil ise takım kurtulur.
@@ -3179,7 +2999,6 @@ normal, incomplete, low, inactive
 
 FUTBOLCU KARTI — ANALİZ EĞİTİM SORU KATALOĞU
 Bu kartın amacı futbolcuyu “iyi/kötü” diye sınıflamak değildir. Amaç, futbolcunun disiplin eğilimini, kritik an davranışını, kart riskini ve maçın kırılma anlarındaki rolünü tekrar eden bantlarla kartlaştırmaktır. Futbolcu kartı takım değişse bile kimliği taşır.
-
 Futbolcu erken kart görme eğilimi taşıyor mu? Bu soru, takımın disiplin bandını bireysel seviyede etkileyen risk profilini çıkarır.
 Futbolcu baskı yükselince hata ve faul eğilimi artıyor mu? Bu soru, crowd\\\_pressure\\\_response ile bireysel kırılmayı bağlar.
 
@@ -3197,9 +3016,7 @@ FUTBOLCU KARTI — ETİKET KATALOĞU
 timestamp\\\_utc,player\\\_ref,team\\\_ref,country\\\_ref,league\\\_ref,season\\\_id,competition\\\_type,season\\\_phase,player\\\_early\\\_card\\\_risk\\\_band,player\\\_pressure\\\_error\\\_band,player\\\_red\\\_card\\\_risk\\\_band,player\\\_critical\\\_event\\\_involvement\\\_band,player\\\_post\\\_decision\\\_mental\\\_band,player\\\_closing\\\_stamina\\\_band,player\\\_critical\\\_weight\\\_band,player\\\_referee\\\_adaptation\\\_band,player\\\_control\\\_loss\\\_risk\\\_band,player\\\_injury\\\_recovery\\\_band,player\\\_early\\\_card\\\_risk\\\_band yalnız şu değerleri alır:
 
 low, medium, high,player\\\_pressure\\\_error\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_red\\\_card\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_critical\\\_event\\\_involvement\\\_band yalnız şu değerleri alır:
- 
 low, medium, high,player\\\_post\\\_decision\\\_mental\\\_band yalnız şu değerleri alır: stable, unstable,player\\\_closing\\\_stamina\\\_band yalnız şu değerleri alır: strong, normal, weak,player\\\_critical\\\_weight\\\_band yalnız şu değerleri alır: normal, high,player\\\_referee\\\_adaptation\\\_band yalnız şu değerleri alır.
-
 strong, normal, weak,player\\\_control\\\_loss\\\_risk\\\_band yalnız şu değerleri alır: low, medium, high,player\\\_injury\\\_recovery\\\_band yalnız şu değerleri alır: strong, normal, weak,data\\\_quality\\\_badge,data\\\_quality\\\_badge yalnız şu değerleri alır: normal, incomplete, low, inactive
 
 
@@ -3218,9 +3035,7 @@ Hedef Sapması Rafı (Target Miss): target_miss_records: none Kural: başarısı
 Davranış ve Oyun DNA (Era Bazlı): era_blocks: era_tag: unknown_era_1status: active_unknownevidence_level: low play_philosophy_core:
 
 press_approach: unknown block_preference: unknown transition_priority: unknown set_play_patience: unknown wing_central_balance: unknown defensive_line_risk: unknown set_piece_approach: unknown rotation_tendency: unknown match_start_plan: unknown crisis_plan: unknown
-
 in_game_intervention: substitution_timing_patterns: unknown score_protection_reflex: unknown risk_increase_reflex: unknown intervention_type_preference: unknown post_change_shape_effect: unknown
-
 critical_bands: band_60_75: unknown band_80_plus: unknown people_management: youth_care: unknown academy_promotion_tendency: unknown star_player_dependency_tendency: unknown fighter_press_player_preference: unknown
 
 squad_governance:
@@ -3231,8 +3046,8 @@ Odds / Market Zaman Hizası Rafı: market_alignment_status: inactive_market time
 Bağlantılar (informed_by): informed_by: match_cards: none match_events: none press_rack: none player_cards: none referee_cards: none odds_market_timeline: none Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
 Data Quality: data_quality_badge: low coverage_map: identity: unknown career_timeline: none dna_eras: active_unknown press: weak_signal referee_interaction: unknown market_alignment: inactive_market informed_by_links: none
 
-TEKNİK DİREKTÖR ETİKET DUVARI
-(FAZ-1 DETERMINİSTİK SÖZLÜK ALANLARI) Bantlar ve Durum Etiketleri: unknown: veri yok / doğrulanmadı none: alan geçerli ama içerik yok (kayıt yok) inactive: kaynak var ama şu an aktif değil inactive_market: market verisi yok veya pasif
+(FAZ-1  TEKNİK DİREKTÖR ETİKET DUVARI DETERMINİSTİK SÖZLÜK ALANLARI) 
+Bantlar ve Durum Etiketleri: unknown: veri yok / doğrulanmadı none: alan geçerli ama içerik yok (kayıt yok) inactive: kaynak var ama şu an aktif değil inactive_market: market verisi yok veya pasif
 unmapped: reference_dictionary eşleşmesi yok, zorla eşleme yapılmadı weak_signal: tekil veya zayıf kaynak sinyali strong_signal: yalnız çoklu kaynak teyidi ile açılır active_unknown: era bloğu var ama içeriği doğrulanmadı
 Kimlik Etiketleri: identity_status: unknown | verified nationality_band: unknown | single | dual name_variant_band: none | exists Kariyer Timeline Etiketleri: role_type: head | interim | assistant tenure_band: unknown | short | medium | long
 start_date_band: unknown | known end_date_band: unknown | known | active departure_band: unknown | normal_exit | forced_exit | target_miss_context
@@ -3409,7 +3224,6 @@ Oyun DNA (Era Bazlı): .era_blocks: .era_tag: unknown_era_1 .status: active_unkn
 Basın ve Kamu Algısı Rafı: .press_themes: unknown .strong_signal_policy: multi_source_required .signal_strength: weak_signal .Kural: Basın verisi tek başına hüküm kurmaz; maç içi eksik event basından “kesin olay” diye tamamlanmaz.
 Etik ve Risk Rafı: .integrity_risk_profile: unknown .doping_case_history: none .betting_related_allegation_history: none .disciplinary_case_history: none .serious_off_field_incidents_history: none .allegation_strength: none .investigation_status_band: unknown
 Kural: Yargı kurulmaz; yalnız doğrulanmış dosya/kayıt varsa işlenir. Belirsiz iddia weak_signal bandında tutulur. Odds / Market Zaman Hizası Rafı: .market_alignment_status: inactive_market .time_alignment_notes: unknown .Kural: Bu bölüm tahmin üretmez; yalnız hizalama ve pasiflik bandı taşır.
-
 Bağlantılar (informed_by): .informed_by: .match_cards: none .match_events: none .press_rack: none .team_cards: none .coach_cards: none .referee_cards: none .odds_market_timeline: none .Kural: Bağlantı serbest metinle kurulmaz; Faz-2’de reference_dictionary üzerinden bağlanır.
 Data Quality: .data_quality_badge: low .coverage_map: .identity: unknown .career_timeline: none .position_role: unknown .physical_profile: unknown .technical: unknown .mental: unknown .attack_defense: unknown .injury: none .press: weak_signal
 ethics_risk: none .market_alignment: inactive_market .informed_by_links: none
@@ -3603,114 +3417,7 @@ market_alignment_status: inactive_market | active_aligned | active_misaligned,ma
 Reference Bağ Etiketleri
 team_ref_status: unmapped | mapped,league_ref_status: unmapped | mapped,country_ref_status: unmapped | mapped
 
-FAZ-17
-TAKIM SORU KÜTÜPHANESİ (FAZ-1 GENİŞ TARAMA SETİ — GENİŞLETİLMİŞ TAM)
-Bu takımın kimliği “takım_ref” altında tekil mi, isim varyantları ve tarihsel yeniden adlandırmalar var mı?
-Bu takımın şehir ve bölge kimliği oyun tarzı ve taraftar davranışıyla ilişen bir iz taşıyor mu?
-Kulübün kuruluşundan bugüne “kimlik kırılması” yaşadığı dönemler var mı; era_tag nasıl ayrılmalı?
-Kulübün sahiplik modeli değişti mi; değiştiyse takım DNA’sı hangi katmanlarda farklılaştı?
-Yönetim değişimi sonrası sportif hedef bandı nasıl kaydı; hedef yükselmesi mi küçülmesi mi baskın?
-Kulübün mali istikrarı performans dalgalanmasına eşlik ediyor mu; finansal risk bandı açılmalı mı?
-
-Kulübün taraftar profili “yüksek baskı” mı “sakin destek” mi; crowd_pressure_band nasıl atanmalı?
-İç saha atmosferi hakem etkileşimini tetikliyor mu; kart ve penaltı paternlerinde sapma var mı?
-Deplasman performansı yalnız saha içi mi, seyahat ve lojistik gibi dış faktörlerle de kırılıyor mu?
-Derbi türü maçlarda disiplin kırılması artıyor mu; agresyon bandı yükseliyor mu?
-Yüksek hedef baskısında takımın oyun planı daralıyor mu; karar hızı düşürür mü?
-Skor üstünlüğü alınca takım “kapanma” mı “öldürme” mi eğiliminde; son 15 dakika paterni ne?
-
-Geriye düştüğünde takımın reaksiyonu planlı mı panik mi; risk artışı hangi dakikada tetikleniyor?
-İlk golü yiyince oyunun şekli değişiyor mu; erken gol kırılması var mı?
-İlk golü atınca topa sahip olma ve tempo değişiyor mu; kontrol modu devreye giriyor mu?
-0-0 kilit maçlarda takım sabırlı mı, erken risk mi alıyor; set oyun sabrı bandı nasıl?
-Öne geçtiğinde faul ve kart davranışı artıyor mu; zaman geçirme kontrol paterni var mı?
-Hakeme itiraz yoğunluğu belirli senaryolarda mı patlıyor; protest_intensity_band nasıl ölçülmeli?
-
-Oyunun “sertleştiği” maçlarda takım avantaj sağlayabiliyor mu yoksa dağılıyor mu?
-Takımın duran top gücü, oyun içi üretimin düştüğü maçlarda telafi edici rol oynuyor mu?
-Duran top savunması zayıf mı; tekrar eden gol tipleri var mı?
-Takımın gol yeme şekli tekrar ediyor mu; cutback, ters top, arkaya koşu gibi kalıp var mı?
-Takımın gol bulma şekli tekrar ediyor mu; kanat ortası, geçiş, merkez kombinasyon gibi kalıp var mı?
-Takımın pres yaklaşımı maçın hangi bandında yükseliyor; ilk 15 mi, ikinci yarı başı mı?
-
-Pres kırıldığında takım savunma şekli bozuluyor mu; defensive_line_risk artıyor mu?
-Savunma çizgisi riski bazı koçlarda mı artıyor, bazı kadrolarda mı; era_tag ayrımı gerekiyor mu?
-Orta saha yoğunluğu mu, kanat genişliği mi baskın; oyun DNA’nın çekirdeği nedir?
-Topa sahip olma artınca üretim artıyor mu yoksa kısırlaşıyor mu; possession verim bandı açılmalı mı?
-Geçiş oyununda “ilk pas” kalitesi takımın kaderini belirliyor mu; transition_start_quality bandı gerekir mi?
-Kontra yerken yapısal zaaf var mı; counter_stop disiplin bandı açılmalı mı?
-
-Kontra çıkarırken bitiricilik sorunu var mı; final third verim bandı gerekir mi?
-Takımın kaleci oyun kurulum rolü DNA’nın parçası mı; build_up_through_gk bandı açılmalı mı?
-Stoper profili oyunu öne taşıyor mu yoksa geride tutuyor mu; build_up_risk bandı gerekir mi?
-Bek bindirmesi takımın ana silahı mı; bek kullanım paterni sabit mi?
-Kanat oyuncusu profili “çizgiye basan” mı “içe kat eden” mi; rol sürekliliği var mı?
-Santrfor profili “hedef” mi “koşucu” mu; oyun planı buna göre mi şekilleniyor?
-
-Takımın kilit oyuncu bağımlılığı var mı; yokluğunda oyun çöküyor mu?
-Kaptan/leader oyuncu kaybı sonrası disiplin ve oyun düzeni bozuluyor mu?
-Genç oyuncu oynatma cesareti var mı; baskı maçlarında gençleri kesiyor mu?
-Altyapıdan çıkan oyunculara dakikalı yatırım yapılıyor mu; academy_promotion bandı nasıl atanmalı?
-Transfer dönemlerinde takım “yıldız” mı “mücadeleci” mi “sistem oyuncusu” mu arıyor?
-Transfer stratejisi “satın al-parlat-sat” mı “tut ve büyüt” mü; satış kulübü bandı açılmalı mı?
-
-Kiralık oyuncu kullanımı yüksek mi; loan_dependency bandı gerekir mi?
-Kadro yaş ortalaması dönemsel dalgalanıyor mu; gençleşme/yaşlanma trendi var mı?
-Yoğun fikstürde performans çöküşü var mı; load_collapse_band açılmalı mı?
-Sakatlık dalgası takımın oyun DNA’sını bozar mı; rotasyon dayanıklılığı var mı?
-Aynı sezonda çok sakatlık yaşanıyorsa hazırlık ve yük yönetimi sorununa işaret eder mi?
-Takımın deplasman seyahatlerinde performans kırılması var mı; travel_pressure_band gerekir mi?
-
-Hakem profiline göre performans sapması var mı; belirli hakem tiplerinde kart/penaltı artıyor mu?
-VAR kararları takımın oyun disiplinini etkiliyor mu; VAR sonrası gerilim artıyor mu?
-Tartışmalı karar sonrası takımın oyunu dağılıyor mu yoksa daha mı sertleşiyor?
-Basında takım hakkında tekrar eden kriz temaları var mı; yönetim dili tutarlı mı?
-Basın üzerinden “hoca gider mi” döngüleri sık mı; istikrar riski bandı gerekir mi?
-Taraftarın protestosu ve yönetim baskısı sezon içi performansı tetikliyor mu?
-
-Sosyal medya krizleri saha performansını etkiliyor mu; weak_signal olarak bile tutulmalı mı?
-Kulübün etik/uyumluluk risk geçmişi var mı; resmi yaptırım oldu mu?
-Şike/bahis iddiası gibi ağır başlıklar geçmişte geçti mi; allegation_strength nasıl bandlanmalı?
-Rakip takımlara karşı “psikolojik kompleks” izleri var mı; derby_pressure ile ayrıştırılmalı mı?
-Belirli stadyumlarda performans düşüyor mu; venue_specific_band gerekir mi?
-Hakemle gerilim yaşayan maçlarda disiplin kırılması ile puan kaybı ilişkili mi?
-
-Maçın son 10 dakikasında gol atma/yenme oranı sapıyor mu; late_goal_band gerekir mi?
-Kırmızı kart gördüğünde takım toparlıyor mu dağılıyor mu; red_card_response_band gerekir mi?
-Kırmızı kart rakibe çıktığında üstünlüğü doğru kullanabiliyor mu; advantage_use_band gerekir mi?
-Penaltı kullandığında baskıyı yönetebiliyor mu; penalty_execution_band gerekir mi?
-Penaltı aleyhine verildiğinde oyun ve disiplin bozuluyor mu; penalty_concession_reaction_band gerekir mi?
-Avrupa/uluslararası maçlar sonrası lig maçında performans düşüyor mu; schedule_fatigue_band gerekir mi?
-
-Kupa maçlarında rotasyon yapınca lig performansı etkileniyor mu; competition_priority_band gerekir mi?
-Koç değişimleri sonrası takım kısa vadede sıçrıyor mu, düşüyor mu; new_coach_bounce_band gerekir mi?
-Koç gittikten sonra takım DNA çekirdeği devam ediyor mu; coach_dependence_band nasıl atanmalı?
-Aynı koç altında bile kadro değişince oyun DNA’sı bozuluyor mu; squad_dependency_band gerekir mi?
-Takımın “taktik esnekliği” düşük mü; tek plana sıkışıyor mu; flexibility_band gerekir mi?
-Skor üretiminde “bireysel kalite” mi “sistem” mi baskın; creation_source_band gerekir mi?
-
-Gol katkısı birkaç oyuncuda mı toplanıyor; concentration_risk_band açılmalı mı?
-Takımın ceza sahası içine girişleri var ama bitiremiyor mu; finishing_efficiency_band gerekir mi?
-Takımın şut kalitesi düşük mü; shot_quality_band takım seviyesinde tutulmalı mı?
-Takım savunmada basit hatalarla mı gol yiyor; error_prone_band gerekir mi?
-Takımın pas isabeti yüksek ama ilerleme düşük mü; sterile_possession_band gerekir mi?
-Rakip baskısı altında çıkış zorlanıyor mu; press_resistance_band gerekir mi?
-
-Takımın önde baskıya karşı uzun topa kaçma eğilimi var mı; long_ball_escape_band gerekir mi?
-Aynı rakibe karşı farklı sezonlarda aynı senaryo tekrar ediyor mu; opponent_repeat_pattern_band gerekir mi?
-Takımın “maç önü basın dili” ile “maç içi gerçeklik” çelişiyor mu; narrative_gap_band gerekir mi?
-Takımın şampiyonluk yarışında son düzlüğe girince performansı düşüyor mu; title_run_in_pressure_band gerekir mi?
-Düşme hattı baskısında disiplin ve oyun aklı nasıl değişiyor; survival_mode_band gerekir mi?
-Takımın galibiyet serisi yakalama eğilimi var mı; win_streak_tendency_band nasıl ölçülmeli?
-
-Takımın mağlubiyet serisine girme riski var mı; loss_streak_risk_band nasıl bandlanmalı?
-Beraberlik serisi yaşama eğilimi var mı; draw_streak_tendency_band neyi gösterir?
-Üst üste mağlubiyet sonrası toparlanma mı çöküş mü baskın; post_loss_response_band nasıl atanmalı?
-Üst üste galibiyet sonrası rehavet riski var mı; post_win_complacency_risk_band nasıl ölçülmeli?
-Beraberlik sonrası reaksiyon rebound mu collapse mı; post_draw_response_band nasıl işaretlenmeli?
-Genel seri üretme kapasitesi düşük mü yüksek mi; streak_building_ability_band nasıl atanmalı?
-
-FAZ-18
+FAZ-18 BOOKMAKER BÖLÜM -1
 BAHİS ŞİRKETİ KARTI — FAZ-1 TESLİMİ 
 (Kart İskeleti + Etiket Duvarı + Soru Kütüphanesi)
 bookmaker_ref: UNKNOWN_BOOKMAKER_REF
@@ -3793,7 +3500,7 @@ Bu firmanın odds açılışında “korumacı” davranıp sonradan hızlanma p
 Bu firmanın kapanış fiyatı (closing line) piyasa ortalamasından sistematik sapıyor mu; closing_bias_band nasıl ölçülmeli?
 Kapanış Notu: Bahis Şirketi Kartı — tamamlandı / dosyalanabilir çıktı
 
-FAZ-19
+
 MARKET KÜTÜPHANESİ — FAZ-1 TESLİMİ 
 (30 ANA MARKET / Kart + Etiket Duvarı + Soru Kütüphanesi)
 library_ref: FOOTBALL_MARKET_LIBRARY_V1
@@ -3801,6 +3508,67 @@ Kart Durumu: FAZ-1_SKELETON_ACTIVE
 Kart Politikası: Market listesi deterministik ve sabittir / Her market market_ref ile yaşar / İsimler serbest metin değildir / Provider map ile bağlanır / Unmapped korunur / Eksik veri inactive/unknown bantlarıyla taşınır
 Üretim Notu: Bu teslim yalnız ana market rafını kurar. Odds akışı ve BOOKMAKER_ALLOWLIST Faz-2’de marketlere bağlanır. Bu kütüphane bahis önerisi üretmez; yalnız zaman hizası ve bant sapması ölçer.
 
+FAZ-34  BAHİS / ODDS DAVRANIŞI SORULARI (FUTBOL) — MAÇ ÖNCESİ + MAÇ SAATİ + MAÇ İÇİ
+
+Bu bölümün amacı odds verisini “tahmin” için kullanmak değildir. Amaç, piyasa davranışının normal banttan sapıp sapmadığını, sapıyorsa bunun maç içi tetikleyicilerle ve haber penceresiyle hangi şartlarda kesiştiğini deterministik biçimde işaretlemektir. Odds hareketi hüküm değildir; kanıt zincirinin yalnızca bir parçası olabilir.
+Bu odds kaydı hangi maç kimliğine ve hangi UTC zaman penceresine bağlanıyor? Bu soru, odds zaman hizasını kilitler. Zaman hizası bozuksa aynı odds hareketi yanlış maça yazılabilir.
+Odds snapshot penceresi nasıl tanımlandı ve pencereler deterministik mi? Bu soru, odds örüntüsünün doğru kıyaslanması içindir. Snapshot aralığı kayarsa bant okuması bozulur.
+Bu odds kaydı hangi bookmaker’lara aittir ve allowlist içinde midir? Bu soru, veri kaynağını kilitler. Allowlist dışı bookmaker verisi rafı kirletmez, dışarıda kalır.
+
+Bu maç için hangi market setleri zorunlu izlendi ve market kapsamı boşluk bırakmadan kaydedildi mi? Bu soru, izlenen alanın deterministik olmasını sağlar. Market kapsamı değişirse iki maç kıyaslanamaz.
+Maç öncesi odds çizgisi sabit mi kaldı yoksa keskin kırılma yaşadı mı? Bu soru, normal bant ile sapma arasını ayırır. Keskin kırılma varsa zaman damgası şarttır.
+Keskin kırılma tek bir bookmaker’da mı yoksa birden fazla bookmaker’da mı oluştu? Bu soru, tek kaynak sapması ile piyasa geneli sapmasını ayırır. Tekil sapma daha düşük güven sınıfıdır.
+Odds hareketi maç saatine yaklaştıkça mı hızlandı yoksa günler önceden mi başladı? Bu soru, hareketin zaman doğasını ölçer. Erken başlayan hareket farklı, son dakika hareketi farklı sınıfa yazılır.
+Maç saatinden önce odds hareketi “yumuşak akış” mı yoksa “kademeli sert kayma” mı gösterdi? Bu soru, piyasadaki yön değişiminin hız profilini çıkarır. Hız profili, sapma kalitesini belirler.
+Odds hareketi maçın hangi segmentinde yoğunlaştı (ilk 15, devre, son 15)? Bu soru, odds değişimini segment okumasına bağlar. Segment eşleşmesi yoksa olay-kaynak bağlantısı zayıftır.
+Maç içi odds hareketi, maç içi tetikleyicilerle açıklanabiliyor mu yoksa tetikleyici olmadan mı oluştu? Bu soru, “olay yokken hareket” durumunu işaretler. Bu bir suçlama değildir; sadece anomali sapma adaydır.
+Kart, VAR, penaltı, kırmızı kart gibi kader tetikleyicileri ile odds hareketi aynı zaman bandında mı çakıştı? Bu soru, piyasaya yansıyan maç içi kırılmaları yakalar. Çakışma varsa işaretlenir, hüküm kurulmaz.
+
+Odds hareketi iç saha/deplasman bağlamında tekrar ediyor mu? Bu soru, takımın ev-deplasman DNA’sının piyasa davranışına yansıyıp yansımadığını ölçer.
+Odds hareketi takımın seri davranışıyla ilişkili mi (galibiyet serisi, mağlubiyet serisi) Bu soru, takımın sonuç hafızasının piyasa tarafından nasıl fiyatlandığını ölçer.
+Odds hareketi kritik oyuncu yokluğu, ceza sınırı veya kondisyona dair bağlamla eşleşiyor mu? Bu soru, bağlam duvarıyla odds davranışını birleştirir. Eşleşme varsa sapma adayı güçlenir.
+Bu maçın odds örüntüsü, aynı takımın benzer bağlamlı geçmiş maçlarına göre normal bant içinde mi dışında mı? Bu soru, karşılaştırmayı mümkün kılar. Bant tanımı yoksa sapma işaretlenemez.
+Odds verisi eksik mi, parçalı mı, rate-limit nedeniyle degrade mi ve data\\\_quality\\\_badge ne? Bu soru, “anomali yok” ile “veri eksik” ayrımını korur. Eksik veri varsa hüküm kurulmaz.
+Bu odds kaydı bir sonraki cycle’da aynı şekilde doğrulanabiliyor mu? Bu soru, tek seferlik veri hatasıyla gerçek piyasa hareketini ayırır. Tekrar yoksa düşük güven sınıfıdır
+
+Bu bookmaker’ın sapma/anomali davranışı en çok hangi ülke liglerinde kümeleniyor? Bu soru, tek maç sapmasını “piyasa profiline” bağlar. Bazı bookmaker’lar belirli ülke liglerinde daha sık kırılma üretebilir; bu bir kanıt değildir ama analiz refleksini hızlandıran bir risk haritasıdır.
+Bu bookmaker’ın sapma davranışı organizasyon tipine göre değişiyor mu (lig, ulusal kupa, kıtasal kupa)? Bu soru, sapmanın maç türüne göre sistematikleşip sistematikleşmediğini ayırır. Kupa bağlamında daha sık kırılma görülüyorsa bu ayrı 
+band olarak işlenir.
+
+Bu bookmaker’ın sapma davranışı dönemsel mi, sabit mi, rotasyonlu mu? Bu soru, senin tarif ettiğin “bir ay Asya, bir ay başka bölge” davranışını yakalar. Rastgele görünen sapmaların dönemsel haritası olup olmadığı burada ortaya çıkar.
+Bookmaker sapmaları belirli haftalarda veya sezon fazlarında artıyor mu (sezon başı/sonu, transfer dönemi, yoğun fikstür)? Bu soru, sapmayı sezon fazı bağlamına bağlar. Bazı sapmalar sezon geçişlerinde artabilir.
+Bu bookmaker’ın sapması “maç öncesi”, “maç saatine yakın” veya “maç içi” hangi pencerede daha çok oluşuyor? Bu soru, sapmanın zaman tipini sınıflar. Zaman tipi, sapma yorumunun yönünü değiştiren bir ana anahtardır.
+Bu ligde aynı maç için farklı bookmaker’lar arasında sistematik ayrışma var mı? Bu soru, tek bookmaker sapması ile piyasa geneli ayrışmayı ayırır. Ayrışma tekrar ediyorsa lig bazlı piyasa davranışı işaretlenir.
+Bu takımın maçlarında belirli bookmaker sapmaları tekrar ediyor mu? Bu soru, bookmaker profili ile takım profili kesişimini yakalar. Tekrar varsa “takım+bookmaker” eşleşmesi raf nesnesi olur.
+Bu bookmaker için “normal bant” ve “sapma bandı” geçmiş veriden çıkarılabiliyor mu? Bu soru, sapmanın ölçülebilir hale gelmesi içindir. Bant tanımı yoksa sapma yalnız his olur; sistem bunu kabul etmez.
+Bu bookmaker’ın veri bütünlüğü ve veri kalitesi (eksik snapshot, gecikme, tutarsızlık) sapma gibi görünüyor olabilir mi? Bu soru, veri hatasını sapma sanma riskini engeller. Önce veri kalitesi ayrımı yapılır, sonra sapma işaretlenir.
+
+ÇAPRAZ KAYNAK OKUMA SORULARI (FUTBOL) — BASIN + ODDS + MAÇ İÇİ TETİKLEYİCİLER
+
+,Bu bölümün amacı, üç ayrı hattı aynı anda “sonuç çıkarma” için birleştirmek değildir. Amaç, basın akışı, odds hareketi ve maç içi tetikleyiciler arasında tekrar eden zaman hizası ve davranış eşleşmesi olup olmadığını deterministik biçimde test etmektir. Bu bölüm, hüküm vermez; yalnız eşleşme ve eşleşmeme haritasını çıkarır. Kanıt zinciri tamamlanmadan hiçbir birim sonuç dili kuramaz.
+Bu maç için basın haber temaları ile odds hareketinin zaman penceresi çakışıyor mu? Bu soru, “haber çıktı → piyasa hareket etti” gibi bir iddiayı test edilebilir hale getirir. Çakışma yoksa ilişki zayıf kabul edilir.
+
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma tek bookmaker’da mı yoksa birden çok bookmaker’da mı görülüyor? Bu soru, tekil kaynak sapmasını piyasa geneli sapmadan ayırır. Tekil sapma düşük güven sınıfıdır.
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma hangi lig/organizasyon sınıfında daha sık görülüyor? Bu soru, çapraz eşleşmenin ülke/lig bazında kümelenip kümelenmediğini ölçer. Kümelenme varsa harita çıkar.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma dönemsel mi sabit mi rotasyonlu mu? Bu soru, rastgele görünen davranışın dönemsel haritası olup olmadığını test eder. Rotasyon varsa not edilir.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma sezon fazına göre artıyor mu (sezon başı/sonu, transfer dönemi)? Bu soru, “geçiş dönemleri” etkisini ölçer. Bazı çapraz eşleşmeler sezon geçişlerinde artabilir.
+
+Odds hareketi maç içi kader tetikleyicilerinden önce mi başladı yoksa tetikleyiciden sonra mı yoğunlaştı? Bu soru, zaman yönünü belirler. Tetikleyici sonrası hareket normal bant olabilir; tetikleyici öncesi hareket sapma adayını güçlendirir.
+Odds hareketi tetikleyici olmadan oluşuyorsa bu hareket maç içi segment davranışında bir değişimle eşleşiyor mu? Bu soru, “olay yok ama davranış kaydı var” senaryosunu yakalar. Segment DNA değişiyorsa bu ayrıca işaretlenir.
+Maç içi tetikleyicilerden hangileri odds hareketiyle en sık çakışıyor (kırmızı kart, VAR, penaltı, iptal gol)? Bu soru, piyasanın en hassas olduğu tetikleyici sınıfları çıkarır. Bu bir tahmin aracı değil, örüntü haritasıdır.
+Maç içi tetikleyiciler ile basın temaları aynı hafta penceresinde eşleşiyor mu? Bu soru, basının tetikleyici üretip üretmediğini değil, basın konuştuğu şeyle maç içinin kesişip kesişmediğini test eder.
+Basın teması “hakem/adalet” ise maç içi kart ve VAR tetikleyicileriyle eşleşme bandı artıyor mu? Bu soru, tematik eşleşmeyi test eder. Eşleşme varsa yalnız işaretlenir, hüküm kurulmaz.
+Basın teması “sakatlık/eksik” ise maç içi segmentlerde kondisyon düşüşü veya tempo kırılmasıyla eşleşme var mı? Bu soru, haber bağlamının sahaya yansıyıp yansımadığını ölçer.
+Basın teması “transfer/kriz/yönetim” ise maç içi disiplin bandında kart yoğunluğu artıyor mu? Bu soru, haber-temelli baskının disipline yansıma ihtimalini test eder. Tek seferlikte hüküm yoktur, tekrar aranır.
+
+Bu eşleşmeler takım bazında mı kümeleniyor yoksa lig bazında mı kümeleniyor? Bu soru, yapının nerede olduğunu ayırır. Takım bazlıysa takım DNA’sına, lig bazlıysa lig davranışına yazılır.
+Bu eşleşmeler bookmaker bazında mı kümeleniyor yoksa piyasa geneline mi yayılıyor?nBu soru, sapmanın kaynak sınıfını belirler. Bookmaker profili ayrı raf nesnesidir.
+Bu eşleşmeler belirli yazar/editör kaynaklarında mı yoğunlaşıyor? Bu soru, haber kaynağı güven haritasını çapraz hatla birleştirir. Aynı yazarın haberleriyle eşleşme yüksekse işaretlenir.
+Bu eşleşmelerde tekrar eden bir “tetikleyici sırası” var mı (haber tonu → odds kayması → kart/VAR → tempo kırılması)? Bu soru, zincir şeması çıkarır. Zincir şeması varsa bu yalnız örüntüdür, hüküm değildir.
+Bu eşleşmelerde “anomali yok” durumunda da normal bant korunuyor mu? *Bu soru, sistemin en kritik ilkesini korur: anomali çıkmaması da bir sonuçtur. Normal bant korunuyorsa bu bilgi raflara yazılır.
+Bu eşleşmelerde veri eksikliği veya kalite düşüşü var mı ve “anomali yok” ile karışıyor mu? Bu soru, data\\\_quality ayrımını çapraz okuma içinde de korur. Eksik veri varsa eşleşme hükmü kurulmaz.
+
+FAZ-19 BOOKMAKER BÖLÜMÜ-2
 MARKET KÜTÜPHANESİ — 30 ANA MARKET (DETERMINİSTİK LİSTE)
 market_ref: FT_MKT_001,market_name: 1X2 (Match Result),market_group: core_result,required_fields: home_price | draw_price | away_price,status: active,market_ref: FT_MKT_002,market_name: Double Chance,market_group: core_result,required_fields: 1X_price | 12_price | X2_price,status: active,market_ref: FT_MKT_003,market_name: Draw No Bet,market_group: core_result,required_fields: home_price | away_price,status: active,market_ref: FT_MKT_004,market_name: Asian Handicap,market_group: handicaprequired_fields: line | home_price | away_price,status: active,market_ref: FT_MKT_005,market_name: European Handicap,market_group: handicap,required_fields: line | home_price | away_price,status: active,market_ref: FT_MKT_006,market_name: Over/Under 0.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_007,market_name: Over/Under 1.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active,market_ref: FT_MKT_008,market_name: Over/Under 2.5 Goals,market_group: totals,required_fields: line | over_price | under_price,status: active
 
@@ -3848,7 +3616,71 @@ Basın Etiket Duvarı v1.0
 ENUM SÖZLÜĞÜ v1.0
 MATCH SUPPORT TRACE FIELDS v1.0.1
 
-FAZ-22:FUTBOL BASIN SORU KATALOĞU — ATOMİK GENİŞLETİLMİŞ KİLİTLİ LİSTE (v1.1),BÖLÜM A — HABER KAYDI / BAĞLAM KİMLİĞİ (HER HABERE ZORUNLU)
+FAZ-22: BASIN BÖLÜMÜ
+FUTBOL BASIN SORU KATALOĞU — ATOMİK GENİŞLETİLMİŞ KİLİTLİ LİSTE (v1.1),BÖLÜM A — HABER KAYDI / BAĞLAM KİMLİĞİ (HER HABERE ZORUNLU)
+
+Bu bölümün amacı “haber var mı yok mu” kontrolü değildir. Amaç, haber akışını deterministik biçimde raflara ayırmak ve haberin maç içi davranışla, odds davranışıyla ve takım DNA’sıyla hangi şartlarda kesiştiğini ölçmektir. Haber, tek başına hüküm kurmaz; yalnız bağlam üretir ve kanıt zincirinin bir parçası olabilir. Bu yüzden haber akışı hem sezon içi hem sezon arası pencerede ayrı disiplinle kaydedilir.
+Bu kayıt sezon içi maç haftası haber paketi mi yoksa sezon arası haftalık off-season paketi mi? Bu soru, haberin hangi pencere disipliniyle işlendiğini kilitler. Sezon arası haberleri günlük maç akışı gibi değil, haftalık paket olarak raflara yazılır.
+Bu haber paketi hangi ülke, lig, sezon ve tekil takım adresine bağlanıyor? Bu soru, haberin doğru raf adresine düşmesi içindir. Yanlış bağlanan haber, beş yıl sonra yanlış DNA okuması üretir.
+Bu haber paketi lig (Tier-1/Tier-2) akışına mı yoksa Cups akışına mı aittir? Bu soru, kupa haberlerinin lig haberine karışmasını engeller. Kupa bayrağı, haber seviyesinde de deterministik işlenir.
+Bu haber paketi hangi organizasyon tipine aittir (lig, ulusal kupa, kıtasal kupa, milli takım)? Bu soru, haberin hangi stres sınıfını taşıdığını belirler. Organizasyon tipi belirlenmeden haber etkisi yanlış sınıfa yazılabilir.
+Bu haber penceresi maçtan kaç gün öncesini kapsıyor (örnek: 7 gün) ve pencere sabit mi? Bu soru, haberin “zaman hizasını” kilitler. Pencere kayarsa aynı olay farklı maçlara yanlış bağlanır.
+
+Maç öncesi haber akışında hangi temalar öne çıktı ve temalar kaç farklı kaynakta tekrar etti? Bu soru, tek kaynağın gürültüsü ile çoklu kaynağın tekrarını ayırır. Tekrar eden tema daha güçlü sinyal adayıdır.
+Haber temaları daha çok hangi eksende kümelendi (yönetim, teknik direktör, oyuncu, hakem, taraftar, transfer, sakatlık, disiplin)? Bu soru, haberin hangi kart nesnesine bağlanacağını belirler. Tema yanlış karta bağlanırsa analiz yanlış kişiyi suçlar gibi görünür.
+Haber tonu hangi bantta yoğunlaştı (olumlu, olumsuz, karma) ve ton aniden kırıldı mı? Bu soru, haberin duygusal iklimini adresler. Ton kırılması varsa maç içi davranış değişimiyle eşleşebilir.
+Aynı olay farklı kaynaklarda aynı biçimde mi geçti yoksa kaynaklar arasında ayrışma var mı?
+
+Bu soru, kaynak güven bandını ölçer. Ayrışma varsa “tek doğru” diye hüküm kurulmaz, yalnız işaretlenir.
+Bu takımın haber akışı sezon içinde “rutin” mi yoksa “kriz/çalkantı” mı taşıyor? Bu soru, takımın baskı altında olup olmadığını belirler. Kriz akışı varsa maç içi tetikleyiciler daha sert çalışabilir.
+Bu haber akışında transfer söylentileri var mı ve söylenti-gerçekleşme doğruluk bandı geçmişte nasıldı? Bu soru, haberin güvenilirliğini beş yıllık doğrulamayla ölçer. Transfer gürültüsü ile gerçek transfer ayrılır.
+Sezon arası haftalık paketlerde kamp, kadro dışı kalanlar, rotasyon ve hazırlık maçları konuşuluyor mu? Bu soru, sezon arası bağlamı takım DNA’sına bağlar. Kamp ve kadro değişimleri sezon başlangıcı davranışını belirler.
+
+Haber akışında kritik oyuncu sakatlığı veya dönüşü var mı ve bu bilgi maç segment davranışını etkiliyor mu? Bu soru, haber-temelli bağlamın saha içi gerçekliğe yansıyıp yansımadığını ölçer.
+Haber akışı teknik direktör üzerinde baskı üretiyor mu ve bu baskı maç içinde erken hamle veya panik hamle doğuruyor mu? Bu soru, haberin teknik karar davranışına etkisini test eder.
+Haber akışı taraftar baskısı içeriyor mu ve bu baskı iç saha davranışına yansıyor mu? Bu soru, tribün etkisinin haber üzerinden büyüyüp büyümediğini ölçer. Bazı baskılar saha içinde değil, haberle inşa edilir.
+Maç sonrası haber akışı hangi temada devam etti ve maç öncesi anlatıyla uyumlu mu? Bu soru, haberin “sonuçla yeniden yazılma” riskini test eder. Maç sonrası eksen değişiyorsa bu not düşülür.
+Maç sonrası haber akışı, bir sonraki maçın haber penceresinde tekrar eden bir yönlendirme oluşturuyor mu? Bu soru, zincir etkisini ölçer. Bazı haber döngüleri bir maçı değil, bir seri maçı etkiler.
+
+Bu haber akışı ile maç içi kader tetikleyicileri aynı hafta içinde çakıştı mı? Bu soru, “haber etkisi” iddiasını test edilebilir hale getirir. Çakışma yoksa haber yalnız gürültü olabilir.
+Bu haber akışı ile odds kırılmaları aynı zaman bandında mı ortaya çıktı? Bu soru, haber–piyasa davranışı ilişkisinin varlığını yokluğunu ölçer. Eşleşme varsa işaretlenir, hüküm kurulmaz.
+Bu haber akışı ile takımın segment DNA davranışı arasında tekrar eden eşleşme var mı? Bu soru, haberin takımı hangi segmentte etkilediğini yakalar. Bazı takımlar baskı altında ilk 15’te dağılır, bazıları son 15’te.
+Haber kaynakları tekilleştirildi mi ve aynı olayın kopyaları raf şişmesi yapmadan birleştirildi mi? Bu soru, kütüphane şişmesini kontrol eder. Aynı olayın 50 kopyası değil, tekil olayın kaynak referansları tutulur.
+Bu haber paketi “kanıt zinciri” için yalnız bağlam mı yoksa doğrulanmış bir veri mi? Bu soru, senin istediğin kilittir: haber karar vermez. Haber yalnız bağlamdır; doğrulama olmadan hüküm üretilemez.
+Bu haber yalnız yayın organı adıyla değil, yazar/editör kimliğiyle de etiketleniyor mu? Bu soru, aynı yayın organı içinde farklı doğruluk bantlarını ayırmak içindir. Kaynak tek başına yetmez; içerik üretici izi raf nesnesi olmalıdır.
+Bu yazar/editör geçmişte hangi tür haberlerde daha yüksek doğruluk bandı gösterdi? Bu soru, “boş haber” ile “erken sinyal” üreten haberi ayırır. Bu bir hüküm değil, istatistiksel güven bandıdır.
+Bu yazar/editörün haberleri hangi temalarda daha çok sapma üretiyor (transfer, sakatlık, yönetim, teknik direktör)? Bu soru, yazarın güçlü/zayıf alanını çıkarır. Analist hangi haberin hangi temada ciddiye alınacağını raf üzerinden görür.
+
+Bu yazar/editör haberleri ile gerçekleşen olaylar arasındaki gerçekleşme oranı dönemsel değişiyor mu? Bu soru, bir yazarın belirli dönemlerde “balon” üretip üretmediğini ölçer. Dönemsel değişim varsa not edilir.
+Bu yayın organının haberleri “sonuçtan sonra yeniden yazma” eğilimi taşıyor mu? Bu soru, maç sonrası anlatının manipülasyon değil ama “hikâye kurma” eğilimini ayırmak içindir. Analist bu riski bilir ve zincire göre tartar.
+Aynı haber farklı kaynaklarda doğrulanıyor mu yoksa tek kaynakta mı kalıyor? Bu soru, tek kaynak gürültüsü ile çoklu kaynak tekrarını ayırır. Tek kaynak varsa kanıt zinciri zayıf kabul edilir.
+Bu haberin dili deterministik mi yoksa abartılı/spekülatif mi ve bu dil profili yazar bazında tekrar ediyor mu? Bu soru, haberin “ton” profilini içerik üretici düzeyinde işler. Ton profili, doğruluk bandına doğrudan bağlanmaz ama risk işaretidir.
+
+ÇAPRAZ KAYNAK OKUMA SORULARI (FUTBOL) — BASIN + ODDS + MAÇ İÇİ TETİKLEYİCİLER
+
+,Bu bölümün amacı, üç ayrı hattı aynı anda “sonuç çıkarma” için birleştirmek değildir. Amaç, basın akışı, odds hareketi ve maç içi tetikleyiciler arasında tekrar eden zaman hizası ve davranış eşleşmesi olup olmadığını deterministik biçimde test etmektir. Bu bölüm, hüküm vermez; yalnız eşleşme ve eşleşmeme haritasını çıkarır. Kanıt zinciri tamamlanmadan hiçbir birim sonuç dili kuramaz.
+Bu maç için basın haber temaları ile odds hareketinin zaman penceresi çakışıyor mu? Bu soru, “haber çıktı → piyasa hareket etti” gibi bir iddiayı test edilebilir hale getirir. Çakışma yoksa ilişki zayıf kabul edilir.
+
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma tek bookmaker’da mı yoksa birden çok bookmaker’da mı görülüyor? Bu soru, tekil kaynak sapmasını piyasa geneli sapmadan ayırır. Tekil sapma düşük güven sınıfıdır.
+Basın haber temaları ile odds hareketi çakışıyorsa çakışma hangi lig/organizasyon sınıfında daha sık görülüyor? Bu soru, çapraz eşleşmenin ülke/lig bazında kümelenip kümelenmediğini ölçer. Kümelenme varsa harita çıkar.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma dönemsel mi sabit mi rotasyonlu mu? Bu soru, rastgele görünen davranışın dönemsel haritası olup olmadığını test eder. Rotasyon varsa not edilir.
+Basın haber temaları ile odds hareketi çakışıyorsa bu çakışma sezon fazına göre artıyor mu (sezon başı/sonu, transfer dönemi)? Bu soru, “geçiş dönemleri” etkisini ölçer. Bazı çapraz eşleşmeler sezon geçişlerinde artabilir.
+
+Odds hareketi maç içi kader tetikleyicilerinden önce mi başladı yoksa tetikleyiciden sonra mı yoğunlaştı? Bu soru, zaman yönünü belirler. Tetikleyici sonrası hareket normal bant olabilir; tetikleyici öncesi hareket sapma adayını güçlendirir.
+Odds hareketi tetikleyici olmadan oluşuyorsa bu hareket maç içi segment davranışında bir değişimle eşleşiyor mu? Bu soru, “olay yok ama davranış kaydı var” senaryosunu yakalar. Segment DNA değişiyorsa bu ayrıca işaretlenir.
+Maç içi tetikleyicilerden hangileri odds hareketiyle en sık çakışıyor (kırmızı kart, VAR, penaltı, iptal gol)? Bu soru, piyasanın en hassas olduğu tetikleyici sınıfları çıkarır. Bu bir tahmin aracı değil, örüntü haritasıdır.
+Maç içi tetikleyiciler ile basın temaları aynı hafta penceresinde eşleşiyor mu? Bu soru, basının tetikleyici üretip üretmediğini değil, basın konuştuğu şeyle maç içinin kesişip kesişmediğini test eder.
+Basın teması “hakem/adalet” ise maç içi kart ve VAR tetikleyicileriyle eşleşme bandı artıyor mu? Bu soru, tematik eşleşmeyi test eder. Eşleşme varsa yalnız işaretlenir, hüküm kurulmaz.
+Basın teması “sakatlık/eksik” ise maç içi segmentlerde kondisyon düşüşü veya tempo kırılmasıyla eşleşme var mı? Bu soru, haber bağlamının sahaya yansıyıp yansımadığını ölçer.
+Basın teması “transfer/kriz/yönetim” ise maç içi disiplin bandında kart yoğunluğu artıyor mu? Bu soru, haber-temelli baskının disipline yansıma ihtimalini test eder. Tek seferlikte hüküm yoktur, tekrar aranır.
+
+Bu eşleşmeler takım bazında mı kümeleniyor yoksa lig bazında mı kümeleniyor? Bu soru, yapının nerede olduğunu ayırır. Takım bazlıysa takım DNA’sına, lig bazlıysa lig davranışına yazılır.
+Bu eşleşmeler bookmaker bazında mı kümeleniyor yoksa piyasa geneline mi yayılıyor?nBu soru, sapmanın kaynak sınıfını belirler. Bookmaker profili ayrı raf nesnesidir.
+Bu eşleşmeler belirli yazar/editör kaynaklarında mı yoğunlaşıyor? Bu soru, haber kaynağı güven haritasını çapraz hatla birleştirir. Aynı yazarın haberleriyle eşleşme yüksekse işaretlenir.
+Bu eşleşmelerde tekrar eden bir “tetikleyici sırası” var mı (haber tonu → odds kayması → kart/VAR → tempo kırılması)? Bu soru, zincir şeması çıkarır. Zincir şeması varsa bu yalnız örüntüdür, hüküm değildir.
+Bu eşleşmelerde “anomali yok” durumunda da normal bant korunuyor mu? *Bu soru, sistemin en kritik ilkesini korur: anomali çıkmaması da bir sonuçtur. Normal bant korunuyorsa bu bilgi raflara yazılır.
+Bu eşleşmelerde veri eksikliği veya kalite düşüşü var mı ve “anomali yok” ile karışıyor mu? Bu soru, data\\\_quality ayrımını çapraz okuma içinde de korur. Eksik veri varsa eşleşme hükmü kurulmaz.
+
 Bu haber kaydı hangi UTC zaman damgası ile sabitlendi?,Bu haberin yayın UTC zaman damgası var mı, unknown mu?,Bu haberin kayıt UTC zaman damgası var mı, unknown mu?,Bu haberin yayın saati ile kayıt saati arasındaki fark kaç dakikadır?
 Bu haberin kayıt saati yayın saatinden önce mi sonra mı?,Bu haber sezon içi mi sezon arası mı?,Bu haber “transfer dönemi” penceresinde mi?,Bu haber hangi ülke_ref altında raflanacak?,Bu haber country_ref map edilebildi mi, unmapped mi?,Bu haber hangi lig_ref altında raflanacak?,Bu haber lig_ref map edilebildi mi, unmapped mi?,Bu haber hangi sezon_id içinde okunacak?,Bu haber season_id map edilebildi mi, unmapped mi?,Bu haber season_phase olarak hangi faza yazılacak (pre_season, season_start, season_mid, season_end,off_season)?,Bu haber competition_type olarak hangi sınıfta (league, cup, continental, national_team) işlenecek?,Bu haber cup_flag taşıyor mu (true/false)?,Bu haber hangi team_ref ile ilişkilendirilecek?,Bu haber team_ref map edilebildi mi, unmapped mi?
 Bu haber tek takıma mı bağlı yoksa iki takıma mı bağlı (tekil/çift takım bağlamı)?,Bu haber iki takım bağlıysa rakip team_ref map edilebildi mi, unmapped mi?,Bu haber match_ref’e bağlanabiliyor mu yoksa sadece takım bağlamında mı kalmalı?,Bu haber match_ref map edilebildi mi, unmapped mi?,Bu haber tek bir maç penceresine mi bağlı yoksa maç dışı genel haber mi?,Bu haber bir maç öncesi penceresine mi ait yoksa maç sonrası penceresine mi ait?
@@ -4093,12 +3925,14 @@ support_trace.news.locked_at_utc → timestamp_utc → unknown,support_trace.new
 support_trace.news.record_vs_publish_order → enum(before,after,unknown) → unknown,support_trace.news.context_scope → enum(single_match_window,non_match_general,unknown) → unknown
 support_trace.news.pre_post_window → enum(pre_match,post_match,unknown) → unknown,support_trace.news.timing_bucket → enum(pre_match,post_match,between_matches,unknown) → unknown
 support_trace.refs.country_ref → string → unknown,support_trace.refs.country_ref_map_status → enum(mapped,unmapped,unknown) → unknown.support_trace.refs.league_ref → string → unknown,support_trace.refs.league_ref_map_status → enum(mapped,unmapped,unknown) → unknown
+
 support_trace.refs.season_id→ string→ unknown,support_trace.refs.season_id_map_statu→ enum(mapped,unmapped,unknown) → unknown.support_trace.refs.team_primary_ref → string → unknown,support_trace.refs.team_primary_ref_map_status → enum(mapped,unmapped,unknown) → unknown
 support_trace.context.team_binding_mode → enum(single_team,two_teams,unknown) → unknown,support_trace.refs.team_secondary_ref → string → unknown
 support_trace.refs.team_secondary_ref_map_status → enum(mapped,unmapped,unknown) → unknown,support_trace.event.set_mode → enum(single_event,multi_event_set,unknown) → unknown
 support_trace.event.sub_event_count → integer → unknown,support_trace.dedupe.is_duplicate_flag → boolean → unknown.support_trace.dedupe.republished_same_day_flag → boolean → unknown,support_trace.dedupe.deduplicated_flag → boolean → unknown
 support_trace.dedupe.dedup_key_status → enum(mapped,unmapped,unknown) → unknown,support_trace.cross_reference.source_url_presence → boolean → unknown
 support_trace.cross_reference.source_urlstring→unknown,support_trace.cross_reference.source_domain_detected→ boolean→unknown.support_trace.cross_reference.source_domain_allowlisted→ boolean→unknown,support_trace.cross_reference.canonical_url_generated→ boolean→ unknown
+
 support_trace.cross_reference.canonical_url→string→unknown,support_trace.source.profile.count→enum(single,multi,unknown)→unknown
 support_trace.source.profile.consensus → enum(confirming,diverging,mixed,unknown) → unknown,support_trace.source.profile.same_day_crosspost → boolean → unknown
 support_trace.source.primary.officiality → enum(official,unofficial,unknown) → unknown,support_trace.source.publisher.ref_id → string → unknown
@@ -4127,7 +3961,6 @@ ZORUNLU KONFİGÜRASYON DOSYASI:
 
 Zorunlu index dosyaları her çalıştırmada üretilir: 
 ./library/basketball\\\_index.json, ./library/basketball\\\_summary.json, ./library/basketball\\\_today\\\_matches.json, ./library/basketball\\\_anomalies\\\_public.json, ./library/basketball\\\_anomalies\\\_vip.json. Dosyalar boş olabilir ama üretimi zorunludur. 
-
 “Anomali yok” yalnız sapma skoru hesaplanmış ve eşik altında kalmış durumda kullanılabilir; veri eksikliği “anomali yok” yazılamaz. Log/denetim zorunludur: hangi veri çekildi, hangi kütüphaneye yazıldı, hangi örüntü eşleşti, hangi anomali bayrağı yandı, hangi kayıt unmapped kaldı, hangi data\\\_quality\\\_badge uygulandı. Bu promptta tanımlanan yapı tamamlanmış ve kilitlenmiş bir basketbol sistem mimarisidir. Kod yazarı metni yorumlamaz; ekleme/çıkarma yapmaz; sırayı bozmaz; isimleri değiştirmez; branş dışı etiket üretmez; veri yoksa uydurmaz.\*\*
 
 FAZ-27
@@ -4548,14 +4381,12 @@ Penaltı kararı veya iptali sonrası tribün baskısı oyuncu davranışını b
 
 VAR incelemesi oldu mu, hangi karar türüne bağlandı ve VAR müdahalesi maçın ritmini kırarak tempo bandını değiştirdi mi? Bu soru, VAR’ın ritim kırıcı etkisini ölçer.
 VAR sonrası takım “kafa düşmesi” döngüsüne mi giriyor yoksa “öfke yükselişi” döngüsüne mi? Bu soru, VAR tetikleyicisinin davranış yönünü belirler. Aynı olay farklı takımlarda zıt kader üretir.
-
 İptal edilen gol oldu mu ve iptal sonrası ilk 5 dakikada takım davranışı neye döndü? Bu soru, moral kırılması veya agresyon artışı gibi kader değiştirici profilleri yakalar.
 İptal edilen gol sonrası tribün baskısı oyuncu karar kalitesini düşürüyor mu? Bu soru, “küçük tetikleyici + büyük basınç” birleşimini yakalar. Zor maçların çoğu bu birleşimde çözülür.
 
 İlk gol hangi segmentte geldi ve ilk gol takımın davranışını deterministik değiştiriyor mu? Bu soru, skor eşiğinin psikolojik etkisini ölçer.
 İlk gol sonrası takımın iç saha/deplasman davranışı ayrışıyor mu? Bu soru, “iç sahada kapanma”, “deplasmanda panik” gibi ayrımları yakalar.
 Beraberlik golü hangi segmentte geldi ve beraberlikten sonraki ilk 10 dakikada kopma oluşuyor mu? Bu soru, denge kırılmasının tekrar eden yönünü ölçer.
-
 Kopma golü sonrası takım “maçı bırakma” döngüsüne mi giriyor yoksa “son bir dalga” döngüsüne mi? Bu soru, takımın mücadele profili ve çöküş eşiğini adresler.
 Sakatlık veya uzun duraklama oldu mu ve bu duraklama ritmi bozarak takımın davranışını değiştirdi mi? Bu soru, ritim bozan küçük olayların kader etkisini ölçer.
 Sakatlık kritik oyuncuda mı oldu ve kritik oyuncu kaybı takımın skor üretimini çökertecek kadar bağımlı mı? Bu soru, takımın “tek oyuncu bağımlılığı” ile kader tetikleyicisini birleştirir.
@@ -5149,13 +4980,11 @@ provider ID değişebilir; bu nedenle tüm varlık kartları provider ID ile tek
 
 Takım Kartı Kimliği 
 (TEAM\\\_CANON\\\_ID) | ülke + lig + takım adı + şehir + renk + varsa stat ismi + kuruluş tarihi(GGAAYY) + cinsiyet(male/female/mixed/unknown) + sayaç(00001–10000, auto) birleşimidir; sayaç elle yazılmaz. 
-
 Oyuncu Kartı Kimliği 
 (PLAYER\\\_CANON\\\_ID) | ad soyad + doğum tarihi + pozisyon + ilk lisans aldığı takım + başladığı yıl + uyruk + cinsiyet(male/female/unknown) + en son oynadığı takım + sayaç(000001–100000, auto) birleşimidir; sayaç elle yazılmaz. 
 
 Hoca Kartı Kimliği 
 (COACH\\\_CANON\\\_ID) | ad soyad + doğum tarihi + uyruk + cinsiyet(male/female/unknown) + başladığı kulüp + başladığı yıl + sayaç(00001–10000, auto) birleşimidir; sayaç elle yazılmaz. 
-
 Hakem Kartı Kimliği 
 (REFEREE\\\_CANON\\\_ID) | ad soyad + doğum tarihi + uyruk + cinsiyet(male/female/unknown) + başladığı yıl + statüsü + sayaç(000001–100000, auto) birleşimidir; sayaç elle yazılmaz; statü veri yoksa unknown yazılır. Kimlik Drift Tespiti (Kilit Davranış) | yeni provider ID geldiğinde canonical\\\_identity\\\_key eşleşiyorsa sistem same\\\_entity\\\_id\\\_drift\\\_detected işaretler, provider\\\_id günceller, canonical kimliği değiştirmez; canonical\\\_identity\\\_key üretilemeyecek kadar eksik veri varsa kayıt data\\\_quality\\\_badge ile güvenli saklanır, zorla eşleştirme yapılmaz.\*\*
 
@@ -5358,48 +5187,40 @@ Bu sistemin tek sayısal çıktısı “Değer Notu (10x)”dur, bu not bir öne
 
 KLASMAN NOTU ÜRETİMİ (KİLİT) | 
 Klasman Notu resmi yarış sınıfı içinde 10–1 bandında uzun vadeli profil seviyesidir, değer notu değildir kupon dili değildir tek koşu sonucu üretmez, çoklu kanıt birleşimiyle verilir tek veriyle karar verilmez, rakip sınıfı dayanımı mesafe esnekliği pist tipi/pist durumu esnekliği kilo dayanımı/hassasiyeti kalabalık dayanımı start stabilitesi enerji dağılımı/sprint profili finiş stabilitesi/tekrar edebilirlik jokey bağımlılığı/esnekliği mücadele iştahı/y yarış bırakmama disiplinine göre okunur, format sabittir “Grup 2/8”, değer notu formatına çevrilemez.
-
 KOŞU GÜNÜ DEĞER NOTU (KİLİT) | 
 Yalnız o günkü koşu şartlarında atın ayağa oturuş uygunluğunu 10 üzerinden ölçer, klasman notundan ayrıdır, tek veriyle yükselmez, kanıt zinciri tamamlanmadan yükseltilmez, çıktı dili sabittir “Değer Notu: 10 üzerinden X”, kupon dili değildir banko dili değildir kesinlik iddiası değildir, veri yoksa incomplete/low ile güvenli kalır.
 
 JOKEY PUAN AYRIMI (KİLİT) | 
 Jokey Klasman Notu J-1…J-10 uzun vadeli sürüş disiplinidir değer notu değildir, Jokey Koşu Günü Uygunluk Notu yalnız o günkü eşleşmenin 10 üzerinden uygunluğudur, tek veriyle yükseltilmez, jokey değerlendirmesi atla eşleşme ve atın jokeye bağımlılığıyla birlikte okunur.
-
 PATRON/SAHİP PUAN AYRIMI (KİLİT) | 
 Patron Profil Notu P-1…P-10 uzun vadeli katılım ve dağılım karakteridir güç/otorite notu değildir, Patron Koşu Günü Dağılım Etkisi yalnız o günün koşusunda 10 üzerinden dağılım ağırlığıdır suçlama değildir dış el/şike/mafya dili yasaktır, Patron etkisi atın koşu günü değer notunu override edemez yalnız eşitlik kırıcı ikinci katmandır.
 
 ÖRÜNTÜ DUVARI (KİLİT) | 
 Örüntü duvarı ham kayıt değildir, ham rafların üzerinde çalışan tekrar eden imzaları tekilleştiren ve geçmişten geleceğe okunur hale getiren üst katmandır, kupon dili konuşmaz tahmin üretmez yalnız bant ve imza taşır, Analist’in mikro kararlarını devirmez mikro kararların üstüne “kapsama genişliği” ve “sapma alarmı” bindirir, append-only çalışır revizyon eklenir eski silinmez geriye dönük iz kaybolmaz.
-
 MAKRO DENETİM — MİKRO KARAR (KİLİT) | 
 Ayak ayak yapılan okuma mikro karardır: at+jokey+patron ve koşu şartında kim doğal avantaj topluyor kim nereden kırılıyor okunur, altılı bütününe bakmak makro denetimdir: gün stabil mi dalgalı mı sürpriz riski yükseliyor mu favori yoğunluğu nasıl ödül bandı dağılımı nasıl geçmişte benzer günlerde sapma olmuş mu okunur, makro denetim ayak kararını sıfırdan yazmaz ayak kararının güven bandını ayarlar sapma günlerinde kapsama genişliğini belirler.
 
 SAPMA GÜNLERİNDE ANALİSTİN ÜST GÖREVİ (KİLİT) | 
 Makro örüntü “bu at gelir” dedirtmez, “bu ayakta kapsama dar mı normal mi geniş mi olmalı”yı belirler, sistem ayak başına “Kapsama Önerisi Bandı” üretir: dar/normal/geniş, dayanak takvim örüntüsü ödül bandı patron döngüsü imzalarıdır, rastgele genişleme yapılmaz, sapma günlerinde gelen kesitlerin dağılımı izlenir sapma 1–2’de mi 3–4’te mi görülüyor bilgisi kapsama bandının sınırını belirler.
-
 KESİT STANDARDI (KİLİT) | 
 Örüntü duvarında kesit standardı “ilk 4” üzerinden kilitlenmiştir, kesit örüntüleri duvara asılırken bağlam alanları sabittir: zaman/takvim, hipodrom, jokey havuzu, patron havuzu, ödül bandı; eksik bırakılamaz, bazıları var bazıları yok karışıklığına izin verilmez.
 
 TAKVİM RAFI (KİLİT) | 
 Örüntü yakalamak için takvim rafı zorunludur, üç seviyede kırılır: yıl+ay, haftanın günü, ayın haftası; dönemsel/haftalık/periyodik döngüler aynı anda yakalanır, kart çoğaltmak için değil aynı kartı farklı raf adreslerinden referanslamak için kullanılır.
-
 KOŞU GÜNÜ KOMPOZİSYON ÖRÜNTÜ KARTI (KİLİT) | 
 Aynı gün koşulan tüm ayakların gün dokusunu tek bakışta gösteren ölçüm kartıdır, tahmin üretmez kupon dili konuşmaz hüküm kurmaz, zorunlu alanlar: günün güç düzeyi bandı, saha kalitesi bandı, favori yoğunluğu bandı, tempo baskısı bandı, sürpriz riski bandı, gün içi dalgalanma bandı, tekilleştirilir append-only revizyonla güncellenir, aynı gün kimliği üzerinden takvim rafına dağıtılır: yıl/ay, haftanın günü, ayın haftası zorunludur.
 
 JOKEY ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | İstikrar bandı, Taşıma bandı (1–2–3–4 kesit taşıma), Kalabalık yönetim bandı (çok atlı/normal), Tempo bandı (yüksek/normal/düşük), Uyum bandı (bu koşul örgüsüne uyum yüksek/normal/düşük), tempo ve uyum aynı banda sıkıştırılmaz tempo ayrı eksen uyum ayrı eksendir.
-
 PATRON ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | 
 Katılım bandı, Hedef bandı, Taşıma bandı (1–2–3–4), Jokey tercih imzası, İstikrar bandı, Kesit eğilimi bandı (1’e mi 2–3’e mi 4’e mi yığılır), iddia üretmez yalnız dağılım haritası taşır.
 
 PİYASA/ORAN ÖRÜNTÜ KARTI (KİLİT BANT SETİ) | 
 Oran görünürlük bandı, Kapanış oranı bandı, Sabitlenen oran bandı, Oran–kesit eşleşmesi bandı, suçlama dili üretmez yalnız ölçüm bandı taşır.
-
 ANTRENÖR/TRAINER ÖRÜNTÜ KARTI (OPSİYONEL BEST-EFFORT) | 
 Çekirdek 6 karta dahil değildir, best-effort ek karttır, veri gelirse işlenir veri gelmezse boş kalır ve karar akışını etkilemez sistemi kilitlemez.
 
 ÖDÜL BANDI (KİLİT / ZAMANDAN BAĞIMSIZ / KIYAFET ÖLÇEĞİ) | 
 0–50.000: XS, 50.001–100.000: S, 100.001–150.000: M, 150.001–200.000: L, 200.001–300.000: XL, 300.001–500.000: XXL, 500.001–1.000.000: 3XL, 1.000.001+: 4XL, veri yoksa band boş kalır.
-
 MİKRO SEGMENT STANDARDI (KİLİT) | 
 Sistem son 600/400/200 ana bandlarını taşır, ayrıca 150/100/50 bandı da tutulur, finişte “pota bandı” kırılması ayrıca işaretlenir.
 
@@ -5411,43 +5232,36 @@ GANYAN KÜTÜPHANE NAVİGASYONU (RAF SİSTEMİ) — KİLİTLİ |
 Bu sistem şehir kütüphanesi mantığıyla çalışır, her veri raflara ayrılır raflar arası veri karışmaz, her kayıt deterministik şekilde aynı raflara iner, etiketler tekilleştirilir isim değiştirilmez yeni etiket uydurulmaz aynı anlama gelen ikinci etiket açılmaz, veri yoksa boş bırakılır tahminle doldurulmaz, RAF alanları ham kayıt raflarıdır, Kimlik Kartları türetilmiş raflardır, Analist çıktısı çalışma rafıdır, bu üçü birbirine karıştırılamaz, RAF NAVİGASYONU (RAF-0…RAF-13): RAF-0 bağlayıcılık kilidi ve veri eksikse güvenli kalma, RAF-1 koşu kimliği ve bağlam, RAF-2 varlık kimlikleri (at-jokey-patron), RAF-3 koşu içi metrikler ve splitler, RAF-4 trafik ve trip olayları, RAF-5 start ve yerleşim, RAF-6 kalabalık ve kulvar davranışı, RAF-7 pist ve mesafe tercihleri, RAF-8 form döngüsü ve fitness, RAF-9 jokey sürüş karakteri ve eşleşme, RAF-10 patron dağılım ve katılım haritası, RAF-11 koşu günü kompozisyonu, RAF-12 piyasa ve oran hareketi, RAF-13 veri kalitesi ve mapleme.
 
 RAF-0 SİSTEM BAĞLAYICILIĞI | Kurallar değiştirilemez, veri eksikse sistem güvenli kalır, eksik veri normal sayılmaz otomatik tamamlanmaz, karar üretimi yalnız kanıt birikimiyle yapılır, kesin kazanır banko tek dili üretilmez, ölçüm dili kullanılır, “uyumsuz” kelimesi kullanılmaz yumuşak ölçüm dili zorunludur.
-
 RAF-1 KOŞU KİMLİĞİ VE BAĞLAMI | 
 race\\\_id ana anahtardır, race\\\_date\\\_utc track\\\_name race\\\_no distance\\\_m surface\\\_type surface\\\_condition field\\\_size race\\\_class\\\_official zorunludur, bunlardan biri eksikse data\\\_quality\\\_badge incomplete olur ve kayıt karar üretimine uygun sayılmaz.
 
 RAF-2 VARLIK KİMLİKLERİ | 
 horse\\\_id jockey\\\_id owner\\\_id tekilleştirilmiş ana anahtarlardır, aynı varlık farklı yazımlarla tekrar açılmaz, alias varsa alias alanına eklenir ana kimlik değiştirilmez, external id varsa ilgili external\\\_ids alanına eklenir yoksa boş bırakılır, eşleşmeyen entity unmapped kalır zorla map edilmez.
-
 RAF-3 KOŞU İÇİ METRİKLER | 
 split süreleri ve pozisyonları taşır, segmentler sabittir start-çıkış ilk bölüm orta bölüm viraj son600 son400 son200 finiş, segment süresi yoksa segment notu üretilmez yalnız gelen splitler işlenir gelmeyen veri tahmin edilmez.
 
 RAF-4 TRAFİK VE TRİP OLAYLARI | 
 yalnız olay bayraklarını işler neden-sonuç açıklaması eklemez, trafik kırığı varsa süre bozulması doğrudan form düşüşü sayılmaz bu yalnız veri notudur.
-
 RAF-5 START VE YERLEŞİM | 
 start reaksiyonu ve ilk yerleşim disiplinini taşır, hızlı çıkış her zaman iyi değildir uzun mesafede erken bitme riskidir, lead alınması/pres/bekleme bayrakları burada tutulur.
 
 RAF-6 KALABALIK VE KULVAR DAVRANIŞI | 
 grup içinde rahatlık/sıkışma/grup dışına kaçış/içe kapanma/dışa açılma bantları, kulvar tek başına hüküm değildir kalabalık toleransı ve trafik kırığı ile birlikte okunur.
-
 RAF-7 PİST VE MESAFE TERCİHLERİ | 
 çim/kum/sentetik ve pist durumu bandı, zemin yorumu tek yarışla yapılmaz, mesafe bantları kısa-orta-uzun, 1200–1400 ile 2000–2400 ayrı profildir.
 
 RAF-8 FORM DÖNGÜSÜ VE FİTNES | 
 form\\\_cycle\\\_stage ve form\\\_trend alanları, form düşüşü tek cümleyle yazılmaz yalnız tekrar ve şart bağımlılığıyla işaretlenir, layoff\\\_days ve fitness\\\_band burada tutulur.
-
 RAF-9 JOKEY SÜRÜŞ KARAKTERİ VE EŞLEŞME | 
 jokeyin stilini tempo yönetimini finiş zamanlamasını kalabalık içinde yol bulmasını taşır, jokey iyi ifadesi tek başına hüküm değildir atla eşleşme ve atın jokeye bağımlılığı ile birlikte okunur.
 
 RAF-10 PATRON DAĞILIM VE KATILIM HARİTASI | 
 ödül bandı katılım sıklığı kazanım periyot dağılımı uzun süre kazanmama kırılması strateji yayılımı jokey tercih korelasyonu gibi örüntüler, suçlama üretmez dış el şike mafya yasaktır yalnız istatistiksel dağılım haritası üretir.
-
 RAF-11 KOŞU GÜNÜ KOMPOZİSYONU | 
 ayak içi alan gücü/alan kalitesi/favori yoğunluğu/tempo baskısı/sürpriz riski/yarış varyansı bantları, tek başına karar değildir kanıt zincirini destekleyen ikinci katmandır.
 
 RAF-12 PİYASA VE ORAN HAREKETİ | 
 public\\\_rank odds\\\_open odds\\\_close odds\\\_movement bandları, oran hareketi tek başına hüküm değildir yalnız kanıt hattına eklenir.
-
 RAF-13 VERİ KALİTESİ VE MAPLEME | 
 source\\\_name source\\\_timestamp\\\_utc mapping\\\_status unmapped\\\_entities validation\\\_errors missing\\\_fields data\\\_quality\\\_badge, veri eksikse badge incomplete veya low olur, veri eksikliği normal sayılmaz sistem güvenli kalır.
 
@@ -5552,78 +5366,56 @@ Sistem son 600/400/200 ana bandlarını taşır, ayrıca 150/100/50 bandı da tu
 
 GANYAN ANALİST EĞİTİM KİTAPÇIĞI (SORU OMURGA) — KİLİTLİ |
 Bu kitapçık Analist’in ezbersiz doğru soruyu sormasını ve kanıt zinciri kurmasını zorunlu kılar, her soru geçmiş veriyle doğrulanır, hiçbir soru tek başına hüküm kurdurmaz, hiçbir cevap tek başına karar vermez, kupon dili değildir 
-
 tahmin dili değildir yalnız ölçüm ve kanıt toplama disiplinidir, üretilen tüm çıktılar etiketlenebilir alanlara bağlanır, kütüphaneci alan dışına çıkamaz veri yoksa alan boş kalır, at kartı bağlam zorunluları: race\\\_date\\\_utc track
-
 \\\_name surface\\\_type surface\\\_condition distance\\\_m race\\\_class\\\_official race\\\_no horse\\\_id (eksikse data\\\_quality\\\_badge incomplete), resmi sınıf+klasman notu formatı “Grup 2/8” (değer notu değildir), koşu günü 
-
 değer notu formatı “Değer Notu: 10 üzerinden X” (kupon dili değildir), zemin-mesafe-kilo üçlüsü ayrılmaz, aynı mesafe+benzer zeminde farklı kilo ile bitiriş süresi taşıma kapasitesini gösterir, zemin bandı çim/kum/sentetik ve pist 
-
 durumu hızlı/normal/ağır/çamur, mesafe bantları kısa/orta/uzun ve 1200–1400 ile 2000–2400 ayrı profildir, enerji dağılımı start-çıkış ilk bölüm orta bölüm viraj son600 son400 son200 finiş segmentleriyle okunur, start refleksi 
 
 hızlı/normal/geç/oyalanma ve hızlı çıkış her zaman iyi değildir, kalabalık toleransı grup içinde rahat/sıkışma/grup dışına kaçış/içe kapanma/dışa açılma, kulvar iç/orta/dış tek başına hüküm değildir kalabalık+trafikle okunur, stil önde 
-
 kaçan/pres yapan/bekleyen/sprintçi/tempo kırıcı, tempo uyumu yüksek tempoda stabil/erken biten düşük tempoda patlayan/etkisiz, viraj davranışı akışkan/balans bozan/yol arayan/sıkışan, finiş stabilitesi finişte diri/düşen/tekrar açılan, 
-
 mücadele karakteri yarış iştahı yüksek/düşük mücadeleyi bırakmayan/kolay vazgeçen, stabilite bandı stabil/dalgalı/kırılgan, ekipman gözlük/dilbağı/kulaklık ayrı kaydedilir ekipman değişimi tek başına sebep ilan edilmez, rakip normalize 
-
 aynı sınıf/üst sınıf/alt sınıf, form düşüşü aynı mesafe+benzer zemin+benzer sınıfta süre kötüleşmesi ana kanıt tek yarışla hüküm olmaz tekrar aranır, jokey etkisi jokey-at uyumu ve jokeyin genel formu ile ayrıştırılır, trafik kırığı 
-
 bayrakları zorunludur (yol buldu/yol bulamadı/sıkıştı/açıldı/erken çıkış/geç çıkış) trafik varsa süre bozulması doğrudan form düşüşü sayılmaz, sprint tetikleme son600/son400/son200 açamayan bantları, erken yüklenme riski erken 
 
 yaktı/kontrollü yaktı/geç yaktı, beklenen-çıkan sapma beklenen bant içinde/üstü/altı, öngörülebilirlik riski düşük/normal/yüksek, hassasiyet iç kulvar toleransı düşük/dış kulvar toleransı düşük/grup toleransı düşük/ekipman toleransı 
-
 düşük, hipodrom uyumu yüksek/normal/düşük, koşu sıklığı toleransı kısa aralıkta tolerans yüksek/düşük, kapanış hızlanması son200 güçlü/zayıf, baskı altında reaksiyon toparlıyor/dağılıyor/kaçıyor, rakip geçtiğinde cevap 
-
 veriyor/veremiyor/geç tepki, düzlüğe çıkış ön grupta/orta grupta/geride, baş-boy farkı tek başına kalite sayılmaz sınıf+zeminle normalize edilir, saha dışı veri yoksa padok/yürüyüş boş bırakılır data\\\_quality\\\_badge incomplete olur 
-
 hüküm üretilmez, hedef koşu varsayımı hüküm değildir yalnız tekrar eden kasıtlı tutma izleri varsa “olası hazırlık davranışı” etiketi, tek potansiyeli yalnız tam kanıt zinciri sonrası yazılır, yorum yasağı kesindir “kesin kazanır banko 
-
 tek” yazılamaz veri eksikse “anomali yok” denemez yalnız eksik yazılır.
 
-FAZ-39
-GANYAN KÜTÜPHANE NAVİGASYONU (RAF SİSTEMİ) — KİLİTLİ |
+FAZ-39  GANYAN KÜTÜPHANE NAVİGASYONU (RAF SİSTEMİ) — KİLİTLİ |
 Bu sistem şehir kütüphanesi mantığıyla çalışır, her veri raflara ayrılır raflar arası veri karışmaz, her kayıt deterministik şekilde aynı raflara iner, etiketler tekilleştirilir isim değiştirilmez yeni etiket uydurulmaz aynı anlama gelen ikinci etiket açılmaz, veri yoksa boş bırakılır tahminle doldurulmaz, RAF alanları ham kayıt raflarıdır, Kimlik Kartları türetilmiş raflardır, Analist çıktısı çalışma rafıdır, bu üçü birbirine karıştırılamaz, RAF NAVİGASYONU (RAF-0…RAF-13): RAF-0 bağlayıcılık kilidi ve veri eksikse güvenli kalma, RAF-1 koşu kimliği ve bağlam, RAF-2 varlık kimlikleri (at-jokey-patron), RAF-3 koşu içi metrikler ve splitler, RAF-4 trafik ve trip olayları, RAF-5 start ve yerleşim, RAF-6 kalabalık ve kulvar davranışı, RAF-7 pist ve mesafe tercihleri, RAF-8 form döngüsü ve fitness, RAF-9 jokey sürüş karakteri ve eşleşme, RAF-10 patron dağılım ve katılım haritası, RAF-11 koşu günü kompozisyonu, RAF-12 piyasa ve oran hareketi, RAF-13 veri kalitesi ve mapleme.
 
 RAF-0 SİSTEM BAĞLAYICILIĞI |
 Kurallar değiştirilemez, veri eksikse sistem güvenli kalır, eksik veri normal sayılmaz otomatik tamamlanmaz, karar üretimi yalnız kanıt birikimiyle yapılır, kesin kazanır banko tek dili üretilmez, ölçüm dili kullanılır, “uyumsuz” kelimesi kullanılmaz yumuşak ölçüm dili zorunludur
-
 RAF-1 KOŞU KİMLİĞİ VE BAĞLAMI |
 race\\\_id ana anahtardır, race\\\_date\\\_utc track\\\_name race\\\_no distance\\\_m surface\\\_type surface\\\_condition field\\\_size race\\\_class\\\_official zorunludur, bunlardan biri eksikse data\\\_quality\\\_badge incomplete olur ve kayıt karar üretimine uygun sayılmaz.
-
 RAF-2 VARLIK KİMLİKLERİ |
 horse\\\_id jockey\\\_id owner\\\_id tekilleştirilmiş ana anahtarlardır, aynı varlık farklı yazımlarla tekrar açılmaz, alias varsa alias alanına eklenir ana kimlik değiştirilmez, external id varsa ilgili external\\\_ids alanına eklenir yoksa boş bırakılır, eşleşmeyen entity unmapped kalır zorla map edilmez.
 
 RAF-3 KOŞU İÇİ METRİKLER |
 split süreleri ve pozisyonları taşır, segmentler sabittir start-çıkış ilk bölüm orta bölüm viraj son600 son400 son200 finiş, segment süresi yoksa segment notu üretilmez yalnız gelen splitler işlenir gelmeyen veri tahmin edilmez.
-
 RAF-4 TRAFİK VE TRİP OLAYLARI |
 yalnız olay bayraklarını işler neden-sonuç açıklaması eklemez, trafik kırığı varsa süre bozulması doğrudan form düşüşü sayılmaz bu yalnız veri notudur
-
 RAF-5 START VE YERLEŞİM |
 start reaksiyonu ve ilk yerleşim disiplinini taşır, hızlı çıkış her zaman iyi değildir uzun mesafede erken bitme riskidir, lead alınması/pres/bekleme bayrakları burada tutulur.
 
 RAF-6 KALABALIK VE KULVAR DAVRANIŞI | 
 grup içinde rahatlık/sıkışma/grup dışına kaçış/içe kapanma/dışa açılma bantları, kulvar tek başına hüküm değildir kalabalık toleransı ve trafik kırığı ile birlikte okunur.
-
 RAF-7 PİST VE MESAFE TERCİHLERİ |
 çim/kum/sentetik ve pist durumu bandı, zemin yorumu tek yarışla yapılmaz, mesafe bantları kısa-orta-uzun, 1200–1400 ile 2000–2400 ayrı profildir.
-
 RAF-8 FORM DÖNGÜSÜ VE FİTNES |
 form\\\_cycle\\\_stage ve form\\\_trend alanları, form düşüşü tek cümleyle yazılmaz yalnız tekrar ve şart bağımlılığıyla işaretlenir, layoff\\\_days ve fitness\\\_band burada tutulur.
 
 RAF-9 JOKEY SÜRÜŞ KARAKTERİ VE EŞLEŞME |
 jokeyin stilini tempo yönetimini finiş zamanlamasını kalabalık içinde yol bulmasını taşır, jokey iyi ifadesi tek başına hüküm değildir atla eşleşme ve atın jokeye bağımlılığı ile birlikte okunur
-
 RAF-10 PATRON DAĞILIM VE KATILIM HARİTASI |
 ödül bandı katılım sıklığı kazanım periyot dağılımı uzun süre kazanmama kırılması strateji yayılımı jokey tercih korelasyonu gibi örüntüler, suçlama üretmez dış el şike mafya yasaktır yalnız istatistiksel dağılım haritası üretir.
-
 RAF-11 KOŞU GÜNÜ KOMPOZİSYONU | 
 ayak içi alan gücü/alan kalitesi/favori yoğunluğu/tempo baskısı/sürpriz riski/yarış varyansı bantları, tek başına karar değildir kanıt zincirini destekleyen ikinci katmandır
 
 RAF-12 PİYASA VE ORAN HAREKETİ |
 public\\\_rank odds\\\_open odds\\\_close odds\\\_movement bandları, oran hareketi tek başına hüküm değildir yalnız kanıt hattına eklenir
-
 RAF-13 VERİ KALİTESİ VE MAPLEME |
 source\\\_name source\\\_timestamp\\\_utc mapping\\\_status unmapped\\\_entities validation\\\_errors missing\\\_fields data\\\_quality\\\_badge, veri eksikse badge incomplete veya low olur, veri eksikliği normal sayılmaz sistem güvenli kalır
 
@@ -5631,20 +5423,16 @@ ORTAK ETİKET SÖZLÜĞÜ (KİLİTLİ) |
 Kütüphaneci bu sözlük dışına çıkamaz, isim değiştiremez yeni etiket açamaz aynı anlama gelen ikinci etiket açamaz, eksik veri standardı sabittir: boolean null, numeric null, string null, list boş liste \\\[], missing\\\_fields her zaman liste, tahminle doldurma yasaktır, sözlük alan seti:
 
 race\\\_id, race\\\_date\\\_local, race\\\_date\\\_utc, track\\\_name, city, country, season\\\_id, meeting\\\_id, race\\\_no, race\\\_class\\\_official, race\\\_type, distance\\\_m, surface\\\_type, surface\\\_condition,
- 
 rail\\\_position, weather, temperature\\\_c, humidity\\\_pct, wind\\\_kmh, wind\\\_dir, start\\\_time\\\_local, start\\\_time\\\_utc, starting\\\_method, field\\\_size, scratchings\\\_count, race\\\_purse\\\_total, race\\\_purse\\\_breakdown, handicap\\\_type, weight\\\_handicap\\\_rule, pace\\\_projection, race\\\_shape\\\_projection, draw\\\_bias\\\_note, horse\\\_id, horse\\\_name, horse\\\_age, horse\\\_sex, horse\\\_color, sire\\\_name, dam\\\_name,
- 
 owner\\\_id, owner\\\_name, trainer\\\_id, trainer\\\_name, jockey\\\_id, jockey\\\_name, stable\\\_id, stable\\\_name, breeder\\\_name, horse\\\_external\\\_ids, horse\\\_aliases, jockey\\\_external\\\_ids, jockey\\\_aliases, 
 owner\\\_external\\\_ids, owner\\\_aliases, gate\\\_no, draw\\\_position, assigned\\\_weight\\\_kg, carried\\\_weight\\\_kg, weight\\\_change\\\_from\\\_last\\\_kg, jockey\\\_change\\\_flag, equipment\\\_blinkers, equipment\\\_visors, equipment\\\_tongue\\\_tie, equipment\\\_shadow\\\_roll, equipment\\\_hood, equipment\\\_earplugs, equipment\\\_bar\\\_shoes, equipment\\\_special\\\_notes, shoeing\\\_notes, finish\\\_pos, finish\\\_time, finish\\\_time\\\_sec,
  
 win\\\_margin\\\_len, beaten\\\_margin\\\_len, last\\\_600m\\\_sec, last\\\_400m\\\_sec, last\\\_200m\\\_sec, first\\\_200m\\\_sec, first\\\_400m\\\_sec, first\\\_600m\\\_sec, mid\\\_race\\\_position, early\\\_position, final\\\_turn\\\_position, late\\\_run\\\_strength, stride\\\_quality\\\_note, kick\\\_timing\\\_note, pace\\\_band, early\\\_speed\\\_band, mid\\\_speed\\\_band, late\\\_speed\\\_band, energy\\\_distribution\\\_profile, closing\\\_section\\\_profile, acceleration\\\_profile, deceleration\\\_profile, sustained\\\_speed\\\_profile, trip\\\_in\\\_running, traffic\\\_events, wide\\\_run\\\_meters, boxed\\\_in\\\_flag, checked\\\_flag, bumped\\\_flag, forced\\\_wide\\\_flag, 
-
 held\\\_up\\\_flag, clear\\\_run\\\_flag, rail\\\_run\\\_flag, start\\\_reaction\\\_band, break\\\_quality, gate\\\_behavior\\\_note, early\\\_settling\\\_band, lead\\\_taken\\\_flag, stalking\\\_flag, midpack\\\_flag, backmarker
 \\\_flag, crowd\\\_tolerance\\\_band, pack\\\_running\\\_preference, inside\\\_running\\\_preference, outside\\\_running\\\_preference, overtaking\\\_behavior\\\_band, pressure\\\_response\\\_band, head\\\_to\\\_head\\\_behavior\\\_band, surface\\\_preference\\\_band, distance\\\_preference\\\_band, track\\\_preference\\\_band, condition\\\_preference\\\_band, slope\\\_preference\\\_band, form\\\_cycle\\\_stage, form\\\_trend\\\_3, form\\\_trend\\\_5, 
 
 peak\\\_form\\\_flag, decline\\\_form\\\_flag, rebound\\\_form\\\_flag, layoff\\\_days, fitness\\\_band, trial\\\_result\\\_note, jockey\\\_horse\\\_synergy\\\_band, horse\\\_jockey\\\_dependency\\\_band, jockey\\\_style\\\_band, 
 jockey\\\_aggression\\\_band, jockey\\\_patience\\\_band, jockey\\\_closing\\\_skill\\\_band, jockey\\\_pace\\\_judgement\\\_band, jockey\\\_pressure\\\_management\\\_band, owner\\\_purse\\\_appetite\\\_band, owner\\\_frequency\\\_band, 
-
 owner\\\_rotation\\\_band, owner\\\_targeting\\\_band, owner\\\_distribution\\\_pattern, owner\\\_repeat\\\_win\\\_pattern, owner\\\_long\\\_dry\\\_spell\\\_flag, composition\\\_strength\\\_band, field\\\_quality\\\_band, favorite\\\_density\\\_band, pace\\\_pressure\\\_density\\\_band, upset\\\_risk\\\_band, race\\\_variance\\\_band, public\\\_rank, public\\\_odds\\\_open, public\\\_odds\\\_close, public\\\_odds\\\_low, public\\\_odds\\\_high, odds\\\_movement\\\_band, late\\\_support\\\_flag, drifting\\\_flag, data\\\_quality\\\_badge, missing\\\_fields, source\\\_name, source\\\_timestamp\\\_utc, mapping\\\_status, unmapped\\\_entities, validation\\\_errors.
 
 
@@ -5658,8 +5446,7 @@ Tüm varlıklar benzersiz referans kimlikle tutulur, dış kaynak ID’leri bu k
 AT KİMLİK STANDARDI (KİLİT) |
 At kimliği sırası kilitlidir: Orijin → At Adı → Sahip → Yaş → Renk → Kayıt Tarihi (YYYY/MM/DD) → Otomatik Sayaç, otomatik sayaç 10.000’den başlar otomatik artar elle yazılmaz, dış kaynak ID’ler yerine geçmez yalnız external\\\_ids alanında tutulur
 
-FAZ-40
-AT KİMLİK KARTI (HORSE IDENTITY CARD) — KİLİTLİ ŞEMA |
+FAZ-40 AT KİMLİK KARTI (HORSE IDENTITY CARD) — KİLİTLİ ŞEMA |
 Horse kimlik kartı profil varlığıdır tek yarış sonucu değildir yorum değildir kupon değildir,
 
 horse\\\_id tek anahtar horse\\\_name görünen ad aliaslar ayrı tutulur aynı at farklı yazımla tekrar açılmaz, zorunlu alanlar:
@@ -5676,67 +5463,47 @@ jockey\\\_id jockey\\\_name jockey\\\_age\\\_band jockey\\\_weight\\\_band jocke
 PATRON/SAHİP KİMLİK KARTI (OWNER IDENTITY CARD) — KİLİTLİ ŞEMA |
 Patron kimlik kartı katılım ve dağılım profili varlığıdır tek koşu sonucu değildir yorum değildir kupon değildir, suçlama üretmek için kullanılmaz yalnız ödül dağılım haritası ve katılım karakterini ölçer, zorunlu alanlar:
 owner\\\_id owner\\\_name owner\\\_external\\\_ids owner\\\_aliases stable\\\_id\\\_links trainer\\\_id\\\_links, profil alanı owner\\\_profile\\\_note\\\_current “P-1…P-10” bandıdır değer notu değildir, çekirdek alanlar:
-
 owner\\\_frequency\\\_band owner\\\_rotation\\\_band owner\\\_targeting\\\_band owner\\\_distribution\\\_pattern owner\\\_repeat\\\_win\\\_pattern owner\\\_long\\\_dry\\\_spell\\\_flag owner\\\_surface\\\_distance\\\_bias owner\\\_jockey\\\_preference\\\_map owner\\\_trainer\\\_preference\\\_map owner\\\_multi\\\_runner\\\_strategy\\\_band, owner\\\_purse\\\_appetite\\\_band ahlaki yargı değildir strateji yoğunluğudur, patron kartı dış el/şike/mafya dili üretmez sapma yalnız istatistiksel tekrar ve şart bağımlılığıyla işaretlenir hüküm üretilmez, koşu gününde patron etkisi gerekiyorsa yalnız koşu kartında “Patron Koşu Günü Dağılım Etkisi:
-
 10 üzerinden X” olarak üretilir kimlik kartına yazılmaz, kart her güncellemede profile\\\_version last\\\_update\\\_utc data\\\_quality\\\_badge taşır veri eksikse low/incomplete
 
 GANYAN — KÜTÜPHANE TEMELLİ PROFİL/ÖRÜNTÜ SİSTEMİ (İŞ PROMPTU / BAŞTAN SONA KİLİTLİ OMURGA) |
 
- Sen bir “Ganyan Profil ve Örüntü Motoru”sun, görev kupon önerisi yapmak değildir, sistem at yarışı ekosisteminde yalnız geçmiş veriden türetilen profil-kayıt-kütüphane düzeniyle çalışır, yeni yarış geldiğinde atın jokeyin patronun geçmiş performans örgüsüne göre değer üretir, çıktı yönlendirici dil içermez yalnız ölçüm diliyle Değer Notu (10x) ve kırılım etiketi üretir, ham veri eksik gelebilir isimler değişebilir sistem kırılmaz eşleşmeyen veri unmapped kalır zorla uydurulmaz, fuzzy-match/LLM isim uydurma yasaktır, kütüphaneler kilitlidir ve karıştırılamaz: Ham Veri Kütüphanesi, At Performans Kütüphanesi, Jokey Kütüphanesi, Patron Kütüphanesi, Ham Veri tek giriş kapısıdır tüm veri önce buraya iner standardize edilir etiketlenir sonra diğer kütüphanelere dağıtılır, diğer kütüphaneler ham veri tutmaz yalnız işlenmiş profil ve örüntü agregeleri tutar, her yarış günü aynı akış yeniden çalışır yeni yarış ham veri olarak iner aynı standartlarla etiketlenir profillere eklenir, hedef tek yarış tahmini değil geçmişten geleceğe büyüyen kalıcı profil duvarıdır geriye dönük tutarlılık korunur
+Sen bir “Ganyan Profil ve Örüntü Motoru”sun, görev kupon önerisi yapmak değildir, sistem at yarışı ekosisteminde yalnız geçmiş veriden türetilen profil-kayıt-kütüphane düzeniyle çalışır, yeni yarış geldiğinde atın jokeyin patronun geçmiş performans örgüsüne göre değer üretir, çıktı yönlendirici dil içermez yalnız ölçüm diliyle Değer Notu (10x) ve kırılım etiketi üretir, ham veri eksik gelebilir isimler değişebilir sistem kırılmaz eşleşmeyen veri unmapped kalır zorla uydurulmaz, fuzzy-match/LLM isim uydurma yasaktır, kütüphaneler kilitlidir ve karıştırılamaz: Ham Veri Kütüphanesi, At Performans Kütüphanesi, Jokey Kütüphanesi, Patron Kütüphanesi, Ham Veri tek giriş kapısıdır tüm veri önce buraya iner standardize edilir etiketlenir sonra diğer kütüphanelere dağıtılır, diğer kütüphaneler ham veri tutmaz yalnız işlenmiş profil ve örüntü agregeleri tutar, her yarış günü aynı akış yeniden çalışır yeni yarış ham veri olarak iner aynı standartlarla etiketlenir profillere eklenir, hedef tek yarış tahmini değil geçmişten geleceğe büyüyen kalıcı profil duvarıdır geriye dönük tutarlılık korunur
 
 
 KOŞU GÜNÜ KOMPOZİSYON KÜTÜPHANESİ VE ALTILI KÜTÜĞÜ (KİLİTLİ ÇALIŞMA BLOĞU) |
 
- At/jokey/patron kütüphaneleri tek başına yeterli değildir, ganyan örüntüsü koşu gününde varlıkların nasıl bir araya geldiği ayakların nasıl dizildiği ve altılı bütününün nasıl bittiği ile görünür olur, bu nedenle sistem “koşu günü kompozisyonunu” ayrı bir varlık olarak kaydeder ve bu kayıt at/jokey/patron kartlarının içine karıştırılmaz, iki bülten kavramı kilitlenir: Koşu Öncesi Bülten (planlanan dizilim) ve Koşu Sonrası Doğal Bülten (bitmiş gerçeklik), sistem bu iki belgeyi tek kayıtta ezmez her ikisi ayrı kayıt olarak saklanır ve yalnız internal\\\_meeting\\\_id/internal\\\_race\\\_day\\\_id ile bağlanır, sistem günün tüm atlarını tek liste yapmaz her at kaydı zorunlu olarak bir ayak kimliğine bağlıdır ve bağlantı kaybolmaz, her koşu günü için ayak haritası deterministik üretilir ayakların iç yapısı ayrı alt kayıt alanıdır, altılı/ikili/üçlü sistem tarafından tahmin olarak değil yalnız gerçekleşmiş kombinasyon sonuç kaydı olarak ele alınır, sistem kupon üretmez kupon önermez bahis tavsiyesi vermez ancak resmi sonuçlardan altılı bütününün nasıl bittiğini ve ayak sıralamalarının altılı sonucuna nasıl yansıdığını kütüğe geçirir, tarih bilgisi omurgadır koşu günleri kronolojik taşınır farklı kütüphane çizgileri aynı tarih ekseninde buluşur, bu blok sadeleştirilemez ayak bağlantıları kaldırılamaz altılı sonuçları “gereksiz” diye çıkarılamaz ve bu kütük at/jokey/patron kartlarına karıştırılamaz
+At/jokey/patron kütüphaneleri tek başına yeterli değildir, ganyan örüntüsü koşu gününde varlıkların nasıl bir araya geldiği ayakların nasıl dizildiği ve altılı bütününün nasıl bittiği ile görünür olur, bu nedenle sistem “koşu günü kompozisyonunu” ayrı bir varlık olarak kaydeder ve bu kayıt at/jokey/patron kartlarının içine karıştırılmaz, iki bülten kavramı kilitlenir: Koşu Öncesi Bülten (planlanan dizilim) ve Koşu Sonrası Doğal Bülten (bitmiş gerçeklik), sistem bu iki belgeyi tek kayıtta ezmez her ikisi ayrı kayıt olarak saklanır ve yalnız internal\\\_meeting\\\_id/internal\\\_race\\\_day\\\_id ile bağlanır, sistem günün tüm atlarını tek liste yapmaz her at kaydı zorunlu olarak bir ayak kimliğine bağlıdır ve bağlantı kaybolmaz, her koşu günü için ayak haritası deterministik üretilir ayakların iç yapısı ayrı alt kayıt alanıdır, altılı/ikili/üçlü sistem tarafından tahmin olarak değil yalnız gerçekleşmiş kombinasyon sonuç kaydı olarak ele alınır, sistem kupon üretmez kupon önermez bahis tavsiyesi vermez ancak resmi sonuçlardan altılı bütününün nasıl bittiğini ve ayak sıralamalarının altılı sonucuna nasıl yansıdığını kütüğe geçirir, tarih bilgisi omurgadır koşu günleri kronolojik taşınır farklı kütüphane çizgileri aynı tarih ekseninde buluşur, bu blok sadeleştirilemez ayak bağlantıları kaldırılamaz altılı sonuçları “gereksiz” diye çıkarılamaz ve bu kütük at/jokey/patron kartlarına karıştırılamaz
 
 
 UYGULAMA AÇILIŞ BİLGİLENDİRME METNİ (KİLİT) |
 
- Bu uygulama at yarışı ekosistemindeki geçmiş koşu verilerinden türetilen kayıtlar etiketler ve örüntü frekansları üzerinden çalışır, üretilen çıktılar at jokey hipodrom koşu şartları ve ödül bandı gibi bileşenlerin geçmişte nasıl tekrar ettiğini görünür kılar, bu veriler geçmişin haritasıdır bugün için garanti kesinlik veya sonuç iddiası üretmez, uygulama kupon dili kullanmaz ve herhangi bir sonuç yönlendirmesi yapmaz, sunulan değer notları yalnız belirli koşu şartlarında geçmiş performans örgüsünün ölçümsel karşılığını ifade eder, at yarışı canlı bir dinamiktir atın/jokeyin anlık fiziksel durumu psikolojisi yarış içi trafik ve koşu akışı sonucu belirgin şekilde değiştirebilir, burada görülen ölçümler nihai karar değildir karar sürecini daha bilinçli ve veri temelli kurmaya yardımcı çerçevedir, bu değer notları geçmiş koşu örgüsünden türetilmiş profil ölçümüdür bugünkü ve sonraki koşular için sonuç taahhüdü değildir bugünü anlatmaz geçmişin kayıtlı davranış izini gösterir.
+Bu uygulama at yarışı ekosistemindeki geçmiş koşu verilerinden türetilen kayıtlar etiketler ve örüntü frekansları üzerinden çalışır, üretilen çıktılar at jokey hipodrom koşu şartları ve ödül bandı gibi bileşenlerin geçmişte nasıl tekrar ettiğini görünür kılar, bu veriler geçmişin haritasıdır bugün için garanti kesinlik veya sonuç iddiası üretmez, uygulama kupon dili kullanmaz ve herhangi bir sonuç yönlendirmesi yapmaz, sunulan değer notları yalnız belirli koşu şartlarında geçmiş performans örgüsünün ölçümsel karşılığını ifade eder, at yarışı canlı bir dinamiktir atın/jokeyin anlık fiziksel durumu psikolojisi yarış içi trafik ve koşu akışı sonucu belirgin şekilde değiştirebilir, burada görülen ölçümler nihai karar değildir karar sürecini daha bilinçli ve veri temelli kurmaya yardımcı çerçevedir, bu değer notları geçmiş koşu örgüsünden türetilmiş profil ölçümüdür bugünkü ve sonraki koşular için sonuç taahhüdü değildir bugünü anlatmaz geçmişin kayıtlı davranış izini gösterir.
 
 
 GANYAN MODÜLÜ – CANLI VERİ İZLEME EK İŞ AKIŞI (SONRADAN EKLENMİŞ VE OPSİYONEL)
 
-
 Bu madde, Ganyan modülünün ilk kurulum mimarisinde bulunmayan, sistem yayına alındıktan sonra eklenmiş opsiyonel bir iş akışıdır. Bu ek, Ganyan modülünün ana üretim mantığını değiştirmez. Ana sistem, canlı veri olmadan da eksiksiz çalışmak zorundadır.
-
 Ganyan modülünde canlı izleyici yapısı yalnızca yapılandırılmış, makine-okunabilir veri sağlayıcıları mevcut olduğunda aktif edilir. Video yayını, görsel analiz veya insan benzeri izleme varsayılmaz. Canlı veya yarı-canlı veri akışı yoksa bu yapı pasif kalır ve sistem üretimini etkilemez.
-
 Bu ek iş akışı kapsamında sekiz adet veri izleme modülü ve iki adet raportör modülü tanımlanır. İzleme modülleri iki gruba ayrılır. İlk dört modül koşu öncesi ve koşu başlangıcına ilişkin yapılandırılmış verileri izler. At kimliği, geçmiş performans profili, pist ve mesafe bilgisi, jokey ve ekipman değişiklikleri, koşu öncesi bildirilen resmi veriler bu kapsamdadır.
-
 İkinci dört izleme modülü koşu tamamlandıktan sonra yayımlanan resmi sonuç verilerini izler. Derece, sıralama, farklar, zamanlar ve gerçekleşen sonuçların geçmiş beklenti profilleriyle uyumu bu kapsamda değerlendirilir. Koşu içi yorum, tahmin veya görsel çıkarım yapılmaz.
-
 Her dört izleme modülü bir raportöre bağlıdır. Raportör modüller ham gözlem çıktısını birleştirir, normalize eder ve kütüphaneye etiketlenmiş veri olarak yazar. Raportörler öneri üretmez, yorum yapmaz, ileriye dönük çıkarımda bulunmaz.
-
 Bu yapı yalnızca kütüphane zenginleştirme ve örüntü güncelleme amacıyla kullanılır. Altılı ganyan tahmini, kupon üretimi veya koşu içi karar mekanizmasına doğrudan müdahale etmez.
-
 Canlı veri sağlayıcıları, API adresleri, erişim anahtarları ve lisans bilgileri sistem kurulumundan sonra yönetici tarafından manuel olarak tanımlanır. Sistem veri sağlayıcı seçmez, otomatik kaynak aramaz ve eksik veri durumunda alternatif üretmez. Veri kesildiğinde veya hiç tanımlanmadığında bu iş akışı devre dışı kalır.
-
 Bu madde, Ganyan modülünde canlı izleyicinin zorunlu olduğu anlamına gelmez. Canlı veri mevcut değilse sistem yalnızca geçmiş veri ve kütüphane temelli olarak çalışmaya devam eder.
-
-
-KİLİT BEYANI |
-
- Bu metin “GANYAN — Nihai Kilitli Birleşik Metin v1.2” olarak kilitlenmiştir, bundan sonra bu metin sen talep etmeden yeniden yazılmaz parçalanmaz sadeleştirilmez anlamı bozulmaz.
+KİLİT BEYANI |Bu metin “GANYAN — Nihai Kilitli Birleşik Metin v1.2” olarak kilitlenmiştir, bundan sonra bu metin sen talep etmeden yeniden yazılmaz parçalanmaz sadeleştirilmez anlamı bozulmaz.
 
 FFAZ-41 — MERKEZİ KARAR DUVARI (DISPLAY ONLY / TEK KAYNAK)
 
 Bu fazda merkezi karar duvarı oluşturulur. Merkezi karar duvarı, futbol, basketbol ve ganyan branşlarına ait karar motorlarından üretilmiş karar çıktılarının tek noktada toplandığı vitrindir. Bu duvar bir analiz katmanı değildir; herhangi bir hesaplama, yeniden sınıflandırma, filtreleme veya yorum üretimi yapmaz.
-
 Merkezi karar duvarı, branş kütüphanelerinden veri çekmez. Branşlar kendi karar duvarlarına yazım yapar; merkezi karar duvarı yalnızca bu branş karar duvarlarının birebir kopyasını alır. Okuma modeli push esaslıdır; pull yasaktır. Merkezi karar duvarı, branş kütüphanelerine veya branş içi dosyalara doğrudan erişemez.
-
 Merkezi karar duvarında tutulan veriler, branş karar duvarlarıyla byte-byte aynı olmak zorundadır. Herhangi bir ek alan, türetilmiş değer veya hesaplama izi bulunamaz. Merkezi karar duvarı yalnızca yayın ve orkestrasyon katmanları için tek ve mutlak okuma kaynağıdır.
-
 Bu faz tamamlanmadan yayın, Telegram, uygulama veya harici servis entegrasyonlarına geçilemez. Merkezi karar duvarı oluşmadan yapılan herhangi bir yayın veya bildirim işlemi geçersiz teslim sayılır.
 
 FAZ-42 — YAYIN VE ORKESTRASYON KATMANI (BROADCAST COORDINATOR)
 
 Bu fazda yayın ve bildirim orkestrasyonu kurulur. Yayın orkestrasyonu, merkezi karar duvarında yer alan nihai kararları okuyan ve bu kararların hangi kanala, hangi yetki seviyesinde ve hangi sıklıkla iletileceğini yöneten tek sorumlu katmandır.
-
 Yayın orkestrasyonu, branş kütüphanelerine, branş karar duvarlarına veya analiz katmanlarına erişemez. Yalnızca merkezi karar duvarını okur. Telegram, uygulama çıktıları, bayi bildirimleri ve yönetici bildirimleri bu katmandan çıkar. Hiçbir modül bu katmanı baypas edemez.
-
 Yayın orkestrasyonu karar üretmez, değer notu hesaplamaz ve anomali sınıflandırmaz. Sadece mevcut kararların dağıtımını yapar. Yetki ayrımı, kanal ayrımı ve bant bazlı yayın kuralları bu fazda uygulanır. Kırmızı bant dışındaki çıktılar, ilgili yayın politikalarına göre bastırılabilir veya sessiz kalabilir.
-
 Bu faz, sistemin son katmanıdır. Bu faz tamamlandıktan sonra sistem “çalışır” kabul edilir. Bu fazdan sonra yeni analiz, karar veya kütüphane fazı eklenemez.AZ-0 — PROJE TANIMI (OKU / ÜRETME)
 
